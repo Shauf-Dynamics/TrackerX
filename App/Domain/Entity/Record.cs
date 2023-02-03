@@ -9,6 +9,8 @@ namespace Domain.Entity
 
         public DateTime RecordCreated { get; set; }
 
+        public ICollection<Exercise> Exercises { get; set; }
+
         public bool IsDeleted { get; set; }
     }
 
@@ -28,6 +30,10 @@ namespace Domain.Entity
             entity.Property(e => e.IsDeleted)
                 .IsRequired()
                 .HasColumnName("deleted_ind");
+
+            entity.HasMany(e => e.Exercises)
+                .WithOne(e => e.Record)
+                .HasForeignKey(k => k.RecordId);
         }
     }
 }

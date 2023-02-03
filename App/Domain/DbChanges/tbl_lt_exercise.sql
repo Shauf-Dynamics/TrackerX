@@ -9,3 +9,5 @@ CREATE TABLE tbl_lt_exercise (
     exercise_tempo_high INT,
     deleted_ind BIT 
 );
+
+ALTER TABLE tbl_lt_exercise ADD record_id INT NOT NULL

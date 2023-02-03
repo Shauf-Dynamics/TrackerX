@@ -19,7 +19,8 @@ namespace Web.Controllers
         [HttpGet(Name = "GetRecords")]
         public IEnumerable<int> Get()
         {
-            return _dataContext.Records.AsEnumerable().Select(x => x.Id);
+            return _dataContext.Exercises.AsEnumerable().Select(x=>x.TypeId);
+          //  return _dataContext.Records.AsEnumerable().Select(x => x.Id);
         }
     }
 }

@@ -17,6 +17,14 @@ namespace Domain.Entity
 
         public int TempoHigh { get; set; }
 
+        public int RecordId { get; set; }
+
+        public Record Record { get; set; }
+
+        public int ExerciseTypeId { get; set; }
+
+        public ExerciseType ExerciseType { get; set; }
+
         public bool IsDeleted { get; set; }
     }
 
@@ -37,10 +45,6 @@ namespace Domain.Entity
                 .IsRequired()
                 .HasColumnName("exercise_name");
 
-            entity.Property(e => e.TypeId)
-                .IsRequired()
-                .HasColumnName("exercise_type_id");
-
             entity.Property(e => e.TempoLow)
                 .HasColumnName("exercise_tempo_low");
 
@@ -50,6 +54,22 @@ namespace Domain.Entity
             entity.Property(e => e.IsDeleted)
                 .IsRequired()
                 .HasColumnName("deleted_ind");
+
+            entity.Property(e => e.RecordId)
+                .IsRequired()
+                .HasColumnName("record_id");
+
+            entity.Property(e => e.TypeId)
+                .IsRequired()
+                .HasColumnName("exercise_type_id");
+
+            entity.HasOne(x => x.ExerciseType)
+                .WithMany()
+                .HasForeignKey(k => k.ExerciseTypeId);
+
+            entity.HasOne(e => e.Record)
+                .WithMany(e => e.Exercises)
+                .HasForeignKey(k => k.RecordId);
         }
     }
 }
