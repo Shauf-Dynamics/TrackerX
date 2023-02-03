@@ -6,7 +6,9 @@ namespace Domain.Entity
     public class Record
     {
         public int Id { get; set; }
+
         public DateTime RecordCreated { get; set; }
+
         public bool IsDeleted { get; set; }
     }
 

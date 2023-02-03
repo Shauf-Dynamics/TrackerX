@@ -1,4 +1,5 @@
 ﻿USE [MusicTrackerDb]
+
 CREATE TABLE tbl_lt_record (
     record_id int IDENTITY(1,1) PRIMARY KEY,
     record_date DATETIME,
