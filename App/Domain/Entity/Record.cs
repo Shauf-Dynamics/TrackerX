@@ -9,6 +9,8 @@ namespace Domain.Entity
 
         public DateTime RecordCreated { get; set; }
 
+     //   public int OwnerId { get; set; }
+
         public ICollection<Exercise> Exercises { get; set; }
 
         public bool IsDeleted { get; set; }
@@ -26,6 +28,10 @@ namespace Domain.Entity
             entity.Property(e => e.RecordCreated)
                 .IsRequired()
                 .HasColumnName("record_date");
+/*
+            entity.Property(e => e.OwnerId)
+                .IsRequired()
+                .HasColumnName("owner_id");      */      
 
             entity.Property(e => e.IsDeleted)
                 .IsRequired()

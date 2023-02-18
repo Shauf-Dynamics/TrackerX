@@ -23,7 +23,7 @@ namespace Domain.Entity
         {
             entity.ToTable("tbl_lt_exercise_type");
 
-            entity.Property(e => e.ExerciseTypeCd)
+            entity.Property(e => e.ExerciseTypeId)
                 .IsRequired()
                 .HasColumnName("exercise_type_id");
 
