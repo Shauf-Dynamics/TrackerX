@@ -1,8 +1,6 @@
-using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Web.Application.Endpoints.RecordList.Models;
 using Web.Application.Endpoints.RecordList.Service;
-
 namespace Web.Application.Endpoints.RecordList
 {
     [ApiController]
@@ -21,9 +19,11 @@ namespace Web.Application.Endpoints.RecordList
         [ProducesResponseType(typeof(RecordListResult), 200)]
         public async Task<IActionResult> Get()
         {
-            var result = await _recordListService.GetRecordList(default);
+            /*    var result = await _recordListService.GetRecordList(default);
 
-            return Ok(result);
+                return Ok(result);*/
+
+            return Ok();
         }
     }
 }

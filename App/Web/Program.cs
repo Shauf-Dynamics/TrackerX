@@ -1,5 +1,6 @@
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Web.Application.Endpoints.Dashboard.Service;
 using Web.Application.Endpoints.RecordList.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IRecordListService, RecordListService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 var app = builder.Build();
 

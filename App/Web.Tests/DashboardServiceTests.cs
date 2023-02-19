@@ -1,11 +1,11 @@
 ﻿using Xunit;
 
 namespace Web.Tests
-{    
-    public class RecordListServiceTests
+{
+    public class DashboardServiceTests
     {
         [Fact]
-        public void Test1()
+        public void Test2()
         {
             Assert.True(true);
         }
