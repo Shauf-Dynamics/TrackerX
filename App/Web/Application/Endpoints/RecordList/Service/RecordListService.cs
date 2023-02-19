@@ -18,9 +18,9 @@ namespace Web.Application.Endpoints.RecordList.Service
             var response = new RecordListResult();
 
             var query = _context.Records.AsQueryable();
-            var requestReslt = await query.ToListAsync();
+            var requestResult = await query.ToListAsync();
 
-            response.Items = requestReslt.Select(x => new RecordItem() { DateTime = x.RecordCreated, Id = x.Id });
+            response.Items = requestResult.Select(x => new RecordItem() { DateTime = x.RecordCreated, Id = x.Id });
 
             return response;
         }

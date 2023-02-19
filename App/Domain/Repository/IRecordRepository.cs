@@ -10,5 +10,9 @@ namespace Domain.Repository
     public interface IRecordRepository
     {
         Task<IEnumerable<Record>> GetLastRecords(int amount, int userId);
+
+        Task<Record> GetRecord(int recordId, int userId);
+
+        Task AddRecord(Record record);
     }
 }

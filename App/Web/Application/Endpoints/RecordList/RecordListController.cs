@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Web.Application.Endpoints.RecordList.Models;
 using Web.Application.Endpoints.RecordList.Service;
+
 namespace Web.Application.Endpoints.RecordList
 {
     [ApiController]
