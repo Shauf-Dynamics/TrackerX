@@ -1,6 +1,6 @@
 ﻿using Domain.Entity;
 using Domain.Repository;
-using Web.Application.Endpoints.Dashboard.Service.Models;
+using Web.Application.Endpoints.Dashboard.Models;
 using Web.Application.Endpoints.RecordList.Models;
 
 namespace Web.Application.Endpoints.Dashboard.Service

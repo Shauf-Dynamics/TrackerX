@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Web.Application.Endpoints.Dashboard.Service;
-using Web.Application.Endpoints.Dashboard.Service.Models;
+using Web.Application.Endpoints.Dashboard.Models;
 
 namespace Web.Application.Endpoints.Dashboard
 {

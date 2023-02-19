@@ -1,6 +1,6 @@
 ﻿using Web.Application.Endpoints.RecordList.Models;
 
-namespace Web.Application.Endpoints.Dashboard.Service.Models
+namespace Web.Application.Endpoints.Dashboard.Models
 {
     public class DashboardResult
     {        
