@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app-mt';
+  $currentView: string = "main";
+
+  onPress(navigateTo: string) {
+    this.$currentView = navigateTo;
+  }
 }
