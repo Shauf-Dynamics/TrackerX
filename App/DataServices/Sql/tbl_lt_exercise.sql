@@ -11,3 +11,4 @@ CREATE TABLE tbl_lt_exercise (
 );
 
 ALTER TABLE tbl_lt_exercise ADD record_id INT NOT NULL
+ALTER TABLE tbl_lt_exercise ADD song_id INT DEFAULT NULL;
