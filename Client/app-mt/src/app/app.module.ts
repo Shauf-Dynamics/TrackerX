@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecordAddingComponent } from './record-adding/record-adding.component';
 import { ExerciseAddingComponent } from './record-adding/exercise-adding/exercise-adding.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ExerciseAddingComponent
   ],
   imports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
