@@ -18,7 +18,12 @@ const routes: Routes = [
         redirectTo: 'dashboard'
       },
     ]
-  }
+  },
+  {
+    path: 'setting',
+    loadChildren: () =>
+          import('./modules/setting/setting.module').then((m) => m.SettingModule)
+  }  
 ];
 
 @NgModule({

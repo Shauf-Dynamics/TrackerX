@@ -14,6 +14,7 @@ import { ExerciseAddingComponent } from './modules/record-adding/exercise-adding
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './modules/header/header.component';
+import { SettingModule } from './modules/setting/setting.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HeaderComponent } from './modules/header/header.component';
     ExerciseAddingComponent
   ],
   imports: [
+    SettingModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
