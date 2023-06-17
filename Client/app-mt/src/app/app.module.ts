@@ -8,18 +8,18 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RecordComponent } from './record/record.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { RecordAddingComponent } from './record-adding/record-adding.component';
-import { ExerciseAddingComponent } from './record-adding/exercise-adding/exercise-adding.component';
+import { RecordComponent } from './modules/record/record.component';
+import { RecordAddingComponent } from './modules/record-adding/record-adding.component';
+import { ExerciseAddingComponent } from './modules/record-adding/exercise-adding/exercise-adding.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './modules/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecordComponent,
-    DashboardComponent,
+    HeaderComponent,
     RecordAddingComponent,
     ExerciseAddingComponent
   ],

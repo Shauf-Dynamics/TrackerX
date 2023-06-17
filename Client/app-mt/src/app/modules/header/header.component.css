@@ -1,0 +1,11 @@
+.app-main-header {
+    width: 100%;  
+    border-bottom: 1px solid;
+    border-color: lightgray;    
+    height: 50px;
+  }
+
+.h-title {    
+    width: 95%;
+    font-weight: bold;
+}
