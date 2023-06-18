@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mt-header',
@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-    constructor(private route: ActivatedRoute, private router: Router) { }
+    constructor(private router: Router) { }
 
   public onSettingClick(): void {
     this.router.navigate(['/setting']);

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BandComponent } from './band/band.component';
+import { SongComponent } from './song/song.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,17 @@ const routes: Routes = [
         loadChildren: () =>
         import('./band/band.module').then((m) => m.BandModule)
 
+      }
+    ]
+  },
+  {
+    path: 'setting/song',
+    component: SongComponent,
+    children: [
+      {
+        path: 'song',
+        loadChildren: () =>
+        import('./song/song.module').then((m) => m.SongModule)
       }
     ]
   },

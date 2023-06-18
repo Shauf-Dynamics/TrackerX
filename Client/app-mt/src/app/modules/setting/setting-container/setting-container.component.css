@@ -1,3 +1,19 @@
 .cs-main {
-    margin-top: 15px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.cs-band {    
+    padding-left: 115%;
+    width: 33%;
+}
+
+.cs-song {
+    padding-left: 240%;
+    width: 33%;
+}
+
+.cs-exercise {
+    padding-left: 370%;
+    width: 33%;
 }
