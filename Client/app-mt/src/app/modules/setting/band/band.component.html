@@ -1,3 +1,36 @@
 <setting-container>
-    <p>hello band</p>
+    <div class="b-add c-box-shadow">
+        <div class="b-input">
+            <span class="b-lbl">Band name</span>
+            <input type="text" class="b-lbl-input"/>
+        </div>        
+        <div>
+            <input type="button" class="c-btn-primary b-btn-save" value="Save">
+            <input type="button" class="c-btn-primary b-btn-reset" value="Reset">
+            <input type="button" class="c-btn-primary b-btn-addnew" value="Add new" disabled>
+        </div>    
+    </div>
+        <table class="c-v2-table b-table">
+            <thead>
+                <tr>
+                    <td width="20%">Name</td>
+                    <td width="61%">Song Count</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of band$">
+                    <td class="b-table-band-name">
+                        {{item.bandName}}
+                    </td>
+                    <td>
+                        {{item.songCount}}
+                    </td>
+                    <td>
+                        <input type="button" class="c-btn-primary b-table-btn-edit" value="Edit" />
+                        <input type="button" class="c-btn-primary" value="Remove" />
+                    </td>
+                </tr>
+            </tbody>            
+        </table>
 </setting-container>
