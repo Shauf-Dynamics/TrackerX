@@ -1,7 +1,8 @@
-﻿using Domain.Entity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using TrackerX.Domain.Entities;
+using TrackerX.Domain.Infrastructure.Configurations;
 
-namespace Domain
+namespace TrackerX.Domain.Infrastructure
 {
     public class DataContext : DbContext
     {

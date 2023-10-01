@@ -1,6 +1,5 @@
-using Domain;
-using Domain.Repository;
 using Microsoft.EntityFrameworkCore;
+using TrackerX.Domain.Infrastructure;
 using Web.Application.Endpoints.Dashboard.Service;
 using Web.Application.Endpoints.RecordList.Service;
 using Web.Application.Endpoints.RecordPage.Service;
@@ -21,7 +20,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<IRecordRepository, RecordRepository>();
 builder.Services.AddScoped<IRecordListService, RecordListService>();
 builder.Services.AddScoped<IRecordService, RecordService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();

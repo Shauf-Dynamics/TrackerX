@@ -1,25 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TrackerX.Domain.Entities;
 
-namespace Domain.Entity
+namespace TrackerX.Domain.Infrastructure.Configurations
 {
-    public class Song
-    {
-        public int Id { get; set; }
-
-        public int Name { get; set; }
-
-        public int BandId { get; set; }
-
-        public Band Band { get; set; }
-    }
-
-    public class SongConfiguration : IEntityTypeConfiguration<Song>
+    internal class SongConfiguration : IEntityTypeConfiguration<Song>
     {
         public void Configure(EntityTypeBuilder<Song> entity)
         {

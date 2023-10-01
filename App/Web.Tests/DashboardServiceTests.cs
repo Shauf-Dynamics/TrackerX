@@ -1,8 +1,7 @@
-﻿using Domain.Entity;
-using Domain.Repository;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
-
+using TrackerX.Domain.Entities;
+using TrackerX.Domain.Infrastructure.Repositories;
 using Web.Application.Endpoints.Dashboard.Service;
 
 namespace Web.Tests
@@ -17,7 +16,7 @@ namespace Web.Tests
         public void Init()
         {
             _recordRepositoryMock = new Mock<IRecordRepository>();
-            _sut = new DashboardService(_recordRepositoryMock.Object);
+          //  _sut = new DashboardService(_recordRepositoryMock.Object);
         }
 
         [Test]

@@ -1,5 +1,5 @@
-﻿using Domain.Entity;
-using Domain.Repository;
+﻿using TrackerX.Domain.Entities;
+using TrackerX.Domain.Infrastructure.Repositories;
 using Web.Application.Endpoints.Dashboard.Models;
 using Web.Application.Endpoints.RecordList.Models;
 

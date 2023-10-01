@@ -1,5 +1,5 @@
-﻿using Domain;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using TrackerX.Domain.Infrastructure;
 using Web.Application.Endpoints.RecordList.Models;
 
 namespace Web.Application.Endpoints.RecordList.Service

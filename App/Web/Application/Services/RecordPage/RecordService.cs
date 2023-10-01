@@ -1,5 +1,5 @@
-﻿using Domain.Entity;
-using Domain.Repository;
+﻿using TrackerX.Domain.Entities;
+using TrackerX.Domain.Infrastructure.Repositories;
 using Web.Application.Endpoints.RecordPage.Models;
 
 namespace Web.Application.Endpoints.RecordPage.Service
@@ -20,14 +20,14 @@ namespace Web.Application.Endpoints.RecordPage.Service
                 RecordCreated = model.DateTimeCreated.Value
             };
 
-            await _recordRepository.AddRecord(record);
+            await _recordRepository.Create(record);
         }
 
         public async Task<RecordView> GetRecord(int recordId, int userId)
         {
             RecordView result = null;
 
-            var record = await _recordRepository.GetRecord(recordId, userId);
+            var record = await _recordRepository.GetByUserId(recordId, userId);
 
             if (record != null)
             {
