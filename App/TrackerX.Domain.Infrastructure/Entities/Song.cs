@@ -1,10 +1,10 @@
 ﻿namespace TrackerX.Domain.Entities
 {
-    public class Song
+    public class Song : BaseEntity
     {
-        public int Id { get; set; }
+        public int SongId { get; set; }
 
-        public int Name { get; set; }
+        public string SongName { get; set; }
 
         public int BandId { get; set; }
 

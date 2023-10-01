@@ -1,11 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using TrackerX.Core.Band;
+using TrackerX.Core.Song;
 using TrackerX.Domain.Data.Repositories;
 using TrackerX.Domain.Entities.Repositories;
 using TrackerX.Domain.Infrastructure;
-using Web.Application.Endpoints.Dashboard.Service;
-using Web.Application.Endpoints.RecordList.Service;
-using Web.Application.Endpoints.RecordPage.Service;
+using TrackerX.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,8 +24,10 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(connectionString)
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 builder.Services.AddTransient<IBandRepository, BandRepository>();
+builder.Services.AddTransient<ISongRepository, SongRepository>();
 
 builder.Services.AddScoped<IBandService, BandService>();
+builder.Services.AddScoped<ISongService, SongService>();
 /*builder.Services.AddScoped<IRecordListService, RecordListService>();
 builder.Services.AddScoped<IRecordService, RecordService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();*/
