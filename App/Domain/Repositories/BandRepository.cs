@@ -9,7 +9,7 @@ namespace TrackerX.Domain.Data.Repositories
     {
         public BandRepository(DataContext context) : base(context) { }
 
-        public async Task<IEnumerable<Band>> GetBySearcingCriterias(int pageSize, string startsWith)
+        public async Task<IEnumerable<Band>> GetBySearchingCriterias(int pageSize, string startsWith)
         {
             IQueryable<Band> query = Context.Bands;
             if (!string.IsNullOrWhiteSpace(startsWith))

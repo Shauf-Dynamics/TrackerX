@@ -4,6 +4,6 @@ namespace TrackerX.Domain.Entities.Repositories
 {
     public interface IBandRepository : IRepository<Band>
     {
-        Task<IEnumerable<Band>> GetBySearcingCriterias(int pageSize, string startsWith);
+        Task<IEnumerable<Band>> GetBySearchingCriterias(int pageSize, string startsWith);
     }
 }

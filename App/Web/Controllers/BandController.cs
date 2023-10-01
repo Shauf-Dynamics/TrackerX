@@ -24,7 +24,7 @@ namespace TrackerX.Web.Controllers
             return Ok(result);
         }
 
-        [HttpGet, Route("v1/list/byname")]
+        [HttpGet, Route("v1/list/search")]
         [ProducesResponseType(typeof(BandsViewModel), 200)]        
         public async Task<IActionResult> Get([FromQuery]int pageSize, [FromQuery] string startsWith)
         {

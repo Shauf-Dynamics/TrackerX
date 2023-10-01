@@ -47,5 +47,30 @@ namespace TrackerX.Tests.Unit
             _bandRepositoryMock.Verify(x => x.GetById(It.Is<int>(x => x == id)), Times.Once);
             _bandRepositoryMock.Verify(x => x.SaveChanges(), Times.Once);
         }
+
+        [Test]
+        public async Task Should_GetBandsByCriterias_Return_ExactNumberOfBands()
+        {
+            IEnumerable<Band> bands = new List<Band>()
+            {
+                new Band() { BandName = "Megadeth" },
+                new Band() { BandName = "Metallica" },
+                new Band() { BandName = "Pantera" }
+            };
+
+            _bandRepositoryMock.Setup(x => x.GetBySearchingCriterias(
+                It.IsAny<int>(),
+                It.IsAny<string>()))
+                .Returns(Task.FromResult(bands));
+            _sut = new BandService(_bandRepositoryMock.Object);
+
+            var result = await _sut.GetBandsByCriterias(new BandsSearchParams(99, string.Empty));
+
+            Assert.That(result.Count(), Is.EqualTo(bands.Count()));
+            _bandRepositoryMock.Verify(x => x.GetBySearchingCriterias(
+                It.IsAny<int>(),
+                It.IsAny<string>()), 
+                Times.Once);            
+        }    
     }
 }

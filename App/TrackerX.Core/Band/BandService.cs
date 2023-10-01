@@ -14,7 +14,7 @@ namespace TrackerX.Core.Band
 
         public async Task<IEnumerable<BandsViewModel>> GetBandsByCriterias(BandsSearchParams criterias)
         {
-            var result = await _bandRepository.GetBySearcingCriterias(criterias.PageSize, criterias.StartsWith);
+            var result = await _bandRepository.GetBySearchingCriterias(criterias.PageSize, criterias.StartsWith);
 
             return result.Select(x => new BandsViewModel() { BandName = x.BandName });
         }
