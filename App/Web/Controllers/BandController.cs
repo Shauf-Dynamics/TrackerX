@@ -15,7 +15,8 @@ namespace TrackerX.Web.Controllers
             _bandService = bandService;
         }
 
-        [HttpGet, Route("v1/list")]        
+        [HttpGet] 
+        [Route("v1/list")]
         [ProducesResponseType(typeof(BandsViewModel), 200)]        
         public async Task<IActionResult> Get([FromQuery] int pageSize)
         {
@@ -24,7 +25,8 @@ namespace TrackerX.Web.Controllers
             return Ok(result);
         }
 
-        [HttpGet, Route("v1/list/search")]
+        [HttpGet]
+        [Route("v1/list/search")]
         [ProducesResponseType(typeof(BandsViewModel), 200)]        
         public async Task<IActionResult> Get([FromQuery]int pageSize, [FromQuery] string startsWith)
         {
@@ -33,7 +35,8 @@ namespace TrackerX.Web.Controllers
             return Ok(result);
         }
 
-        [HttpPost, Route("v1/create")]        
+        [HttpPost]
+        [Route("v1/create")]
         public async Task<IActionResult> Post([FromBody]CreateBandModel model)
         {
             await _bandService.CreateBand(model);
@@ -41,7 +44,8 @@ namespace TrackerX.Web.Controllers
             return Ok();
         }
 
-        [HttpPut, Route("v1/rename")]       
+        [HttpPut]
+        [Route("v1/rename")]
         public async Task<IActionResult> Put([FromQuery]int id, [FromBody]string model)
         {
             await _bandService.RenameBand(id, model);

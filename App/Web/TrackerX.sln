@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Web", "TrackerX.Web.csproj", "{6BA86A3A-1EFB-4290-9D3B-CE2B33601F73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.API", "TrackerX.API.csproj", "{6BA86A3A-1EFB-4290-9D3B-CE2B33601F73}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Domain.Data", "..\Domain\TrackerX.Domain.Data.csproj", "{880AAA5D-E736-4466-8C49-26AE90805CA1}"
 EndProject

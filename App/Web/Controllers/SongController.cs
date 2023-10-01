@@ -15,7 +15,8 @@ namespace TrackerX.Web.Controllers
             _songService = songService;
         }
 
-        [HttpGet, Route("v1/list")]
+        [HttpGet]
+        [Route("v1/list")]
         [ProducesResponseType(typeof(IEnumerable<SongViewModel>), 200)]
         public async Task<IActionResult> Get([FromQuery] int bandId)
         {
@@ -24,7 +25,8 @@ namespace TrackerX.Web.Controllers
             return Ok(result);
         }
 
-        [HttpPost, Route("v1/create")]
+        [HttpPost]
+        [Route("v1/create")]
         public async Task<IActionResult> Post([FromBody]CreateSongModel model)
         {
             await _songService.Create(model);
@@ -32,7 +34,8 @@ namespace TrackerX.Web.Controllers
             return Ok();
         }
 
-        [HttpPut, Route("v1/update")]
+        [HttpPut]
+        [Route("v1/update")]
         public async Task<IActionResult> Put([FromQuery]int songId, [FromBody]string songName)
         {
             await _songService.RenameSong(songId, songName);

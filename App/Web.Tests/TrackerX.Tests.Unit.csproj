@@ -17,7 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\TrackerX.Domain.Data.csproj" />
     <ProjectReference Include="..\TrackerX.Core\TrackerX.Core.csproj" />
-    <ProjectReference Include="..\Web\TrackerX.Web.csproj" />
+    <ProjectReference Include="..\Web\TrackerX.API.csproj" />
   </ItemGroup>
 
 </Project>
