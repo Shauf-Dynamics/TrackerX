@@ -29,7 +29,9 @@ namespace TrackerX.Tests.Unit
             var createBandModel = new CreateBandModel() { BandName = "cool name" };
             await _sut.CreateBand(createBandModel);
 
-            _bandRepositoryMock.Verify(x => x.Create(It.Is<Band>(x => createBandModel.BandName == x.BandName)), Times.Once);
+            _bandRepositoryMock.Verify(x => x.Create(
+                It.Is<Band>(x => createBandModel.BandName == x.BandName)),
+                Times.Once);
             _bandRepositoryMock.Verify(x => x.SaveChanges(), Times.Once);
         }
 
