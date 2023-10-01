@@ -10,10 +10,10 @@ namespace TrackerX.Domain.Infrastructure.Configurations
         {
             builder.ToTable("tbl_lt_band");
 
-            builder.Property(e => e.Id)
+            builder.Property(e => e.BandId)
                 .HasColumnName("band_id");
 
-            builder.Property(e => e.Name)
+            builder.Property(e => e.BandName)
                 .HasColumnName("band_name");
 
             builder.HasMany(e => e.Songs)

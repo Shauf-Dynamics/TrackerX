@@ -12,12 +12,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\TrackerX.Domain.Data.csproj" />
+    <ProjectReference Include="..\TrackerX.Core\TrackerX.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Application\Services\User\Models\" />
     <Folder Include="Middleware\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

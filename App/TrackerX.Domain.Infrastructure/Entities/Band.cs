@@ -2,9 +2,9 @@
 {
     public class Band : BaseEntity
     {
-        public int Id { get; set; }
+        public int BandId { get; set; }
 
-        public int Name { get; set; }
+        public string BandName { get; set; }
 
         public ICollection<Song> Songs { get; set; }
     }

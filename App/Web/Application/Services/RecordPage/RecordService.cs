@@ -20,7 +20,7 @@ namespace Web.Application.Endpoints.RecordPage.Service
                 RecordCreated = model.DateTimeCreated.Value
             };
 
-            _recordRepository.Add(record);
+            _recordRepository.Create(record);
             await _recordRepository.SaveChanges();
         }
 

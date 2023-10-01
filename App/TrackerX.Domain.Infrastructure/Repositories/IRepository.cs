@@ -7,7 +7,7 @@ namespace TrackerX.Domain.Infrastructure
         Task<T> GetById(int id);
         Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
 
-        void Add(T entity);
+        void Create(T entity);
         void Remove(T entity);
 
         Task<IEnumerable<T>> GetAll();

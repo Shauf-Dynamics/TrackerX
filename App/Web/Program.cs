@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using TrackerX.Core.Band;
+using TrackerX.Domain.Data.Repositories;
+using TrackerX.Domain.Entities.Repositories;
 using TrackerX.Domain.Infrastructure;
 using Web.Application.Endpoints.Dashboard.Service;
 using Web.Application.Endpoints.RecordList.Service;
@@ -20,9 +23,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<IRecordListService, RecordListService>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+builder.Services.AddTransient<IBandRepository, BandRepository>();
+
+builder.Services.AddScoped<IBandService, BandService>();
+/*builder.Services.AddScoped<IRecordListService, RecordListService>();
 builder.Services.AddScoped<IRecordService, RecordService>();
-builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();*/
 
 var app = builder.Build();
 
@@ -34,9 +41,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

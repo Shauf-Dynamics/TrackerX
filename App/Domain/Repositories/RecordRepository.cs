@@ -85,5 +85,10 @@ namespace TrackerX.Domain.Data.Repositories
         {
             throw new NotImplementedException();
         }
+
+        void IRepository<Record>.Create(Record entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
