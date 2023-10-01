@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TrackerX.Domain.Data.Configurations;
 using TrackerX.Domain.Entities;
-using TrackerX.Domain.Infrastructure.Configurations;
 
 namespace TrackerX.Domain.Infrastructure
 {
@@ -14,6 +14,7 @@ namespace TrackerX.Domain.Infrastructure
         public DbSet<Band> Bands { get; set; }
         public DbSet<Song> Songs { get; set; }
         public DbSet<Account> Users { get; set; }
+        public DbSet<Genre> Genres { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -22,7 +23,8 @@ namespace TrackerX.Domain.Infrastructure
             builder.ApplyConfiguration(new ExerciseTypeConfiguration());
             builder.ApplyConfiguration(new BandConfiguration());
             builder.ApplyConfiguration(new SongConfiguration());
-            builder.ApplyConfiguration(new AccountConfiguration());
+            builder.ApplyConfiguration(new AccountConfiguration());            
+            builder.ApplyConfiguration(new GenreConfiguration());
         }
     }
 }

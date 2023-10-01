@@ -1,6 +1,6 @@
 ﻿namespace TrackerX.Domain.Entities
 {
-    public class Exercise
+    public sealed class Exercise
     {
         public int Id { get; set; }
 

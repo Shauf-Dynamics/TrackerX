@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TrackerX.Domain.Entities;
 
-namespace TrackerX.Domain.Infrastructure.Configurations
+namespace TrackerX.Domain.Data.Configurations
 {
     internal class RecordConfiguration : IEntityTypeConfiguration<Record>
     {
@@ -16,10 +16,6 @@ namespace TrackerX.Domain.Infrastructure.Configurations
             builder.Property(e => e.RecordCreated)
                 .IsRequired()
                 .HasColumnName("record_date");
-
-            /*           builder.Property(e => e.OwnerId)
-                           .IsRequired()
-                           .HasColumnName("owner_id");*/
 
             builder.Property(e => e.IsDeleted)
                 .IsRequired()

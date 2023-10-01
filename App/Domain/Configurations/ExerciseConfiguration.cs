@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TrackerX.Domain.Entities;
 
-namespace TrackerX.Domain.Infrastructure.Configurations
+namespace TrackerX.Domain.Data.Configurations
 {
     public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
     {

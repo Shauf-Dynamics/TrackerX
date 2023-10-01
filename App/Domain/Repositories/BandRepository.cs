@@ -17,6 +17,8 @@ namespace TrackerX.Domain.Data.Repositories
                 query = query.Where(x => x.BandName.StartsWith(startsWith));
             }
 
+            var genres = Context.Genres.ToList();
+
             return await query.Take(pageSize).ToListAsync();
         }
     }
