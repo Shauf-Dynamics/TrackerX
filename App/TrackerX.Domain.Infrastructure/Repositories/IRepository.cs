@@ -1,15 +1,18 @@
-﻿namespace TrackerX.Domain.Infrastructure
+﻿using System.Linq.Expressions;
+
+namespace TrackerX.Domain.Infrastructure
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : BaseEntity
     {
         Task<T> GetById(int id);
+        Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
 
-        Task<IQueryable<T>> GetAll();
+        void Add(T entity);
+        void Remove(T entity);
 
-        Task Create(T entity);
+        Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
 
-        Task Update(T entity);        
-
-        Task Delete(int id);
+        Task SaveChanges();
     }
 }

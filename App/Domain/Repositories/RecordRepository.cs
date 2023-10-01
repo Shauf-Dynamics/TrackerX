@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using TrackerX.Domain.Entities;
 using TrackerX.Domain.Infrastructure;
 using TrackerX.Domain.Infrastructure.Repositories;
@@ -51,6 +52,36 @@ namespace TrackerX.Domain.Data.Repositories
         }
 
         public Task<Record> GetByUserId(int recordId, int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Record> FirstOrDefault(Expression<Func<Record, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(Record entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Record entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IEnumerable<Record>> IRepository<Record>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Record>> GetWhere(Expression<Func<Record, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveChanges()
         {
             throw new NotImplementedException();
         }

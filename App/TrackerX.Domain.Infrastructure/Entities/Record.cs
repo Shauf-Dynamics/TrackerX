@@ -1,6 +1,6 @@
 ﻿namespace TrackerX.Domain.Entities
 {
-    public class Record
+    public class Record : BaseEntity
     {
         public int Id { get; set; }
 

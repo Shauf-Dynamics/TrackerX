@@ -1,6 +1,6 @@
 ﻿namespace TrackerX.Domain.Entities
 {
-    public class Band : BusinessObjectBase
+    public class Band : BaseEntity
     {
         public int Id { get; set; }
 

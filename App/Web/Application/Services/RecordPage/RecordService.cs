@@ -20,7 +20,8 @@ namespace Web.Application.Endpoints.RecordPage.Service
                 RecordCreated = model.DateTimeCreated.Value
             };
 
-            await _recordRepository.Create(record);
+            _recordRepository.Add(record);
+            await _recordRepository.SaveChanges();
         }
 
         public async Task<RecordView> GetRecord(int recordId, int userId)
