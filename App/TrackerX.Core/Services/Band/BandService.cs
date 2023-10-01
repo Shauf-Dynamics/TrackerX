@@ -1,7 +1,7 @@
-﻿using TrackerX.Core.Band.Models;
+﻿using TrackerX.Core.Services.Band.Models;
 using TrackerX.Domain.Entities.Repositories;
 
-namespace TrackerX.Core.Band
+namespace TrackerX.Core.Services.Band
 {
     public class BandService : IBandService
     {        

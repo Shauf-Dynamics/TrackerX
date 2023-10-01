@@ -1,6 +1,6 @@
-﻿using TrackerX.Core.Band.Models;
+﻿using TrackerX.Core.Services.Band.Models;
 
-namespace TrackerX.Core.Band
+namespace TrackerX.Core.Services.Band
 {
     public interface IBandService
     {

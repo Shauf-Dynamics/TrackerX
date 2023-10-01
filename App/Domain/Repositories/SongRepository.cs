@@ -8,5 +8,15 @@ namespace TrackerX.Domain.Data.Repositories
     public class SongRepository : BaseRepository<Song>, ISongRepository 
     {
         public SongRepository(DataContext context) : base(context) { }
+
+        public async Task<IEnumerable<Song>> GetByBandId(int bandId)
+        {
+            return await Context.Songs
+                .Where(x => x.BandId == bandId)
+                .Include(x => x.Band)
+                .Include(x => x.Genre)
+                .Include(x => x.Genre.ParentGenre)
+                .ToListAsync();
+        }
     }
 }

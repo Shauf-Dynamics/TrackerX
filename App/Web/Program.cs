@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using TrackerX.Core.Band;
-using TrackerX.Core.Song;
+using TrackerX.Core.Infrastructure;
+using TrackerX.Core.Services.Band;
+using TrackerX.Core.Services.Song;
 using TrackerX.Domain.Data.Repositories;
 using TrackerX.Domain.Entities.Repositories;
 using TrackerX.Domain.Infrastructure;
@@ -31,6 +32,8 @@ builder.Services.AddScoped<ISongService, SongService>();
 /*builder.Services.AddScoped<IRecordListService, RecordListService>();
 builder.Services.AddScoped<IRecordService, RecordService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();*/
+
+builder.Services.AddAutoMapper(typeof(AppMappingProfile));
 
 var app = builder.Build();
 

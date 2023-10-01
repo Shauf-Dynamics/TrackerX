@@ -1,6 +1,6 @@
-﻿using TrackerX.Core.Song.Models;
+﻿using TrackerX.Core.Services.Song.Models;
 
-namespace TrackerX.Core.Song
+namespace TrackerX.Core.Services.Song
 {
     public interface ISongService
     {

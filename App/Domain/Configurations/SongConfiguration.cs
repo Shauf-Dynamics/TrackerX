@@ -16,6 +16,22 @@ namespace TrackerX.Domain.Data.Configurations
             entity.Property(e => e.SongName)
                 .HasColumnName("song_name");
 
+            entity.Property(e => e.WritingYear)
+                .HasColumnName("year_of_creation");
+
+            entity.Property(e => e.IsInstrumental)
+                .HasColumnName("instrumental_ind");
+
+            entity.Property(e => e.GenreId)
+                .HasColumnName("genre_id");
+
+            entity.Property(e => e.Tempo)
+                .HasColumnName("tempo");
+
+            entity.HasOne(e => e.Genre)
+                .WithMany()
+                .HasForeignKey(k => k.GenreId);
+
             entity.Property(e => e.BandId)
                 .HasColumnName("band_id");
 
