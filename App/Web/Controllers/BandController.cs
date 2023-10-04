@@ -5,7 +5,7 @@ using TrackerX.Core.Services.Band.Models;
 namespace TrackerX.Web.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class BandController : ControllerBase
     {        
         private readonly IBandService _bandService;

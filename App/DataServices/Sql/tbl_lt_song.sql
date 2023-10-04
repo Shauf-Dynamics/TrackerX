@@ -10,10 +10,13 @@ ALTER TABLE tbl_lt_song
 ADD tempo INT 
 
 ALTER TABLE tbl_lt_song
-ADD year INT
+ADD year_of_creation INT
 
 ALTER TABLE tbl_lt_song
 ADD instrumental_ind BIT
 
 ALTER TABLE tbl_lt_song
 ADD genre_id INT
+
+ALTER TABLE tbl_lt_song
+ADD album_id INT

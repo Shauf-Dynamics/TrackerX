@@ -5,7 +5,7 @@ using TrackerX.Domain.Repositories;
 
 namespace TrackerX.Domain.Data.Repositories
 {
-    public class SongRepository : BaseRepository<Song>, ISongRepository 
+    public class SongRepository : RepositoryBase<Song>, ISongRepository 
     {
         public SongRepository(DataContext context) : base(context) { }
 

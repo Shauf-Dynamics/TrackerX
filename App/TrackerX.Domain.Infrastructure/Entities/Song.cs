@@ -14,6 +14,10 @@
 
         public Genre Genre { get; set; }
 
+        public int? AlbumId { get; set; }
+
+        public Album Album { get; set; }
+
         public int Tempo { get; set; }
 
         public bool IsInstrumental { get; set; }

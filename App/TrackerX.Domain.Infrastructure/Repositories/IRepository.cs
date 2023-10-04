@@ -8,6 +8,7 @@ namespace TrackerX.Domain.Infrastructure
         Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
 
         void Create(T entity);
+        void Update(T entity);
         void Remove(T entity);
 
         Task<IEnumerable<T>> GetAll();

@@ -15,6 +15,7 @@ namespace TrackerX.Domain.Infrastructure
         public DbSet<Song> Songs { get; set; }
         public DbSet<Account> Users { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Album> Albums { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -25,6 +26,7 @@ namespace TrackerX.Domain.Infrastructure
             builder.ApplyConfiguration(new SongConfiguration());
             builder.ApplyConfiguration(new AccountConfiguration());            
             builder.ApplyConfiguration(new GenreConfiguration());
+            builder.ApplyConfiguration(new AlbumConfiguration());
         }
     }
 }

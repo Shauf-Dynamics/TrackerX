@@ -4,11 +4,11 @@ using TrackerX.Domain.Infrastructure;
 
 namespace TrackerX.Domain.Data.Repositories
 {
-    public class BaseRepository<T> : IRepository<T> where T : BaseEntity
+    public class RepositoryBase<T> : IRepository<T> where T : BaseEntity
     {
         protected DataContext Context { get; private set; }
 
-        public BaseRepository(DataContext context)
+        public RepositoryBase(DataContext context)
         {
             Context = context;
         }
@@ -16,6 +16,11 @@ namespace TrackerX.Domain.Data.Repositories
         public void Create(T entity)
         {
             Context.Set<T>().Add(entity);
+        }
+
+        public void Update(T entity)
+        {
+            Context.Entry<T>(entity).State = EntityState.Modified;
         }
 
         public void Remove(T entity)

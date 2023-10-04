@@ -32,6 +32,15 @@ namespace TrackerX.Core.Services.Song
             await _songRepository.SaveChanges();
         }
 
+        public async Task AssingToAlbum(int albumId, int songId)
+        {
+            var song = await _songRepository.GetById(songId);            
+            song.AlbumId = albumId;
+            _songRepository.Update(song);
+
+            await _songRepository.SaveChanges();
+        }
+
         public async Task<IEnumerable<SongViewModel>> GetSongsByBandId(int bandId)
         {
             var source = await _songRepository.GetByBandId(bandId);

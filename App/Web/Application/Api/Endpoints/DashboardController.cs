@@ -4,7 +4,7 @@ using Web.Application.Endpoints.Dashboard.Models;
 
 namespace Web.Application.Endpoints.Dashboard
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class DashboardController : ControllerBase
     {        

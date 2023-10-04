@@ -5,7 +5,7 @@ using TrackerX.Core.Services.Song.Models;
 namespace TrackerX.Web.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class SongController : Controller
     {
         private readonly ISongService _songService;
@@ -27,7 +27,7 @@ namespace TrackerX.Web.Controllers
 
         [HttpPost]
         [Route("v1/create")]
-        public async Task<IActionResult> Post([FromBody]CreateSongModel model)
+        public async Task<IActionResult> Post([FromBody] CreateSongModel model)
         {
             await _songService.Create(model);
 
@@ -36,9 +36,18 @@ namespace TrackerX.Web.Controllers
 
         [HttpPut]
         [Route("v1/update")]
-        public async Task<IActionResult> Put([FromQuery]int songId, [FromBody]string songName)
+        public async Task<IActionResult> Put([FromQuery] int songId, [FromBody] string songName)
         {
             await _songService.RenameSong(songId, songName);
+
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("v1/{songId:int}/assign-album/{albumId:int}")]
+        public async Task<IActionResult> AssignAlbum(int songId, int albumId)
+        {
+            await _songService.AssingToAlbum(albumId, songId);
 
             return Ok();
         }

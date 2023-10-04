@@ -6,38 +6,48 @@ namespace TrackerX.Domain.Data.Configurations
 {
     internal class SongConfiguration : IEntityTypeConfiguration<Song>
     {
-        public void Configure(EntityTypeBuilder<Song> entity)
+        public void Configure(EntityTypeBuilder<Song> builder)
         {
-            entity.ToTable("tbl_lt_song");
+            builder.ToTable("tbl_lt_song");
 
-            entity.Property(e => e.SongId)
+            builder.HasKey(e => e.SongId);
+
+            builder.Property(e => e.SongId)
                 .HasColumnName("song_id");
 
-            entity.Property(e => e.SongName)
+            builder.Property(e => e.SongName)
                 .HasColumnName("song_name");
 
-            entity.Property(e => e.WritingYear)
+            builder.Property(e => e.WritingYear)
                 .HasColumnName("year_of_creation");
 
-            entity.Property(e => e.IsInstrumental)
+            builder.Property(e => e.IsInstrumental)
                 .HasColumnName("instrumental_ind");
 
-            entity.Property(e => e.GenreId)
+            builder.Property(e => e.GenreId)
                 .HasColumnName("genre_id");
 
-            entity.Property(e => e.Tempo)
+            builder.Property(e => e.Tempo)
                 .HasColumnName("tempo");
 
-            entity.HasOne(e => e.Genre)
+            builder.HasOne(e => e.Genre)
                 .WithMany()
                 .HasForeignKey(k => k.GenreId);
 
-            entity.Property(e => e.BandId)
+            builder.Property(e => e.BandId)
                 .HasColumnName("band_id");
 
-            entity.HasOne(e => e.Band)
+            builder.HasOne(e => e.Band)
                 .WithMany(e => e.Songs)
                 .HasForeignKey(k => k.BandId);
+
+            builder.Property(e => e.AlbumId)
+                .HasColumnName("album_id")
+                .IsRequired(false);
+
+            builder.HasOne(e => e.Album)
+                .WithMany(e => e.Songs)
+                .HasForeignKey(k => k.AlbumId);
         }
     }
 }

@@ -10,6 +10,8 @@ namespace TrackerX.Domain.Data.Configurations
         {
             builder.ToTable("tbl_ad_genre");
 
+            builder.HasKey(e => e.GenreId);
+
             builder.Property(e => e.GenreId)
                 .HasColumnName("genre_id");
 

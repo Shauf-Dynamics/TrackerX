@@ -8,6 +8,8 @@ namespace TrackerX.Core.Services.Song
 
         Task RenameSong(int songId, string songName);
 
+        Task AssingToAlbum(int albumId, int songId);
+
         Task<IEnumerable<SongViewModel>> GetSongsByBandId(int bandId);
     }
 }
