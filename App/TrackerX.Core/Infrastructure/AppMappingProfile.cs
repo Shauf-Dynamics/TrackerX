@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using TrackerX.Core.Services.Album.Models;
-using TrackerX.Core.Services.Song.Models;
+using TrackerX.Core.Services.Albums.Models;
+using TrackerX.Core.Services.Songs.Models;
 using TrackerX.Domain.Entities;
 
 namespace TrackerX.Core.Infrastructure

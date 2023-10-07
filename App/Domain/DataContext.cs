@@ -9,13 +9,21 @@ namespace TrackerX.Domain.Infrastructure
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Record> Records { get; set; }
+
         public DbSet<Exercise> Exercises { get; set; }
+
         public DbSet<ExerciseType> ExerciseTypes { get; set; }
+
         public DbSet<Band> Bands { get; set; }
+
         public DbSet<Song> Songs { get; set; }
         public DbSet<Account> Users { get; set; }
+
         public DbSet<Genre> Genres { get; set; }
+
         public DbSet<Album> Albums { get; set; }
+
+        public DbSet<Lesson> Lessons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,6 +35,7 @@ namespace TrackerX.Domain.Infrastructure
             builder.ApplyConfiguration(new AccountConfiguration());            
             builder.ApplyConfiguration(new GenreConfiguration());
             builder.ApplyConfiguration(new AlbumConfiguration());
+            builder.ApplyConfiguration(new LessonConfiguration());
         }
     }
 }

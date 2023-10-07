@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using TrackerX.Core.Services.Album.Models;
+using TrackerX.Core.Services.Albums.Models;
+using TrackerX.Domain.Entities;
 using TrackerX.Domain.Repositories;
 
-namespace TrackerX.Core.Services.Album
+namespace TrackerX.Core.Services.Albums
 {
     public class AlbumService : IAlbumService
     {
@@ -17,7 +18,7 @@ namespace TrackerX.Core.Services.Album
 
         public async Task Create(CreateAlbumModel model)
         {
-            var album = _mapper.Map<Domain.Entities.Album>(model);
+            var album = _mapper.Map<Album>(model);
 
             _albumRepository.Create(album);
 

@@ -1,4 +1,4 @@
-﻿namespace TrackerX.Core.Services.Band.Models
+﻿namespace TrackerX.Core.Services.Bands.Models
 {
     public class BandsSearchParams
     {

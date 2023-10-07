@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TrackerX.Core.Services.Song;
-using TrackerX.Core.Services.Song.Models;
+using TrackerX.Core.Services.Songs;
+using TrackerX.Core.Services.Songs.Models;
 
 namespace TrackerX.Web.Controllers
 {

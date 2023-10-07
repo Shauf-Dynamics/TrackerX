@@ -1,7 +1,8 @@
-﻿using TrackerX.Core.Services.Band.Models;
+﻿using TrackerX.Core.Services.Bands.Models;
+using TrackerX.Domain.Entities;
 using TrackerX.Domain.Entities.Repositories;
 
-namespace TrackerX.Core.Services.Band
+namespace TrackerX.Core.Services.Bands
 {
     public class BandService : IBandService
     {        
@@ -21,7 +22,7 @@ namespace TrackerX.Core.Services.Band
 
         public async Task CreateBand(CreateBandModel name)
         {
-            var band = new Domain.Entities.Band();
+            var band = new Band();
             band.BandName = name.BandName;
 
             _bandRepository.Create(band);

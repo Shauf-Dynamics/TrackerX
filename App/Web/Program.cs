@@ -1,12 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using TrackerX.Core.Infrastructure;
-using TrackerX.Core.Services.Album;
-using TrackerX.Core.Services.Band;
-using TrackerX.Core.Services.Song;
+using TrackerX.Core.Services.Albums;
+using TrackerX.Core.Services.Bands;
+using TrackerX.Core.Services.Lessons;
+using TrackerX.Core.Services.Songs;
 using TrackerX.Domain.Data.Repositories;
+using TrackerX.Domain.Data.UnitOfWork;
 using TrackerX.Domain.Entities.Repositories;
 using TrackerX.Domain.Infrastructure;
 using TrackerX.Domain.Repositories;
+using TrackerX.Domain.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,16 +28,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(connectionString));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
+builder.Services.AddTransient<IAddLessonUnitOfWork, AddLessonUnitOfWork>();
+builder.Services.AddTransient<ILessonRepository, LessonRepository>();
 builder.Services.AddTransient<IBandRepository, BandRepository>();
 builder.Services.AddTransient<ISongRepository, SongRepository>();
 builder.Services.AddTransient<IAlbumRepository, AlbumRepository>();
 
 builder.Services.AddScoped<IBandService, BandService>();
+builder.Services.AddScoped<ILessonService, LessonService>();
 builder.Services.AddScoped<ISongService, SongService>();
 builder.Services.AddScoped<IAlbumService, AlbumService>();
-/*builder.Services.AddScoped<IRecordListService, RecordListService>();
-builder.Services.AddScoped<IRecordService, RecordService>();
-builder.Services.AddScoped<IDashboardService, DashboardService>();*/
 
 builder.Services.AddAutoMapper(typeof(AppMappingProfile));
 

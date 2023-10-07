@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TrackerX.Core.Services.Album;
-using TrackerX.Core.Services.Album.Models;
+using TrackerX.Core.Services.Albums;
+using TrackerX.Core.Services.Albums.Models;
 
 namespace TrackerX.API.Controllers
 {

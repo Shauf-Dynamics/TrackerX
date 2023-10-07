@@ -1,6 +1,6 @@
-﻿using TrackerX.Core.Services.Album.Models;
+﻿using TrackerX.Core.Services.Albums.Models;
 
-namespace TrackerX.Core.Services.Album
+namespace TrackerX.Core.Services.Albums
 {
     public interface IAlbumService
     {

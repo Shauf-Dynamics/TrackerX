@@ -1,4 +1,4 @@
-﻿namespace TrackerX.Core.Services.Album.Models
+﻿namespace TrackerX.Core.Services.Albums.Models
 {
     public class AlbumViewModel
     {

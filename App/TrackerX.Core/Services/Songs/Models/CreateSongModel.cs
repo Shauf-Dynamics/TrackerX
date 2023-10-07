@@ -1,4 +1,4 @@
-﻿namespace TrackerX.Core.Services.Song.Models
+﻿namespace TrackerX.Core.Services.Songs.Models
 {
     public class CreateSongModel
     {
