@@ -25,6 +25,8 @@ namespace TrackerX.Domain.Infrastructure
 
         public DbSet<Lesson> Lessons { get; set; }
 
+        public DbSet<TempoType> TempoTypes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new RecordConfiguration());
@@ -36,6 +38,7 @@ namespace TrackerX.Domain.Infrastructure
             builder.ApplyConfiguration(new GenreConfiguration());
             builder.ApplyConfiguration(new AlbumConfiguration());
             builder.ApplyConfiguration(new LessonConfiguration());
+            builder.ApplyConfiguration(new TempoTypeConfiguration());
         }
     }
 }
