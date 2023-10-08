@@ -23,7 +23,6 @@ namespace TrackerX.Domain.Data.Configurations
             builder.Property(e => e.TempoTypeName)
                 .IsRequired()
                 .HasColumnName("tempo_type_name");
-
         }
     }
 }

@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TrackerX.Core.Services.Albums;
 using TrackerX.Core.Services.Albums.Models;
 
 namespace TrackerX.Host.Api.Gateway
 {
-    [ApiController]
+    [ApiController]    
     [Route("api/[controller]")]
-    public class AlbumController : Controller
+    public class AlbumController : ControllerBase
     {
         private readonly IAlbumService _albumService;
 

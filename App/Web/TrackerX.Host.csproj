@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Api\BFF\**" />
+    <Content Remove="Api\BFF\**" />
+    <EmbeddedResource Remove="Api\BFF\**" />
+    <None Remove="Api\BFF\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
@@ -16,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Api\BFF\" />
     <Folder Include="Middleware\" />
   </ItemGroup>
 

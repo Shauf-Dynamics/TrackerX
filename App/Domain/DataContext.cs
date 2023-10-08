@@ -16,8 +16,6 @@ namespace TrackerX.Domain.Infrastructure
 
         public DbSet<Song> Songs { get; set; }
 
-        public DbSet<Account> Users { get; set; }
-
         public DbSet<Genre> Genres { get; set; }
 
         public DbSet<Album> Albums { get; set; }
@@ -26,17 +24,22 @@ namespace TrackerX.Domain.Infrastructure
 
         public DbSet<TempoType> TempoTypes { get; set; }
 
+        public DbSet<RoleType> RoleTypes { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new ExerciseConfiguration());
             builder.ApplyConfiguration(new ExerciseTypeConfiguration());
             builder.ApplyConfiguration(new BandConfiguration());
-            builder.ApplyConfiguration(new SongConfiguration());
-            builder.ApplyConfiguration(new AccountConfiguration());            
+            builder.ApplyConfiguration(new SongConfiguration());          
             builder.ApplyConfiguration(new GenreConfiguration());
             builder.ApplyConfiguration(new AlbumConfiguration());
             builder.ApplyConfiguration(new LessonConfiguration());
             builder.ApplyConfiguration(new TempoTypeConfiguration());
+            builder.ApplyConfiguration(new RoleTypeConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
         }
     }
 }
