@@ -10,6 +10,8 @@ namespace TrackerX.Domain.Data.Configurations
         {
             builder.ToTable("tbl_ad_exercise_types");
 
+            builder.HasKey(e => e.ExerciseTypeId);
+
             builder.Property(e => e.ExerciseTypeId)
                 .IsRequired()
                 .HasColumnName("exercise_type_id");

@@ -30,7 +30,6 @@ namespace TrackerX.Domain.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new RecordConfiguration());
             builder.ApplyConfiguration(new ExerciseConfiguration());
             builder.ApplyConfiguration(new ExerciseTypeConfiguration());
             builder.ApplyConfiguration(new BandConfiguration());

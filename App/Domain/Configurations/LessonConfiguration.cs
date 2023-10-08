@@ -17,6 +17,10 @@ namespace TrackerX.Domain.Data.Configurations
 
             builder.Property(e => e.LessonDate)
                 .HasColumnName("lesson_date");
+
+            builder.HasMany(e => e.Exercises)
+                .WithOne(e => e.Lesson)
+                .HasForeignKey(e => e.LessonId);
         }
     }
 }
