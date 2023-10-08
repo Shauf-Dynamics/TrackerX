@@ -5,11 +5,11 @@ using TrackerX.Core.Services.Bands;
 using TrackerX.Core.Services.Lessons;
 using TrackerX.Core.Services.Songs;
 using TrackerX.Domain.Data.Repositories;
-using TrackerX.Domain.Data.UnitOfWork;
+using TrackerX.Domain.Data.UnitOfWorks;
 using TrackerX.Domain.Entities.Repositories;
 using TrackerX.Domain.Infrastructure;
 using TrackerX.Domain.Repositories;
-using TrackerX.Domain.UnitOfWork;
+using TrackerX.Domain.UnitOfWorks;
 
 var builder = WebApplication.CreateBuilder(args);
 

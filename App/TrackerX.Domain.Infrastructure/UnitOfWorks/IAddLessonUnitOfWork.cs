@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrackerX.Domain.Repositories;
 
-namespace TrackerX.Domain.UnitOfWork
+namespace TrackerX.Domain.UnitOfWorks
 {
     public interface IAddLessonUnitOfWork
     {

@@ -8,13 +8,13 @@ namespace TrackerX.Domain.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<ExerciseType> builder)
         {
-            builder.ToTable("tbl_lt_exercise_type");
+            builder.ToTable("tbl_ad_exercise_types");
 
             builder.Property(e => e.ExerciseTypeId)
                 .IsRequired()
                 .HasColumnName("exercise_type_id");
 
-            builder.Property(e => e.ExerciseTypeCd)
+            builder.Property(e => e.ExerciseTypeCode)
                 .IsRequired()
                 .HasColumnName("exercise_type_cd");
 

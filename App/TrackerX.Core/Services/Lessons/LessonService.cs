@@ -1,6 +1,6 @@
 ﻿using TrackerX.Core.Services.Lessons.Models;
 using TrackerX.Domain.Entities;
-using TrackerX.Domain.UnitOfWork;
+using TrackerX.Domain.UnitOfWorks;
 
 namespace TrackerX.Core.Services.Lessons
 {

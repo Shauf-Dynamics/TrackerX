@@ -1,9 +1,9 @@
 ﻿using TrackerX.Domain.Data.Repositories;
 using TrackerX.Domain.Infrastructure;
 using TrackerX.Domain.Repositories;
-using TrackerX.Domain.UnitOfWork;
+using TrackerX.Domain.UnitOfWorks;
 
-namespace TrackerX.Domain.Data.UnitOfWork
+namespace TrackerX.Domain.Data.UnitOfWorks
 {
     public class AddLessonUnitOfWork : IAddLessonUnitOfWork
     {

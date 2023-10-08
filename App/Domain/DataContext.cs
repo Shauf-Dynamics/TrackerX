@@ -17,6 +17,7 @@ namespace TrackerX.Domain.Infrastructure
         public DbSet<Band> Bands { get; set; }
 
         public DbSet<Song> Songs { get; set; }
+
         public DbSet<Account> Users { get; set; }
 
         public DbSet<Genre> Genres { get; set; }
