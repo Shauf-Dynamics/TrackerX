@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Services\User\Models\" />
+    <Folder Include="Api\BFF\" />
     <Folder Include="Middleware\" />
   </ItemGroup>
 

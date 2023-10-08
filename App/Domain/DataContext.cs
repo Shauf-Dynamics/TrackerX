@@ -8,8 +8,6 @@ namespace TrackerX.Domain.Infrastructure
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<Record> Records { get; set; }
-
         public DbSet<Exercise> Exercises { get; set; }
 
         public DbSet<ExerciseType> ExerciseTypes { get; set; }

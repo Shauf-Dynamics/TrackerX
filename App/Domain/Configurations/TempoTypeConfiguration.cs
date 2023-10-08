@@ -13,12 +13,15 @@ namespace TrackerX.Domain.Data.Configurations
             builder.HasKey(e => e.TempoTypeId);
 
             builder.Property(e => e.TempoTypeId)
+                .IsRequired()
                 .HasColumnName("tempo_type_id");
 
             builder.Property(e => e.TempoTypeCode)
+                .IsRequired()
                 .HasColumnName("tempo_type_code");
 
             builder.Property(e => e.TempoTypeName)
+                .IsRequired()
                 .HasColumnName("tempo_type_name");
 
         }

@@ -5,11 +5,9 @@ using TrackerX.Core.Services.Bands;
 using TrackerX.Core.Services.Lessons;
 using TrackerX.Core.Services.Songs;
 using TrackerX.Domain.Data.Repositories;
-using TrackerX.Domain.Data.UnitOfWorks;
 using TrackerX.Domain.Entities.Repositories;
 using TrackerX.Domain.Infrastructure;
 using TrackerX.Domain.Repositories;
-using TrackerX.Domain.UnitOfWorks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,11 +26,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(connectionString));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
-builder.Services.AddTransient<IAddLessonUnitOfWork, AddLessonUnitOfWork>();
-builder.Services.AddTransient<ILessonRepository, LessonRepository>();
 builder.Services.AddTransient<IBandRepository, BandRepository>();
 builder.Services.AddTransient<ISongRepository, SongRepository>();
 builder.Services.AddTransient<IAlbumRepository, AlbumRepository>();
+builder.Services.AddTransient<ILessonRepository, LessonRepository>();
+builder.Services.AddTransient<IExerciseRepository, ExerciseRepository>();
 
 builder.Services.AddScoped<IBandService, BandService>();
 builder.Services.AddScoped<ILessonService, LessonService>();

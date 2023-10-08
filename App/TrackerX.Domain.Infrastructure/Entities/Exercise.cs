@@ -4,7 +4,7 @@
     {
         public int ExerciseId { get; set; }
 
-        public DateTime Duration { get; set; }
+        public int Duration { get; set; }
 
         public string Description { get; set; }
 
@@ -20,7 +20,7 @@
 
         public ExerciseType ExerciseType { get; set; }
 
-        public int SongId { get; set; }
+        public int? SongId { get; set; }
 
         public Song Song { get; set; }
 

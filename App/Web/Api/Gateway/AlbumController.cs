@@ -2,7 +2,7 @@
 using TrackerX.Core.Services.Albums;
 using TrackerX.Core.Services.Albums.Models;
 
-namespace TrackerX.API.Controllers
+namespace TrackerX.Host.Api.Gateway
 {
     [ApiController]
     [Route("api/[controller]")]

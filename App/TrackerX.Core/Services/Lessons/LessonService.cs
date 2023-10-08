@@ -1,16 +1,21 @@
-﻿using TrackerX.Core.Services.Lessons.Models;
+﻿using AutoMapper;
+using TrackerX.Core.Services.Lessons.Models;
 using TrackerX.Domain.Entities;
-using TrackerX.Domain.UnitOfWorks;
+using TrackerX.Domain.Repositories;
 
 namespace TrackerX.Core.Services.Lessons
 {
     public class LessonService : ILessonService
     {
-        private readonly IAddLessonUnitOfWork _addLessonUnitOfWork;
+        private readonly IMapper _mapper;
+        private readonly ILessonRepository _lessonRepository;
+        private readonly IExerciseRepository _exerciseRepository;
 
-        public LessonService(IAddLessonUnitOfWork addLessonUnitOfWork)
+        public LessonService(ILessonRepository lessonRepository, IExerciseRepository exerciseRepository, IMapper mapper)
         {
-            _addLessonUnitOfWork = addLessonUnitOfWork;
+            _lessonRepository = lessonRepository;
+            _exerciseRepository = exerciseRepository;
+            _mapper = mapper;
         }
 
         public async Task Create(CreateLessonModel model)
@@ -18,9 +23,17 @@ namespace TrackerX.Core.Services.Lessons
             var lesson = new Lesson();
             lesson.LessonDate = model.Date;
 
-            _addLessonUnitOfWork.LessonRepository.Create(lesson);
+            _lessonRepository.Create(lesson);
+            await _lessonRepository.SaveChanges();
 
-            await _addLessonUnitOfWork.Commit();
+            foreach (var item in model.Exercises)
+            {
+                var exercise = _mapper.Map<Exercise>(item);
+                exercise.LessonId = lesson.LessonId;
+                _exerciseRepository.Create(exercise);
+            }            
+
+            await _exerciseRepository.SaveChanges();
         }
     }
 }

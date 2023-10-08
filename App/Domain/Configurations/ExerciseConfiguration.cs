@@ -8,7 +8,7 @@ namespace TrackerX.Domain.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Exercise> builder)
         {
-            builder.ToTable("tbl_lt_exercise");
+            builder.ToTable("tbl_lt_exercises");
 
             builder.HasKey(e => e.ExerciseId);
 
@@ -36,7 +36,7 @@ namespace TrackerX.Domain.Data.Configurations
                 .WithMany()
                 .HasForeignKey(k => k.TempoTypeId);
 
-            builder.Property(e => e.ExerciseType)
+            builder.Property(e => e.ExerciseTypeId)
                 .HasColumnName("exercise_type_id");
 
             builder.HasOne(x => x.ExerciseType)
@@ -53,7 +53,7 @@ namespace TrackerX.Domain.Data.Configurations
 
             builder.Property(e => e.LessonId)
                 .IsRequired()
-                .HasColumnName("lesson_Id");
+                .HasColumnName("lesson_id");
 
             builder.HasOne(x => x.Lesson)
                 .WithMany(x => x.Exercises)
