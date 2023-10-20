@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using TrackerX.Core.Services.Users;
 
 namespace TrackerX.Host.Api.Gateway
 {
@@ -9,42 +10,76 @@ namespace TrackerX.Host.Api.Gateway
     [Route("api/[controller]")]
     public class AuthenticationController : ControllerBase
     {
+        private readonly IUserService _userService;
+        private readonly IConfiguration _config;        
+
+        public AuthenticationController(IUserService userService, IConfiguration config)
+        {
+            _userService = userService;
+            _config = config;
+        }
+
         [HttpPost]
         [Route("v1/auth")]
-        public async Task<IActionResult> OnPostAsync(string name, string password)
+        public async Task<IActionResult> OnPostAsync(string login, string password)
         {
+            List<Claim> claims;
 
-            // var user = await AuthenticateUser(Input.Email, Input.Password);
-
-            var claims = new List<Claim>
+            if (IsSuperAdmin(login, password))
             {
-                new Claim(ClaimTypes.Name, name),                
-                new Claim(ClaimTypes.Role, "Administrator"),
-            };
+                claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, "_sa"),
+                    new Claim(ClaimTypes.Role, "Superadmin"),
+                };
+            }
+            else
+            {
+                var userDto = await _userService.GetAuthorizedUser(login, password);
 
+                if (userDto != null)
+                {
+                    claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, userDto.UserName),
+                        new Claim(ClaimTypes.Role, userDto.UserRole),
+                    };
+                }
+                else
+                {
+                    return Forbid();
+                }
+            }
+
+            await SignIn(claims);
+
+            return Ok();
+        }
+
+        private async Task SignIn(List<Claim> claims)
+        {
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             var authProperties = new AuthenticationProperties
             {
                 AllowRefresh = true,
+                IsPersistent = true,
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60),
-
-                //IsPersistent = true,
-                // Whether the authentication session is persisted across 
-                // multiple requests. When used with cookies, controls
-                // whether the cookie's lifetime is absolute (matching the
-                // lifetime of the authentication ticket) or session-based.
-
-                //IssuedUtc = <DateTimeOffset>,
-                // The time at which the authentication ticket was issued.
+                IssuedUtc = DateTime.UtcNow
             };
 
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
+        }
 
-            return Ok();
+        private bool IsSuperAdmin(string name, string password)
+        {
+            var saLogin = _config["Credentials: SuperadminLogin"];
+            var saPassword = _config["Credentials: SuperadminPassword"];
+
+            return name.Equals(saLogin) && password.Equals(saPassword);            
         }
     }
 }

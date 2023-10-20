@@ -20,7 +20,8 @@ namespace TrackerX.Host.Moduls
             builder.Services.AddTransient<ISongRepository, SongRepository>();
             builder.Services.AddTransient<IAlbumRepository, AlbumRepository>();
             builder.Services.AddTransient<ILessonRepository, LessonRepository>();
-            builder.Services.AddTransient<IExerciseRepository, ExerciseRepository>();            
+            builder.Services.AddTransient<IExerciseRepository, ExerciseRepository>();
+            builder.Services.AddTransient<IUserRepository, UserRepository>();
         }
     }
 }

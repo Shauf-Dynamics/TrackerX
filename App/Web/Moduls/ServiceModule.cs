@@ -2,6 +2,7 @@
 using TrackerX.Core.Services.Bands;
 using TrackerX.Core.Services.Lessons;
 using TrackerX.Core.Services.Songs;
+using TrackerX.Core.Services.Users;
 
 namespace TrackerX.Host.Moduls
 {
@@ -13,6 +14,7 @@ namespace TrackerX.Host.Moduls
             builder.Services.AddScoped<ILessonService, LessonService>();
             builder.Services.AddScoped<ISongService, SongService>();
             builder.Services.AddScoped<IAlbumService, AlbumService>();
+            builder.Services.AddScoped<IUserService, UserService>();
         }
     }
 }
