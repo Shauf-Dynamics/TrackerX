@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Host", "TrackerX.Host.csproj", "{6BA86A3A-1EFB-4290-9D3B-CE2B33601F73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{33B106B0-367A-4C70-B458-199C179E4B1B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Core", "..\TrackerX.Core\TrackerX.Core.csproj", "{91A6C8B5-892B-412C-83FB-34043FE617E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Domain", "..\TrackerX.Domain\TrackerX.Domain.csproj", "{57C9ED01-34DE-4FFC-89E6-2262C4C81979}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Domain.Data", "..\TrackerX.Domain.Data\TrackerX.Domain.Data.csproj", "{476F1A8D-7A15-4A13-B841-67C028F40924}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Tests.Unit", "..\Tests\Unit\TrackerX.Tests.Unit.csproj", "{E6788E43-1CEC-4E81-8CE1-5CB4D8BD9C47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerX.Tests.Integration", "..\Tests\TrackerX.Tests.Integration\TrackerX.Tests.Integration.csproj", "{D110053F-75E9-47D9-B0F5-404AFA448812}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BA86A3A-1EFB-4290-9D3B-CE2B33601F73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BA86A3A-1EFB-4290-9D3B-CE2B33601F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BA86A3A-1EFB-4290-9D3B-CE2B33601F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BA86A3A-1EFB-4290-9D3B-CE2B33601F73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91A6C8B5-892B-412C-83FB-34043FE617E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A6C8B5-892B-412C-83FB-34043FE617E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A6C8B5-892B-412C-83FB-34043FE617E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91A6C8B5-892B-412C-83FB-34043FE617E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57C9ED01-34DE-4FFC-89E6-2262C4C81979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57C9ED01-34DE-4FFC-89E6-2262C4C81979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57C9ED01-34DE-4FFC-89E6-2262C4C81979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57C9ED01-34DE-4FFC-89E6-2262C4C81979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{476F1A8D-7A15-4A13-B841-67C028F40924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{476F1A8D-7A15-4A13-B841-67C028F40924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{476F1A8D-7A15-4A13-B841-67C028F40924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{476F1A8D-7A15-4A13-B841-67C028F40924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6788E43-1CEC-4E81-8CE1-5CB4D8BD9C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6788E43-1CEC-4E81-8CE1-5CB4D8BD9C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6788E43-1CEC-4E81-8CE1-5CB4D8BD9C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6788E43-1CEC-4E81-8CE1-5CB4D8BD9C47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D110053F-75E9-47D9-B0F5-404AFA448812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D110053F-75E9-47D9-B0F5-404AFA448812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D110053F-75E9-47D9-B0F5-404AFA448812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D110053F-75E9-47D9-B0F5-404AFA448812}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E6788E43-1CEC-4E81-8CE1-5CB4D8BD9C47} = {33B106B0-367A-4C70-B458-199C179E4B1B}
+		{D110053F-75E9-47D9-B0F5-404AFA448812} = {33B106B0-367A-4C70-B458-199C179E4B1B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57A12A5A-06F3-4C77-B68F-2818C21D7352}
+	EndGlobalSection
+EndGlobal
