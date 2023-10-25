@@ -5,7 +5,7 @@ main {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: white;
+    background-color: rgb(214, 214, 214);
     overflow-x: hidden;
-    padding-top: 20px;
+    margin-top: 50px;
 }

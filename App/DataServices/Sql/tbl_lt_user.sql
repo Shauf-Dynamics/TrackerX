@@ -6,5 +6,5 @@ CREATE TABLE tbl_lt_users (
     user_email  NVARCHAR(128),
     user_password_hash TEXT,
     user_registration_date DATETIME,
-    role_id
+    user_role_id INT
 )
