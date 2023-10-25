@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using TrackerX.Core.Services.Users;
+using TrackerX.Core.Services.Accounts.Users;
 
 namespace TrackerX.Host.Api.Gateway
 {

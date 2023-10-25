@@ -28,7 +28,7 @@ namespace TrackerX.Domain.Data.Configurations
                 .IsRequired()
                 .HasColumnName("user_password_hash"); 
             
-            builder.Property(e => e.RegistrationDttm)
+            builder.Property(e => e.RegistrationDttmUtc)
                  .IsRequired()
                  .HasColumnName("user_registration_date");
 

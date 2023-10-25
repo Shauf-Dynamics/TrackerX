@@ -1,4 +1,4 @@
-﻿namespace TrackerX.Core.Services.Users.Model
+﻿namespace TrackerX.Core.Services.Accounts.Users.Model
 {
     public class AuthorizedUserDto
     {

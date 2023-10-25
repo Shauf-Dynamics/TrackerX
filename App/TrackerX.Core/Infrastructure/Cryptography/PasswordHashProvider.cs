@@ -2,7 +2,7 @@
 
 namespace TrackerX.Core.Infrastructure.Cryptography
 {
-    internal class PasswordHashProvider : IPasswordHashProvider
+    public class PasswordHashProvider : IPasswordHashProvider
     {
         private const int _saltSize = 16;
         private const int _keySize = 32;

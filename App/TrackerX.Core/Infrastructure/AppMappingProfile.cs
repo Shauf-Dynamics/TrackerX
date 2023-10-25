@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TrackerX.Core.Services.Accounts.Users.Model;
 using TrackerX.Core.Services.Albums.Models;
 using TrackerX.Core.Services.Lessons.Models;
 using TrackerX.Core.Services.Songs.Models;
@@ -25,6 +26,8 @@ namespace TrackerX.Core.Infrastructure
                 .ForMember(dest => dest.TempoType, opt => opt.Ignore())
                 .ForMember(dest => dest.Song, opt => opt.Ignore())
                 .ForMember(dest => dest.Lesson, opt => opt.Ignore());
+
+            CreateMap<AddUserModel, User>();
         }
     }
 }

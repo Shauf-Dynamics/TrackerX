@@ -1,6 +1,6 @@
 ﻿namespace TrackerX.Core.Infrastructure.Cryptography
 {
-    internal interface IPasswordHashProvider
+    public interface IPasswordHashProvider
     {
         string Hash(string input);
 

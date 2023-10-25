@@ -10,7 +10,7 @@
 
         public string PasswordHash { get; set; }
 
-        public DateTime RegistrationDttm { get; set; }
+        public DateTime RegistrationDttmUtc { get; set; }
 
         public int RoleTypeId { get; set; }
 
