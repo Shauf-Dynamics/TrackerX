@@ -4,14 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TrackerX.Core.Services.Accounts.Users;
 
-namespace TrackerX.Host.Api.Gateway
+namespace TrackerX.Host.Api.Gateway.Account
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/account/[controller]")]
     public class AuthenticationController : ControllerBase
     {
         private readonly IUserService _userService;
-        private readonly IConfiguration _config;        
+        private readonly IConfiguration _config;
 
         public AuthenticationController(IUserService userService, IConfiguration config)
         {
@@ -79,7 +79,7 @@ namespace TrackerX.Host.Api.Gateway
             var saLogin = _config["Credentials: SuperadminLogin"];
             var saPassword = _config["Credentials: SuperadminPassword"];
 
-            return name.Equals(saLogin) && password.Equals(saPassword);            
+            return name.Equals(saLogin) && password.Equals(saPassword);
         }
     }
 }

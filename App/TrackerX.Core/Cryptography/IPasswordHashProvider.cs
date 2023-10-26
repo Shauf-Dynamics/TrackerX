@@ -1,4 +1,4 @@
-﻿namespace TrackerX.Core.Infrastructure.Cryptography
+﻿namespace TrackerX.Core.Cryptography
 {
     public interface IPasswordHashProvider
     {

@@ -1,10 +1,10 @@
-﻿using TrackerX.Core.Infrastructure.Cryptography;
-using TrackerX.Core.Services.Albums;
+﻿using TrackerX.Core.Services.Albums;
 using TrackerX.Core.Services.Bands;
 using TrackerX.Core.Services.Lessons;
 using TrackerX.Core.Services.Songs;
 using TrackerX.Core.Services.Accounts.Users;
 using TrackerX.Core.Services.Accounts.Invitations;
+using TrackerX.Core.Cryptography;
 
 namespace TrackerX.Host.Moduls
 {

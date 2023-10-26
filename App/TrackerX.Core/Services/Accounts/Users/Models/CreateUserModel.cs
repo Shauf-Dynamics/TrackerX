@@ -1,6 +1,6 @@
 ﻿namespace TrackerX.Core.Services.Accounts.Users.Model
 {
-    public class AddUserModel
+    public class CreateUserModel
     {
         public string Name { get; set; }
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using TrackerX.Core.Infrastructure;
+using TrackerX.Core.Mapping;
 using TrackerX.Host.Moduls;
 
 namespace TrackerX.Host

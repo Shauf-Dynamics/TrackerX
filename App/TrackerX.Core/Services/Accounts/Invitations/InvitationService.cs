@@ -39,6 +39,13 @@ namespace TrackerX.Core.Services.Accounts.Invitations
             await _invitationRepository.SaveChanges();
         }
 
+        public async Task<InvitationModel> GetInvitationByCode(string code)
+        {
+            var invitation = await _invitationRepository.FirstOrDefault(x => x.Code == code);
+
+            return _mapper.Map<InvitationModel>(invitation);
+        }
+
         public async Task<IEnumerable<InvitationModel>> GetInvitationList(bool includeAccepted, bool includeAborted)
         {
             return _mapper.Map<IEnumerable<InvitationModel>>(await _invitationRepository.GetAllInvitationsAsync(includeAccepted, includeAborted));            

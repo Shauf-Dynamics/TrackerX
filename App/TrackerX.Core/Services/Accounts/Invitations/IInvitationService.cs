@@ -9,5 +9,7 @@ namespace TrackerX.Core.Services.Accounts.Invitations
         Task AbortInvitation(int invitationId);
 
         Task<IEnumerable<InvitationModel>> GetInvitationList(bool includeAccepted, bool includeAborted);
+
+        Task<InvitationModel> GetInvitationByCode(string code);
     }
 }

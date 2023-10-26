@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace TrackerX.Core.Infrastructure.Cryptography
+namespace TrackerX.Core.Cryptography
 {
     public class PasswordHashProvider : IPasswordHashProvider
     {
