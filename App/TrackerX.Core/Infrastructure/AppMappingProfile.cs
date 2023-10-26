@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using TrackerX.Core.Services.Accounts.Invitations.Models;
 using TrackerX.Core.Services.Accounts.Users.Model;
 using TrackerX.Core.Services.Albums.Models;
 using TrackerX.Core.Services.Lessons.Models;
@@ -28,6 +29,9 @@ namespace TrackerX.Core.Infrastructure
                 .ForMember(dest => dest.Lesson, opt => opt.Ignore());
 
             CreateMap<AddUserModel, User>();
+
+            CreateMap<Invitation, InvitationModel>()
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User != null ? src.User.Name : null));
         }
     }
 }

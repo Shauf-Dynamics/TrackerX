@@ -1,4 +1,6 @@
-﻿using TrackerX.Domain.Entities;
+﻿using AutoMapper;
+using TrackerX.Core.Services.Accounts.Invitations.Models;
+using TrackerX.Domain.Entities;
 using TrackerX.Domain.Repositories;
 
 namespace TrackerX.Core.Services.Accounts.Invitations
@@ -6,10 +8,12 @@ namespace TrackerX.Core.Services.Accounts.Invitations
     public class InvitationService : IInvitationService
     {
         private readonly IInvitationRepository _invitationRepository;
+        private readonly IMapper _mapper;
 
-        public InvitationService(IInvitationRepository invitationRepository)
+        public InvitationService(IInvitationRepository invitationRepository, IMapper mapper)
         {
             _invitationRepository = invitationRepository;
+            _mapper = mapper;
         }
 
         public async Task AbortInvitation(int invitationId)
@@ -33,6 +37,11 @@ namespace TrackerX.Core.Services.Accounts.Invitations
 
             _invitationRepository.Create(invitation);
             await _invitationRepository.SaveChanges();
+        }
+
+        public async Task<IEnumerable<InvitationModel>> GetInvitationList(bool includeAccepted, bool includeAborted)
+        {
+            return _mapper.Map<IEnumerable<InvitationModel>>(await _invitationRepository.GetAllInvitationsAsync(includeAccepted, includeAborted));            
         }
     }
 }

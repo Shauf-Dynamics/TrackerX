@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TrackerX.Core.Services.Accounts.Invitations.Models;
 
 namespace TrackerX.Core.Services.Accounts.Invitations
 {
@@ -11,5 +7,7 @@ namespace TrackerX.Core.Services.Accounts.Invitations
         Task CreateInvitation(string code, DateTime? dueTo);
 
         Task AbortInvitation(int invitationId);
+
+        Task<IEnumerable<InvitationModel>> GetInvitationList(bool includeAccepted, bool includeAborted);
     }
 }

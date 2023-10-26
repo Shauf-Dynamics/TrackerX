@@ -8,6 +8,8 @@
 
         public DateTime? ValideDueDate { get; set; }
 
+        public DateTime? AcceptedDate { get; set; }
+
         public bool IsInvitationAborted { get; set; }
 
         public int? UserId { get; set; }

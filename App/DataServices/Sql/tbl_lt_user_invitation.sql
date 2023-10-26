@@ -7,3 +7,6 @@ CREATE TABLE tbl_lt_user_invitation (
     user_invitation_due_date DATE,
     invitation_aborted_ind BIT DEFAULT(0)
 );
+
+ALTER TABLE tbl_lt_user_invitation
+ADD invitation_accepted_date DATE
