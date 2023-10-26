@@ -28,6 +28,8 @@ namespace TrackerX.Domain.Infrastructure
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Invitation> Invitations { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new ExerciseConfiguration());
@@ -40,6 +42,7 @@ namespace TrackerX.Domain.Infrastructure
             builder.ApplyConfiguration(new TempoTypeConfiguration());
             builder.ApplyConfiguration(new RoleTypeConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new InvitationConfiguration());
         }
     }
 }
