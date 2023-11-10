@@ -13,7 +13,7 @@ main {
 }
 
 .tx-sb-header-text {
-    color: rgb(167, 174, 184);
+    color: rgb(164, 169, 177);
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.56px;
@@ -21,20 +21,16 @@ main {
     text-align: start;
 }
 
-.tx-sb-my-progress-nav {
-    margin-top: 10%;
+.tx-sb-nav span{
+    margin-left: 10px;
 }
 
-.tx-sb-my-progress-nav span{
-    margin-left: 12px;
-}
-
-.tx-sb-my-progress-nav div {
+.tx-sb-nav div {
     margin-top: 3%;
 }
 
 .tx-nav-arrow {
     float: right;
     padding-top: 13px;
-    padding-right: 8px;
+    padding-right: 15px;
 }
