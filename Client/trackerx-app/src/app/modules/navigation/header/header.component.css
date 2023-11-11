@@ -30,12 +30,17 @@ table tr td:nth-child(5) {
     float: right;
 }
 
+table tr td:nth-child(5) p {
+    font-weight: 500;    
+    line-height: -1;
+ }
+
 table tr td:nth-child(6) {
-    padding: 0px 10px 0px 10px;
+   padding: 0px 15px 0px 35px;
 }
 
 table tr td:nth-child(7) {
-    padding-right:15px;
+   padding-right:15px;
 }
 
 .tx-header-search {
