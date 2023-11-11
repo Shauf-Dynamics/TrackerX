@@ -21,3 +21,36 @@ table tr td:nth-child(2) p {
     font-size: 1rem;    
     color: #363d47;    
 }
+
+table tr td:nth-child(4) {
+    padding-left: 5px;
+}
+
+table tr td:nth-child(5) {
+    float: right;
+}
+
+table tr td:nth-child(6) {
+    padding: 0px 10px 0px 10px;
+}
+
+table tr td:nth-child(7) {
+    padding-right:15px;
+}
+
+.tx-header-search {
+    padding: 0.875rem 1.125rem;
+    height: 10px;
+    font-weight: 500;
+    line-height: 1;
+    color: #69707a;
+    border: 1px solid #f3f3f3;
+    border-radius: 0.45rem;
+    background-color: #f3f3f3;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.tx-header-search:focus {
+    outline: none;   
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+}
