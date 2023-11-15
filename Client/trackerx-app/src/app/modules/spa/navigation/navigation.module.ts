@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { SideBarComponent } from "./side-bar/side-bar.component";
 import { HeaderComponent } from "./header/header.component";
 import { NavigationContainerComponent } from "./navigation-container/navigation-container.component";
+import { AuthService } from "src/app/providers/auth/auth.service";
 
 @NgModule({
     declarations: [
@@ -9,7 +10,9 @@ import { NavigationContainerComponent } from "./navigation-container/navigation-
         SideBarComponent,
         NavigationContainerComponent
     ],
-    providers: [],
+    providers: [
+        AuthService
+    ],
     exports: [
         NavigationContainerComponent
     ]

@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TrackerX.Core.Services.Bands;
 using TrackerX.Core.Services.Bands.Models;
 
 namespace TrackerX.Host.Api.Gateway
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("api/bands")]
     public class BandController : ControllerBase
     {        
         private readonly IBandService _bandService;
@@ -15,7 +17,8 @@ namespace TrackerX.Host.Api.Gateway
             _bandService = bandService;
         }
 
-        [HttpGet] 
+        [HttpGet]
+
         [Route("v1/list")]
         [ProducesResponseType(typeof(BandsViewModel), 200)]        
         public async Task<IActionResult> Get([FromQuery] int pageSize)
@@ -25,7 +28,7 @@ namespace TrackerX.Host.Api.Gateway
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpGet]        
         [Route("v1/list/search")]
         [ProducesResponseType(typeof(BandsViewModel), 200)]        
         public async Task<IActionResult> Get([FromQuery]int pageSize, [FromQuery] string startsWith)

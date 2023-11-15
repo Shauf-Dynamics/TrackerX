@@ -4,7 +4,7 @@ using TrackerX.Core.Services.Accounts.Invitations;
 namespace TrackerX.Host.Api.Gateway.Account
 {
     [ApiController]
-    [Route("api/account/[controller]")]
+    [Route("api/account/invitation")]
     public class InvitationController : Controller
     {
         private readonly IInvitationService _invitationService;

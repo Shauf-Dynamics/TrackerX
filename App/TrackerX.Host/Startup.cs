@@ -15,6 +15,20 @@ namespace TrackerX.Host
 
         public void ConfigureAndRun()
         {
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+            _builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    name: MyAllowSpecificOrigins,
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:4200")
+                              .AllowAnyHeader()
+                              .AllowCredentials();
+                    });
+            });
+
             _builder.Services.AddControllers();
             _builder.Services.AddEndpointsApiExplorer();
             _builder.Services.AddSwaggerGen();
@@ -22,9 +36,15 @@ namespace TrackerX.Host
             _builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                    options.Cookie.SameSite = SameSiteMode.None;
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
                     options.SlidingExpiration = true;
-                    options.AccessDeniedPath = "/Forbidden/";
+                    options.Events.OnRedirectToAccessDenied =
+                    options.Events.OnRedirectToLogin = c =>
+                    {
+                        c.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                        return Task.FromResult<object>(null);
+                    };
                 });
 
             DataAccessModule.Configure(_builder);
@@ -32,7 +52,6 @@ namespace TrackerX.Host
 
             _builder.Services.AddAutoMapper(typeof(AppMappingProfile));
             
-
             var app = _builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -41,6 +60,8 @@ namespace TrackerX.Host
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthentication();
             app.UseAuthorization();

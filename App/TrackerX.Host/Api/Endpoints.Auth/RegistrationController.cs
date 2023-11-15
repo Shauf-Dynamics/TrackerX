@@ -6,7 +6,7 @@ using TrackerX.Core.Services.Accounts.Users.Model;
 namespace TrackerX.Host.Api.Gateway.Account
 {
     [ApiController]
-    [Route("api/account/[controller]")]
+    [Route("api/account/")]
     public class RegistrationController : Controller
     {
         private readonly IUserService _userService;

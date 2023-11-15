@@ -1,3 +1,6 @@
-<div *ngIf="true">
-  <tx-spa-container></tx-spa-container>
+<div *ngIf="isLoggedIn$ | async; else login">
+    <tx-spa-container></tx-spa-container>
 </div>
+<ng-template #login>
+    <tx-login></tx-login>
+</ng-template>
