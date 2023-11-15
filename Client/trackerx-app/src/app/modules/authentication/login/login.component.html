@@ -1,25 +1,62 @@
-<div class="d-flex flex-column align-items-center justify-content-center" *ngIf="!signedIn else signedInAlready">
-    <div>Please Sign In to continue</div>
+<div>
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+</div >
+<main class="d-flex flex-column align-items-center justify-content-center context" *ngIf="!signedIn else signedInAlready">       
+    <div align="center">
+        <i class="fa-solid fa-right-to-bracket fa-2xl" style="color: #5d63ce;"></i>
+    </div>
+    <div>
+        <h1>
+            Welcome!
+        </h1>        
+    </div>
+    <div class="tx-sign-in-text" align="center">
+        <h4>
+            Sign in to your account
+        </h4>        
+    </div>
     <form class="form w-50" [formGroup]="loginForm" (submit)="signIn($event)">
-        <div class="row m-3">
-            <label for="name">Email*</label>
-            <input class="col form-field" name="email" formControlName="email" />
+        <div class="row">
+            <label class="tx-label-email" for="name">Email</label>
+            <input class="form-field text-box" name="email" formControlName="email"/>
         </div>
-        <div class="row m-3">
-            <label for="password">Password*</label>
-            <input class="col form-field" type="password" name="password" formControlName="password" autocomplete="on" />
+        <div class="row">
+            <label class="tx-label-password" for="password">Password</label>
+            <input class="form-field text-box" type="password" name="password" formControlName="password" autocomplete="on" />
         </div>
-        <div class="row m-3" *ngIf="authFailed">
+        <div  class="row" align="right">
+            <a><h5>forgot password?</h5></a>
+        </div>
+     <!--  <div class="row" *ngIf="authFailed">
             <label style="color: red">Invalid credentials</label>
-        </div>
-        <div class="row m-3">
-            <button class="col btn btn-primary" [disabled]="!loginForm.valid" type="submit">Sign In</button>
+        </div>-->
+        <div class="row" align="right">
+            <button class="col btn btn-primary" type="submit">Sign In</button>            
         </div>
     </form>
-</div>
+    <div class="tx-div-join">
+        <span>New to Music Tracker X? <a class="tx-join-ref">Join now</a></span>
+    </div>
+    <footer>
+        <p>            
+            © 2023 Music Tracker X. All rights reserved | Design by Shauf Dynamics
+        </p>
+    </footer>
+</main>
 <ng-template #signedInAlready>
     <h4>Sign In</h4>
     <div>
         You are already signed in!
     </div>
-</ng-template>
+</ng-template><div class="area" >

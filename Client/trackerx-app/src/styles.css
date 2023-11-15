@@ -62,3 +62,20 @@ body {
 .btn:-webkit-details-marker {
   display: none;
 }
+
+.text-box {
+  height: 10px;
+  font-weight: 500;
+  line-height: 1;
+  color: #69707a;
+  border: 1px solid #f3f3f3;
+  border-radius: 0.45rem;
+  background-color: #f3f3f3;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+.text-box:focus {
+  outline: none;   
+  box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+}
