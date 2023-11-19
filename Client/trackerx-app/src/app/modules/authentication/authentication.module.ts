@@ -4,11 +4,14 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { AuthService } from 'src/app/providers/auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthGuard } from 'src/app/providers/auth/auth.guard';
+import { RegistrationComponent } from './registration/registration.component';
+import { AuthContainerComponent } from './auth-container/auth-container.component';
 
 @NgModule({
     declarations: [
-        LoginComponent
+        LoginComponent,
+        RegistrationComponent,
+        AuthContainerComponent
     ],
     imports: [        
         CommonModule,
@@ -16,7 +19,9 @@ import { AuthGuard } from 'src/app/providers/auth/auth.guard';
         ReactiveFormsModule
     ],
     exports: [
-        LoginComponent
+        LoginComponent,
+        RegistrationComponent,
+        AuthContainerComponent
     ],
     providers: [
         AuthService

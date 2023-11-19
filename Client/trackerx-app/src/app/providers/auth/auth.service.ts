@@ -1,17 +1,19 @@
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { BehaviorSubject, Observable, map, tap } from "rxjs";
 import { UserClaims } from "./auth.models";
 import { AuthSessionStorage } from "./auth.session";
 
 @Injectable()
-export class AuthService {
-    public isAuthorized$: BehaviorSubject<boolean>;
+export class AuthService implements OnInit {
+    public isAuthorized$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     private baseApiUrl: string = 'https://localhost:7243';
     private baseAppUrl: string = 'http://localhost:4200';
 
-    constructor(private http: HttpClient, private sessionAuthStorage: AuthSessionStorage) {
+    constructor(private http: HttpClient, private sessionAuthStorage: AuthSessionStorage) { }
+
+    ngOnInit(): void {
         this.isAuthorized$ = new BehaviorSubject<boolean>(this.sessionAuthStorage.getCurrentUser() !== null);
     }
 
