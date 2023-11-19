@@ -3,6 +3,7 @@ using TrackerX.Core.Cryptography;
 using TrackerX.Core.Infrastructure;
 using TrackerX.Core.Services.Accounts.Invitations;
 using TrackerX.Core.Services.Accounts.Users.Model;
+using TrackerX.Core.Services.Accounts.Users.Models;
 using TrackerX.Domain.Entities;
 using TrackerX.Domain.Repositories;
 
@@ -30,14 +31,16 @@ namespace TrackerX.Core.Services.Accounts.Users
             return user != null ? new AuthorizedUserDto(user.Name, user.RoleType.RoleTypeName) : null;            
         }
 
-        public async Task Registrate(CreateUserModel model)
+        public async Task<ServiceResult> Registrate(CreateUserModel model)
         {
             await CreateUser(model);
+
+            return new ServiceResult(ResultType.Success);
         }
 
-        public async Task<ServiceResult> RegistrateViaInvitation(CreateUserModel model, string invitationCode)
+        public async Task<ServiceResult> RegistrateViaInvitation(CreateInvitedUserModel model)
         {
-            var invitation = await _invitationService.GetInvitationByCode(invitationCode);
+            var invitation = await _invitationService.GetInvitationByCode(model.InvitationCode);
 
             if (invitation == null)            
                 return new ServiceResult(ResultType.Failure, "Invitation with this code does not exist");

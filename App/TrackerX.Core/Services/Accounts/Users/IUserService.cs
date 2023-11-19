@@ -1,5 +1,6 @@
 ﻿using TrackerX.Core.Infrastructure;
 using TrackerX.Core.Services.Accounts.Users.Model;
+using TrackerX.Core.Services.Accounts.Users.Models;
 
 namespace TrackerX.Core.Services.Accounts.Users
 {
@@ -7,8 +8,8 @@ namespace TrackerX.Core.Services.Accounts.Users
     {
         Task<AuthorizedUserDto> GetAuthorizedUser(string login, string password);
 
-        Task Registrate(CreateUserModel model);
+        Task<ServiceResult> Registrate(CreateUserModel model);
 
-        Task<ServiceResult> RegistrateViaInvitation(CreateUserModel model, string invitationCode);
+        Task<ServiceResult> RegistrateViaInvitation(CreateInvitedUserModel model);
     }
 }

@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
+::ng-deep body {
+    margin: 0px;
+    width: 100%;
+    overflow: hidden;
+}
+
 #content {
     margin: 5% 40% 0 34%;
     min-width: 550px;
@@ -10,6 +16,15 @@
     border-radius: 0.45rem;
     position: absolute;
 }
+
+footer {
+    text-align: center;
+    padding-top: 50px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.445);    
+}
+
 
 .area {
     background: #4e54c8;

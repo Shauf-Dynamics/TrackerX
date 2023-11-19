@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from './providers/auth/auth.service';
 
 @Component({
