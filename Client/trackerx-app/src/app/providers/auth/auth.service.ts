@@ -34,7 +34,7 @@ export class AuthService {
             }));
     }
 
-    public signOut() {
+    public signOut(): Observable<any> {
         return this.http.get(this.baseApiUrl + '/api/account/v1/signout')
             .pipe(tap(_ => {
                  this.clearSession()                
@@ -48,7 +48,7 @@ export class AuthService {
 
     public isLoggedIn(): Observable<boolean> {
         return this.isAuthorized$
-            .pipe(map(x => x && this.sessionAuthStorage.getCurrentUser() != null));      
+            .pipe(map(isAuthorized => isAuthorized && this.sessionAuthStorage.getCurrentUser() != null));      
     }
 
     private getHttpsHeaders(): HttpHeaders {
