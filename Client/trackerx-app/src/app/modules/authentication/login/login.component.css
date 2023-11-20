@@ -1,9 +1,3 @@
-::ng-deep body {
-    margin: 0px;
-    width: 100%;
-    overflow: hidden;
-}
-
 i {
     margin-top: 10%;
 }
@@ -56,14 +50,6 @@ label {
 input {
     padding: 0.7rem 1.125rem;    
     width: 50%;    
-}
-
-footer {
-    text-align: center;
-    padding-top: 50px;
-    font-size: 12px;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.445);    
 }
 
 button {
