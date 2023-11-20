@@ -18,7 +18,7 @@ namespace TrackerX.Host.Api.Gateway.Account
         [Route("v1/list")]
         public async Task<IActionResult> Get(bool includeAccepted, bool includeAborted)
         {
-            var result = await _invitationService.GetInvitationList(includeAccepted, includeAborted);
+            var result = await _invitationService.GetInvitationListAsync(includeAccepted, includeAborted);
 
             return Ok(result);
         }
@@ -27,7 +27,7 @@ namespace TrackerX.Host.Api.Gateway.Account
         [Route("v1/create")]
         public async Task<IActionResult> CreateInvitation(string code, DateTime? dueTo)
         {
-            await _invitationService.CreateInvitation(code, dueTo);
+            await _invitationService.CreateInvitationAsync(code, dueTo);
 
             return Ok();
         }
@@ -36,7 +36,7 @@ namespace TrackerX.Host.Api.Gateway.Account
         [Route("v1/abort")]
         public async Task<IActionResult> AbortInvitation(int invitationId)
         {
-            await _invitationService.AbortInvitation(invitationId);
+            await _invitationService.AbortInvitationAsync(invitationId);
 
             return Ok();
         }

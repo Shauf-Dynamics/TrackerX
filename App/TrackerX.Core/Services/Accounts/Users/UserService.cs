@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using System.Reflection;
 using TrackerX.Core.Cryptography;
 using TrackerX.Core.Infrastructure;
 using TrackerX.Core.Services.Accounts.Invitations;
@@ -28,7 +27,7 @@ namespace TrackerX.Core.Services.Accounts.Users
             _mapper = mapper;
         }
 
-        public async Task<ServiceResult<AuthorizedUserDto>> GetAuthorizedUser(string login, string password)
+        public async Task<ServiceResult<AuthorizedUserDto>> GetAuthorizedUserAsync(string login, string password)
         {            
             var user = await _userRepository.GetUserByCredentialsAsync(login);
             if (user == null)
@@ -43,36 +42,18 @@ namespace TrackerX.Core.Services.Accounts.Users
             return new ServiceResult<AuthorizedUserDto>(result, StatusType.Success);
         }
 
-        public async Task<ServiceResult> Registrate(CreateUserModel model)
+        public async Task<ServiceResult> RegistrateViaInvitationAsync(CreateInvitedUserModel model)
         {
-            await CreateUser(model);
-
-            return new ServiceResult(StatusType.Success);
-        }
-
-        public async Task<ServiceResult> RegistrateViaInvitation(CreateInvitedUserModel model)
-        {
-            var invitation = await _invitationService.GetInvitationByCode(model.InvitationCode);
-
-            if (invitation == null)            
-                return new ServiceResult(StatusType.Failure, "Invitation with this code does not exist");
-
-            if (invitation.IsInvitationAborted)
-                return new ServiceResult(StatusType.Failure, "Invitation is no longer valid");
-
-            if (invitation.ValideDueDate > DateTime.UtcNow)
-                return new ServiceResult(StatusType.Failure, "Invitation was expired");
-
-            if (invitation.UserName != null)
-                return new ServiceResult(StatusType.Failure, "Invitation has already been used");
+            var invitationResult = await _invitationService.GetValidInvitationCodeAsync(model.InvitationCode);
+            if (invitationResult.Status != StatusType.Success)
+                return invitationResult.CastToNonGeneric();
 
             await CreateUser(model);
-
             var user = await _userRepository.FirstOrDefaultAsync(x => x.Name == model.Name);
             if (user == null)
                 return new ServiceResult(StatusType.Failure, "User was not created");
 
-            await _invitationService.AcceptInvitation(invitation.InvitationId, user.UserId);
+            await _invitationService.AcceptInvitationAsync(invitationResult.Result.InvitationId, user.UserId);
 
             return new ServiceResult(StatusType.Success);
         }

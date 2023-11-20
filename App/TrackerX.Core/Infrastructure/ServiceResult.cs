@@ -1,7 +1,7 @@
 ﻿namespace TrackerX.Core.Infrastructure
 {
     public class ServiceResult
-    {
+    {        
         public StatusType Status { get; set; }
 
         public string ErrorMessage { get; set; } = string.Empty;
@@ -28,5 +28,10 @@
         {
             Result = result;
         }        
+
+        public ServiceResult CastToNonGeneric()
+        {
+            return new ServiceResult(Status, ErrorMessage);
+        }
     }
 }

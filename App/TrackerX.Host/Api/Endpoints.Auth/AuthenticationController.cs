@@ -52,7 +52,7 @@ namespace TrackerX.Host.Api.Gateway.Account
             }
             else
             {
-                var userResult = await _userService.GetAuthorizedUser(model.Login, model.Password);
+                var userResult = await _userService.GetAuthorizedUserAsync(model.Login, model.Password);
                 if (userResult.Status == Core.Infrastructure.StatusType.Failure)
                     return Forbid(userResult.ErrorMessage);
 
