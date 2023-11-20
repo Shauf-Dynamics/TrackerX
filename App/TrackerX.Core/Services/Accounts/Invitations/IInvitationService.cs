@@ -8,8 +8,10 @@ namespace TrackerX.Core.Services.Accounts.Invitations
 
         Task AbortInvitation(int invitationId);
 
+        Task AcceptInvitation(int invitationId, int userId);
+
         Task<IEnumerable<InvitationModel>> GetInvitationList(bool includeAccepted, bool includeAborted);
 
-        Task<InvitationModel> GetInvitationByCode(string code);
+        Task<InvitationModel> GetInvitationByCode(string code);        
     }
 }

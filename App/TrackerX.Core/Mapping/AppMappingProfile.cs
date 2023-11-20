@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TrackerX.Core.Services.Accounts.Invitations.Models;
-using TrackerX.Core.Services.Accounts.Users.Model;
+using TrackerX.Core.Services.Accounts.Users.Models;
 using TrackerX.Core.Services.Albums.Models;
 using TrackerX.Core.Services.Lessons.Models;
 using TrackerX.Core.Services.Songs.Models;

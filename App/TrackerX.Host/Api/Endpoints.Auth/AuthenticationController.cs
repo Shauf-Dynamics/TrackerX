@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TrackerX.Core.Services.Accounts.Users;
+using TrackerX.Core.Services.Accounts.Users.Models;
 using TrackerX.Core.Services.Bands.Models;
 using TrackerX.Host.Api.Endpoints.Admin.Models;
 
@@ -47,24 +48,20 @@ namespace TrackerX.Host.Api.Gateway.Account
                 {
                     new Claim(ClaimTypes.Name, "_sa"),
                     new Claim(ClaimTypes.Role, "Superadmin"),
-                };                
+                };
             }
             else
             {
-                var userDto = await _userService.GetAuthorizedUser(model.Login, model.Password);
+                var userResult = await _userService.GetAuthorizedUser(model.Login, model.Password);
+                if (userResult.Status == Core.Infrastructure.StatusType.Failure)
+                    return Forbid(userResult.ErrorMessage);
 
-                if (userDto != null)
+                AuthorizedUserDto user = userResult.Result;
+                claims = new List<Claim>
                 {
-                    claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, userDto.UserName),
-                        new Claim(ClaimTypes.Role, userDto.UserRole),
-                    };
-                }
-                else
-                {
-                    return Forbid();
-                }
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Role, user.UserRole),
+                };
             }
 
             await SignIn(claims);

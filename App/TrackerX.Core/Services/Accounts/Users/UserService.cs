@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Reflection;
 using TrackerX.Core.Cryptography;
 using TrackerX.Core.Infrastructure;
 using TrackerX.Core.Services.Accounts.Invitations;
@@ -15,7 +16,11 @@ namespace TrackerX.Core.Services.Accounts.Users
         private readonly IPasswordHashProvider _passwordHashProvider;
         private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, IInvitationService invitationService, IPasswordHashProvider passwordHashProvider, IMapper mapper)
+        public UserService(
+            IUserRepository userRepository,
+            IInvitationService invitationService, 
+            IPasswordHashProvider passwordHashProvider,
+            IMapper mapper)
         {
             _userRepository = userRepository;
             _invitationService = invitationService;
@@ -23,18 +28,26 @@ namespace TrackerX.Core.Services.Accounts.Users
             _mapper = mapper;
         }
 
-        public async Task<AuthorizedUserDto> GetAuthorizedUser(string login, string password)
-        {
-            var user = await _userRepository.GetUserByCredentials(login, password);
+        public async Task<ServiceResult<AuthorizedUserDto>> GetAuthorizedUser(string login, string password)
+        {            
+            var user = await _userRepository.GetUserByCredentials(login);
+            if (user == null)
+                return new ServiceResult<AuthorizedUserDto>(StatusType.Failure, "User is not found");
 
-            return user != null ? new AuthorizedUserDto(user.Name, user.RoleType.RoleTypeName) : null;            
+            var isVerified = _passwordHashProvider.Verify(password, user.PasswordHash);
+            if (!isVerified)           
+                return new ServiceResult<AuthorizedUserDto>(StatusType.Failure, "Password is not correct");
+
+            var result = new AuthorizedUserDto(user.Name, user.RoleType.RoleTypeName);
+
+            return new ServiceResult<AuthorizedUserDto>(result, StatusType.Success);
         }
 
         public async Task<ServiceResult> Registrate(CreateUserModel model)
         {
             await CreateUser(model);
 
-            return new ServiceResult(ResultType.Success);
+            return new ServiceResult(StatusType.Success);
         }
 
         public async Task<ServiceResult> RegistrateViaInvitation(CreateInvitedUserModel model)
@@ -42,20 +55,26 @@ namespace TrackerX.Core.Services.Accounts.Users
             var invitation = await _invitationService.GetInvitationByCode(model.InvitationCode);
 
             if (invitation == null)            
-                return new ServiceResult(ResultType.Failure, "Invitation with this code does not exist");
+                return new ServiceResult(StatusType.Failure, "Invitation with this code does not exist");
 
             if (invitation.IsInvitationAborted)
-                return new ServiceResult(ResultType.Failure, "Invitation is no longer valid");
+                return new ServiceResult(StatusType.Failure, "Invitation is no longer valid");
 
             if (invitation.ValideDueDate > DateTime.UtcNow)
-                return new ServiceResult(ResultType.Failure, "Invitation was expired");
+                return new ServiceResult(StatusType.Failure, "Invitation was expired");
 
             if (invitation.UserName != null)
-                return new ServiceResult(ResultType.Failure, "Invitation has already been used");
+                return new ServiceResult(StatusType.Failure, "Invitation has already been used");
 
             await CreateUser(model);
 
-            return new ServiceResult(ResultType.Success);
+            var user = await _userRepository.FirstOrDefault(x => x.Name == model.Name);
+            if (user == null)
+                return new ServiceResult(StatusType.Failure, "User was not created");
+
+            await _invitationService.AcceptInvitation(invitation.InvitationId, user.UserId);
+
+            return new ServiceResult(StatusType.Success);
         }
 
         private async Task CreateUser(CreateUserModel model)
@@ -70,6 +89,6 @@ namespace TrackerX.Core.Services.Accounts.Users
 
              _userRepository.Create(user);
             await _userRepository.SaveChanges();
-        }
+        }        
     }
 }

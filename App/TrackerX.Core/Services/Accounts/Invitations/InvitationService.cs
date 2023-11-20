@@ -29,6 +29,17 @@ namespace TrackerX.Core.Services.Accounts.Invitations
             }            
         }
 
+        public async Task AcceptInvitation(int invitationId, int userId)
+        {
+            var invitation = await _invitationRepository.FirstOrDefault(x => x.InvitationId == invitationId);
+
+            invitation.UserId = userId;
+            invitation.AcceptedDate = DateTime.UtcNow;
+
+            _invitationRepository.Update(invitation);
+            await _invitationRepository.SaveChanges();
+        }
+
         public async Task CreateInvitation(string code, DateTime? dueTo)
         {
             var invitation = new Invitation();

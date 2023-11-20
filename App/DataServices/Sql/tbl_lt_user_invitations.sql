@@ -1,6 +1,6 @@
 USE [MusicTrackerDb]
 
-CREATE TABLE tbl_lt_user_invitation (
+CREATE TABLE tbl_lt_user_invitations (
     user_invitation_id INT IDENTITY(1,1) PRIMARY KEY,
     user_invitation_user_id INT DEFAULT NULL UNIQUE,
     user_invitation_code NVARCHAR(256),
@@ -8,5 +8,5 @@ CREATE TABLE tbl_lt_user_invitation (
     invitation_aborted_ind BIT DEFAULT(0)
 );
 
-ALTER TABLE tbl_lt_user_invitation
+ALTER TABLE tbl_lt_user_invitations
 ADD invitation_accepted_date DATE

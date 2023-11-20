@@ -5,7 +5,7 @@ namespace TrackerX.Core.Services.Accounts.Users
 {
     public interface IUserService
     {
-        Task<AuthorizedUserDto> GetAuthorizedUser(string login, string password);
+        Task<ServiceResult<AuthorizedUserDto>> GetAuthorizedUser(string login, string password);
 
         Task<ServiceResult> Registrate(CreateUserModel model);
 

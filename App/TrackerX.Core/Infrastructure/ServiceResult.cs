@@ -2,19 +2,31 @@
 {
     public class ServiceResult
     {
-        public ResultType Result { get; set; }
+        public StatusType Status { get; set; }
 
         public string ErrorMessage { get; set; } = string.Empty;
 
-        public ServiceResult(ResultType resultType)
+        public ServiceResult(StatusType resultType)
         {
-            Result = resultType;
-        }
+            Status = resultType;
+        }   
 
-        public ServiceResult(ResultType resultType, string message)
+        public ServiceResult(StatusType resultType, string message)
         {
-            Result = resultType;
+            Status = resultType;
             ErrorMessage = message;
         }
+    }
+
+    public class ServiceResult<T> : ServiceResult
+    {
+        public T Result { get; set; }
+
+        public ServiceResult(StatusType resultType, string message) : base(resultType, message) { }
+
+        public ServiceResult(T result, StatusType resultType) : base(resultType)
+        {
+            Result = result;
+        }        
     }
 }

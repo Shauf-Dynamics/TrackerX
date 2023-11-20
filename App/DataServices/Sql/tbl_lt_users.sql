@@ -8,3 +8,6 @@ CREATE TABLE tbl_lt_users (
     user_registration_date DATETIME,
     user_role_id INT
 )
+
+ALTER TABLE tbl_lt_users 
+ALTER COLUMN user_password_hash NVARCHAR(512)

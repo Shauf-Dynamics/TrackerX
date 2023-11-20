@@ -1,6 +1,6 @@
 ﻿namespace TrackerX.Core.Infrastructure
 {
-    public enum ResultType
+    public enum StatusType
     {
         Success,
         Invalid,

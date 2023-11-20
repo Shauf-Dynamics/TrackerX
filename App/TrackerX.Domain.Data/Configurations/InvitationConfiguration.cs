@@ -8,7 +8,7 @@ namespace TrackerX.Domain.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Invitation> builder)
         {
-            builder.ToTable("tbl_lt_user_invitation");
+            builder.ToTable("tbl_lt_user_invitations");
 
             builder.HasKey(e => e.InvitationId);
 

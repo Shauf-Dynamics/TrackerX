@@ -9,13 +9,12 @@ namespace TrackerX.Domain.Data.Repositories
     {
         public UserRepository(DataContext context) : base(context) { }
 
-        public async Task<User> GetUserByCredentials(string login, string passwordHash)
+        public async Task<User> GetUserByCredentials(string login)
         {
             var users = Context.Users
                 .Include(x => x.RoleType);
 
-            return await users
-                .FirstOrDefaultAsync(x => (x.Email == login || x.Name == login) && x.PasswordHash == passwordHash);
+            return await users.FirstOrDefaultAsync(x => x.Email == login || x.Name == login);
         }
     }
 }

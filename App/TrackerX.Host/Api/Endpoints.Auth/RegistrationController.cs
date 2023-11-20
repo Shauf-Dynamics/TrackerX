@@ -16,13 +16,13 @@ namespace TrackerX.Host.Api.Gateway.Account
             _userService = userService;
         }
 
-        [HttpPost]
+        [HttpPost]        
         [Route("v1")]
         public async Task<IActionResult> Registrate([FromBody] CreateUserModel model)
         {
             var result = await _userService.Registrate(model);
 
-            if (result.Result != ResultType.Success)
+            if (result.Status != StatusType.Success)
             {
                 return BadRequest(result.ErrorMessage);
             }
@@ -36,7 +36,7 @@ namespace TrackerX.Host.Api.Gateway.Account
         {
             var result = await _userService.RegistrateViaInvitation(model);
 
-            if (result.Result != ResultType.Success) 
+            if (result.Status != StatusType.Success) 
             {
                 return BadRequest(result.ErrorMessage);
             }
