@@ -2,7 +2,7 @@
     <div align="center">
         <p class="tx-p-header">Create Account</p>
     </div>
-    <form class="form w-50" method="post" autocomplete="off">
+    <form [formGroup]="registrationForm" method="post" autocomplete="off" (submit)="signUp($event)">
         <div class="row">
             <label class="tx-label-email" for="name">Email</label>
             <input class="text-box" name="email" formControlName="email" autocomplete="off"/>

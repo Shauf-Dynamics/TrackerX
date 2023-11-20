@@ -17,6 +17,21 @@ export class AuthService implements OnInit {
         this.isAuthorized$ = new BehaviorSubject<boolean>(this.sessionAuthStorage.getCurrentUser() !== null);
     }
 
+    public registrate(email: string, name: string, password: string, invitationCode: string) : Observable<any> {
+        const body = {
+            email: email,
+            name: name,
+            password: password,
+            invitationCode: invitationCode
+        }
+
+        const httpOptions = {
+            observe: 'response' as 'response',                        
+        };
+
+        return this.http.post<UserClaims>(this.baseApiUrl + '/api/account/registration/v1/via-link', body, httpOptions);
+    }
+
     public signIn(login: string, password: string): Observable<HttpResponse<UserClaims>> {
         const body = {
             login: login,
