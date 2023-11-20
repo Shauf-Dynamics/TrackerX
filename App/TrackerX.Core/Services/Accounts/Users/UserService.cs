@@ -33,8 +33,7 @@ namespace TrackerX.Core.Services.Accounts.Users
             if (user == null)
                 return new ServiceResult<AuthorizedUserDto>(StatusType.Failure, "User is not found");
 
-            var isVerified = _passwordHashProvider.Verify(password, user.PasswordHash);
-            if (!isVerified)           
+            if (!_passwordHashProvider.Verify(password, user.PasswordHash))           
                 return new ServiceResult<AuthorizedUserDto>(StatusType.Failure, "Password is not correct");
 
             var result = new AuthorizedUserDto(user.Name, user.RoleType.RoleTypeName);
