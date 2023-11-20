@@ -5,6 +5,6 @@ namespace TrackerX.Domain.Repositories
 {
     public interface ISongRepository : IRepository<Song>
     {
-        Task<IEnumerable<Song>> GetByBandId(int bandId);
+        Task<IEnumerable<Song>> GetByBandIdAsync(int bandId);
     }
 }

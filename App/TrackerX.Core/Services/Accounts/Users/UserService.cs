@@ -30,7 +30,7 @@ namespace TrackerX.Core.Services.Accounts.Users
 
         public async Task<ServiceResult<AuthorizedUserDto>> GetAuthorizedUser(string login, string password)
         {            
-            var user = await _userRepository.GetUserByCredentials(login);
+            var user = await _userRepository.GetUserByCredentialsAsync(login);
             if (user == null)
                 return new ServiceResult<AuthorizedUserDto>(StatusType.Failure, "User is not found");
 
@@ -68,7 +68,7 @@ namespace TrackerX.Core.Services.Accounts.Users
 
             await CreateUser(model);
 
-            var user = await _userRepository.FirstOrDefault(x => x.Name == model.Name);
+            var user = await _userRepository.FirstOrDefaultAsync(x => x.Name == model.Name);
             if (user == null)
                 return new ServiceResult(StatusType.Failure, "User was not created");
 
@@ -88,7 +88,7 @@ namespace TrackerX.Core.Services.Accounts.Users
             user.RegistrationDttmUtc = DateTime.UtcNow;
 
              _userRepository.Create(user);
-            await _userRepository.SaveChanges();
+            await _userRepository.SaveChangesAsync();
         }        
     }
 }

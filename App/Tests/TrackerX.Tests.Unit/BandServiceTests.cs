@@ -17,7 +17,7 @@ namespace TrackerX.Tests.Unit
         public void Init()
         {
             _bandRepositoryMock = new Mock<IBandRepository>();
-            _bandRepositoryMock.Setup(x => x.SaveChanges());
+            _bandRepositoryMock.Setup(x => x.SaveChangesAsync());
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace TrackerX.Tests.Unit
             _bandRepositoryMock.Verify(x => x.Create(
                 It.Is<Band>(x => createBandModel.BandName == x.BandName)),
                 Times.Once);
-            _bandRepositoryMock.Verify(x => x.SaveChanges(), Times.Once);
+            _bandRepositoryMock.Verify(x => x.SaveChangesAsync(), Times.Once);
         }
 
         [Test]
@@ -40,14 +40,14 @@ namespace TrackerX.Tests.Unit
         {
             int id = 1;
             
-            _bandRepositoryMock.Setup(x => x.GetById(It.IsAny<int>()))
+            _bandRepositoryMock.Setup(x => x.GetByIdAsync(It.IsAny<int>()))
                 .Returns(Task.FromResult(new Band()));
             _sut = new BandService(_bandRepositoryMock.Object);
             
             await _sut.RenameBand(id, "new cool name");
 
-            _bandRepositoryMock.Verify(x => x.GetById(It.Is<int>(x => x == id)), Times.Once);
-            _bandRepositoryMock.Verify(x => x.SaveChanges(), Times.Once);
+            _bandRepositoryMock.Verify(x => x.GetByIdAsync(It.Is<int>(x => x == id)), Times.Once);
+            _bandRepositoryMock.Verify(x => x.SaveChangesAsync(), Times.Once);
         }
 
         [Test]
@@ -60,7 +60,7 @@ namespace TrackerX.Tests.Unit
                 new Band() { BandName = "Pantera" }
             };
 
-            _bandRepositoryMock.Setup(x => x.GetBySearchingCriterias(
+            _bandRepositoryMock.Setup(x => x.GetBySearchingCriteriasAsync(
                 It.IsAny<int>(),
                 It.IsAny<string>()))
                 .Returns(Task.FromResult(bands));
@@ -69,7 +69,7 @@ namespace TrackerX.Tests.Unit
             var result = await _sut.GetBandsByCriterias(new BandsSearchParams(99, string.Empty));
 
             Assert.That(result.Count(), Is.EqualTo(bands.Count()));
-            _bandRepositoryMock.Verify(x => x.GetBySearchingCriterias(
+            _bandRepositoryMock.Verify(x => x.GetBySearchingCriteriasAsync(
                 It.IsAny<int>(),
                 It.IsAny<string>()), 
                 Times.Once);            

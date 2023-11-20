@@ -9,7 +9,7 @@ namespace TrackerX.Domain.Data.Repositories
     {
         public SongRepository(DataContext context) : base(context) { }
 
-        public async Task<IEnumerable<Song>> GetByBandId(int bandId)
+        public async Task<IEnumerable<Song>> GetByBandIdAsync(int bandId)
         {
             return await Context.Songs
                 .Where(x => x.BandId == bandId)

@@ -22,29 +22,29 @@ namespace TrackerX.Core.Services.Songs
 
             _songRepository.Create(song);
 
-            await _songRepository.SaveChanges();
+            await _songRepository.SaveChangesAsync();
         }
 
         public async Task RenameSong(int songId, string newSongName)
         {
-            var song = await _songRepository.GetById(songId);
+            var song = await _songRepository.GetByIdAsync(songId);
             song.SongName = newSongName;
 
-            await _songRepository.SaveChanges();
+            await _songRepository.SaveChangesAsync();
         }
 
         public async Task AssingToAlbum(int albumId, int songId)
         {
-            var song = await _songRepository.GetById(songId);            
+            var song = await _songRepository.GetByIdAsync(songId);            
             song.AlbumId = albumId;
             _songRepository.Update(song);
 
-            await _songRepository.SaveChanges();
+            await _songRepository.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<SongViewModel>> GetSongsByBandId(int bandId)
         {
-            var source = await _songRepository.GetByBandId(bandId);
+            var source = await _songRepository.GetByBandIdAsync(bandId);
             var songs = source.Select(item =>
             {
                 var song = _mapper.Map<SongViewModel>(item);

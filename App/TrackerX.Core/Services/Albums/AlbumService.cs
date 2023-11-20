@@ -22,12 +22,12 @@ namespace TrackerX.Core.Services.Albums
 
             _albumRepository.Create(album);
 
-            await _albumRepository.SaveChanges();
+            await _albumRepository.SaveChangesAsync();
         }        
 
         public async Task<AlbumViewModel> GetAlbumById(int id)
         {
-            return _mapper.Map<AlbumViewModel>(await _albumRepository.GetById(id));
+            return _mapper.Map<AlbumViewModel>(await _albumRepository.GetByIdAsync(id));
         }
     }
 }

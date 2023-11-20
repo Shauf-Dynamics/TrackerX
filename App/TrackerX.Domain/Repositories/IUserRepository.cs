@@ -5,6 +5,6 @@ namespace TrackerX.Domain.Repositories
 {
     public interface IUserRepository : IRepository<User>
     {
-        Task<User> GetUserByCredentials(string login);
+        Task<User> GetUserByCredentialsAsync(string login);
     }
 }

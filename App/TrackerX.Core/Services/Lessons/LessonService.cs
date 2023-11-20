@@ -24,7 +24,7 @@ namespace TrackerX.Core.Services.Lessons
             lesson.LessonDate = model.Date;
 
             _lessonRepository.Create(lesson);
-            await _lessonRepository.SaveChanges();
+            await _lessonRepository.SaveChangesAsync();
 
             foreach (var item in model.Exercises)
             {
@@ -33,7 +33,7 @@ namespace TrackerX.Core.Services.Lessons
                 _exerciseRepository.Create(exercise);
             }            
 
-            await _exerciseRepository.SaveChanges();
+            await _exerciseRepository.SaveChangesAsync();
         }
     }
 }

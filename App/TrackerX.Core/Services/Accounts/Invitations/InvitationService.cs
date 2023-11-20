@@ -18,26 +18,26 @@ namespace TrackerX.Core.Services.Accounts.Invitations
 
         public async Task AbortInvitation(int invitationId)
         {
-            var invitation = await _invitationRepository.FirstOrDefault(x => x.InvitationId == invitationId);
+            var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.InvitationId == invitationId);
 
             if(invitation != null) 
             {
                 invitation.IsInvitationAborted = true;
 
                 _invitationRepository.Update(invitation);
-                await _invitationRepository.SaveChanges();
+                await _invitationRepository.SaveChangesAsync();
             }            
         }
 
         public async Task AcceptInvitation(int invitationId, int userId)
         {
-            var invitation = await _invitationRepository.FirstOrDefault(x => x.InvitationId == invitationId);
+            var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.InvitationId == invitationId);
 
             invitation.UserId = userId;
             invitation.AcceptedDate = DateTime.UtcNow;
 
             _invitationRepository.Update(invitation);
-            await _invitationRepository.SaveChanges();
+            await _invitationRepository.SaveChangesAsync();
         }
 
         public async Task CreateInvitation(string code, DateTime? dueTo)
@@ -47,12 +47,12 @@ namespace TrackerX.Core.Services.Accounts.Invitations
             invitation.ValideDueDate = dueTo;
 
             _invitationRepository.Create(invitation);
-            await _invitationRepository.SaveChanges();
+            await _invitationRepository.SaveChangesAsync();
         }
 
         public async Task<InvitationModel> GetInvitationByCode(string code)
         {
-            var invitation = await _invitationRepository.FirstOrDefault(x => x.Code == code);
+            var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.Code == code);
 
             return _mapper.Map<InvitationModel>(invitation);
         }

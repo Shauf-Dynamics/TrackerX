@@ -15,7 +15,7 @@ namespace TrackerX.Core.Services.Bands
 
         public async Task<IEnumerable<BandsViewModel>> GetBandsByCriterias(BandsSearchParams criterias)
         {
-            var result = await _bandRepository.GetBySearchingCriterias(criterias.PageSize, criterias.StartsWith);
+            var result = await _bandRepository.GetBySearchingCriteriasAsync(criterias.PageSize, criterias.StartsWith);
 
             return result.Select(x => new BandsViewModel() { BandName = x.BandName });
         }
@@ -27,15 +27,15 @@ namespace TrackerX.Core.Services.Bands
 
             _bandRepository.Create(band);
 
-            await _bandRepository.SaveChanges();
+            await _bandRepository.SaveChangesAsync();
         }        
 
         public async Task RenameBand(int bandId, string newName)
         {
-            var band = await _bandRepository.GetById(bandId);
+            var band = await _bandRepository.GetByIdAsync(bandId);
             band.BandName = newName;
 
-            await _bandRepository.SaveChanges();
+            await _bandRepository.SaveChangesAsync();
         }
     }
 }

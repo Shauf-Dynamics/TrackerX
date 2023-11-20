@@ -9,7 +9,7 @@ namespace TrackerX.Domain.Data.Repositories
     {
         public UserRepository(DataContext context) : base(context) { }
 
-        public async Task<User> GetUserByCredentials(string login)
+        public async Task<User> GetUserByCredentialsAsync(string login)
         {
             var users = Context.Users
                 .Include(x => x.RoleType);

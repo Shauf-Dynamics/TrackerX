@@ -4,16 +4,16 @@ namespace TrackerX.Domain.Infrastructure
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        Task<T> GetById(int id);
-        Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
+        Task<T> GetByIdAsync(int id);
+        Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
 
         void Create(T entity);
         void Update(T entity);
         void Remove(T entity);
 
-        Task<IEnumerable<T>> GetAll();
-        Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate);
 
-        Task SaveChanges();
+        Task SaveChangesAsync();
     }
 }
