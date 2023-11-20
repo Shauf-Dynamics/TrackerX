@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrackerX.Core.Infrastructure;
 using TrackerX.Core.Services.Accounts.Users;
-using TrackerX.Core.Services.Accounts.Users.Model;
 using TrackerX.Core.Services.Accounts.Users.Models;
 
 namespace TrackerX.Host.Api.Gateway.Account

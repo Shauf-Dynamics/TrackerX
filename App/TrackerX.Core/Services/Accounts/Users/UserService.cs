@@ -2,7 +2,6 @@
 using TrackerX.Core.Cryptography;
 using TrackerX.Core.Infrastructure;
 using TrackerX.Core.Services.Accounts.Invitations;
-using TrackerX.Core.Services.Accounts.Users.Model;
 using TrackerX.Core.Services.Accounts.Users.Models;
 using TrackerX.Domain.Entities;
 using TrackerX.Domain.Repositories;
