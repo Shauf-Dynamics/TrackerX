@@ -15,12 +15,12 @@ namespace TrackerX.Host
 
         public void ConfigureAndRun()
         {
-            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+            var allowSpecificOrigins = "_allowSpecificOrigins";
 
             _builder.Services.AddCors(options =>
             {
                 options.AddPolicy(
-                    name: MyAllowSpecificOrigins,
+                    name: allowSpecificOrigins,
                     policy =>
                     {
                         policy.WithOrigins("http://localhost:4200")
@@ -61,7 +61,7 @@ namespace TrackerX.Host
                 app.UseSwaggerUI();
             }
 
-            app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors(allowSpecificOrigins);
 
             app.UseAuthentication();
             app.UseAuthorization();

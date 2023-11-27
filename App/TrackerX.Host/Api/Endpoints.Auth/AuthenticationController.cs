@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using TrackerX.Core.Infrastructure;
 using TrackerX.Core.Services.Accounts.Users;
 using TrackerX.Core.Services.Accounts.Users.Models;
-using TrackerX.Core.Services.Bands.Models;
 using TrackerX.Host.Api.Endpoints.Admin.Models;
 
 namespace TrackerX.Host.Api.Gateway.Account
@@ -26,7 +26,7 @@ namespace TrackerX.Host.Api.Gateway.Account
         [HttpGet]
         [Authorize]
         [Route("v1/user")]
-        public async Task<IActionResult> GetUserClaim()
+        public IActionResult GetUserClaim()
         {
             var name = User.FindFirstValue(ClaimTypes.Name);
             var role = User.FindFirstValue(ClaimTypes.Role);
@@ -53,7 +53,7 @@ namespace TrackerX.Host.Api.Gateway.Account
             else
             {
                 var userResult = await _userService.GetAuthorizedUserAsync(model.Login, model.Password);
-                if (userResult.Status == Core.Infrastructure.StatusType.Failure)
+                if (userResult.Status == StatusType.Failure)
                     return Forbid(userResult.ErrorMessage);
 
                 AuthorizedUserDto user = userResult.Result;
