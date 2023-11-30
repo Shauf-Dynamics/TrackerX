@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
+const routes:Routes = [
+    {
+        path: 'app/songs',
+        loadChildren: () => import('./assets/songs/songs.module').then(m => m.SongsModule)
+    },
     {
         path: 'app/dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)

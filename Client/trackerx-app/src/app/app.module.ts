@@ -10,12 +10,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './providers/interceptors/auth-Interceptor';
 import { WithCredentialsInterceptor } from './providers/interceptors/with-credentials-interceptor';
 import { AuthSessionStorage } from './providers/auth/auth.session';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
         AppComponent
     ],
     imports: [
+        CommonModule,
         BrowserModule,
         HttpClientModule,
         FontAwesomeModule,

@@ -59,6 +59,7 @@ namespace TrackerX.Core.Services.Accounts.Users
 
         private async Task CreateUser(CreateUserModel model)
         {
+            // TODO fix magic number
             int clientRoleId = 3;
 
             var user = _mapper.Map<User>(model);

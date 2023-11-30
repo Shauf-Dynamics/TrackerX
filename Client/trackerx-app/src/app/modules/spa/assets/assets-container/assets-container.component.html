@@ -1,0 +1,31 @@
+<main>
+    <div class="tx-assets-header">
+        <i class="fa-solid fa-chevron-right fa-xl" style="color: #dededea2;"></i>
+        <span>{{ assetsModel?.header }}</span>
+        <p>{{ assetsModel?.description }}</p>
+    </div>
+    <div class="tx-assets-body">
+        <div class="tx-assets-navigation">
+            <table width="100%">
+                <tr>
+                    <td *ngFor="let item of assetsModel?.navigation; let i = index" width="25%">
+                        <a [routerLink]="item.link">
+                            <div class="tx-assets-navitaion-item">
+                                <div class="counter">
+                                    {{i + 1}}
+                                </div>
+                                <div class="desc">
+                                    <h3>{{ item.title }}</h3>
+                                    <p>{{ item.description }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="tx-assets-content">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</main>

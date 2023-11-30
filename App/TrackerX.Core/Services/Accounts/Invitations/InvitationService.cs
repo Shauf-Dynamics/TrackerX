@@ -60,7 +60,9 @@ namespace TrackerX.Core.Services.Accounts.Invitations
 
         public async Task<IEnumerable<InvitationModel>> GetInvitationListAsync(bool includeAccepted, bool includeAborted)
         {
-            return _mapper.Map<IEnumerable<InvitationModel>>(await _invitationRepository.GetAllInvitationsAsync(includeAccepted, includeAborted));            
+            var invitations = await _invitationRepository.GetAllInvitationsAsync(includeAccepted, includeAborted);
+
+            return _mapper.Map<IEnumerable<InvitationModel>>(invitations);            
         }
 
         public async Task<ServiceResult<InvitationModel>> GetValidInvitationCodeAsync(string code)
