@@ -80,8 +80,23 @@ a {
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-
 .text-box:focus {
   outline: none;   
   box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+}
+
+*::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(245, 245, 245);        /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0;  /* Remove scrollbar space */
+  background-color: rgb(190, 190, 190);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
 }

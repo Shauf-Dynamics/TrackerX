@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/providers/auth/auth.guard';
 import { SongsContainerComponent } from './songs-container/songs-container.component';
-import { SongsGlobalComponent } from './songs-global/songs-global.component';
+import { SongsGlobalComponent } from './songs-search/songs-global/songs-global.component';
 
 const routes: Routes = [
     {

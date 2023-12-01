@@ -1,0 +1,30 @@
+<tx-songs-container>
+    <main>
+        <div class="tx-sg-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Album</th>
+                        <th>Band</th>
+                        <th>Year</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <tr *ngFor="let item of songs;" >
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.album }}</td>
+                        <td>{{ item.band }}</td>
+                        <td>{{ item.year | date: 'dd/MM/yyyy'}}</td>
+                    </tr>                  
+                </tbody>                               
+            </table>
+        </div>
+        <div class="tx-sg-search">
+            
+        </div>
+        <div class="tx-sg-details">
+            
+        </div>
+    </main>
+</tx-songs-container>
