@@ -1,5 +1,23 @@
 <tx-songs-container>
     <main>
+        <div class="tx-sg-search">
+            <input type="text" class="text-box" (value)="searchArgs.searchText" placeholder="Search" />
+            <span class="tx-sg-search-by">
+                <i>search by</i>                
+                <input type="button" class="btn left" value="Name" (click)="onNameSearchClick()"
+                    [ngClass]="searchArgs.searchBy === 'name' ? 'btn-selected' : ''"  />
+                <input type="button" class="btn right"  value="Band" (click)="onBandSearchClick()"
+                    [ngClass]="searchArgs.searchBy === 'band' ? 'btn-selected' : ''" />
+            </span>
+            <span class="tx-sg-search-sort">
+                <span><i>sort by</i></span>
+                <select name="search_sort" id="search_sort">
+                    <option value="s_name">Name</option>
+                    <option value="s_band">Band</option>
+                    <option value="s_year">Year</option>                    
+                </select>
+            </span>
+        </div>
         <div class="tx-sg-table">
             <table>
                 <thead>
@@ -9,22 +27,20 @@
                         <th>Band</th>
                         <th>Year</th>
                     </tr>
-                </thead> 
+                </thead>
                 <tbody>
-                    <tr *ngFor="let item of songs;" >
+                    <tr *ngFor="let item of songs">
                         <td>{{ item.name }}</td>
                         <td>{{ item.album }}</td>
                         <td>{{ item.band }}</td>
                         <td>{{ item.year | date: 'dd/MM/yyyy'}}</td>
-                    </tr>                  
-                </tbody>                               
+                    </tr>
+                </tbody>
             </table>
         </div>
-        <div class="tx-sg-search">
-            
-        </div>
         <div class="tx-sg-details">
-            
+            <p>song name</p>
+            <p>hello</p>
         </div>
     </main>
 </tx-songs-container>

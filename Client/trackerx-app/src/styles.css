@@ -2,101 +2,122 @@
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
 body {
-  margin: 0;
+    margin: 0;
     background-color: #e0e5ec;
-    font-family:  Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
 a {
-  color: inherit;
-  text-decoration: inherit;
+    color: inherit;
+    text-decoration: inherit;
 }
 
 .btn {
-  appearance: none;
-  background-color: #FAFBFC;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-  box-sizing: border-box;
-  color: #24292E;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  padding: 6px 16px;
-  position: relative;
-  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  white-space: nowrap;
-  word-wrap: break-word;
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
 }
 
 .btn:hover {
-  background-color: #F3F4F6;
-  text-decoration: none;
-  transition-duration: 0.1s;
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
 }
 
 .btn:disabled {
-  background-color: #FAFBFC;
-  border-color: rgba(27, 31, 35, 0.15);
-  color: #959DA5;
-  cursor: default;
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
 }
 
 .btn:active {
-  background-color: #EDEFF2;
-  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-  transition: none 0s;
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
 }
 
 .btn:focus {
-  outline: 1px transparent;
+    outline: 1px transparent;
 }
 
 .btn:before {
-  display: none;
+    display: none;
 }
 
 .btn:-webkit-details-marker {
-  display: none;
+    display: none;
 }
 
 .text-box {
-  height: 10px;
-  font-weight: 500;
-  line-height: 1;
-  color: #69707a;
-  border: 1px solid #f3f3f3;
-  border-radius: 0.45rem;
-  background-color: #f3f3f3;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    height: 10px;
+    font-weight: 500;
+    line-height: 1;
+    color: #69707a;
+    border: 1px solid #f3f3f3;
+    border-radius: 0.45rem;
+    background-color: #f3f3f3;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .text-box:focus {
-  outline: none;   
-  box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+}
+
+select {    
+    line-height: 1;
+    color: #69707a;
+    border: 1px solid #afafaf;
+    border-radius: 0.32rem;
+    background-color: #FFF;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
 }
 
 *::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
+    width: 12px;
+    /* width of the entire scrollbar */
 }
 
 *::-webkit-scrollbar-track {
-  background: rgb(245, 245, 245);        /* color of the tracking area */
+    background: rgb(245, 245, 245);
+    /* color of the tracking area */
 }
 
 *::-webkit-scrollbar-thumb {
-  background: transparent;  /* Optional: just make scrollbar invisible */
-  width: 0;  /* Remove scrollbar space */
-  background-color: rgb(190, 190, 190);    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+    width: 0;
+    /* Remove scrollbar space */
+    background-color: rgb(190, 190, 190);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid rgb(255, 255, 255);
+    /* creates padding around scroll thumb */
 }

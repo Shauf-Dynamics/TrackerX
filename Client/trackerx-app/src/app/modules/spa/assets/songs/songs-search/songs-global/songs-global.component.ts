@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { SongModel } from '../songs-search.models';
+import { Component, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { SearchModel, SongModel } from '../songs-search.models';
 
 @Component({
     selector: 'tx-songs-global',
@@ -11,6 +11,11 @@ export class SongsGlobalComponent implements OnInit {
 
     public songs$: Observable<SongModel[]>;
     public songs: SongModel[];
+
+    public searchArgs: SearchModel = {
+        searchText: '',
+        searchBy: 'name'
+    }
 
     public ngOnInit(): void {
         this.songs = [
@@ -166,4 +171,16 @@ export class SongsGlobalComponent implements OnInit {
             },
         ]
     };
+
+    public onNameSearchClick(): void {
+        if (this.searchArgs.searchBy !== 'name') {
+            this.searchArgs.searchBy = 'name';
+        }
+    }
+    
+    public onBandSearchClick(): void {
+        if (this.searchArgs.searchBy !== 'band') {
+            this.searchArgs.searchBy = 'band';
+        }
+    }
 }

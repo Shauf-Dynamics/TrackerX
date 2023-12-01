@@ -5,3 +5,8 @@ export class SongModel {
     public band: string;
     public year: Date;
 }
+
+export class SearchModel {
+    public searchText: string;
+    public searchBy: string;
+}
