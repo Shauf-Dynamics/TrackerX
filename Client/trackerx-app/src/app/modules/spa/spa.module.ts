@@ -5,8 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SpaContainerComponent } from './spa-container/spa-container.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AuthService } from 'src/app/providers/auth/auth.service';
-import { SongsModule } from './assets/songs/songs.module';
-
+import { MusicModule } from './assets/music/music.module';
 @NgModule({
   declarations: [    
     SpaContainerComponent
@@ -16,7 +15,7 @@ import { SongsModule } from './assets/songs/songs.module';
     SpaRoutingModule,
     NavigationModule,
     DashboardModule,
-    SongsModule
+    MusicModule
   ],
   providers: [
     AuthService

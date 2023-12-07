@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { SearchModel, SongModel } from '../songs-search.models';
+import { Observable } from 'rxjs';
+import { SearchModel, SongModel } from './music-global.models';
 
 @Component({
-    selector: 'tx-songs-global',
-    templateUrl: './songs-global.component.html',
-    styleUrls: ['./songs-global.component.css']
+    selector: 'tx-music-global',
+    templateUrl: './music-global.component.html',
+    styleUrls: ['./music-global.component.css']
 })
-export class SongsGlobalComponent implements OnInit {
+export class MusicGlobalComponent implements OnInit {
 
     public selectedIndex: number;    
 

@@ -8,18 +8,17 @@
         <div class="tx-assets-navigation">
             <table width="100%">
                 <tr>
-                    <td *ngFor="let item of assetsModel?.navigation; let i = index" width="25%">
-                        <a [routerLink]="item.link">
-                            <div class="tx-assets-navitaion-item">
-                                <div class="counter">
-                                    {{i + 1}}
-                                </div>
-                                <div class="desc">
-                                    <h3>{{ item.title }}</h3>
-                                    <p>{{ item.description }}</p>
-                                </div>
+                    <td *ngFor="let item of assetsModel?.navigation; let i = index" width="25%"  [routerLink]="item.link"
+                        (click)="onNavigationClick(i)" [ngClass]="index == i ? 'selected' : ''">
+                        <div class="tx-assets-navitaion-item">
+                            <div class="counter">
+                                {{i + 1}}
                             </div>
-                        </a>
+                            <div class="desc">
+                                <h3>{{ item.title }}</h3>
+                                <p>{{ item.description }}</p>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </table>

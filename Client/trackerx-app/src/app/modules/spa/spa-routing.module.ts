@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes:Routes = [
     {
-        path: 'app/songs',
-        loadChildren: () => import('./assets/songs/songs.module').then(m => m.SongsModule)
+        path: 'app/music',
+        loadChildren: () => import('./assets/music/music.module').then(m => m.MusicModule)
     },
     {
         path: 'app/dashboard',

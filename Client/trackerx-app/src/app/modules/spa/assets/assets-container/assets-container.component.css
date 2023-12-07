@@ -38,7 +38,7 @@ main {
     border-radius: 8px 8px 0 0;
     border-bottom: 1px solid #dfdfdf;
     background-color: rgba(231, 231, 231, 0.377);
-    min-height: 11.5vh;
+    padding: 10px;    
 }
 
 .tx-assets-content {
@@ -46,7 +46,7 @@ main {
 }
 
 .tx-assets-navitaion-item {
-    margin: 30px;
+    margin: 25px;
     display: flex;    
 
     .counter {
@@ -83,7 +83,25 @@ main {
     }
 }
 
-.table a {
-    display: block;
-    text-decoration: none;
+.selected {
+    background-color: #0061f2;
+
+    .counter {
+        background-color: #ffffffe8;
+        color: #0061f2 ;
+    }        
+
+    .desc {        
+        >h3 {
+            color: #ffffffe8; 
+        }
+
+        >p {
+            color: #ffffffe8;
+        }
+    }        
+}
+
+td {
+    border-radius: 10px;
 }

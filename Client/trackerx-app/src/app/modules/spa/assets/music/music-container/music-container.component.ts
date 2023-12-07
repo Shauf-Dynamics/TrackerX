@@ -2,27 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { AssetsModel } from '../../assets-container/models/assets-navigation';
 
 @Component({
-    selector: 'tx-songs-container',
-    templateUrl: './songs-container.component.html',
-    styleUrls: ['./songs-container.component.css']
+    selector: 'tx-music-container',
+    templateUrl: './music-container.component.html',
+    styleUrls: ['./music-container.component.css']
 })
-export class SongsContainerComponent implements OnInit {        
+export class MusicContainerComponent implements OnInit {        
     public assetsModel?: AssetsModel;
 
     public ngOnInit(): void {
         this.assetsModel = {
-            header: 'Songs',
+            header: 'Music',
             description: 'Create and view your desirable songs. Customise and make it public so everyone can reuse it.',
             navigation: [
                 {
-                    title: 'My Songs',
-                    description: 'Search for your person songs',
+                    title: 'My Music',
+                    description: 'Search for your person music',
                     link: '/'
                 },   
                 {
-                    title: 'Global',
+                    title: 'Global Songs',
                     description: 'Search for all added songs',
-                    link: '/app/songs/global'
+                    link: '/app/music/global'
                 },   
                 {
                     title: 'Create',
@@ -31,7 +31,7 @@ export class SongsContainerComponent implements OnInit {
                 },   
                 {
                     title: 'Proposals',
-                    description: 'Track the status of shared music',
+                    description: 'Track the status of shared songs',
                     link: '/'
                 },   
             ]

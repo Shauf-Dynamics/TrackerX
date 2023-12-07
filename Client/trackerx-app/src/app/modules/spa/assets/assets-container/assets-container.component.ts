@@ -10,7 +10,13 @@ export class AssetsContainerComponent implements OnInit {
     @Input()
     public assetsModel?: AssetsModel;
 
+    public index: number = 1;
+
     public ngOnInit(): void {
 
+    }
+
+    public onNavigationClick(index: number): void {
+        this.index = index;
     }
 }
