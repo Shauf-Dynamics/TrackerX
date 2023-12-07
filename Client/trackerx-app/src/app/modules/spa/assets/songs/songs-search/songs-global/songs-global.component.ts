@@ -9,8 +9,14 @@ import { SearchModel, SongModel } from '../songs-search.models';
 })
 export class SongsGlobalComponent implements OnInit {
 
+    public selectedIndex: number;    
+
     public songs$: Observable<SongModel[]>;
     public songs: SongModel[];
+
+    public get selectedSong(): SongModel {
+        return this.songs[this.selectedIndex];
+    }
 
     public searchArgs: SearchModel = {
         searchText: '',
@@ -21,10 +27,10 @@ export class SongsGlobalComponent implements OnInit {
         this.songs = [
             {
                 id: 1,
-                name: 'ds',
-                album: 'ds',
-                band: 'dsds',
-                year: new Date('1/1/2010')
+                name: 'Pantera',
+                album: 'Cowboys from Hell',
+                band: 'Heresy',
+                year: new Date('1/1/1990')
             },
             {
                 id: 1,
@@ -171,6 +177,10 @@ export class SongsGlobalComponent implements OnInit {
             },
         ]
     };
+
+    public onRowClicked(index: number): void {
+        this.selectedIndex = index;
+    }
 
     public onNameSearchClick(): void {
         if (this.searchArgs.searchBy !== 'name') {

@@ -3,10 +3,10 @@
         <div class="tx-sg-search">
             <input type="text" class="text-box" (value)="searchArgs.searchText" placeholder="Search" />
             <span class="tx-sg-search-by">
-                <i>search by</i>                
+                <i>search by</i>
                 <input type="button" class="btn left" value="Name" (click)="onNameSearchClick()"
-                    [ngClass]="searchArgs.searchBy === 'name' ? 'btn-selected' : ''"  />
-                <input type="button" class="btn right"  value="Band" (click)="onBandSearchClick()"
+                    [ngClass]="searchArgs.searchBy === 'name' ? 'btn-selected' : ''" />
+                <input type="button" class="btn right" value="Band" (click)="onBandSearchClick()"
                     [ngClass]="searchArgs.searchBy === 'band' ? 'btn-selected' : ''" />
             </span>
             <span class="tx-sg-search-sort">
@@ -14,7 +14,7 @@
                 <select name="search_sort" id="search_sort">
                     <option value="s_name">Name</option>
                     <option value="s_band">Band</option>
-                    <option value="s_year">Year</option>                    
+                    <option value="s_year">Year</option>
                 </select>
             </span>
         </div>
@@ -29,7 +29,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of songs">
+                    <tr *ngFor="let item of songs; let i = index" (click)="onRowClicked(i)"
+                        [ngClass]="selectedIndex == i ? 'row-clicked': ''">
                         <td>{{ item.name }}</td>
                         <td>{{ item.album }}</td>
                         <td>{{ item.band }}</td>
@@ -38,9 +39,25 @@
                 </tbody>
             </table>
         </div>
-        <div class="tx-sg-details">
-            <p>song name</p>
-            <p>hello</p>
+        <div class="tx-sg-details" *ngIf="selectedSong !== undefined">
+            <div class="image-frame">
+                <ng-container *ngIf="true">
+                    <i class="fa-solid fa-guitar fa-2xl"></i>
+                    <p>No image available</p>
+                </ng-container>
+                <ng-container *ngIf="false">
+                    <!-- TODO -->
+                </ng-container>
+            </div>
+            <div class="description">
+                <h4>{{ selectedSong.band }} - {{ selectedSong.name }}</h4>
+                <p><i>Album:</i> {{ selectedSong.album }}</p>
+                <p><i>Genre(s):</i> - </p>
+                <p><i>Tempo:</i> - </p>
+                <span class="label">Instrumental</span>
+                <span class="label">Placeholder</span>
+                <span class="label">Placeholder 2</span>
+            </div>
         </div>
     </main>
 </tx-songs-container>
