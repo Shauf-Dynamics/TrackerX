@@ -157,9 +157,10 @@
             font-weight: 500;
             line-height: 2rem;
             width: min-content;
-            padding: 7px;
+            padding: 7px 10px;
             margin: 10px 10px 0 0;
             border: solid 1px rgba(207, 207, 207, 0.486);
+            border-radius: 5px;
             background-color:  rgba(207, 207, 207, 0.123);
             color: rgba(116, 116, 116, 0.658);
         }
