@@ -4,8 +4,8 @@ namespace TrackerX.Core.Services.Music
 {
     public interface IMusicSearchService
     {
-        Task<MusicDetailsView> GetMusicById(int musicId);  
+        Task<SongDetailsView> GetMusicById(int musicId);  
 
-        Task<IEnumerable<MusicSearchView>> GetMusicListBySearchCriterias(string text, string searchBy);
+        Task<IEnumerable<SongSearchView>> GetMusicListBySearchCriterias(string text, string searchBy);
     }
 }

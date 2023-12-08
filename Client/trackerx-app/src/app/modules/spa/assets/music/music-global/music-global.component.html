@@ -1,4 +1,4 @@
-<tx-music-container>
+<tx-music-container [selectedTabIndex]="2">
     <main>
         <div class="tx-sg-search">
             <input type="text" class="text-box" placeholder="Search" 
@@ -30,9 +30,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of songs$ | async; let i = index" (click)="onRowClicked(i, item.musicId)"
+                    <tr *ngFor="let item of songs$ | async; let i = index" (click)="onRowClicked(i, item.songId)"
                         [ngClass]="selectedIndex == i ? 'row-clicked': ''">
-                        <td>{{ item.musicName }}</td>
+                        <td>{{ item.songName }}</td>
                         <td>{{ item.album }}</td>
                         <td>{{ item.band }}</td>
                         <td>{{ item.year }}</td>

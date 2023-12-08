@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TrackerX.Core.Services.Music;
 using TrackerX.Core.Services.Musics.Models;
 
 namespace TrackerX.Host.Api.Endpoints.Client
 {
     [ApiController]
+    [Authorize]
     [Route("api/music/search")]
     public class MusicSearchController : Controller
     {
@@ -17,8 +19,8 @@ namespace TrackerX.Host.Api.Endpoints.Client
 
         [HttpGet]
         [Route("v1")]
-        [ProducesResponseType(typeof(IEnumerable<MusicSearchView>), 200)]
-        public async Task<IActionResult> Get([FromQuery]string? searchText, [FromQuery]string? searchBy)
+        [ProducesResponseType(typeof(IEnumerable<SongSearchView>), 200)]
+        public async Task<IActionResult> Get([FromQuery]string? searchText, [FromQuery]string searchBy)
         {
             var result = await _musicSearchService.GetMusicListBySearchCriterias(searchText, searchBy);
 
@@ -27,8 +29,8 @@ namespace TrackerX.Host.Api.Endpoints.Client
 
         [HttpGet]
         [Route("v1/details")]
-        [ProducesResponseType(typeof(MusicDetailsView), 200)]
-        public async Task<IActionResult> Get(int musicId)
+        [ProducesResponseType(typeof(SongDetailsView), 200)]
+        public async Task<IActionResult> Get([FromQuery]int musicId)
         {
             var result = await _musicSearchService.GetMusicById(musicId);
 

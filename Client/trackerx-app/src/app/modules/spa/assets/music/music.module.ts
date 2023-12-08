@@ -6,12 +6,14 @@ import { MusicGlobalComponent } from './music-global/music-global.component';
 import { MusicRoutingModule } from './music-routing.module';
 import { MusicSearchService } from './music-global/music-global.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MusicCreateComponent } from './music-create/music-create.component';
 
 @NgModule({
     declarations: [
         AssetsContainerComponent,     
         MusicContainerComponent,
-        MusicGlobalComponent
+        MusicGlobalComponent,
+        MusicCreateComponent
     ],
     imports: [    
         CommonModule,  
@@ -21,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ],
     exports: [
         MusicContainerComponent,
-        MusicGlobalComponent
+        MusicGlobalComponent,
+        MusicCreateComponent
     ],
     providers: [
         MusicSearchService

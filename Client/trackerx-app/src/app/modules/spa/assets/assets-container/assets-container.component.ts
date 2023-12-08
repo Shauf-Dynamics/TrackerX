@@ -2,21 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AssetsModel } from './models/assets-navigation';
 
 @Component({
-    selector: 'tx-assets-container[assetsModel]',
+    selector: 'tx-assets-container[assetsModel][selectedTabIndex]',
     templateUrl: './assets-container.component.html',
     styleUrls: ['./assets-container.component.css']
 })
-export class AssetsContainerComponent implements OnInit {
+export class AssetsContainerComponent {
     @Input()
     public assetsModel?: AssetsModel;
 
-    public index: number = 1;
-
-    public ngOnInit(): void {
-
-    }
-
-    public onNavigationClick(index: number): void {
-        this.index = index;
-    }
+    @Input()
+    public selectedTabIndex: number;
 }

@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AssetsModel } from '../../assets-container/models/assets-navigation';
 
 @Component({
-    selector: 'tx-music-container',
+    selector: 'tx-music-container[selectedTabIndex]',
     templateUrl: './music-container.component.html',
     styleUrls: ['./music-container.component.css']
 })
 export class MusicContainerComponent implements OnInit {        
-    public assetsModel?: AssetsModel;
+    @Input()
+    public selectedTabIndex: number;
+
+    public assetsModel?: AssetsModel;    
 
     public ngOnInit(): void {
         this.assetsModel = {
@@ -27,7 +30,7 @@ export class MusicContainerComponent implements OnInit {
                 {
                     title: 'Create',
                     description: 'Add and even share you music',
-                    link: '/'
+                    link: '/app/music/add'
                 },   
                 {
                     title: 'Proposals',

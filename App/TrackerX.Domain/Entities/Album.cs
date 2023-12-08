@@ -16,6 +16,6 @@
 
         public Band Band { get; set; }
 
-        public ICollection<Music> Musics { get; set; }
+        public ICollection<Song> Songs { get; set; }
     }
 }

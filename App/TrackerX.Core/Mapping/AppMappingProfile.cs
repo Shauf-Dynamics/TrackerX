@@ -12,20 +12,20 @@ namespace TrackerX.Core.Mapping
     {
         public AppMappingProfile()
         {
-            CreateMap<CreateMusicModel, Music>()
-                .ForMember(dest => dest.MusicName, opt => opt.MapFrom(src => src.Name));
+            CreateMap<CreateMusicModel, Song>()
+                .ForMember(dest => dest.SongName, opt => opt.MapFrom(src => src.Name));
 
-            CreateMap<Music, MusicSearchView>()
+            CreateMap<Song, SongSearchView>()
                 .ForMember(dest => dest.Band, opt => opt.MapFrom(src => src.Band.BandName))
                 .ForMember(dest => dest.Album, opt => opt.MapFrom(src => src.Album.AlbumName))
                 .ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.WritingYear));
-            CreateMap<Music, MusicDetailsView>()
+            CreateMap<Song, SongDetailsView>()
                 .ForMember(dest => dest.Band, opt => opt.MapFrom(src => src.Band.BandName))
                 .ForMember(dest => dest.Album, opt => opt.MapFrom(src => src.Album.AlbumName))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.MusicName))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.SongName))
                 .ForMember(dest => dest.Genre, opt => opt.Ignore())
                 .ForMember(dest => dest.Subgenre, opt => opt.Ignore());
-            CreateMap<Music, MusicViewModel>()
+            CreateMap<Song, MusicViewModel>()
                 .ForMember(dest => dest.Genre, opt => opt.Ignore())
                 .ForMember(dest => dest.BandName, opt => opt.MapFrom(src => src.Band.BandName));
 

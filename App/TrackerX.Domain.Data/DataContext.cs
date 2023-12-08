@@ -14,7 +14,9 @@ namespace TrackerX.Domain.Infrastructure
 
         public DbSet<Band> Bands { get; set; }
 
-        public DbSet<Music> Songs { get; set; }
+        public DbSet<Song> Songs { get; set; }
+
+        public DbSet<Music> Musics { get; set; }
 
         public DbSet<Genre> Genres { get; set; }
 
@@ -35,7 +37,7 @@ namespace TrackerX.Domain.Infrastructure
             builder.ApplyConfiguration(new ExerciseConfiguration());
             builder.ApplyConfiguration(new ExerciseTypeConfiguration());
             builder.ApplyConfiguration(new BandConfiguration());
-            builder.ApplyConfiguration(new MusicConfiguration());          
+            builder.ApplyConfiguration(new SongConfiguration());          
             builder.ApplyConfiguration(new GenreConfiguration());
             builder.ApplyConfiguration(new AlbumConfiguration());
             builder.ApplyConfiguration(new LessonConfiguration());

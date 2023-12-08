@@ -6,6 +6,6 @@
 
         public string BandName { get; set; }
 
-        public ICollection<Music> Songs { get; set; }
+        public ICollection<Song> Songs { get; set; }
     }
 }

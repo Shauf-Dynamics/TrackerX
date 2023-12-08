@@ -13,41 +13,32 @@ namespace TrackerX.Domain.Data.Configurations
             builder.HasKey(e => e.MusicId);
 
             builder.Property(e => e.MusicId)
-                .HasColumnName("music_id");
+                .HasColumnName("song_id");
 
-            builder.Property(e => e.MusicName)
-                .HasColumnName("music_name");
+            builder.Property(e => e.MusicDescription)
+                .HasColumnName("music_description");
 
-            builder.Property(e => e.WritingYear)
+            builder.Property(e => e.AuthorName)
+                .HasColumnName("music_author");
+
+            builder.Property(e => e.Year)
                 .HasColumnName("year_of_creation");
 
+            builder.Property(e => e.IsOwn)
+                .HasColumnName("own_ind");
+
             builder.Property(e => e.IsInstrumental)
+
                 .HasColumnName("instrumental_ind");
-
-            builder.Property(e => e.GenreId)
-                .HasColumnName("genre_id");
-
             builder.Property(e => e.Tempo)
                 .HasColumnName("tempo");
+
+            builder.Property(e => e.GenreId)
+                .HasColumnName("genre_id");   
 
             builder.HasOne(e => e.Genre)
                 .WithMany()
                 .HasForeignKey(k => k.GenreId);
-
-            builder.Property(e => e.BandId)
-                .HasColumnName("band_id");
-
-            builder.HasOne(e => e.Band)
-                .WithMany(e => e.Songs)
-                .HasForeignKey(k => k.BandId);
-
-            builder.Property(e => e.AlbumId)
-                .HasColumnName("album_id")
-                .IsRequired(false);
-
-            builder.HasOne(e => e.Album)
-                .WithMany(e => e.Musics)
-                .HasForeignKey(k => k.AlbumId);
         }
     }
 }

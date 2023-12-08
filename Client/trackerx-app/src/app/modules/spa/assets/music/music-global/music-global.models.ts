@@ -1,13 +1,13 @@
 export class MusicModel {
-    public musicId: number;
-    public musicName: string;
+    public songId: number;
+    public songName: string;
     public album: string;
     public band: string;
     public year: number;
 }
 
 export class MusicDetailsModel {
-    public musicId: number;
+    public songId: number;
     public name: string;
     public band: string;
     public album: string;

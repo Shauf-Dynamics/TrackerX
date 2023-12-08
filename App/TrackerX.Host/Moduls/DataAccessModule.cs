@@ -17,7 +17,7 @@ namespace TrackerX.Host.Moduls
 
             builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
             builder.Services.AddTransient<IBandRepository, BandRepository>();
-            builder.Services.AddTransient<IMusicRepository, MusicRepository>();
+            builder.Services.AddTransient<ISongRepository, SongRepository>();
             builder.Services.AddTransient<IAlbumRepository, AlbumRepository>();
             builder.Services.AddTransient<ILessonRepository, LessonRepository>();
             builder.Services.AddTransient<IExerciseRepository, ExerciseRepository>();

@@ -9,7 +9,7 @@
             <table width="100%">
                 <tr>
                     <td *ngFor="let item of assetsModel?.navigation; let i = index" width="25%"  [routerLink]="item.link"
-                        (click)="onNavigationClick(i)" [ngClass]="index == i ? 'selected' : ''">
+                        [ngClass]="selectedTabIndex == i + 1 ? 'selected' : ''">
                         <div class="tx-assets-navitaion-item">
                             <div class="counter">
                                 {{i + 1}}

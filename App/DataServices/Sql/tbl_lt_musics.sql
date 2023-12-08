@@ -1,12 +1,12 @@
 USE [MusicTrackerDb]
 
 CREATE TABLE tbl_lt_musics (
-    music_id         INT IDENTITY(1,1) PRIMARY KEY,
-    music_name       NVARCHAR(128) NOT NULL,
-    band_id          INT NOT NULL,
-    tempo            INT NULL,
-    year_of_creation INT NULL,
-    instrumental_ind BIT DEFAULT(0),
-    genre_id         INT NULL,
-    album_id         INT NULL
+    music_id            INT IDENTITY(1,1) PRIMARY KEY,    
+    music_description   NVARCHAR(512) NOT NULL,
+    music_author        NVARCHAR(128) NULL,
+    own_ind             BIT NULL,
+    instrumental_ind    BIT DEFAULT(0),
+    tempo               INT,
+    genre_id            INT,
+    year_of_creation    INT
 )

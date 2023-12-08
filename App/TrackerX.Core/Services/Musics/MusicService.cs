@@ -7,9 +7,9 @@ namespace TrackerX.Core.Services.Music
     public class MusicService : IMusicService
     {
         private readonly IMapper _mapper;
-        private readonly IMusicRepository _songRepository;
+        private readonly ISongRepository _songRepository;
 
-        public MusicService(IMusicRepository songRepository, IMapper mapper)
+        public MusicService(ISongRepository songRepository, IMapper mapper)
         {
             _songRepository = songRepository;
             _mapper = mapper;
@@ -17,7 +17,7 @@ namespace TrackerX.Core.Services.Music
 
         public async Task Create(CreateMusicModel model)
         {
-            var song = _mapper.Map<Domain.Entities.Music>(model);
+            var song = _mapper.Map<Domain.Entities.Song>(model);
 
             _songRepository.Create(song);
 
@@ -27,7 +27,7 @@ namespace TrackerX.Core.Services.Music
         public async Task RenameSong(int songId, string newSongName)
         {
             var song = await _songRepository.GetByIdAsync(songId);
-            song.MusicName = newSongName;
+            song.SongName = newSongName;
 
             await _songRepository.SaveChangesAsync();
         }
