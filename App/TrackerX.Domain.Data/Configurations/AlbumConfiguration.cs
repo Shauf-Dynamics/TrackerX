@@ -21,7 +21,7 @@ namespace TrackerX.Domain.Data.Configurations
             builder.Property(e => e.WritingYear)
                 .HasColumnName("year_of_creation");
 
-            builder.HasMany(e => e.Songs)
+            builder.HasMany(e => e.Musics)
                 .WithOne(e => e.Album)
                 .HasForeignKey(e => e.AlbumId);
 

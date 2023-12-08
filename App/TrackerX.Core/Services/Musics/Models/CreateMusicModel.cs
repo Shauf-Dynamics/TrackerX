@@ -1,6 +1,6 @@
-﻿namespace TrackerX.Core.Services.Songs.Models
+﻿namespace TrackerX.Core.Services.Musics.Models
 {
-    public class CreateSongModel
+    public class CreateMusicModel
     {
         public string Name { get; set; }
 

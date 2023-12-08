@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Api\Endpoints.Admin\" />
-    <Folder Include="Api\Endpoints.Client\" />
   </ItemGroup>
 
 </Project>

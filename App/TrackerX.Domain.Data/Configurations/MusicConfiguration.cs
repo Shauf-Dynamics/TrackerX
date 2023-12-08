@@ -4,19 +4,19 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations
 {
-    internal class SongConfiguration : IEntityTypeConfiguration<Song>
+    internal class MusicConfiguration : IEntityTypeConfiguration<Music>
     {
-        public void Configure(EntityTypeBuilder<Song> builder)
+        public void Configure(EntityTypeBuilder<Music> builder)
         {
-            builder.ToTable("tbl_lt_song");
+            builder.ToTable("tbl_lt_musics");
 
-            builder.HasKey(e => e.SongId);
+            builder.HasKey(e => e.MusicId);
 
-            builder.Property(e => e.SongId)
-                .HasColumnName("song_id");
+            builder.Property(e => e.MusicId)
+                .HasColumnName("music_id");
 
-            builder.Property(e => e.SongName)
-                .HasColumnName("song_name");
+            builder.Property(e => e.MusicName)
+                .HasColumnName("music_name");
 
             builder.Property(e => e.WritingYear)
                 .HasColumnName("year_of_creation");
@@ -46,7 +46,7 @@ namespace TrackerX.Domain.Data.Configurations
                 .IsRequired(false);
 
             builder.HasOne(e => e.Album)
-                .WithMany(e => e.Songs)
+                .WithMany(e => e.Musics)
                 .HasForeignKey(k => k.AlbumId);
         }
     }

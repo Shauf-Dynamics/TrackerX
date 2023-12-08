@@ -28,7 +28,7 @@ namespace TrackerX.Domain.Data.Repositories
             Context.Set<T>().Remove(entity);
         }
 
-        public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate)
+        public async virtual Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate)
         {
             return await Context.Set<T>().FirstOrDefaultAsync(predicate);
         }        

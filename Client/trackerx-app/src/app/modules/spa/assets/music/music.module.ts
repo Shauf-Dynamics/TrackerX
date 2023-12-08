@@ -4,6 +4,8 @@ import { AssetsContainerComponent } from '../assets-container/assets-container.c
 import { MusicContainerComponent } from './music-container/music-container.component';
 import { MusicGlobalComponent } from './music-global/music-global.component';
 import { MusicRoutingModule } from './music-routing.module';
+import { MusicSearchService } from './music-global/music-global.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -13,6 +15,8 @@ import { MusicRoutingModule } from './music-routing.module';
     ],
     imports: [    
         CommonModule,  
+        FormsModule,
+        ReactiveFormsModule,
         MusicRoutingModule,
     ],
     exports: [
@@ -20,7 +24,7 @@ import { MusicRoutingModule } from './music-routing.module';
         MusicGlobalComponent
     ],
     providers: [
-        
+        MusicSearchService
     ]
 })
 export class MusicModule {

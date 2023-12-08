@@ -22,7 +22,7 @@
 
         public int? SongId { get; set; }
 
-        public Song Song { get; set; }
+        public Music Song { get; set; }
 
         public int LessonId { get; set; }
 
