@@ -20,7 +20,7 @@ namespace TrackerX.Core.Services.Music
             if (string.IsNullOrEmpty(searchBy))
                 searchBy = "name";
 
-            var source = await _musicRepository.GetBySearchCriteriasdAsync(text, searchBy);
+            var source = await _musicRepository.GetBySearchCriteriasAsync(text, searchBy);
 
             return _mapper.Map<IEnumerable<SongSearchView>>(source);
         }

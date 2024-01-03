@@ -7,6 +7,6 @@ namespace TrackerX.Domain.Repositories
     {
         Task<IEnumerable<Song>> GetByBandIdAsync(int bandId);
 
-        Task<IEnumerable<Song>> GetBySearchCriteriasdAsync(string text, string searchBy);
+        Task<IEnumerable<Song>> GetBySearchCriteriasAsync(string text, string searchBy);
     }
 }

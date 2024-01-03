@@ -1,5 +1,27 @@
 <tx-music-container [selectedTabIndex]="3">
     <main>
+        <div class="tx-mc-select-type">
+            <p>Step 1</p>
+            <h3>Create your custom music or add already known songs</h3>
+            <span>Select type: </span>
+            <select name="music_type" id="music_type">
+                <option value="s_empty">-- choose --</option>
+                <option value="s_song">Song</option>
+                <option value="s_custom_music">Custom Music</option>                
+            </select>
+        </div>
+        <div class="tx-ms-template">
+            <ng-container  *ngTemplateOutlet="song">
 
+            </ng-container>
+        </div>
     </main>
 </tx-music-container>
+
+<ng-template #song>
+    hello
+</ng-template>
+
+<ng-template #music>
+
+</ng-template>

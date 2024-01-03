@@ -22,7 +22,7 @@ namespace TrackerX.Domain.Data.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Song>> GetBySearchCriteriasdAsync(string text, string searchBy)
+        public async Task<IEnumerable<Song>> GetBySearchCriteriasAsync(string text, string searchBy)
         {
             var songs = Context.Songs
                 .Include(x => x.Band);

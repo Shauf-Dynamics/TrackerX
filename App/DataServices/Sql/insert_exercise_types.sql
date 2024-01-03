@@ -1,11 +1,5 @@
 USE [MusicTrackerDb]
 
-INSERT INTO tbl_ad_exercise_types(exercise_type_cd, exercise_type_name) VALUES
-    ('gt', 'guitar'),
-    ('th', 'theory'),
-    ('imp', 'improvisation'),
-    ('comp', 'compositioning');
-
 SET IDENTITY_INSERT tbl_ad_exercise_types ON
 
 INSERT INTO tbl_ad_exercise_types (
