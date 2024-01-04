@@ -13,7 +13,7 @@ namespace TrackerX.OpenAI
             var chat = ConversationBuilder.Build(null);
 
             chat.AppendSystemMessage("This conversation is about music." +
-                "User will requests certain information." +
+                "User will request certain information." +
                 "This information should be responded as a list. " +
                 "Any additional text should be droped.");
             
