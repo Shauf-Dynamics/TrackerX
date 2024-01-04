@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TrackerX.Core.Services.Bands;
 using TrackerX.Core.Services.Bands.Models;
 
-namespace TrackerX.Host.Api.Gateway
+namespace TrackerX.Web.Api.Gateway
 {
     [ApiController]
     [Authorize]

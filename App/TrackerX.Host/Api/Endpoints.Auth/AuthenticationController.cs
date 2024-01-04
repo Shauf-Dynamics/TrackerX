@@ -6,9 +6,9 @@ using System.Security.Claims;
 using TrackerX.Core.Infrastructure;
 using TrackerX.Core.Services.Accounts.Users;
 using TrackerX.Core.Services.Accounts.Users.Models;
-using TrackerX.Host.Api.Endpoints.Admin.Models;
+using TrackerX.Web.Api.Endpoints.Admin.Models;
 
-namespace TrackerX.Host.Api.Gateway.Account
+namespace TrackerX.Web.Api.Gateway.Account
 {
     [ApiController]
     [Route("api/account")]

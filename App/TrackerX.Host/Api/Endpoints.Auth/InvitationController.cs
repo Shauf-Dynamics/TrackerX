@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrackerX.Core.Services.Accounts.Invitations;
 
-namespace TrackerX.Host.Api.Gateway.Account
+namespace TrackerX.Web.Api.Gateway.Account
 {
     [ApiController]
     [Route("api/account/invitation")]

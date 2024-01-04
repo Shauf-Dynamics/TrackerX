@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using TrackerX.Core.Mapping;
-using TrackerX.Host.Moduls;
+using TrackerX.Web.Moduls;
 
-namespace TrackerX.Host
+namespace TrackerX.Web
 {
     public class Startup
     {

@@ -1,4 +1,4 @@
-﻿namespace TrackerX.Host.Api.Endpoints.Admin.Models
+﻿namespace TrackerX.Web.Api.Endpoints.Admin.Models
 {
     public class SignedUserView
     {

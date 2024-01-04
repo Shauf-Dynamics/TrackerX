@@ -4,7 +4,7 @@ using System.Security.Claims;
 using TrackerX.Core.Services.Albums;
 using TrackerX.Core.Services.Albums.Models;
 
-namespace TrackerX.Host.Api.Gateway
+namespace TrackerX.Web.Api.Gateway
 {
     [ApiController]    
     [Route("api/[controller]")]

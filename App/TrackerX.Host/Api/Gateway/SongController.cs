@@ -3,7 +3,7 @@ using TrackerX.Core.Services.Music;
 using TrackerX.Core.Services.Musics;
 using TrackerX.Core.Services.Musics.Models;
 
-namespace TrackerX.Host.Api.Gateway
+namespace TrackerX.Web.Api.Gateway
 {
     [ApiController]
     [Route("api/[controller]")]

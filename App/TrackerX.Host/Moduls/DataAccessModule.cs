@@ -4,7 +4,7 @@ using TrackerX.Domain.Entities.Repositories;
 using TrackerX.Domain.Infrastructure;
 using TrackerX.Domain.Repositories;
 
-namespace TrackerX.Host.Moduls
+namespace TrackerX.Web.Moduls
 {
     public class DataAccessModule
     {

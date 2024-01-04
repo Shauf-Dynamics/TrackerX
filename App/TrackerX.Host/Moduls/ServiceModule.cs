@@ -6,7 +6,7 @@ using TrackerX.Core.Services.Accounts.Users;
 using TrackerX.Core.Services.Accounts.Invitations;
 using TrackerX.Core.Cryptography;
 
-namespace TrackerX.Host.Moduls
+namespace TrackerX.Web.Moduls
 {
     public class ServiceModule
     {

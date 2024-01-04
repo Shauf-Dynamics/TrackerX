@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TrackerX.Core.Services.Music;
 using TrackerX.Core.Services.Musics.Models;
 
-namespace TrackerX.Host.Api.Endpoints.Client
+namespace TrackerX.Web.Api.Endpoints.Client
 {
     [ApiController]
     [Authorize]

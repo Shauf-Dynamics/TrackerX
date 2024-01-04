@@ -2,7 +2,7 @@
 using TrackerX.Core.Services.Lessons;
 using TrackerX.Core.Services.Lessons.Models;
 
-namespace TrackerX.Host.Api.Gateway
+namespace TrackerX.Web.Api.Gateway
 {
     [Route("api/[controller]")]
     [ApiController]
