@@ -58,7 +58,7 @@
             <input type="button" class="btn" value="Search" />
         </div>
         <br/>
-        <ng-container *ngTemplateOutlet="commonfieldsTemplate"></ng-container>
+        <ng-container *ngTemplateOutlet="commonFieldsTemplate"></ng-container>
     </div>
 </ng-template>
 
@@ -68,11 +68,11 @@
             <p class="tx-lbl">Description</p>
             <input type="text" class="text-box tx-input" />
         </div>       
-        <ng-container *ngTemplateOutlet="commonfieldsTemplate"></ng-container>    
+        <ng-container *ngTemplateOutlet="commonFieldsTemplate"></ng-container>    
     </div>    
 </ng-template>
 
-<ng-template #commonfieldsTemplate>
+<ng-template #commonFieldsTemplate>
     <div class="tx-flex-item tx-genre">
         <p class="tx-lbl">Genre</p>
         <select class="tx-select" name="genre_type" id="genre_type">

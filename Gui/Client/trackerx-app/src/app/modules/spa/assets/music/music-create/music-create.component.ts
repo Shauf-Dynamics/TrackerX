@@ -1,10 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { SongModel } from "./music-create.models";
-
-enum MusicType {
-    Song,
-    Custom
-}
+import { MusicType, SongModel } from "./music-create.models";
 
 @Component({
     selector: 'tx-music-create',
@@ -17,14 +12,12 @@ export class MusicCreateComponent implements OnInit {
     
     public songModel?: SongModel = undefined;
 
-    ngOnInit(): void {
-
-    }
+    ngOnInit(): void { }
 
     public onAgreeToPublishClicked(element: any) {
         if (this.songModel) {
             this.songModel.isAgreedToPublish = !this.songModel.isAgreedToPublish;        
-            element.value = this.songModel.isAgreedToPublish ? "Revoke" : "I agree"            
+            element.value = this.songModel.isAgreedToPublish ? "Revoke" : "I agree";          
         }
     }
 

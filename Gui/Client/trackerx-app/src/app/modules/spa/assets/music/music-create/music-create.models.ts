@@ -6,3 +6,8 @@ export class SongModel {
     public isInstrumental: boolean;
     public isAgreedToPublish: boolean;    
 }
+
+export enum MusicType {
+    Song,
+    Custom
+}
