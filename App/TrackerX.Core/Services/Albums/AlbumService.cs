@@ -16,7 +16,7 @@ namespace TrackerX.Core.Services.Albums
             _mapper = mapper;
         }
 
-        public async Task Create(CreateAlbumModel model)
+        public async virtual Task Create(CreateAlbumModel model)
         {
             var album = _mapper.Map<Album>(model);
 
