@@ -19,7 +19,7 @@ namespace TrackerX.Web.Api.Endpoints.Client
 
         [HttpGet]
         [Route("v1")]
-        [ProducesResponseType(typeof(IEnumerable<SongSearchView>), 200)]
+        [ProducesResponseType(typeof(IEnumerable<SongSearchResult>), 200)]
         public async Task<IActionResult> Get([FromQuery]string? searchText, [FromQuery]string searchBy)
         {
             var result = await _musicSearchService.GetMusicListBySearchCriterias(searchText, searchBy);
@@ -29,7 +29,7 @@ namespace TrackerX.Web.Api.Endpoints.Client
 
         [HttpGet]
         [Route("v1/details")]
-        [ProducesResponseType(typeof(SongDetailsView), 200)]
+        [ProducesResponseType(typeof(SongDetailsResult), 200)]
         public async Task<IActionResult> Get([FromQuery]int musicId)
         {
             var result = await _musicSearchService.GetMusicById(musicId);

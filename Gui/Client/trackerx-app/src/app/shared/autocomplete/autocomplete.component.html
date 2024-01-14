@@ -1,0 +1,8 @@
+<main>
+    <input type="text" [ngModel]="value" (ngModelChange)="onChange($event)"/>
+    <select name="suggestions" id="suggestions">        
+        <option *ngFor="let suggestion of suggestions$ | async" [value]="suggestion">
+            {{suggestion}}
+        </option>            
+    </select>
+</main>

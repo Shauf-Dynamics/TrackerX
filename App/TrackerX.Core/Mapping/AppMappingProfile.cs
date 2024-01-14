@@ -15,11 +15,11 @@ namespace TrackerX.Core.Mapping
             CreateMap<CreateMusicModel, Song>()
                 .ForMember(dest => dest.SongName, opt => opt.MapFrom(src => src.Name));
 
-            CreateMap<Song, SongSearchView>()
+            CreateMap<Song, SongSearchResult>()
                 .ForMember(dest => dest.Band, opt => opt.MapFrom(src => src.Band.BandName))
                 .ForMember(dest => dest.Album, opt => opt.MapFrom(src => src.Album.AlbumName))
                 .ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.WritingYear));
-            CreateMap<Song, SongDetailsView>()
+            CreateMap<Song, SongDetailsResult>()
                 .ForMember(dest => dest.Band, opt => opt.MapFrom(src => src.Band.BandName))
                 .ForMember(dest => dest.Album, opt => opt.MapFrom(src => src.Album.AlbumName))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.SongName))
@@ -42,6 +42,8 @@ namespace TrackerX.Core.Mapping
 
             CreateMap<Invitation, InvitationModel>()
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User != null ? src.User.Name : null));
+
+            CreateMap<Genre, GenresResult>();
         }
     }
 }

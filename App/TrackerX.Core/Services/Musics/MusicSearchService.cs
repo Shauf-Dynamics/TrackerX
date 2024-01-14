@@ -7,28 +7,30 @@ namespace TrackerX.Core.Services.Music
     public class MusicSearchService : IMusicSearchService
     {
         private readonly IMapper _mapper;
-        private readonly ISongRepository _musicRepository;
+        private readonly ISongRepository _songRepository;
+        private readonly IGenreRepository _genreRepository;
 
-        public MusicSearchService(ISongRepository musicRepository, IMapper mapper)
+        public MusicSearchService(ISongRepository songRepository, IGenreRepository genreRepository, IMapper mapper)
         {
-            _musicRepository = musicRepository;
+            _songRepository = songRepository;
+            _genreRepository = genreRepository;
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<SongSearchView>> GetMusicListBySearchCriterias(string text, string searchBy)
+        public async Task<IEnumerable<SongSearchResult>> GetMusicListBySearchCriterias(string text, string searchBy)
         {
             if (string.IsNullOrEmpty(searchBy))
                 searchBy = "name";
 
-            var source = await _musicRepository.GetBySearchCriteriasAsync(text, searchBy);
+            var source = await _songRepository.GetBySearchCriteriasAsync(text, searchBy);
 
-            return _mapper.Map<IEnumerable<SongSearchView>>(source);
+            return _mapper.Map<IEnumerable<SongSearchResult>>(source);
         }
 
-        public async Task<SongDetailsView> GetMusicById(int musicId)
+        public async Task<SongDetailsResult> GetMusicById(int musicId)
         {
-            var source = await _musicRepository.FirstOrDefaultAsync(x => x.SongId == musicId);                
-            var music = _mapper.Map<SongDetailsView>(source);
+            var source = await _songRepository.FirstOrDefaultAsync(x => x.SongId == musicId);                
+            var music = _mapper.Map<SongDetailsResult>(source);
 
             if (source.Genre.ParentGenreId.HasValue)
             {
@@ -41,6 +43,13 @@ namespace TrackerX.Core.Services.Music
             }
 
             return music;
+        }
+
+        public async Task<IEnumerable<GenresResult>> GetAllGenres()
+        {
+            var source = await _genreRepository.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<GenresResult>>(source);
         }
     }
 }

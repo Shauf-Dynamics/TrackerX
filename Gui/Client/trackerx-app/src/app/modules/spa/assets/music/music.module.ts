@@ -7,6 +7,8 @@ import { MusicRoutingModule } from './music-routing.module';
 import { MusicSearchService } from './music-global/music-global.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MusicCreateComponent } from './music-create/music-create.component';
+import { MusicCreateService } from './music-create/music-create.service';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -20,6 +22,7 @@ import { MusicCreateComponent } from './music-create/music-create.component';
         FormsModule,
         ReactiveFormsModule,
         MusicRoutingModule,
+        SharedModule
     ],
     exports: [
         MusicContainerComponent,
@@ -27,7 +30,8 @@ import { MusicCreateComponent } from './music-create/music-create.component';
         MusicCreateComponent
     ],
     providers: [
-        MusicSearchService
+        MusicSearchService,
+        MusicCreateService
     ]
 })
 export class MusicModule {

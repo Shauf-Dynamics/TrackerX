@@ -1,6 +1,6 @@
 ﻿namespace TrackerX.Core.Services.Musics.Models
 {
-    public class SongDetailsView
+    public class SongDetailsResult
     {
         public int SongId { get; set; }
 
