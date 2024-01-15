@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Service.Lessons", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Service.Musics", "..\Services\TrackerX.Service.Musics\TrackerX.Service.Musics.csproj", "{DCA2981B-7698-44C7-A7F9-9F1B3AAAE7A9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Service.Accounts", "..\Services\TrackerxX.Service.Accounts\TrackerX.Service.Accounts.csproj", "{71CD0491-DD72-43FA-ACDC-A9B01F254578}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Service.Accounts", "..\Services\TrackerX.Service.Accounts\TrackerX.Service.Accounts.csproj", "{A6FFCCAA-CF73-43CF-A335-BE4678E22469}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,10 +87,10 @@ Global
 		{DCA2981B-7698-44C7-A7F9-9F1B3AAAE7A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCA2981B-7698-44C7-A7F9-9F1B3AAAE7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCA2981B-7698-44C7-A7F9-9F1B3AAAE7A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71CD0491-DD72-43FA-ACDC-A9B01F254578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71CD0491-DD72-43FA-ACDC-A9B01F254578}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71CD0491-DD72-43FA-ACDC-A9B01F254578}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71CD0491-DD72-43FA-ACDC-A9B01F254578}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FFCCAA-CF73-43CF-A335-BE4678E22469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FFCCAA-CF73-43CF-A335-BE4678E22469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FFCCAA-CF73-43CF-A335-BE4678E22469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FFCCAA-CF73-43CF-A335-BE4678E22469}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,7 +103,7 @@ Global
 		{76C1A0CF-0183-44A2-AFD3-387AEE9841F1} = {0839082D-F72E-4AD9-9E9D-F76C98DE4DEC}
 		{C2F572B4-1248-4BEE-83AC-B20BB32ED10E} = {0839082D-F72E-4AD9-9E9D-F76C98DE4DEC}
 		{DCA2981B-7698-44C7-A7F9-9F1B3AAAE7A9} = {0839082D-F72E-4AD9-9E9D-F76C98DE4DEC}
-		{71CD0491-DD72-43FA-ACDC-A9B01F254578} = {0839082D-F72E-4AD9-9E9D-F76C98DE4DEC}
+		{A6FFCCAA-CF73-43CF-A335-BE4678E22469} = {0839082D-F72E-4AD9-9E9D-F76C98DE4DEC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57A12A5A-06F3-4C77-B68F-2818C21D7352}
