@@ -25,13 +25,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Services\TrackerX.Service.Albums\TrackerX.Service.Albums.csproj" />
+    <ProjectReference Include="..\Services\TrackerX.Service.Bands\TrackerX.Service.Bands.csproj" />
+    <ProjectReference Include="..\Services\TrackerX.Service.Infrastructure\TrackerX.Service.Infrastructure.csproj" />
+    <ProjectReference Include="..\Services\TrackerX.Service.Lessons\TrackerX.Service.Lessons.csproj" />
+    <ProjectReference Include="..\Services\TrackerX.Service.Musics\TrackerX.Service.Musics.csproj" />
+    <ProjectReference Include="..\Services\TrackerxX.Service.Accounts\TrackerX.Service.Accounts.csproj" />
     <ProjectReference Include="..\TrackerX.Domain.Data\TrackerX.Domain.Data.csproj" />
-    <ProjectReference Include="..\TrackerX.Service.Album\TrackerX.Service.Albums.csproj" />
-    <ProjectReference Include="..\TrackerX.Service.Band\TrackerX.Service.Bands.csproj" />
-    <ProjectReference Include="..\TrackerX.Service.Infrastructure\TrackerX.Service.Infrastructure.csproj" />
-    <ProjectReference Include="..\TrackerX.Service.Lesson\TrackerX.Service.Lessons.csproj" />
-    <ProjectReference Include="..\TrackerX.Service.Music\TrackerX.Service.Musics.csproj" />
-    <ProjectReference Include="..\TrackerxX.Service.Account\TrackerX.Service.Accounts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
