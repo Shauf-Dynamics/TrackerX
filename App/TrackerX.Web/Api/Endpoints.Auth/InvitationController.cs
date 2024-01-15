@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TrackerX.Core.Services.Accounts.Invitations;
+using TrackerX.Services.Accounts.Invitations;
 
 namespace TrackerX.Web.Api.Gateway.Account
 {

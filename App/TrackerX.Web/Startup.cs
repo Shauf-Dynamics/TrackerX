@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using TrackerX.Core.Mapping;
-using TrackerX.Web.Moduls;
+﻿using TrackerX.Web.Moduls;
+using TrackerX.Cryptography;
 
 namespace TrackerX.Web
 {
@@ -14,44 +13,21 @@ namespace TrackerX.Web
         }
 
         public void ConfigureAndRun()
-        {
+        {            
             var allowSpecificOrigins = "_allowSpecificOrigins";
+            _builder.Services.AddCustomCors(allowSpecificOrigins);
 
-            _builder.Services.AddCors(options =>
-            {
-                options.AddPolicy(
-                    name: allowSpecificOrigins,
-                    policy =>
-                    {
-                        policy.WithOrigins("http://localhost:4200")
-                              .AllowAnyHeader()
-                              .AllowCredentials();
-                    });
-            });
+            _builder.Services.AddCryptographyServices();
+            _builder.Services.AddBusinessServices();
 
             _builder.Services.AddControllers();
             _builder.Services.AddEndpointsApiExplorer();
             _builder.Services.AddSwaggerGen();
 
-            _builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options =>
-                {
-                    options.Cookie.SameSite = SameSiteMode.None;
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-                    options.SlidingExpiration = true;
-                    options.Events.OnRedirectToAccessDenied =
-                    options.Events.OnRedirectToLogin = c =>
-                    {
-                        c.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                        return Task.FromResult<object>(null);
-                    };
-                });
+            _builder.Services.AddAuth();
 
-            DataAccessModule.Configure(_builder);
-            ServiceModule.Configure(_builder);
+            _builder.Services.AddDataAccess(_builder.Configuration.GetConnectionString("dev"));
 
-            _builder.Services.AddAutoMapper(typeof(AppMappingProfile));
-            
             var app = _builder.Build();
 
             // Configure the HTTP request pipeline.

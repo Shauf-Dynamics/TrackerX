@@ -1,26 +1,20 @@
-﻿using TrackerX.Core.Services.Albums;
-using TrackerX.Core.Services.Bands;
-using TrackerX.Core.Services.Lessons;
-using TrackerX.Core.Services.Music;
-using TrackerX.Core.Services.Accounts.Users;
-using TrackerX.Core.Services.Accounts.Invitations;
-using TrackerX.Core.Cryptography;
+﻿using TrackerX.Service.Lessons.Infrastructure;
+using TrackerX.Service.Musics.Infrastructure;
+using TrackerX.Service.Bands.Infrastructure;
+using TrackerX.Service.Albums.Infrastructure;
+using TrackerX.Service.Accounts.Infrastructure;
 
 namespace TrackerX.Web.Moduls
 {
-    public class ServiceModule
+    public static class BusinessServicesCollectionExtension
     {
-        public static void Configure(WebApplicationBuilder builder)
+        public static void AddBusinessServices(this IServiceCollection services)
         {
-            builder.Services.AddScoped<IBandService, BandService>();
-            builder.Services.AddScoped<ILessonService, LessonService>();
-            builder.Services.AddScoped<IMusicService, MusicService>();
-            builder.Services.AddScoped<IMusicSearchService, MusicSearchService>();
-            builder.Services.AddScoped<IAlbumService, AlbumService>();
-            builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<IInvitationService, InvitationService>();
-
-            builder.Services.AddSingleton<IPasswordHashProvider, PasswordHashProvider>();
+            services.AddMusicServices();
+            services.AddLessonServices();
+            services.AddBandServices();
+            services.AddAlbumServices();
+            services.AddAccountServices();            
         }
     }
 }

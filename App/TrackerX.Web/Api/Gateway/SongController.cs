@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TrackerX.Core.Services.Music;
-using TrackerX.Core.Services.Musics;
-using TrackerX.Core.Services.Musics.Models;
+using TrackerX.Services.Music;
+using TrackerX.Services.Musics;
+using TrackerX.Services.Musics.Models;
 
 namespace TrackerX.Web.Api.Gateway
 {

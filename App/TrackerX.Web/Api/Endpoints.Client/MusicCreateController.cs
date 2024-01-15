@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TrackerX.Core.Services.Music;
-using TrackerX.Core.Services.Musics.Models;
+using TrackerX.Services.Musics;
+using TrackerX.Services.Musics.Models;
 
 namespace TrackerX.Web.Api.Endpoints.Client
 {    
@@ -18,7 +18,7 @@ namespace TrackerX.Web.Api.Endpoints.Client
         }
 
         [HttpGet]
-        [Route("v1/genres")]
+        [Route("v1/genres-list")]
         [ProducesResponseType(typeof(IEnumerable<GenresResult>), 200)]
         public async Task<IActionResult> Get()
         {

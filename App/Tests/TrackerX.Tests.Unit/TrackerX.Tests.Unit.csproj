@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PlatformTarget>x86</PlatformTarget>
@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TrackerX.Core\TrackerX.Core.csproj" />
     <ProjectReference Include="..\..\TrackerX.Domain\TrackerX.Domain.csproj" />
+    <ProjectReference Include="..\..\TrackerX.Service.Band\TrackerX.Service.Bands.csproj" />
   </ItemGroup>
 
 </Project>

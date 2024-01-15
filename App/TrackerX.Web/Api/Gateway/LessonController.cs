@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TrackerX.Core.Services.Lessons;
-using TrackerX.Core.Services.Lessons.Models;
+using TrackerX.Services.Lessons.Models;
+using TrackerX.Services.Lessons;
 
 namespace TrackerX.Web.Api.Gateway
 {

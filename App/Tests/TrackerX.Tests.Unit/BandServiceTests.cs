@@ -1,7 +1,7 @@
 ﻿using Moq;
 using NUnit.Framework;
-using TrackerX.Core.Services.Bands;
-using TrackerX.Core.Services.Bands.Models;
+using TrackerX.Services.Bands;
+using TrackerX.Services.Bands.Models;
 using TrackerX.Domain.Entities;
 using TrackerX.Domain.Entities.Repositories;
 

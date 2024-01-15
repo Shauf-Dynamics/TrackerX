@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using TrackerX.Core.Infrastructure;
-using TrackerX.Core.Services.Accounts.Users;
-using TrackerX.Core.Services.Accounts.Users.Models;
+using TrackerX.Infrastructure;
+using TrackerX.Services.Accounts.Users;
+using TrackerX.Services.Accounts.Users.Models;
 using TrackerX.Web.Api.Endpoints.Admin.Models;
 
 namespace TrackerX.Web.Api.Gateway.Account

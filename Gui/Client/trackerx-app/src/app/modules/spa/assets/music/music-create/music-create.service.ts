@@ -11,6 +11,6 @@ export class MusicCreateService {
     
     public getMusicGenres(): Observable<GenreModel[]> {        
         return this.http.get<GenreModel[]>(
-            this.baseApiUrl + '/api/music/create/v1/genres');
+            this.baseApiUrl + '/api/music/create/v1/genres-list');
     }
 }

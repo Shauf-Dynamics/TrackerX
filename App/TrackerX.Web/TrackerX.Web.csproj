@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>fd5b8378-204a-4784-960c-f766fbe155b0</UserSecretsId>
@@ -25,8 +25,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TrackerX.Core\TrackerX.Core.csproj" />
     <ProjectReference Include="..\TrackerX.Domain.Data\TrackerX.Domain.Data.csproj" />
+    <ProjectReference Include="..\TrackerX.Service.Album\TrackerX.Service.Albums.csproj" />
+    <ProjectReference Include="..\TrackerX.Service.Band\TrackerX.Service.Bands.csproj" />
+    <ProjectReference Include="..\TrackerX.Service.Infrastructure\TrackerX.Service.Infrastructure.csproj" />
+    <ProjectReference Include="..\TrackerX.Service.Lesson\TrackerX.Service.Lessons.csproj" />
+    <ProjectReference Include="..\TrackerX.Service.Music\TrackerX.Service.Musics.csproj" />
+    <ProjectReference Include="..\TrackerxX.Service.Account\TrackerX.Service.Accounts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
