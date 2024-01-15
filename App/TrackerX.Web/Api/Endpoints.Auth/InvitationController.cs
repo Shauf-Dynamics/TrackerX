@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrackerX.Services.Accounts.Invitations;
+using TrackerX.Services.Accounts.Invitations.Models;
 
 namespace TrackerX.Web.Api.Gateway.Account
 {
@@ -16,6 +17,7 @@ namespace TrackerX.Web.Api.Gateway.Account
 
         [HttpGet]
         [Route("v1/list")]
+        [ProducesResponseType(typeof(IEnumerable<InvitationModel>), 200)]
         public async Task<IActionResult> Get(bool includeAccepted, bool includeAborted)
         {
             var result = await _invitationService.GetInvitationListAsync(includeAccepted, includeAborted);

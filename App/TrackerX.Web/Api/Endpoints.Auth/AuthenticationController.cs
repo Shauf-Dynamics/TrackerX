@@ -34,10 +34,18 @@ namespace TrackerX.Web.Api.Gateway.Account
             return Ok(new { name, role });
         }
 
+        [HttpGet]
+        [Authorize]
+        [Route("v1/signout")]
+        public async Task LogOut()
+        {
+            await HttpContext.SignOutAsync();
+        }
+
         [HttpPost]
         [AllowAnonymous]
         [Route("v1/auth")]
-        [ProducesResponseType(typeof(SignedUserView), 200)]
+        [ProducesResponseType(typeof(SignedUserResult), 200)]
         public async Task<IActionResult> LogIn([FromBody] SignInModel model)
         {
             List<Claim> claims;
@@ -66,19 +74,11 @@ namespace TrackerX.Web.Api.Gateway.Account
 
             await SignIn(claims);
 
-            return Ok(new SignedUserView()
+            return Ok(new SignedUserResult()
             {
                 UserName = claims.First(x => x.Type == ClaimTypes.Name).Value,
                 Role = claims.First(x => x.Type == ClaimTypes.Role).Value
             });
-        }
-
-        [HttpGet]
-        [Authorize]
-        [Route("v1/signout")]
-        public async Task LogOut()
-        {
-            await HttpContext.SignOutAsync();
         }
         
         private async Task SignIn(List<Claim> claims)

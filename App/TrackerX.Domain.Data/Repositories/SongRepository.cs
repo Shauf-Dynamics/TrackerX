@@ -30,7 +30,7 @@ namespace TrackerX.Domain.Data.Repositories
             if (!string.IsNullOrWhiteSpace(text))
             {
                 Expression<Func<Song, bool>> predicate = (item) => true;
-                if (searchBy == "name")
+                if (string.IsNullOrWhiteSpace(searchBy) || searchBy == "name")
                     predicate = (item) => item.SongName.StartsWith(text);
                 else if (searchBy == "band")
                     predicate = (item) => item.Band.BandName.StartsWith(text);
@@ -42,6 +42,7 @@ namespace TrackerX.Domain.Data.Repositories
             else
             {
                 return await songs
+                     .OrderBy(t => t.SongName)
                      .Take(defaultAmountToFetch)
                      .ToListAsync();
             }                                               

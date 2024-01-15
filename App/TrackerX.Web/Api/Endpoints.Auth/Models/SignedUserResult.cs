@@ -1,6 +1,6 @@
 ﻿namespace TrackerX.Web.Api.Endpoints.Admin.Models
 {
-    public class SignedUserView
+    public class SignedUserResult
     {
         public string UserName { get; set; }
 

@@ -20,9 +20,6 @@ namespace TrackerX.Services.Music
 
         public async Task<IEnumerable<SongSearchResult>> GetMusicListBySearchCriterias(string text, string searchBy)
         {
-            if (string.IsNullOrEmpty(searchBy))
-                searchBy = "name";
-
             var source = await _songRepository.GetBySearchCriteriasAsync(text, searchBy);
 
             return _mapper.Map<IEnumerable<SongSearchResult>>(source);
