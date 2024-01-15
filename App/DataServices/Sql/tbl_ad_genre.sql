@@ -1,8 +1,8 @@
 USE [MusicTrackerDb]
 
 CREATE TABLE tbl_ad_genre (
-    genre_id INT IDENTITY(1,1) PRIMARY KEY,
-    genre_name NVARCHAR(64),
+    genre_id        INT IDENTITY(1,1) PRIMARY KEY,
+    genre_name      NVARCHAR(64),
     genre_parent_id INT
 )
 
