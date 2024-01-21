@@ -2,24 +2,23 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TrackerX.Domain.Entities;
 
-namespace TrackerX.Domain.Data.Configurations
+namespace TrackerX.Domain.Data.Configurations;
+
+internal class RoleTypeConfiguration : IEntityTypeConfiguration<RoleType>
 {
-    internal class RoleTypeConfiguration : IEntityTypeConfiguration<RoleType>
+    public void Configure(EntityTypeBuilder<RoleType> builder)
     {
-        public void Configure(EntityTypeBuilder<RoleType> builder)
-        {
-            builder.ToTable("tbl_ad_user_roles");
+        builder.ToTable("tbl_ad_user_roles");
 
-            builder.HasKey(e => e.RoleTypeId);
+        builder.HasKey(e => e.RoleTypeId);
 
-            builder.Property(e => e.RoleTypeId)
-                .HasColumnName("user_role_id");
+        builder.Property(e => e.RoleTypeId)
+            .HasColumnName("user_role_id");
 
-            builder.Property(e => e.RoleTypeCode)
-                .HasColumnName("user_role_code");
+        builder.Property(e => e.RoleTypeCode)
+            .HasColumnName("user_role_code");
 
-            builder.Property(e => e.RoleTypeName)
-                .HasColumnName("user_role_name");
-        }
+        builder.Property(e => e.RoleTypeName)
+            .HasColumnName("user_role_name");
     }
 }

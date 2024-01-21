@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { GenreModel, MusicType, SongModel } from "./music-create.models";
 import { MusicCreateService } from "./music-create.service";
 import { Observable, of } from "rxjs";
+import { Select2Data, Select2UpdateEvent } from "ng-select2-component";
 
 @Component({
     selector: 'tx-music-create',
@@ -10,8 +11,20 @@ import { Observable, of } from "rxjs";
 })
 export class MusicCreateComponent implements OnInit {
     public musicType = MusicType;
+
     public currentMusicType?: MusicType = undefined;    
-    
+    public data: Select2Data = [
+        {
+            value: 'heliotrope',
+            label: 'Heliotrope',
+            data: { color: 'white', name: 'Heliotrope' },
+        },
+        {
+            value: 'hibiscus',
+            label: 'Hibiscus',
+            data: { color: 'red', name: 'Hibiscus' },
+        },
+    ];
     public songModel?: SongModel = undefined;
 
     private allGenres: GenreModel[];
@@ -71,4 +84,8 @@ export class MusicCreateComponent implements OnInit {
             }                    
         }        
     }    
+    value2 = 'CA';
+    update(key: string, event: Select2UpdateEvent<any>) {
+        console.log(key.toString() + ' ' + event.value);
+    }
 }

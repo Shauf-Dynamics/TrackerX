@@ -1,7 +1,6 @@
-﻿namespace TrackerX.Services.Bands.Models
+﻿namespace TrackerX.Services.Bands.Models;
+
+public class CreateBandModel
 {
-    public class CreateBandModel
-    {
-        public string BandName { get; set; }
-    }
+    public string BandName { get; set; }
 }

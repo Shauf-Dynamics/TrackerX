@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MusicCreateComponent } from './music-create/music-create.component';
 import { MusicCreateService } from './music-create/music-create.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { Select2Module } from 'ng-select2-component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
         FormsModule,
         ReactiveFormsModule,
         MusicRoutingModule,
-        SharedModule
+        SharedModule,
+        Select2Module
     ],
     exports: [
         MusicContainerComponent,

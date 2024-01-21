@@ -1,15 +1,14 @@
-﻿namespace TrackerX.Services.Bands.Models
+﻿namespace TrackerX.Services.Bands.Models;
+
+public class BandsSearchParams
 {
-    public class BandsSearchParams
+    public int PageSize { get; set; }
+
+    public string StartsWith { get; set; }
+
+    public BandsSearchParams(int pageSize, string startsWith)
     {
-        public int PageSize { get; set; }
-
-        public string StartsWith { get; set; }
-
-        public BandsSearchParams(int pageSize, string startsWith)
-        {
-            PageSize = pageSize;
-            StartsWith = startsWith;
-        }
+        PageSize = pageSize;
+        StartsWith = startsWith;
     }
 }

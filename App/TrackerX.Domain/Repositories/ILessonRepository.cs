@@ -1,10 +1,9 @@
 ﻿using TrackerX.Domain.Entities;
 using TrackerX.Domain.Infrastructure;
 
-namespace TrackerX.Domain.Repositories
+namespace TrackerX.Domain.Repositories;
+
+public interface ILessonRepository : IRepository<Lesson>
 {
-    public interface ILessonRepository : IRepository<Lesson>
-    {
-        
-    }
+    
 }

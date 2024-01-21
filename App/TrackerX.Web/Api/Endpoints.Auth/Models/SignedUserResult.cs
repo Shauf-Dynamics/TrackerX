@@ -1,9 +1,8 @@
-﻿namespace TrackerX.Web.Api.Endpoints.Admin.Models
-{
-    public class SignedUserResult
-    {
-        public string UserName { get; set; }
+﻿namespace TrackerX.Web.Api.Endpoints.Admin.Models;
 
-        public string Role { get; set; }
-    }
+public class SignedUserResult
+{
+    public string UserName { get; set; }
+
+    public string Role { get; set; }
 }

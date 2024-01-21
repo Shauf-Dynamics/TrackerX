@@ -1,17 +1,16 @@
-﻿namespace TrackerX.Services.Musics.Models
+﻿namespace TrackerX.Services.Musics.Models;
+
+public class CreateMusicModel
 {
-    public class CreateMusicModel
-    {
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public int WritingYear { get; set; }
+    public int WritingYear { get; set; }
 
-        public int Tempo { get; set; }
+    public int Tempo { get; set; }
 
-        public bool IsInstrumental { get; set; } = false;
+    public bool IsInstrumental { get; set; } = false;
 
-        public int GenreId { get; set; }
+    public int GenreId { get; set; }
 
-        public int BandId { get; set; }
-    }
+    public int BandId { get; set; }
 }

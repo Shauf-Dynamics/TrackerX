@@ -4,17 +4,16 @@ using TrackerX.Service.Bands.Infrastructure;
 using TrackerX.Service.Albums.Infrastructure;
 using TrackerX.Service.Accounts.Infrastructure;
 
-namespace TrackerX.Web.Moduls
+namespace TrackerX.Web.Moduls;
+
+public static class BusinessServicesCollectionExtension
 {
-    public static class BusinessServicesCollectionExtension
+    public static void AddBusinessServices(this IServiceCollection services)
     {
-        public static void AddBusinessServices(this IServiceCollection services)
-        {
-            services.AddMusicServices();
-            services.AddLessonServices();
-            services.AddBandServices();
-            services.AddAlbumServices();
-            services.AddAccountServices();            
-        }
+        services.AddMusicServices();
+        services.AddLessonServices();
+        services.AddBandServices();
+        services.AddAlbumServices();
+        services.AddAccountServices();            
     }
 }

@@ -1,9 +1,8 @@
-﻿namespace TrackerX.Infrastructure
+﻿namespace TrackerX.Infrastructure;
+
+public enum StatusType
 {
-    public enum StatusType
-    {
-        Success,
-        Invalid,
-        Failure
-    }
+    Success,
+    Invalid,
+    Failure
 }

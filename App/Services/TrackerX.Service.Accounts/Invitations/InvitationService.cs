@@ -5,84 +5,83 @@ using TrackerX.Domain.Entities;
 using TrackerX.Domain.Repositories;
 using TrackerX.Services.Infrastructure;
 
-namespace TrackerX.Services.Accounts.Invitations
+namespace TrackerX.Services.Accounts.Invitations;
+
+public class InvitationService : IInvitationService
 {
-    public class InvitationService : IInvitationService
+    private readonly IInvitationRepository _invitationRepository;
+    private readonly IMapper _mapper;
+
+    public InvitationService(IInvitationRepository invitationRepository, IMapper mapper)
     {
-        private readonly IInvitationRepository _invitationRepository;
-        private readonly IMapper _mapper;
+        _invitationRepository = invitationRepository;
+        _mapper = mapper;
+    }
 
-        public InvitationService(IInvitationRepository invitationRepository, IMapper mapper)
+    public async Task AbortInvitationAsync(int invitationId)
+    {
+        var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.InvitationId == invitationId);
+
+        if(invitation != null) 
         {
-            _invitationRepository = invitationRepository;
-            _mapper = mapper;
-        }
-
-        public async Task AbortInvitationAsync(int invitationId)
-        {
-            var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.InvitationId == invitationId);
-
-            if(invitation != null) 
-            {
-                invitation.IsInvitationAborted = true;
-
-                _invitationRepository.Update(invitation);
-                await _invitationRepository.SaveChangesAsync();
-            }            
-        }
-
-        public async Task AcceptInvitationAsync(int invitationId, int userId)
-        {
-            var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.InvitationId == invitationId);
-
-            invitation.UserId = userId;
-            invitation.AcceptedDate = DateTime.UtcNow;
+            invitation.IsInvitationAborted = true;
 
             _invitationRepository.Update(invitation);
             await _invitationRepository.SaveChangesAsync();
-        }
+        }            
+    }
 
-        public async Task CreateInvitationAsync(string code, DateTime? dueTo)
-        {
-            var invitation = new Invitation();
-            invitation.Code = code;
-            invitation.ValideDueDate = dueTo;
+    public async Task AcceptInvitationAsync(int invitationId, int userId)
+    {
+        var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.InvitationId == invitationId);
 
-            _invitationRepository.Create(invitation);
-            await _invitationRepository.SaveChangesAsync();
-        }
+        invitation.UserId = userId;
+        invitation.AcceptedDate = DateTime.UtcNow;
 
-        public async Task<InvitationModel> GetInvitationByCodeAsync(string code)
-        {
-            var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.Code == code);
+        _invitationRepository.Update(invitation);
+        await _invitationRepository.SaveChangesAsync();
+    }
 
-            return _mapper.Map<InvitationModel>(invitation);
-        }
+    public async Task CreateInvitationAsync(string code, DateTime? dueTo)
+    {
+        var invitation = new Invitation();
+        invitation.Code = code;
+        invitation.ValideDueDate = dueTo;
 
-        public async Task<IEnumerable<InvitationModel>> GetInvitationListAsync(bool includeAccepted, bool includeAborted)
-        {
-            var invitations = await _invitationRepository.GetAllInvitationsAsync(includeAccepted, includeAborted);
+        _invitationRepository.Create(invitation);
+        await _invitationRepository.SaveChangesAsync();
+    }
 
-            return _mapper.Map<IEnumerable<InvitationModel>>(invitations);            
-        }
+    public async Task<InvitationModel> GetInvitationByCodeAsync(string code)
+    {
+        var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.Code == code);
 
-        public async Task<ServiceResult<InvitationModel>> GetValidInvitationCodeAsync(string code)
-        {
-            var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.Code == code);
+        return _mapper.Map<InvitationModel>(invitation);
+    }
 
-            if (invitation == null)
-                return new ServiceResult<InvitationModel>(StatusType.Failure, "Invitation with this code does not exist");
+    public async Task<IEnumerable<InvitationModel>> GetInvitationListAsync(bool includeAccepted, bool includeAborted)
+    {
+        var invitations = await _invitationRepository.GetAllInvitationsAsync(includeAccepted, includeAborted);
 
-            if (invitation.IsInvitationAborted)
-                return new ServiceResult<InvitationModel>(StatusType.Failure, "Invitation is no longer valid");
+        return _mapper.Map<IEnumerable<InvitationModel>>(invitations);            
+    }
 
-            if (invitation.ValideDueDate > DateTime.UtcNow)
-                return new ServiceResult<InvitationModel>(StatusType.Failure, "Invitation was expired");
+    public async Task<ServiceResult<InvitationModel>> GetValidInvitationCodeAsync(string code)
+    {
+        var invitation = await _invitationRepository.FirstOrDefaultAsync(x => x.Code == code);
 
-            if (invitation.UserId != null)
-                return new ServiceResult<InvitationModel>(StatusType.Failure, "Invitation has already been used");
+        if (invitation == null)
+            return new ServiceResult<InvitationModel>(StatusType.Failure, "Invitation with this code does not exist");
 
-            return new ServiceResult<InvitationModel>(_mapper.Map<InvitationModel>(invitation), StatusType.Success);            
-        }
+        if (invitation.IsInvitationAborted)
+            return new ServiceResult<InvitationModel>(StatusType.Failure, "Invitation is no longer valid");
+
+        if (invitation.ValideDueDate > DateTime.UtcNow)
+            return new ServiceResult<InvitationModel>(StatusType.Failure, "Invitation was expired");
+
+        if (invitation.UserId != null)
+            return new ServiceResult<InvitationModel>(StatusType.Failure, "Invitation has already been used");
+
+        return new ServiceResult<InvitationModel>(_mapper.Map<InvitationModel>(invitation), StatusType.Success);            
     }
 }

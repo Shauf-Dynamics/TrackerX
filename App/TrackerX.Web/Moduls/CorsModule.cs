@@ -1,20 +1,19 @@
-﻿namespace TrackerX.Web.Moduls
+﻿namespace TrackerX.Web.Moduls;
+
+public static class CorsCollectionExtension
 {
-    public static class CorsCollectionExtension
+    public static void AddCustomCors(this IServiceCollection services, string corsPolicyName)
     {
-        public static void AddCustomCors(this IServiceCollection services, string corsPolicyName)
+        services.AddCors(options =>
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy(
-                    name: corsPolicyName,
-                    policy =>
-                    {
-                        policy.WithOrigins("http://localhost:4200")
-                              .AllowAnyHeader()
-                              .AllowCredentials();
-                    });
-            });
-        }
+            options.AddPolicy(
+                name: corsPolicyName,
+                policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowCredentials();
+                });
+        });
     }
 }

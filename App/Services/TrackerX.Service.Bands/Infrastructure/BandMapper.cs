@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 
-namespace TrackerX.Service.Bands.Infrastructure
+namespace TrackerX.Service.Bands.Infrastructure;
+
+public class BandMapper : Profile
 {
-    public class BandMapper : Profile
+    public BandMapper()
     {
-        public BandMapper()
-        {
-            
-        }
+        
     }
 }

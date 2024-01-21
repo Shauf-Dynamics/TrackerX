@@ -1,13 +1,12 @@
 ﻿using TrackerX.Services.Musics.Models;
 
-namespace TrackerX.Services.Musics
+namespace TrackerX.Services.Musics;
+
+public interface IMusicSearchService
 {
-    public interface IMusicSearchService
-    {
-        Task<SongDetailsResult> GetMusicById(int musicId);
+    Task<SongDetailsResult> GetMusicById(int musicId);
 
-        Task<IEnumerable<SongSearchResult>> GetMusicListBySearchCriterias(string text, string searchBy);
+    Task<IEnumerable<SongSearchResult>> GetMusicListBySearchCriterias(string text, string searchBy);
 
-        Task<IEnumerable<GenresResult>> GetAllGenres();
-    }
+    Task<IEnumerable<GenresResult>> GetAllGenres();
 }

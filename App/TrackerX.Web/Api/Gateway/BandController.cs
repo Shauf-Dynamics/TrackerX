@@ -3,57 +3,56 @@ using Microsoft.AspNetCore.Mvc;
 using TrackerX.Services.Bands;
 using TrackerX.Services.Bands.Models;
 
-namespace TrackerX.Web.Api.Gateway
-{
-    [ApiController]
-    [Authorize]
-    [Route("api/bands")]
-    public class BandController : ControllerBase
-    {        
-        private readonly IBandService _bandService;
+namespace TrackerX.Web.Api.Gateway;
 
-        public BandController(IBandService bandService)
-        {
-            _bandService = bandService;
-        }
+[ApiController]
+[Authorize]
+[Route("api/bands")]
+public class BandController : ControllerBase
+{        
+    private readonly IBandService _bandService;
 
-        [HttpGet]
+    public BandController(IBandService bandService)
+    {
+        _bandService = bandService;
+    }
 
-        [Route("v1/list")]
-        [ProducesResponseType(typeof(BandsViewModel), 200)]        
-        public async Task<IActionResult> Get([FromQuery] int pageSize)
-        {
-            var result = await _bandService.GetBandsByCriterias(new BandsSearchParams(pageSize, string.Empty));
+    [HttpGet]
 
-            return Ok(result);
-        }
+    [Route("v1/list")]
+    [ProducesResponseType(typeof(BandsViewModel), 200)]        
+    public async Task<IActionResult> Get([FromQuery] int pageSize)
+    {
+        var result = await _bandService.GetBandsByCriterias(new BandsSearchParams(pageSize, string.Empty));
 
-        [HttpGet]        
-        [Route("v1/list/search")]
-        [ProducesResponseType(typeof(BandsViewModel), 200)]        
-        public async Task<IActionResult> Get([FromQuery]int pageSize, [FromQuery] string startsWith)
-        {
-            var result = await _bandService.GetBandsByCriterias(new BandsSearchParams(pageSize, startsWith));
+        return Ok(result);
+    }
 
-            return Ok(result);
-        }
+    [HttpGet]        
+    [Route("v1/list/search")]
+    [ProducesResponseType(typeof(BandsViewModel), 200)]        
+    public async Task<IActionResult> Get([FromQuery]int pageSize, [FromQuery] string startsWith)
+    {
+        var result = await _bandService.GetBandsByCriterias(new BandsSearchParams(pageSize, startsWith));
 
-        [HttpPost]
-        [Route("v1/create")]
-        public async Task<IActionResult> Post([FromBody]CreateBandModel model)
-        {
-            await _bandService.CreateBand(model);
+        return Ok(result);
+    }
 
-            return Ok();
-        }
+    [HttpPost]
+    [Route("v1/create")]
+    public async Task<IActionResult> Post([FromBody]CreateBandModel model)
+    {
+        await _bandService.CreateBand(model);
 
-        [HttpPut]
-        [Route("v1/rename")]
-        public async Task<IActionResult> Put([FromQuery]int id, [FromBody]string model)
-        {
-            await _bandService.RenameBand(id, model);
+        return Ok();
+    }
 
-            return Ok();
-        }
+    [HttpPut]
+    [Route("v1/rename")]
+    public async Task<IActionResult> Put([FromQuery]int id, [FromBody]string model)
+    {
+        await _bandService.RenameBand(id, model);
+
+        return Ok();
     }
 }

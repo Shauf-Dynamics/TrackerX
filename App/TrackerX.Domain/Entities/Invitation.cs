@@ -1,19 +1,18 @@
-﻿namespace TrackerX.Domain.Entities
+﻿namespace TrackerX.Domain.Entities;
+
+public sealed class Invitation : BaseEntity
 {
-    public sealed class Invitation : BaseEntity
-    {
-        public int InvitationId { get; set; }        
+    public int InvitationId { get; set; }        
 
-        public string Code { get; set; }
+    public string Code { get; set; }
 
-        public DateTime? ValideDueDate { get; set; }
+    public DateTime? ValideDueDate { get; set; }
 
-        public DateTime? AcceptedDate { get; set; }
+    public DateTime? AcceptedDate { get; set; }
 
-        public bool IsInvitationAborted { get; set; }
+    public bool IsInvitationAborted { get; set; }
 
-        public int? UserId { get; set; }
+    public int? UserId { get; set; }
 
-        public User User { get; set; }
-    }
+    public User User { get; set; }
 }

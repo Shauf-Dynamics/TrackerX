@@ -1,5 +1,11 @@
 <tx-music-container [selectedTabIndex]="3">
-    <tx-autocomplete [value]="'hello'" [suggestions$]="suggestions$" (onChangeEvent)="onBandChanged($event)"></tx-autocomplete>
+    <input list="mainGenres" name="menace">
+    <datalist id="menace">
+        <option *ngFor="let d of mainGenres">{{d.genreName}} </option>
+    </datalist>
+    <select2 customSearchEnabled [overlay]="false" [data]="data" [value]="value2" (update)="update('value2', $event)" id="selec2-2">
+        <select2-label>Select a state</select2-label>
+    </select2>
     <main>
         <div class="tx-mc-select-type">
             <p class="tx-mc-step-p">Step 1</p>

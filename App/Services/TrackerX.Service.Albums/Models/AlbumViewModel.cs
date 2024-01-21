@@ -1,11 +1,10 @@
-﻿namespace TrackerX.Core.Services.Albums.Models
+﻿namespace TrackerX.Core.Services.Albums.Models;
+
+public class AlbumViewModel
 {
-    public class AlbumViewModel
-    {
-        public string AlbumId { get; set; }
+    public string AlbumId { get; set; }
 
-        public string AlbumName { get; set; }
+    public string AlbumName { get; set; }
 
-        public int WritingYear { get; set; }        
-    }
+    public int WritingYear { get; set; }        
 }

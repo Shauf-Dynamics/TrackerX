@@ -1,13 +1,12 @@
 ﻿using TrackerX.Services.Bands.Models;
 
-namespace TrackerX.Services.Bands
+namespace TrackerX.Services.Bands;
+
+public interface IBandService
 {
-    public interface IBandService
-    {
-        Task CreateBand(CreateBandModel name);
+    Task CreateBand(CreateBandModel name);
 
-        Task RenameBand(int bandId, string newName);
+    Task RenameBand(int bandId, string newName);
 
-        Task<IEnumerable<BandsViewModel>> GetBandsByCriterias(BandsSearchParams criterias);
-    }
+    Task<IEnumerable<BandsViewModel>> GetBandsByCriterias(BandsSearchParams criterias);
 }

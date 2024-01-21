@@ -1,6 +1,6 @@
 <div *ngIf="isLoggedIn$ | async; else login">
     <tx-spa-container></tx-spa-container>
 </div>
-<ng-template #login>
+<ng-template #login>     
     <tx-auth-container></tx-auth-container>
 </ng-template>
