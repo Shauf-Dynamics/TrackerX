@@ -9,7 +9,6 @@ public static class AuthCollectionExtension
     {
         services.Configure<SuperAdminOptions>(configuration.GetSection("Credentials:Superadmin"));
 
-
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {

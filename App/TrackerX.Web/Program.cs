@@ -1,10 +1,9 @@
 using TrackerX.Web.Moduls;
 using TrackerX.Cryptography;
-using TrackerX.Web.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var appConfigurationsConnectionString = builder.Configuration.GetConnectionString("ConnectionString__App");
+var appConfigurationsConnectionString = builder.Configuration.GetValue<string>("ConnectionString__App");
 if (!string.IsNullOrWhiteSpace(appConfigurationsConnectionString))
 {
     builder.Configuration.AddAzureAppConfiguration(options =>
