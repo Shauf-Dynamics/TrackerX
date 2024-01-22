@@ -1,31 +1,38 @@
-using TrackerX.Web;
 using TrackerX.Web.Moduls;
 using TrackerX.Cryptography;
+using TrackerX.Web.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var allowSpecificOrigins = "_allowSpecificOrigins";
-builder.Services.AddCustomCors(allowSpecificOrigins);
+var appConfigurationsConnectionString = builder.Configuration.GetConnectionString("ConnectionString__App");
+if (!string.IsNullOrWhiteSpace(appConfigurationsConnectionString))
+{
+    builder.Configuration.AddAzureAppConfiguration(options =>
+    {
+        options.Connect(appConfigurationsConnectionString);
+    });
+}
 
+var allowSpecificOrigins = "_allowSpecificOrigins";
+builder.Services.AddCustomCors(builder.Configuration, allowSpecificOrigins);
 builder.Services.AddCryptographyServices();
 builder.Services.AddBusinessServices();
+
+builder.Services.AddDataAccess(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAuth();
-
-builder.Services.AddDataAccess(builder.Configuration.GetConnectionString("dev"));
+builder.Services.AddAuth(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
+if (app.Environment.IsDevelopment())
+{
      app.UseSwagger();
      app.UseSwaggerUI();
-//}
+}
 
 app.UseCors(allowSpecificOrigins);
 

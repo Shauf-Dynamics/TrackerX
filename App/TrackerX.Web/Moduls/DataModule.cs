@@ -8,9 +8,9 @@ namespace TrackerX.Web.Moduls;
 
 public static class DataModule
 {
-    public static void AddDataAccess(this IServiceCollection services, string connection)
+    public static void AddDataAccess(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<DataContext>(x => x.UseSqlServer(connection));
+        services.AddDbContext<DataContext>(x => x.UseSqlServer(configuration.GetValue<string>("Database:ConnectionString")));
 
         services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
         services.AddTransient<IBandRepository, BandRepository>();

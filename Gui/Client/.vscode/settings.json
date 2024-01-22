@@ -2,5 +2,7 @@
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
         ".vscode{,/**}"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/c2059668-3c11-4dc3-b02b-803c9cb1d1f5/resourceGroups/trackerX-group/providers/Microsoft.Web/sites/trackerX",
+    "appService.deploySubpath": "trackerx-app\\dist\\trackerx-app"
 }

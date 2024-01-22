@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using TrackerX.Infrastructure;
 using TrackerX.Services.Accounts.Users;
 using TrackerX.Services.Accounts.Users.Models;
 using TrackerX.Web.Api.Endpoints.Admin.Models;
+using TrackerX.Web.Configurations;
 
 namespace TrackerX.Web.Api.Gateway.Account;
 
@@ -15,12 +17,12 @@ namespace TrackerX.Web.Api.Gateway.Account;
 public class AuthenticationController : ControllerBase
 {
     private readonly IUserService _userService;
-    private readonly IConfiguration _config;
+    private readonly SuperAdminOptions _superAdminOptions;
 
-    public AuthenticationController(IUserService userService, IConfiguration config)
+    public AuthenticationController(IUserService userService, IOptionsSnapshot<SuperAdminOptions> optionsSnapshot)
     {
         _userService = userService;
-        _config = config;
+        _superAdminOptions = optionsSnapshot.Value;
     }
 
     [HttpGet]
@@ -100,10 +102,8 @@ public class AuthenticationController : ControllerBase
     }
 
     private bool IsSuperAdmin(string name, string password)
-    {
-        var saLogin = _config["Credentials:SuperadminLogin"];
-        var saPassword = _config["Credentials:SuperadminPassword"];
-
-        return name.Equals(saLogin) && password.Equals(saPassword);
+    {        
+        return name.Equals(_superAdminOptions.Login) && 
+               password.Equals(_superAdminOptions.Password);
     }
 }

@@ -1,11 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using TrackerX.Web.Configurations;
 
 namespace TrackerX.Web.Moduls;
 
 public static class AuthCollectionExtension
 {
-    public static void AddAuth(this IServiceCollection services)
+    public static void AddAuth(this IServiceCollection services, IConfiguration configuration)
     {
+        services.Configure<SuperAdminOptions>(configuration.GetSection("Credentials:Superadmin"));
+
+
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {

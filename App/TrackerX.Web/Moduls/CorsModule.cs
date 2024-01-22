@@ -2,7 +2,7 @@
 
 public static class CorsCollectionExtension
 {
-    public static void AddCustomCors(this IServiceCollection services, string corsPolicyName)
+    public static void AddCustomCors(this IServiceCollection services, IConfiguration configuration, string corsPolicyName)
     {
         services.AddCors(options =>
         {
@@ -10,7 +10,7 @@ public static class CorsCollectionExtension
                 name: corsPolicyName,
                 policy =>
                 {
-                    policy.WithOrigins("http://localhost:4200")
+                    policy.WithOrigins(configuration.GetValue<string>("Host:Settings:Url"))
                           .AllowAnyHeader()
                           .AllowCredentials();
                 });
