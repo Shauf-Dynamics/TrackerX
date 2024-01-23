@@ -10,7 +10,7 @@ public static class CorsCollectionExtension
                 name: corsPolicyName,
                 policy =>
                 {
-                    policy.WithOrigins(configuration.GetValue<string>("Host:Settings:Url"))
+                    policy.WithOrigins(configuration.GetValue<string>("App:Settings:ClientUrl"))
                           .AllowAnyHeader()
                           .AllowCredentials();
                 });

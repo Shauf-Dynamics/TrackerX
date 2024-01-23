@@ -1,5 +1,6 @@
 using TrackerX.Web.Moduls;
 using TrackerX.Cryptography;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,7 @@ if (!string.IsNullOrWhiteSpace(appConfigurationsConnectionString))
 {
     builder.Configuration.AddAzureAppConfiguration(options =>
     {
-        options.Connect(appConfigurationsConnectionString);
+        options.Connect(new Uri(appConfigurationsConnectionString), new DefaultAzureCredential());
     });
 }
 
@@ -27,11 +28,8 @@ builder.Services.AddAuth(builder.Configuration);
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-     app.UseSwagger();
-     app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors(allowSpecificOrigins);
 

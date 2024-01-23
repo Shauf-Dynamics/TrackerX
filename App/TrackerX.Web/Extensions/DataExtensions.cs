@@ -6,7 +6,7 @@ using TrackerX.Domain.Repositories;
 
 namespace TrackerX.Web.Moduls;
 
-public static class DataModule
+public static class DataExtensions
 {
     public static void AddDataAccess(this IServiceCollection services, IConfiguration configuration)
     {
