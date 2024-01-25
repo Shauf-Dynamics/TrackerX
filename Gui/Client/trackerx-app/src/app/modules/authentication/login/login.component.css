@@ -1,5 +1,14 @@
-i {
-    margin-top: 10%;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+}
+
+.icon-wrapper {
+    margin-bottom: 10%;
 }
 
 .tx-sign-in-text {
