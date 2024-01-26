@@ -8,7 +8,7 @@ internal class LessonConfiguration : IEntityTypeConfiguration<Lesson>
 {
     public void Configure(EntityTypeBuilder<Lesson> builder)
     {
-        builder.ToTable("tbl_lt_lessons");
+        builder.ToTable("tbl_lt_lesson");
 
         builder.HasKey(e => e.LessonId);
 

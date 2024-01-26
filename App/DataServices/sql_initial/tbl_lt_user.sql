@@ -1,8 +1,8 @@
 USE [db_TrackerX]
 
-IF (NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'db_TrackerX' AND  TABLE_NAME = ' tbl_lt_users'))
+IF (NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND  TABLE_NAME = ' tbl_lt_user'))
 BEGIN
-    CREATE TABLE tbl_lt_users (
+    CREATE TABLE tbl_lt_user (
         user_id                INT IDENTITY(1,1) PRIMARY KEY,
         user_name              NVARCHAR(64),
         user_email             NVARCHAR(128),

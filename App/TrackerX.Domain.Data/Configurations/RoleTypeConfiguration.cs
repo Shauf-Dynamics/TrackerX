@@ -8,7 +8,7 @@ internal class RoleTypeConfiguration : IEntityTypeConfiguration<RoleType>
 {
     public void Configure(EntityTypeBuilder<RoleType> builder)
     {
-        builder.ToTable("tbl_ad_user_roles");
+        builder.ToTable("tbl_ad_user_role");
 
         builder.HasKey(e => e.RoleTypeId);
 

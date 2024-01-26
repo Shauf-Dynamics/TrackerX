@@ -8,7 +8,7 @@ internal class MusicConfiguration : IEntityTypeConfiguration<Music>
 {
     public void Configure(EntityTypeBuilder<Music> builder)
     {
-        builder.ToTable("tbl_lt_musics");
+        builder.ToTable("tbl_lt_music");
 
         builder.HasKey(e => e.MusicId);
 

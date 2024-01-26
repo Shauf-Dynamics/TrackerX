@@ -1,8 +1,8 @@
 USE [db_TrackerX]
 
-IF (NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'db_TrackerX' AND  TABLE_NAME = ' tbl_lt_songs'))
+IF (NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND  TABLE_NAME = ' tbl_lt_song'))
 BEGIN
-    CREATE TABLE tbl_lt_songs (
+    CREATE TABLE tbl_lt_song (
         song_id          INT IDENTITY(1,1) PRIMARY KEY,
         song_name        NVARCHAR(128) NOT NULL,
         band_id          INT NOT NULL,

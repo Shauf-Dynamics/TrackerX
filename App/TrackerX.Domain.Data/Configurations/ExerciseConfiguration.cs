@@ -8,7 +8,7 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
 {
     public void Configure(EntityTypeBuilder<Exercise> builder)
     {
-        builder.ToTable("tbl_lt_exercises");
+        builder.ToTable("tbl_lt_exercise");
 
         builder.HasKey(e => e.ExerciseId);
 

@@ -1,8 +1,8 @@
 USE [db_TrackerX]
 
-IF (NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'db_TrackerX' AND  TABLE_NAME = 'tbl_lt_exercises'))
+IF (NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND  TABLE_NAME = 'tbl_lt_exercise'))
 BEGIN
-    CREATE TABLE tbl_lt_exercises (
+    CREATE TABLE tbl_lt_exercise (
         exercise_id          INT IDENTITY(1,1) PRIMARY KEY,
         exercise_duration    INT,
         exercise_description NVARCHAR(MAX),    

@@ -8,7 +8,7 @@ internal class ExerciseTypeConfiguration : IEntityTypeConfiguration<ExerciseType
 {
     public void Configure(EntityTypeBuilder<ExerciseType> builder)
     {
-        builder.ToTable("tbl_ad_exercise_types");
+        builder.ToTable("tbl_ad_exercise_type");
 
         builder.HasKey(e => e.ExerciseTypeId);
 
