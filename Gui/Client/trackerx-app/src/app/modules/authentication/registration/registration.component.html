@@ -1,32 +1,48 @@
 <main>
-    <div align="center">
-        <p class="tx-p-header">Create Account</p>
+    <div class="container">
+        <div class="header-wrapper">
+            <p class="header-text">Create Account</p>
+        </div>
+        <form class="form-container" [formGroup]="registrationForm" method="post" autocomplete="off" (submit)="signUp()">
+            <div class="row">
+                <label for="name">Email</label>
+                <input class="text-box" name="email" formControlName="email" autocomplete="nope"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+            </div>
+            <div class="row">
+                <label for="name">Name</label>
+                <input class="text-box" type="text" name="name" formControlName="name" />
+            </div>
+            <div class="row">
+                <label for="password">Password</label>
+                <input class="text-box" type="password" name="password" formControlName="password" autocomplete="new-password" />
+            </div>           
+            <div class="row" *ngIf="fieldsErrorMessage != null">
+                <p class="warning-msg">{{ fieldsErrorMessage }}</p>
+            </div>         
+            <div class="row">
+                <div class="invitation">
+                    <p>Registration is available with invitation code only.</p>
+                    <label for="invitationCode">Invitation Code</label>                   
+                    <input class="text-box" type="text" name="invitationCode" formControlName="invitationCode"/>            
+                </div>                
+                <div class="row" *ngIf="invitationErrorMessage != null">
+                    <p class="warning-msg">{{ invitationErrorMessage }}</p>
+                </div> 
+            </div>                    
+            <div class="row">
+                <button class="btn" type="submit">Sign Up</button>
+            </div>
+        </form>    
+        <div class="signin-wrapper">
+            <span>Have already an account? 
+                <a routerLink="/login">Sign in here</a>
+            </span>
+        </div>
+        <footer>
+            <p>
+                © 2024 Music TrackerX. All rights reserved | Designed by Shauf Dynamics
+            </p>
+        </footer>
     </div>
-    <form [formGroup]="registrationForm" method="post" autocomplete="off" (submit)="signUp($event)">
-        <div class="row">
-            <label class="tx-label-email" for="name">Email</label>
-            <input class="text-box" name="email" formControlName="email" autocomplete="off"/>
-        </div>
-        <div class="row">
-            <label class="tx-label-name" for="password">Name</label>
-            <input class="text-box" type="text" name="name" formControlName="name" autocomplete="off" />
-        </div>
-        <div class="row">
-            <label class="tx-label-password" for="password">Password</label>
-            <input class="text-box" type="password" name="password" formControlName="password"  autocomplete="off" />
-        </div>        
-        <div class="tx-invitation-br"></div>        
-        <div>
-            <p class="tx-p-invitation-info">Registration is available with invitation code only.</p>
-        </div>        
-        <div class="tx-row-invitation">
-            <label class="tx-label-invitation" for="invitationCode">Invitation Code</label>                   
-            <input class="text-box tx-text-box-invitation" type="text" name="invitationCode" formControlName="invitationCode" autocomplete="off"/>            
-        </div>
-        <br/>
-        <div align="right">
-            <button class="col btn btn-primary" type="submit">Sign Up</button>
-        </div>
-    </form>    
-    <footer><span>Have already an account? <a routerLink="/login">Sign in here</a></span></footer>
 </main>

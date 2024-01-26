@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth/auth.service';
 
 const InvalidCredentialsErrorMessage = "Invalid credentials. Please try again.";
-const ServerSideErrorMessage = "Server didn't respond. Please try later.";
+const ServerSideErrorMessage = "Internal server error. Please try later.";
 
 @Component({
     selector: 'tx-login',
@@ -14,18 +14,13 @@ const ServerSideErrorMessage = "Server didn't respond. Please try later.";
 export class LoginComponent implements OnInit {
     public loginForm!: FormGroup;
     public authFailed: boolean = false;
-    public signedIn: boolean = false;
-
     public errorMessage: string;
 
     constructor(
         private authService: AuthService,
         private formBuilder: FormBuilder,
         private router: Router) {
-        this.authService.isLoggedIn().subscribe(
-            isSignedIn => {
-                this.signedIn = isSignedIn;
-            });
+        this.authService.isLoggedIn().subscribe();
     }
 
     public ngOnInit(): void {
@@ -59,8 +54,7 @@ export class LoginComponent implements OnInit {
     }
 
     private setForm(userName: string = '', password: string = ''): void {
-        this.loginForm = this.formBuilder.group(
-            {
+        this.loginForm = this.formBuilder.group( {
                 email: [userName, [Validators.required]],
                 password: [password, [Validators.required]]
             });
