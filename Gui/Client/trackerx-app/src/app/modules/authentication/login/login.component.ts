@@ -32,9 +32,8 @@ export class LoginComponent implements OnInit {
         this.authService.isLoggedIn().subscribe((isAuthorized: boolean) => {
             if (isAuthorized) {
                 this.router.navigateByUrl('app/dashboard');
-            } else {                
+            } else {
                 this.setForm();
-
             }
         })
     }
@@ -46,15 +45,14 @@ export class LoginComponent implements OnInit {
 
             this.authService.signIn(userName, password)
                 .subscribe({
-                    next: _ => {                
+                    next: _ => {
                         this.router.navigateByUrl('app/dashboard');
                     },
                     error: err => {
                         this.setForm(userName, password);
                         this.authFailed = true;
                         this.errorMessage = err?.status == "401" ?
-                            InvalidCredentialsErrorMessage :
-                            ServerSideErrorMessage;                        
+                            InvalidCredentialsErrorMessage : ServerSideErrorMessage;
                     }
                 });
         }

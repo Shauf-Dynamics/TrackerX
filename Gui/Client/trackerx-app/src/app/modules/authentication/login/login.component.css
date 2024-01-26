@@ -32,12 +32,12 @@ main {
     align-items: center;
     margin-bottom: 5%;
 
-    h1 {        
+    h1 {
         font-weight: 700;
         color: rgb(48, 48, 48);
     }
-    
-    h4 {    
+
+    h4 {
         font-size: 18px;
         font-weight: 400;
         color: rgb(97, 97, 97);
@@ -46,29 +46,29 @@ main {
 
 .form-container {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     align-items: flex-end;
     margin: 0 20% 0 10%;
     gap: 1vh;
-    
-    .row {              
+
+    .row {
         label {
             margin: 10px;
         }
-        
+
         input {
             width: 16rem;
-            padding: 0.75rem 1.125rem;       
-            line-height: 0.75; 
-            border: 1px solid #c5c5c58a;        
+            padding: 0.75rem 1.125rem;
+            line-height: 0.75;
+            border: 1px solid #c5c5c58a;
         }
 
         input.ng-invalid.ng-touched {
             border: rgba(255, 0, 0, 0.493) 2px solid;
         }
 
-        .forgot-pwd {            
-            color:  #0050db;;
+        .forgot-pwd {
+            color: #0050db; 
             font-weight: 500;
             font-size: 14.5px;
         }
@@ -79,28 +79,28 @@ main {
             height: 2.33rem;
         }
 
-        .warning-msg {                        
-            color: red;                        
+        .warning-msg {
+            color: red;
         }
     }
 }
 
 .join-wrapper {
-    border-bottom: 1px solid #a8aada57; 
-    line-height: 0.1em;    
+    border-bottom: 1px solid #a8aada57;
+    line-height: 0.1em;
     margin: 10% 5% 0 5%;
-    text-align: center;    
+    text-align: center;
     font-size: 16px;
     font-weight: 400;
     color: rgb(97, 97, 97);
 
-    span { 
-        background:#fff; 
-        padding:0 10px; 
+    span {
+        background: #fff;
+        padding: 0 10px;
     }
 
     a {
-        color: #0050db;;
+        color: #0050db;
         font-weight: 500;
         font-size: 16px;
     }
@@ -108,8 +108,8 @@ main {
 
 footer {
     text-align: center;
-    margin: 8% 0 11px 0;    
+    margin: 8% 0 11px 0;
     font-weight: 500;
     font-size: 13px;
-    color: rgba(0, 0, 0, 0.432);    
+    color: rgba(0, 0, 0, 0.432);
 }

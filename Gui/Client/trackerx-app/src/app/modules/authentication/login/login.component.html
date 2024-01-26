@@ -1,5 +1,5 @@
 <main>
-    <div class="container" *ngIf="!signedIn else signedInAlready">    
+    <div class="container" *ngIf="!signedIn else signedInAlready">
         <div class="icon-wrapper">
             <i class="fa-solid fa-right-to-bracket fa-2xl"></i>
         </div>
@@ -10,7 +10,7 @@
             <h4>
                 Sign in to your account
             </h4>
-        </div>    
+        </div>
         <form class="form-container" [formGroup]="loginForm" (submit)="signIn()">
             <div class="row">
                 <label class="tx-label-email" for="name">Email</label>
@@ -18,15 +18,16 @@
             </div>
             <div class="row">
                 <label class="tx-label-password" for="password">Password</label>
-                <input class="text-box" type="password" name="password" formControlName="password"
-                    autocomplete="on" />
+                <input class="text-box" type="password" name="password" formControlName="password" autocomplete="on" />
             </div>
             <div class="row" *ngIf="authFailed">
                 <p class="warning-msg">{{ errorMessage }}</p>
             </div>
             <div class="row">
-                <a><p class="forgot-pwd">forgot password?</p></a>
-            </div> 
+                <a>
+                    <p class="forgot-pwd">forgot password?</p>
+                </a>
+            </div>
             <div class="row">
                 <button class="col btn btn-primary" type="submit">Sign In</button>
             </div>
@@ -47,4 +48,3 @@
         You are already signed in!
     </div>
 </ng-template>
-
