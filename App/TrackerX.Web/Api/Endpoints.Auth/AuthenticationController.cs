@@ -57,7 +57,7 @@ public class AuthenticationController : ControllerBase
             claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, "_sa"),
-                new Claim(ClaimTypes.Role, "Superadmin"),
+                new Claim(ClaimTypes.Role, "Superadmin")
             };
         }
         else
