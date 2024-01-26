@@ -1,9 +1,12 @@
 <main>
     <div class="container">
+        <div class="icon-wrapper">
+            <i class="fa-solid fa-user-plus fa-2xl"></i>
+        </div>
         <div class="header-wrapper">
             <p class="header-text">Create Account</p>
         </div>
-        <form class="form-container" [formGroup]="registrationForm" method="post" autocomplete="off" (submit)="signUp()">
+        <form class="form-container" [formGroup]="registrationForm" method="post" autocomplete="off" (ngSubmit)="signUp()">
             <div class="row">
                 <label for="name">Email</label>
                 <input class="text-box" name="email" formControlName="email" autocomplete="nope"
