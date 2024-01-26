@@ -76,7 +76,7 @@ public class InvitationService : IInvitationService
         if (invitation.IsInvitationAborted)
             return new ServiceResult<InvitationModel>(StatusType.Failure, "Invitation is no longer valid");
 
-        if (invitation.ValideDueDate > DateTime.UtcNow)
+        if (invitation.ValideDueDate < DateTime.UtcNow)
             return new ServiceResult<InvitationModel>(StatusType.Failure, "Invitation was expired");
 
         if (invitation.UserId != null)
