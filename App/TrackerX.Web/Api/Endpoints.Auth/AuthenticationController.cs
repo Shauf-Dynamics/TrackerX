@@ -64,7 +64,7 @@ public class AuthenticationController : ControllerBase
         {
             var userResult = await _userService.GetAuthorizedUserAsync(model.Login, model.Password);
             if (userResult.Status == StatusType.Failure)
-                return Forbid(userResult.ErrorMessage);
+                return Unauthorized(userResult.ErrorMessage);
 
             AuthorizedUserDto user = userResult.Result;
             claims = new List<Claim>
