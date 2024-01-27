@@ -37,7 +37,7 @@ public class UserService : IUserService
         if (!_passwordHashProvider.Verify(password, user.PasswordHash))           
             return new ServiceResult<AuthorizedUserDto>(StatusType.Failure, "Password is not correct");
 
-        var result = new AuthorizedUserDto(user.Name, user.RoleType.RoleTypeName);
+        var result = new AuthorizedUserDto(user.UserId, user.Name, user.RoleType.RoleTypeName);
 
         return new ServiceResult<AuthorizedUserDto>(result, StatusType.Success);
     }

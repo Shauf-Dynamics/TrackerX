@@ -4,9 +4,9 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations;
 
-public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
+public class ExerciseConfiguration : BaseEntityTypeConfiguration<Exercise>
 {
-    public void Configure(EntityTypeBuilder<Exercise> builder)
+    public override void Configure(EntityTypeBuilder<Exercise> builder)
     {
         builder.ToTable("tbl_lt_exercise");
 
@@ -58,5 +58,7 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
         builder.HasOne(x => x.Lesson)
             .WithMany(x => x.Exercises)
             .HasForeignKey(k => k.LessonId);
+
+        base.Configure(builder);
     }
 }

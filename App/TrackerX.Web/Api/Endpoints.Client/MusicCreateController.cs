@@ -5,8 +5,8 @@ using TrackerX.Services.Musics.Models;
 
 namespace TrackerX.Web.Api.Endpoints.Client;
 
-[Authorize]
 [ApiController]
+[Authorize]
 [Route("api/music/create")]
 public class MusicCreateController : Controller
 {

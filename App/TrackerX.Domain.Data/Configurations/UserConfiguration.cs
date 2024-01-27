@@ -4,9 +4,9 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations;
 
-internal class UserConfiguration : IEntityTypeConfiguration<User>
+internal class UserConfiguration : BaseEntityTypeConfiguration<User>
 {
-    public void Configure(EntityTypeBuilder<User> builder)
+    public override void Configure(EntityTypeBuilder<User> builder)
     {
         builder.ToTable("tbl_lt_user");
 
@@ -39,5 +39,7 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasOne(e => e.RoleType)
             .WithMany()
             .HasForeignKey(k => k.RoleTypeId);
+
+        base.Configure(builder);
     }
 }

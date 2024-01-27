@@ -4,9 +4,9 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations;
 
-internal class GenreConfiguration : IEntityTypeConfiguration<Genre>
+internal class GenreConfiguration : BaseEntityTypeConfiguration<Genre>
 {
-    public void Configure(EntityTypeBuilder<Genre> builder)
+    public override void Configure(EntityTypeBuilder<Genre> builder)
     {
         builder.ToTable("tbl_ad_genre");
 
@@ -25,5 +25,7 @@ internal class GenreConfiguration : IEntityTypeConfiguration<Genre>
         builder.HasMany(e => e.Subgenres)
             .WithOne(e => e.ParentGenre)
             .HasForeignKey(k => k.ParentGenreId);
+
+        base.Configure(builder);
     }
 }

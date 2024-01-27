@@ -4,9 +4,9 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations;
 
-internal class InvitationConfiguration : IEntityTypeConfiguration<Invitation>
+internal class InvitationConfiguration : BaseEntityTypeConfiguration<Invitation>
 {
-    public void Configure(EntityTypeBuilder<Invitation> builder)
+    public override void Configure(EntityTypeBuilder<Invitation> builder)
     {
         builder.ToTable("tbl_lt_user_invitation");
 
@@ -36,6 +36,8 @@ internal class InvitationConfiguration : IEntityTypeConfiguration<Invitation>
         builder.HasOne(e => e.User)
             .WithMany()
             .HasForeignKey(c => c.UserId)
-            .IsRequired(false);                
+            .IsRequired(false);
+
+        base.Configure(builder);
     }
 }

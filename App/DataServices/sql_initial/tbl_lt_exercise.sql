@@ -11,6 +11,11 @@ BEGIN
         exercise_tempo_high  INT,
         tempo_type_id        INT,        
         song_id              INT,
-        lesson_Id            INT
+        lesson_Id            INT,
+        created_dttm         DATETIME,
+        modified_dttm        DATETIME,
+        created_by_user_id   INT,
+        modified_by_user_id  INT,
+        deleled_ind          BIT DEFAULT(0)
     );
 END

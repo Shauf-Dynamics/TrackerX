@@ -4,9 +4,9 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations;
 
-public class BandConfiguration : IEntityTypeConfiguration<Band>
-{        
-    public void Configure(EntityTypeBuilder<Band> builder)
+public class BandConfiguration : BaseEntityTypeConfiguration<Band>
+{
+    public override void Configure(EntityTypeBuilder<Band> builder)
     {
         builder.ToTable("tbl_lt_band");
 
@@ -21,5 +21,7 @@ public class BandConfiguration : IEntityTypeConfiguration<Band>
         builder.HasMany(e => e.Songs)
             .WithOne(e => e.Band)
             .HasForeignKey(e => e.BandId);
+
+        base.Configure(builder);
     }
 }

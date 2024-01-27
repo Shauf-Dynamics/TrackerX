@@ -4,9 +4,9 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations;
 
-internal class RoleTypeConfiguration : IEntityTypeConfiguration<RoleType>
+internal class RoleTypeConfiguration : BaseEntityTypeConfiguration<RoleType>
 {
-    public void Configure(EntityTypeBuilder<RoleType> builder)
+    public override void Configure(EntityTypeBuilder<RoleType> builder)
     {
         builder.ToTable("tbl_ad_user_role");
 
@@ -20,5 +20,7 @@ internal class RoleTypeConfiguration : IEntityTypeConfiguration<RoleType>
 
         builder.Property(e => e.RoleTypeName)
             .HasColumnName("user_role_name");
+
+        base.Configure(builder);
     }
 }

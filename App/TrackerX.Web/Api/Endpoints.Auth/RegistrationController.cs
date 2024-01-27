@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TrackerX.Infrastructure;
 using TrackerX.Services.Accounts.Users;
 using TrackerX.Services.Accounts.Users.Models;
@@ -6,6 +7,7 @@ using TrackerX.Services.Accounts.Users.Models;
 namespace TrackerX.Web.Api.Gateway.Account;
 
 [ApiController]
+[AllowAnonymous]
 [Route("api/account/registration")]
 public class RegistrationController : Controller
 {

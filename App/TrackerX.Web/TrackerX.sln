@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Service.Musics", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Service.Accounts", "..\Services\TrackerX.Service.Accounts\TrackerX.Service.Accounts.csproj", "{A6FFCCAA-CF73-43CF-A335-BE4678E22469}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerX.UserAccessor", "..\TrackerX.UserAccessor\TrackerX.UserAccessor.csproj", "{B76C0C0C-4AF0-425C-ACB9-6BC23C8C03DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{A6FFCCAA-CF73-43CF-A335-BE4678E22469}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6FFCCAA-CF73-43CF-A335-BE4678E22469}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6FFCCAA-CF73-43CF-A335-BE4678E22469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B76C0C0C-4AF0-425C-ACB9-6BC23C8C03DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B76C0C0C-4AF0-425C-ACB9-6BC23C8C03DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B76C0C0C-4AF0-425C-ACB9-6BC23C8C03DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B76C0C0C-4AF0-425C-ACB9-6BC23C8C03DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

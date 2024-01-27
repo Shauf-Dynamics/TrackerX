@@ -1,24 +1,19 @@
 using TrackerX.Web.Moduls;
 using TrackerX.Cryptography;
-using Azure.Identity;
+using TrackerX.Domain.Data;
+using TrackerX.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var appConfigurationsConnectionString = builder.Configuration.GetConnectionString("AppConfig");
-if (!string.IsNullOrWhiteSpace(appConfigurationsConnectionString))
-{
-    builder.Configuration.AddAzureAppConfiguration(options =>
-    {
-        options.Connect(new Uri(appConfigurationsConnectionString), new DefaultAzureCredential());
-    });
-}
+builder.Configuration.AddAzureAppConfiguration(builder.Configuration.GetConnectionString("AppConfig"));
 
 var allowSpecificOrigins = "_allowSpecificOrigins";
 builder.Services.AddCustomCors(builder.Configuration, allowSpecificOrigins);
 builder.Services.AddCryptographyServices();
 builder.Services.AddBusinessServices();
+builder.Services.AddApplicationServices();
 
-builder.Services.AddDataAccess(builder.Configuration);
+builder.Services.AddDataServices(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

@@ -8,6 +8,14 @@ BEGIN
         user_invitation_code     NVARCHAR(256),
         user_invitation_due_date DATE,
         invitation_aborted_ind   BIT DEFAULT(0),
-        invitation_accepted_date DATE
+        invitation_accepted_date DATE,
+        created_dttm             DATETIME,
+        modified_dttm            DATETIME,
+        created_by_user_id       INT,
+        modified_by_user_id      INT,
+        deleled_ind              BIT DEFAULT(0)
     );
 END
+
+ALTER TABLE tbl_lt_user_invitation
+ADD CONSTRAINT UQ__tbl_lt_user_invitation UNIQUE (user_invitation_code);

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TrackerX.Core.Services.Albums;
 using TrackerX.Core.Services.Albums.Models;
 
 namespace TrackerX.Web.Api.Gateway;
 
-[ApiController]    
+[ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class AlbumController : ControllerBase
 {
