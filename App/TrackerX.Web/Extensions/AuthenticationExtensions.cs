@@ -9,6 +9,11 @@ public static class AuthCollectionExtension
     {
         services.Configure<SuperAdminOptions>(configuration.GetSection("Credentials:Superadmin"));
 
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("admin", policy => policy.RequireRole("Superadmin", "Admin"));
+        });
+
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {

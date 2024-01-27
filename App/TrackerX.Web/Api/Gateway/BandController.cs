@@ -6,7 +6,7 @@ using TrackerX.Services.Bands.Models;
 namespace TrackerX.Web.Api.Gateway;
 
 [ApiController]
-[Authorize]
+[Authorize(Policy = "admin")]
 [Route("api/bands")]
 public class BandController : ControllerBase
 {        

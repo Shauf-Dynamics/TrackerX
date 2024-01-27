@@ -7,7 +7,7 @@ using TrackerX.Services.Musics.Models;
 namespace TrackerX.Web.Api.Gateway;
 
 [ApiController]
-[Authorize]
+[Authorize(Policy = "admin")]
 [Route("api/[controller]")]
 public class SongController : Controller
 {

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace TrackerX.Web.Api.Gateway;
 
 [Route("api/[controller]")]
-[Authorize]
+[Authorize(Policy = "admin")]
 [ApiController]
 public class LessonController : ControllerBase
 {

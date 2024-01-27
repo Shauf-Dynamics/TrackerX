@@ -6,7 +6,7 @@ using TrackerX.Core.Services.Albums.Models;
 namespace TrackerX.Web.Api.Gateway;
 
 [ApiController]
-[Authorize]
+[Authorize(Policy="admin")]
 [Route("api/[controller]")]
 public class AlbumController : ControllerBase
 {
