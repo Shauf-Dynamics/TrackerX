@@ -19,9 +19,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private formBuilder: FormBuilder,
-        private router: Router) {
-        this.authService.isLoggedIn().subscribe();
-    }
+        private router: Router) { }
 
     public ngOnInit(): void {
         this.authService.isLoggedIn().subscribe((isAuthorized: boolean) => {
