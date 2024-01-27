@@ -7,8 +7,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - App
   workflow_dispatch:
 
 jobs:
@@ -25,10 +23,10 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build "App\TrackerX.Web\TrackerX.sln" --configuration Release
+        run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish "App\TrackerX.Web\TrackerX.sln" -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -54,9 +52,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7FCE10879E7B4D2F8FE01FAF6F4E4F9E }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_EAFD995AE3EC47F78CD98865179B1057 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_D9656346BD204846B79821EF362CF276 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_FF067844A55F4A74967174D27EAC2DAA }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_E9647C20F1FD4C78922FF6FD24A17F12 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_11B41BD0D4EC4150B7C9118920B794BD }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
