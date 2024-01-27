@@ -7,8 +7,16 @@ main {
     background-color: #fff;
 }
 
+.tx-version-label {
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;    
+    padding-top: 3px;
+    color:  #000000d0;   
+}
+
 table {
-    width: 100%;
+    width: 100%; 
     border-spacing: 0px;
 }
 
