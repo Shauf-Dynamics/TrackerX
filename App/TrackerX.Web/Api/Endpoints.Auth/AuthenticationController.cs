@@ -30,10 +30,11 @@ public class AuthenticationController : ControllerBase
     [Route("v1/user")]
     public IActionResult GetUserClaim()
     {
+        var id = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var name = User.FindFirstValue(ClaimTypes.Name);
         var role = User.FindFirstValue(ClaimTypes.Role);
 
-        return Ok(new { name, role });
+        return Ok(new { id, name, role });
     }
 
     [HttpGet]
@@ -56,6 +57,7 @@ public class AuthenticationController : ControllerBase
         {
             claims = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier, "0"),
                 new Claim(ClaimTypes.Name, "_sa"),
                 new Claim(ClaimTypes.Role, "Superadmin")
             };
@@ -69,6 +71,7 @@ public class AuthenticationController : ControllerBase
             AuthorizedUserDto user = userResult.Result;
             claims = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Role, user.UserRole),
             };

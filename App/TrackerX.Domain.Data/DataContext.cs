@@ -1,12 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TrackerX.Domain.Data.Configurations;
 using TrackerX.Domain.Entities;
+using TrackerX.UserAccessor;
 
 namespace TrackerX.Domain.Infrastructure;
 
 public class DataContext : DbContext
 {
-    public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+    private readonly IApplicationUserAccessor _applicationUserAccessor;
+
+    public DataContext(DbContextOptions<DataContext> options, IApplicationUserAccessor applicationUserAccessor) : base(options) 
+    {
+        _applicationUserAccessor = applicationUserAccessor;
+    }
 
     public DbSet<Exercise> Exercises { get; set; }
 
@@ -45,5 +51,32 @@ public class DataContext : DbContext
         builder.ApplyConfiguration(new RoleTypeConfiguration());
         builder.ApplyConfiguration(new UserConfiguration());
         builder.ApplyConfiguration(new InvitationConfiguration());
+    }
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        var currentUserId = _applicationUserAccessor.GetUserId();
+        var today = DateTime.UtcNow;
+
+        foreach (var entry in ChangeTracker.Entries().Where(e => e.State == EntityState.Added ||
+            e.State == EntityState.Modified ||
+            e.State == EntityState.Deleted))
+        {
+            entry.Property("ModifiedDateTimeUtc").CurrentValue = today;
+            entry.Property("ModifiedByUserId").CurrentValue = currentUserId;
+            if (entry.State == EntityState.Added)
+            {
+                entry.Property("CreatedDateTimeUtc").CurrentValue = today;
+                entry.Property("CreatedByUserId").CurrentValue = currentUserId;
+            }
+
+            if (entry.State == EntityState.Deleted)
+            {
+                entry.State = EntityState.Modified;
+                entry.Property("IsDeleted").CurrentValue = true;
+            }
+        }
+
+        return base.SaveChangesAsync(cancellationToken);
     }
 }

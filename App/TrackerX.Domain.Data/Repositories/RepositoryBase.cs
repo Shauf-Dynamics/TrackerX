@@ -51,6 +51,5 @@ public class RepositoryBase<T> : IRepository<T> where T : BaseEntity
     public async Task SaveChangesAsync()
     {
         await Context.SaveChangesAsync();
-
     }
 }

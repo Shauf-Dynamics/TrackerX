@@ -4,9 +4,9 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations;
 
-internal class AlbumConfiguration : IEntityTypeConfiguration<Album>
+public class AlbumConfiguration : BaseEntityTypeConfiguration<Album>
 {
-    public void Configure(EntityTypeBuilder<Album> builder)
+    public override void Configure(EntityTypeBuilder<Album> builder)
     {
         builder.ToTable("tbl_lt_album");
 
@@ -38,5 +38,7 @@ internal class AlbumConfiguration : IEntityTypeConfiguration<Album>
         builder.HasOne(e => e.Band)
             .WithMany()
             .HasForeignKey(e => e.BandId);
+
+        base.Configure(builder);
     }
 }

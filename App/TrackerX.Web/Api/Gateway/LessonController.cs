@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrackerX.Services.Lessons.Models;
 using TrackerX.Services.Lessons;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TrackerX.Web.Api.Gateway;
 
 [Route("api/[controller]")]
+[Authorize]
 [ApiController]
 public class LessonController : ControllerBase
 {

@@ -6,7 +6,7 @@ using TrackerX.Service.Accounts.Infrastructure;
 
 namespace TrackerX.Web.Moduls;
 
-public static class BusinessServicesCollectionExtension
+public static class ServicesCollectionExtension
 {
     public static void AddBusinessServices(this IServiceCollection services)
     {
@@ -14,6 +14,6 @@ public static class BusinessServicesCollectionExtension
         services.AddLessonServices();
         services.AddBandServices();
         services.AddAlbumServices();
-        services.AddAccountServices();            
+        services.AddAccountServices();
     }
 }

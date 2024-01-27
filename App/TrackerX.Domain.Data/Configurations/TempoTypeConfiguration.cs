@@ -4,7 +4,7 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations;
 
-internal class TempoTypeConfiguration : IEntityTypeConfiguration<TempoType>
+internal class TempoTypeConfiguration : BaseEntityTypeConfiguration<TempoType>
 {
     public void Configure(EntityTypeBuilder<TempoType> builder)
     {
@@ -23,5 +23,7 @@ internal class TempoTypeConfiguration : IEntityTypeConfiguration<TempoType>
         builder.Property(e => e.TempoTypeName)
             .IsRequired()
             .HasColumnName("tempo_type_name");
+
+        base.Configure(builder);
     }
 }

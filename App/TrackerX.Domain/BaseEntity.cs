@@ -2,7 +2,13 @@
 
 public class BaseEntity
 {
-/*      public int Id { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public DateTime ModifiedDate { get; set; }*/
+    public DateTime? CreatedDateTimeUtc { get; set; }
+
+    public DateTime? ModifiedDateTimeUtc { get; set; }
+
+    public int? CreatedByUserId { get; set; }
+
+    public int? ModifiedByUserId { get; set; }
+
+    public bool IsDeleted { get; set; }
 }

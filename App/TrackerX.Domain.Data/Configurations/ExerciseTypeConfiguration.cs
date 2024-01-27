@@ -4,9 +4,9 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations;
 
-internal class ExerciseTypeConfiguration : IEntityTypeConfiguration<ExerciseType>
+internal class ExerciseTypeConfiguration : BaseEntityTypeConfiguration<ExerciseType>
 {
-    public void Configure(EntityTypeBuilder<ExerciseType> builder)
+    public override void Configure(EntityTypeBuilder<ExerciseType> builder)
     {
         builder.ToTable("tbl_ad_exercise_type");
 
@@ -23,5 +23,7 @@ internal class ExerciseTypeConfiguration : IEntityTypeConfiguration<ExerciseType
         builder.Property(e => e.ExerciseTypeName)
             .IsRequired()
             .HasColumnName("exercise_type_name");
+
+        base.Configure(builder);
     }
 }

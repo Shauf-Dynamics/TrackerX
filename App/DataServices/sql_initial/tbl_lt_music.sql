@@ -10,6 +10,11 @@ BEGIN
         instrumental_ind    BIT DEFAULT(0),
         tempo               INT,
         genre_id            INT,
-        year_of_creation    INT
+        year_of_creation    INT,
+        created_dttm        DATETIME,
+        modified_dttm       DATETIME,
+        created_by_user_id  INT,
+        modified_by_user_id INT,
+        deleled_ind         BIT DEFAULT(0)
     )
 END

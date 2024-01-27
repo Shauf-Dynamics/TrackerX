@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TrackerX.Services.Accounts.Invitations;
 using TrackerX.Services.Accounts.Invitations.Models;
 
 namespace TrackerX.Web.Api.Gateway.Account;
 
 [ApiController]
+[Authorize]
 [Route("api/account/invitation")]
 public class InvitationController : Controller
 {

@@ -8,6 +8,11 @@ BEGIN
         user_email             NVARCHAR(128),
         user_password_hash     NVARCHAR(512),
         user_registration_date DATETIME,
-        user_role_id           INT
+        user_role_id           INT,
+        created_dttm           DATETIME,
+        modified_dttm          DATETIME,
+        created_by_user_id     INT,
+        modified_by_user_id    INT,
+        deleled_ind            BIT DEFAULT(0)
     )
 END

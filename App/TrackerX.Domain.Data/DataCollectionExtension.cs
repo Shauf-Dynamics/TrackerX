@@ -1,14 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using TrackerX.Domain.Data.Repositories;
 using TrackerX.Domain.Entities.Repositories;
 using TrackerX.Domain.Infrastructure;
 using TrackerX.Domain.Repositories;
 
-namespace TrackerX.Web.Moduls;
+namespace TrackerX.Domain.Data;
 
-public static class DataExtensions
+public static class DataCollectionExtension
 {
-    public static void AddDataAccess(this IServiceCollection services, IConfiguration configuration)
+    public static void AddDataServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<DataContext>(x => x.UseSqlServer(configuration.GetValue<string>("Database:ConnectionString")));
 
