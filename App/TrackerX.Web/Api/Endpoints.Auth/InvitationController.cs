@@ -6,7 +6,7 @@ using TrackerX.Services.Accounts.Invitations.Models;
 namespace TrackerX.Web.Api.Gateway.Account;
 
 [ApiController]
-[Authorize]
+[Authorize(Policy = "admin")]
 [Route("api/account/invitation")]
 public class InvitationController : Controller
 {
