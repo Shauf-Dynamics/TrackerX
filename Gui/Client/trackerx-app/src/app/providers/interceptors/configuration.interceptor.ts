@@ -10,7 +10,7 @@ export class ConfigurationInterceptor implements HttpInterceptor {
     constructor(private http: HttpClient) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (!environment.version && !request.url.includes(this.configurationUrl)) {
+        if (!localStorage.getItem('version') && !request.url.includes(this.configurationUrl)) {
             this.callGetConfiguration().subscribe((x: any) => {
                 localStorage.setItem('version', JSON.stringify(x.version));
             })
