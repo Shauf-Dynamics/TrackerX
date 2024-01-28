@@ -1,6 +1,7 @@
 ﻿using Azure.Identity;
 using TrackerX.UserAccessor;
 using TrackerX.Web.Accessors;
+using TrackerX.Web.Options;
 
 namespace TrackerX.Web.Extensions;
 
@@ -17,9 +18,11 @@ public static class AppConfigurationServices
         }
     }
 
-    public static void AddApplicationServices(this IServiceCollection services)
+    public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddTransient<IApplicationUserAccessor, ApplicationUserAccessor>();
+
+        services.Configure<AppConfigurationOptions>(configuration.GetSection("AppConfig"));
     }
 }

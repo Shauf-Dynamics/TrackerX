@@ -5,13 +5,13 @@ using TrackerX.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddAzureAppConfiguration(builder.Configuration.GetConnectionString("AppConfig"));
+builder.Configuration.AddAzureAppConfiguration(builder.Configuration.GetConnectionString("AppConfig:ConnectionString"));
 
 var allowSpecificOrigins = "_allowSpecificOrigins";
 builder.Services.AddCustomCors(builder.Configuration, allowSpecificOrigins);
+builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddCryptographyServices();
 builder.Services.AddBusinessServices();
-builder.Services.AddApplicationServices();
 
 builder.Services.AddDataServices(builder.Configuration);
 

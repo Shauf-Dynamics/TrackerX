@@ -14,16 +14,16 @@
                 <i class="fa-solid fa-magnifying-glass" style="color: #b1b1b1;"></i>                                
             </td>
             <td width="95%">
-                <p class="tx-version-label">beta v0.1.0</p>
+                <p class="tx-version-label">{{ currentVersion }}</p>
             </td>                                    
             <td width="57%" align="right">
-                <p>Erica</p>
+                <p>{{ currentUserName }}</p>
             </td>            
             <td width="3%" align="right">
                 <i class="fa-solid fa-circle-user fa-2xl" style="color: #b3b3b3;"></i>
             </td>                
-            <td width="5%" align="right">                
-               <input type="button" class="btn" value="Log out" (click)="logOut($event)"/> 
+            <td width="5%">                
+               <input type="button" class="btn" value="Log out" (click)="logOut()"/> 
             </td>            
         </tr>
     </table>
