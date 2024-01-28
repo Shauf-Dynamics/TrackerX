@@ -1,9 +1,9 @@
 <tx-music-container [selectedTabIndex]="3">
-    <input list="mainGenres" name="menace">
-    <datalist id="menace">
-        <option *ngFor="let d of mainGenres">{{d.genreName}} </option>
+    <input list="mainGenres" name="menace" hidden>
+    <datalist id="menace" hidden>
+        <option *ngFor="let d of mainGenres" hidden>{{d.genreName}} </option>
     </datalist>
-    <select2 customSearchEnabled [overlay]="false" [data]="data" [value]="value2" (update)="update('value2', $event)" id="selec2-2">
+    <select2 customSearchEnabled [overlay]="false" [data]="data" [value]="value2" (update)="update('value2', $event)" id="selec2-2" hidden>
         <select2-label>Select a state</select2-label>
     </select2>
     <main>

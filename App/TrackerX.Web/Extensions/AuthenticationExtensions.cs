@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using TrackerX.Web.Configurations;
+using TrackerX.Web.Options;
 
 namespace TrackerX.Web.Moduls;
 

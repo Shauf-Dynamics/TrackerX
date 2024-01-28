@@ -8,7 +8,7 @@ using TrackerX.Infrastructure;
 using TrackerX.Services.Accounts.Users;
 using TrackerX.Services.Accounts.Users.Models;
 using TrackerX.Web.Api.Endpoints.Admin.Models;
-using TrackerX.Web.Configurations;
+using TrackerX.Web.Options;
 
 namespace TrackerX.Web.Api.Gateway.Account;
 
