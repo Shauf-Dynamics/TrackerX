@@ -6,17 +6,19 @@ import { MusicGlobalComponent } from './music-global/music-global.component';
 import { MusicRoutingModule } from './music-routing.module';
 import { MusicSearchService } from './music-global/music-global.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MusicCreateComponent } from './music-create/music-create.component';
+import { MusicCommonComponent } from './music-create/music-common/music-common.component';
 import { MusicCreateService } from './music-create/music-create.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { Select2Module } from 'ng-select2-component';
+import { SongDetailsComponent } from './music-create/song-details/song-details.component';
 
 @NgModule({
     declarations: [
         AssetsContainerComponent,     
         MusicContainerComponent,
         MusicGlobalComponent,
-        MusicCreateComponent
+        MusicCommonComponent,
+        SongDetailsComponent
     ],
     imports: [    
         CommonModule,  
@@ -29,7 +31,7 @@ import { Select2Module } from 'ng-select2-component';
     exports: [
         MusicContainerComponent,
         MusicGlobalComponent,
-        MusicCreateComponent
+        MusicCommonComponent
     ],
     providers: [
         MusicSearchService,

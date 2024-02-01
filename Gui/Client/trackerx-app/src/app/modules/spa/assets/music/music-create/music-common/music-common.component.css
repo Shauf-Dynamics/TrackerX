@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    min-height: 58vh;    
+    margin-bottom: 5%;
+}
+
+
+h2 {
+    color: rgba(0, 97, 242, 0.89);
+    font-weight: 500;
+    font-size: 22px;  
+}
+
+h3 {
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+}
+
+select {
+    width: 150px;
+    height: 1.75rem;
+    text-align: center;
+    background-color: rgb(245, 245, 245);
+}
+
+.step-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    min-width: 50%;
+    gap: 1vh;
+}
+
+.container-step-1 {    
+    margin: 3.5vh 0;
+    padding-bottom: 2vh;    
+    border-bottom: solid 1px rgb(207, 207, 207);        
+
+    p {
+        padding-bottom: 0.33vh;
+    }
+
+    .select-type {        
+        select {  
+            margin-left: 1rem;
+            padding-bottom: 3px;
+            width: 150px;
+            height: 1.75rem;
+            text-align: center;
+            background-color: rgb(245, 245, 245);
+        }
+    }        
+} 
+
+.common-fields-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    gap: 1vh;
+    margin-top: 0.33vh;  
+    padding-bottom: 2vh;    
+    border-bottom: solid 1px rgb(207, 207, 207);     
+
+    input[type=number] {
+        width: 5rem;
+        padding: 0.75rem 0.125rem;
+        line-height: 0.75;
+        border: 1px solid #c5c5c58a;
+        text-align: center;
+    }
+    
+    .genres {
+        span {
+            padding-top: 0.33vh;                 
+        }
+
+        .subgenre {
+            margin-left: 1.5rem;
+            span {
+                padding-right: 1rem;                
+            }
+        }
+    }
+}
+
+.publish-container {
+    margin-top: 3vh;
+}
+
+.tx-mc-publish {    
+    padding: 15px 0;
+    border-bottom: solid 1px rgb(207, 207, 207);    
+
+    .tx-public-controll {            
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+    }    
+
+    .tx-agreement-wrapper {
+        line-height: 4px;    
+    }
+
+    i {
+        margin: 0px 8px;
+    }
+}
+
+.save-wrapper {
+    margin: 5vh 0;
+    text-align: right;
+    width: 50%; 
+    
+    >input[type=button] {
+        width: 7.5rem;
+        height: 3.5vh;
+        background-color: rgba(0, 97, 242, 0.89);
+        color: white;
+    }
+}

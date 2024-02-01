@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/providers/auth/auth.guard';
 import { MusicGlobalComponent } from './music-global/music-global.component';
-import { MusicCreateComponent } from './music-create/music-create.component';
+import { MusicCommonComponent } from './music-create/music-common/music-common.component';
 
 const routes: Routes = [
     {
@@ -12,7 +12,7 @@ const routes: Routes = [
     },
     {
         path: 'add',
-        component: MusicCreateComponent,        
+        component: MusicCommonComponent,        
 		canActivate: [ AuthGuard ]
     },
     {

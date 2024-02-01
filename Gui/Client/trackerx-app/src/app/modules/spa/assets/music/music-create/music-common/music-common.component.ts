@@ -1,18 +1,20 @@
 import { Component, OnInit } from "@angular/core";
-import { GenreModel, MusicType, SongModel } from "./music-create.models";
-import { MusicCreateService } from "./music-create.service";
+import { GenreModel, MusicType, SongModel } from "../music-create.models";
+import { MusicCreateService } from "../music-create.service";
 import { Observable, of } from "rxjs";
 import { Select2Data, Select2UpdateEvent } from "ng-select2-component";
 
 @Component({
     selector: 'tx-music-create',
-    templateUrl: './music-create.component.html',
-    styleUrls: ['./music-create.component.css']
+    templateUrl: './music-common.component.html',
+    styleUrls: ['./music-common.component.css']
 })
-export class MusicCreateComponent implements OnInit {
-    public musicType = MusicType;
+export class MusicCommonComponent implements OnInit {
+    public musicCreateTabId: number = 3;
 
-    public currentMusicType?: MusicType = undefined;    
+    public musicType = MusicType;
+    public currentMusicType?: MusicType = MusicType.Song;
+
     public data: Select2Data = [
         {
             value: 'heliotrope',
