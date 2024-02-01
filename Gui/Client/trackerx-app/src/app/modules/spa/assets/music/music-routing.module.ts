@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/providers/auth/auth.guard';
-import { MusicGlobalComponent } from './music-global/music-global.component';
-import { MusicCommonComponent } from './music-create/music-common/music-common.component';
 
 const routes: Routes = [
     {
         path: 'global',
-        component: MusicGlobalComponent,        
+        loadChildren: () => import('./music-global/music-global.module').then(m => m.MusicGlobalModule),   
 		canActivate: [ AuthGuard ]
     },
     {
         path: 'add',
-        component: MusicCommonComponent,        
+        loadChildren: () => import('./music-create/music-create.module').then(m => m.MusicCreateModule),
 		canActivate: [ AuthGuard ]
     },
     {

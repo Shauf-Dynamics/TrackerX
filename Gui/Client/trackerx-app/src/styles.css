@@ -108,8 +108,8 @@ input:-webkit-autofill::first-line {
 
 select {    
     line-height: 1;
-    color: #69707a;
-    border: 1px solid #afafaf;
+    color: #313438;
+    border: solid 1px rgb(207, 207, 207);
     border-radius: 0.32rem;
     background-color: #FFF;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;

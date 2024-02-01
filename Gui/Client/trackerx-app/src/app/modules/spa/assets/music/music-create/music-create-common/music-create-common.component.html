@@ -1,0 +1,81 @@
+<tx-music-container [selectedTabIndex]="musicCreateTabId">
+    <main>
+        <div class="step-wrapper container-step-1">
+            <h2>Step 1</h2>
+            <h3>Create your custom music or add already known songs</h3>
+            <section>
+                <p>There are two types of music assets supported by <b>TrackerX</b> application:</p>
+                <p><i>Songs</i> are well-known and recognizable pieces created by ever existed bands. </p>
+                <p><i>Custom music</i> is your own pieces of musics, songs, exercises or whatever you play.</p>
+            </section>
+            <div class="select-type">
+                <span>Select type: </span>
+                <select name="musicType" id="musicType" (change)="onTypeChange($event)">
+                    <option value="Empty"></option>
+                    <option value="Song">Song</option>
+                    <option value="Custom Music">Custom Music</option>
+                </select>
+            </div>
+        </div>
+        <div class="step-wrapper" *ngIf="currentMusicType != null">
+            <h2>Step 2</h2>
+            <h3>Setting up your music</h3>
+            <ng-container *ngIf="currentMusicType === musicType.Song">
+                <tx-music-create-song-details [commonFieldsTemplate]="commonFieldsTemplate" />
+            </ng-container>
+            <ng-container *ngIf="currentMusicType === musicType.Custom">
+                <tx-music-create-custom-music-details [commonFieldsTemplate]="commonFieldsTemplate" />
+            </ng-container>
+        </div>
+        <div class="step-wrapper publish-container" *ngIf="currentMusicType === musicType.Song">
+            <h2>
+                Step 3
+            </h2>
+            <h3>
+                Publish this song (optional)
+            </h3>
+            <div class="agreement-wrapper">
+                <p>Would you like to publish your song? Everyone will be able to see and use it.</p>
+                <p>You won't be able to edit it, though you would make a contribution to the application community!</p>
+                <p>The song won't be published immediately. Firstly it will be reviewed by the administration.</p>
+            </div>
+            <div class="public-controll">
+                <input type="button" class="btn" value="I agree" (click)="onAgreeToPublishClicked($event.target)" />
+                <span *ngIf="!this.songModel?.isAgreedToPublish">You don't agree to publish this song</span>
+                <i *ngIf="this.songModel?.isAgreedToPublish" class="fa-solid fa-check fa-lg"style="color: #0091ff;"></i>
+                <span *ngIf="this.songModel?.isAgreedToPublish">You have agreed to publish this song</span>
+            </div>
+        </div>
+        <div class="save-wrapper" *ngIf="currentMusicType !== null">
+            <input type="button" class="btn" value="Save" />
+        </div>
+    </main>
+</tx-music-container>
+
+<ng-template #commonFieldsTemplate>
+    <div class="common-fields-wrapper">
+        <div class="genres">
+            <span>Genre</span>
+            <select name="genre_type" id="genre_type" (change)="onGenreChange($event)">
+                <option value="empty"></option>
+                <option *ngFor="let genre of mainGenres" [value]="genre.genreId">
+                    {{genre.genreName}}
+                </option>
+            </select>
+            <div class="subgenre">
+                <span *ngIf="subGenres != null" class="p-subgenre tx-lbl">Subgenre</span>
+                <select *ngIf="subGenres != null" class="tx-select" name="genre_type" id="genre_type"
+                    (change)="onGenreChange($event)">
+                    <option value="empty"></option>
+                    <option *ngFor="let genre of subGenres" [value]="genre.genreId">
+                        {{genre.genreName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <span>Tempo</span>
+            <input type="number" pattern="[0-9.]+" class="text-box tx-input" placeholder="120" />
+        </div>
+    </div>
+</ng-template>

@@ -6,27 +6,15 @@ import { Select2Data, Select2UpdateEvent } from "ng-select2-component";
 
 @Component({
     selector: 'tx-music-create',
-    templateUrl: './music-common.component.html',
-    styleUrls: ['./music-common.component.css']
+    templateUrl: './music-create-common.component.html',
+    styleUrls: ['./music-create-common.component.css']
 })
-export class MusicCommonComponent implements OnInit {
+export class MusicCreateCommonComponent implements OnInit {
     public musicCreateTabId: number = 3;
 
     public musicType = MusicType;
-    public currentMusicType?: MusicType = MusicType.Song;
+    public currentMusicType: MusicType | null = null;
 
-    public data: Select2Data = [
-        {
-            value: 'heliotrope',
-            label: 'Heliotrope',
-            data: { color: 'white', name: 'Heliotrope' },
-        },
-        {
-            value: 'hibiscus',
-            label: 'Hibiscus',
-            data: { color: 'red', name: 'Hibiscus' },
-        },
-    ];
     public songModel?: SongModel = undefined;
 
     private allGenres: GenreModel[];
@@ -64,7 +52,7 @@ export class MusicCommonComponent implements OnInit {
             this.currentMusicType = MusicType.Custom;
             // new CustomMusic();
         } else {
-            this.currentMusicType = undefined;
+            this.currentMusicType = null;
         }
     }
 
