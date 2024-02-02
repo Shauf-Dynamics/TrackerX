@@ -6,6 +6,8 @@ import { MusicContainerModule } from '../music-container/music-container.module'
 import { CommonModule } from '@angular/common';
 import { MusicCreateRoutingModule } from './music-create-routing.module';
 import { CustomSongDetailsComponent } from './custom-music-details/custom-music-details.component';
+import { FormsModule } from '@angular/forms';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @NgModule({
     declarations: [
@@ -15,8 +17,10 @@ import { CustomSongDetailsComponent } from './custom-music-details/custom-music-
     ],
     imports: [    
         CommonModule,
+        FormsModule,
         MusicContainerModule,
-        MusicCreateRoutingModule
+        MusicCreateRoutingModule,
+        AutoCompleteModule
     ],
     exports: [
         MusicCreateCommonComponent

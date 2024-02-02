@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MusicRoutingModule } from './music-routing.module';
 import { MusicSearchService } from './music-global/music-global.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { Select2Module } from 'ng-select2-component';
 import { MusicGlobalModule } from './music-global/music-global.module';
 import { MusicCreateModule } from './music-create/music-create.module';
 
@@ -13,11 +11,8 @@ import { MusicCreateModule } from './music-create/music-create.module';
         
     ],
     imports: [    
-        CommonModule,  
-        FormsModule,
-        ReactiveFormsModule,        
-        SharedModule,
-        Select2Module,
+        CommonModule,      
+        ReactiveFormsModule,
         MusicRoutingModule,
         MusicCreateModule,
         MusicGlobalModule

@@ -42,8 +42,10 @@
             <div class="public-controll">
                 <input type="button" class="btn" value="I agree" (click)="onAgreeToPublishClicked($event.target)" />
                 <span *ngIf="!this.songModel?.isAgreedToPublish">You don't agree to publish this song</span>
-                <i *ngIf="this.songModel?.isAgreedToPublish" class="fa-solid fa-check fa-lg"style="color: #0091ff;"></i>
-                <span *ngIf="this.songModel?.isAgreedToPublish">You have agreed to publish this song</span>
+                <div *ngIf="this.songModel?.isAgreedToPublish">
+                    <i class="fa-solid fa-check fa-lg"style="color: #0091ff;"></i>
+                    <span>You have agreed to publish this song</span>
+                </div>                
             </div>
         </div>
         <div class="save-wrapper" *ngIf="currentMusicType !== null">

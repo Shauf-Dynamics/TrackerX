@@ -13,7 +13,7 @@ export class MusicCreateCommonComponent implements OnInit {
     public musicCreateTabId: number = 3;
 
     public musicType = MusicType;
-    public currentMusicType: MusicType | null = null;
+    public currentMusicType: MusicType | null = MusicType.Song;
 
     public songModel?: SongModel = undefined;
 

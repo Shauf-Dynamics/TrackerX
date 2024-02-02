@@ -1,17 +1,19 @@
 <main>
     <div>
         <span>Name</span>
-        <input type="text" class="text-box tx-input" />
+        <input type="text" class="text-box" />
     </div>        
     <div>
-        <span>Band</span>
-        <input type="text" class="text-box tx-input" />
+        <span>Band</span>        
+        <p-autoComplete [(ngModel)]="selectedItem" class="autocomplete" styleClass="text-box"
+            [suggestions]="suggestions" (completeMethod)="search($event)">
+        </p-autoComplete>        
         <input type="button" class="btn" value="Search" />
-    </div>        
+    </div>           
     <div>
         <span>Album</span>
-        <input type="text" class="text-box tx-input" />
+        <input type="text" class="text-box" />
         <input type="button" class="btn" value="Search" />
     </div>   
     <ng-container [ngTemplateOutlet]="commonFieldsTemplate"></ng-container>
-</main>
+</main>  

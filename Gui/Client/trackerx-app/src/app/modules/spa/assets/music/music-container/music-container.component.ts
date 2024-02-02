@@ -19,7 +19,7 @@ export class MusicContainerComponent implements OnInit {
             navigation: [
                 {
                     title: 'My Music',
-                    description: 'Search for your person music',
+                    description: 'Search for your personal music',
                     link: '/'
                 },   
                 {
