@@ -29,6 +29,11 @@ export class MusicCreateCommonComponent implements OnInit {
 
     public isDetailsValidated: boolean = false;
 
+    public isAlertVisible: boolean = false;
+    public isSavedSuccessfully: boolean = false;
+    public alertHeader?: string;
+    public alertMessage?: string;
+
     constructor(private musicService: MusicCreateService) { }
 
     public ngOnInit(): void { 
@@ -43,11 +48,9 @@ export class MusicCreateCommonComponent implements OnInit {
         if (input.target.value === "Song") {
             this.currentMusicType = MusicType.Song;
             this.createModel = new SongCreateModel();
-        } else if (input.target.value === "Custom Music") {
+        } else {
             this.currentMusicType = MusicType.Custom;
             this.createModel = new CustomMusicCreateModel();
-        } else {
-            this.currentMusicType = null;
         }
     }
 
@@ -98,14 +101,34 @@ export class MusicCreateCommonComponent implements OnInit {
                 
                 this.musicService
                     .createSong(this.createModel)
-                    .subscribe(_ => {
-                        this.resetForm();
-                    });
+                    .subscribe({
+                        next: _ => {
+                           this.showSavedResultDialog(true);
+                        },                        
+                        error: _ => {
+                            this.showSavedResultDialog(false);
+                        },
+                        complete: () => {
+                            this.resetForm();
+                        }});                    
             } else if (this.createModel instanceof CustomMusicCreateModel) {
                 this.createModel.author = this.customSongDetailsComponent.authorName;
                 this.createModel.description = this.customSongDetailsComponent.description;
             }
         }        
+    }    
+
+    public showSavedResultDialog(isSaved: boolean): void {
+        if (isSaved) {
+            this.alertHeader = "Success";
+            this.alertMessage = "Your song has been added to the library."
+        } else {
+            this.alertHeader = "Failed";
+            this.alertMessage = "Internal error. Please try later."
+        }
+
+        this.isSavedSuccessfully = isSaved;
+        this.isAlertVisible = true;
     }
 
     private resetForm(): void {

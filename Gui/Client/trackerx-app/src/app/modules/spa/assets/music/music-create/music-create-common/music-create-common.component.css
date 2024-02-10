@@ -12,8 +12,15 @@ main {
     margin-bottom: 5%;
 }
 
+.alert-failed {
+    color: rgba(238, 27, 27, 0.89);
+    font-weight: 500;
+    font-size: 22px;
+}
 
-h2 {
+
+h2, 
+.alert-success {
     color: rgba(0, 97, 242, 0.89);
     font-weight: 500;
     font-size: 22px;
@@ -25,10 +32,9 @@ h3 {
 }
 
 select {
-    width: 14rem;
+    width: 10rem;
     height: 2.15rem;
-    text-align: center;
-    background-color: rgb(245, 245, 245);
+    padding-left: 1rem;
 }
 
 .step-wrapper {
@@ -49,7 +55,6 @@ select {
     }
 
     .select-type {
-        select {
             margin-left: 1rem;
             padding-bottom: 3px;
             width: 10rem;
@@ -57,7 +62,6 @@ select {
             text-align: center;
             background-color: rgb(245, 245, 245);
             border: solid 1px rgb(207, 207, 207);
-        }
     }
 }
 
@@ -76,6 +80,10 @@ select {
         span {
             width: 3.66rem;
         } 
+
+        .span-custom {
+            width: 5.66rem;
+        }
         
         input[type=number] {
             width: 5rem;
@@ -102,7 +110,7 @@ select {
             margin-left: 1.5rem;
 
             span {
-                padding-right: 4.5rem;
+                padding-right: 5rem;
             }
         }
     }
@@ -148,7 +156,5 @@ select {
     >input[type=button] {
         width: 6rem;
         height: 3.5vh;
-        background-color: rgba(0, 97, 242, 0.89);
-        color: white;
     }
 }

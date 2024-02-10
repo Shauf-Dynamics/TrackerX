@@ -8,6 +8,7 @@ import { MusicCreateRoutingModule } from './music-create-routing.module';
 import { CustomSongDetailsComponent } from './custom-music-details/custom-music-details.component';
 import { FormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
         CommonModule,
         FormsModule,
         AutoCompleteModule,
+        DialogModule,
         MusicContainerModule,
         MusicCreateRoutingModule
     ],

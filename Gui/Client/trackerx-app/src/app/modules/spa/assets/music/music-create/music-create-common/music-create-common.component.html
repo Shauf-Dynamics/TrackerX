@@ -8,11 +8,11 @@
                 <p><i>Songs</i> are well-known and recognizable pieces created by ever existed bands. </p>
                 <p><i>Custom music</i> is your own pieces of musics, songs, exercises or whatever you play.</p>
             </section>
-            <div class="select-type">
+            <div>
                 <span>Select type: </span>
-                <select name="musicType" id="musicType" (change)="onTypeChange($event)">
-                    <option value=""></option>
-                    <option value="Song">Song</option>
+                <select name="musicType" class="select-type" id="musicType" (change)="onTypeChange($event)">
+                    <option value="" [selected]="currentMusicType == null"></option>
+                    <option value="Song" >Song</option>
                     <option value="Custom Music">Custom Music</option>
                 </select>
             </div>
@@ -28,9 +28,9 @@
             </ng-container>
             <div class="common-fields-wrapper">
                 <div class="genres">
-                    <span>Genre</span>
+                    <span [ngClass]="{ 'span-custom': currentMusicType === musicType.Custom }">Genre</span>
                     <select name="genre_type" id="genre_type" (change)="onGenreChange($event)">
-                        <option value="empty"></option>
+                        <option value="" [selected]="createModel?.genreId == null"></option>
                         <option *ngFor="let genre of mainGenres" [value]="genre.genreId">
                             {{genre.genreName}}
                         </option>
@@ -39,7 +39,7 @@
                         <span *ngIf="subGenres != null" class="p-subgenre tx-lbl">Subgenre</span>
                         <select *ngIf="subGenres != null" class="tx-select" name="genre_type" id="genre_type"
                             (change)="onGenreChange($event)">
-                            <option value="empty"></option>
+                            <option value="" [selected]="createModel?.genreId == null"></option>
                             <option *ngFor="let genre of subGenres" [value]="genre.genreId">
                                 {{genre.genreName}}
                             </option>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="tempo">
-                    <span>Tempo</span>
+                    <span [ngClass]="{ 'span-custom': currentMusicType === musicType.Custom }">Tempo</span>
                     <input type="number" pattern="[0-9.]+" class="text-box tx-input" value="120" 
                         (input)="onTempoChanged($event)"/>
                 </div>
@@ -75,7 +75,18 @@
             </div>
         </div>
         <div class="save-wrapper" *ngIf="currentMusicType !== null">
-            <input type="button" [attr.disabled]="!isDetailsValidated ? true: null" class="btn" value="Save" (click)="onSaveClick()"/>
-        </div>
+            <input type="button" [attr.disabled]="!(isDetailsValidated && createModel?.genreId != null) ? true: null" 
+                class="btn btn-submit" value="Save" (click)="onSaveClick()"/>
+        </div>        
     </main>
+        <p-dialog [(visible)]="isAlertVisible" [position]="'topright'" [style]="{ width: '20vw' }" [draggable]="false">
+            <ng-template pTemplate="header">
+               <p [ngClass]="[isSavedSuccessfully ? 'alert-success' : 'alert-failed']">
+                    {{alertHeader}}
+               </p> 
+            </ng-template>
+            <p>
+                {{alertMessage}}
+            </p>
+        </p-dialog>   
 </tx-music-container>

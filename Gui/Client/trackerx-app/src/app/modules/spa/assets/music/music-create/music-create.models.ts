@@ -30,6 +30,7 @@ export class BandSuggestionResult {
 export class AlbumSuggestionResult {
     public albumId: number;
     public albumName: string;
+    public writingYear: Date;
 }
 
 export enum MusicType {

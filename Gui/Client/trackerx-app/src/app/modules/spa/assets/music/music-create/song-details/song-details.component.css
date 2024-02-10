@@ -15,21 +15,20 @@ main {
         }
 
         input[type=text] {
-            width: 22.4rem;
+            width: 24rem;
             padding: 0.75rem 1.125rem;
             line-height: 0.75;
             border: 1px solid #c5c5c58a;
-        }
-
-        input[type=button] {
-            margin-left: 0.5rem;
-        }
+        }     
     }    
-}
 
-.select {
-    width: 14rem;
-    height: 2.15rem;
-    text-align: center;
-    background-color: rgb(245, 245, 245);
+    div.album {
+        margin-top: 0.25vh;
+
+        select {
+            width: 26.33rem;
+            height: 2.15rem;
+            padding-left: 1rem;
+        }
+    }        
 }

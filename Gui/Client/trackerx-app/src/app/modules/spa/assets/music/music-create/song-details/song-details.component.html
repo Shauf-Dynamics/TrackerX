@@ -12,12 +12,12 @@
             </ng-template>
         </p-autoComplete>
     </div>           
-    <div>
+    <div class="album">
         <span>Album</span>
         <select [(ngModel)]="selectedAlbum" class="tx-select select" name="select-album" id="select-album" disabled
             [attr.disabled]="!selectedBand? true : null" (change)="onAlbumChange()">
             <option *ngFor="let album of albumSuggestions" [ngValue]="album">
-                {{album.albumName}}
+                {{album.albumName}} ({{album.writingYear}})
             </option>
          </select>
     </div>   

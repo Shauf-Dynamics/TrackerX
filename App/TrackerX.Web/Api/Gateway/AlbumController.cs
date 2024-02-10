@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TrackerX.Core.Services.Albums;
 using TrackerX.Core.Services.Albums.Models;
 using TrackerX.Service.Albums.Models;
+using TrackerX.Services.Bands.Models;
 
 namespace TrackerX.Web.Api.Gateway;
 
@@ -19,6 +20,7 @@ public class AlbumController : ControllerBase
 
     [HttpGet]
     [Route("v1/search")]
+    [ProducesResponseType(typeof(AlbumViewModel), 200)]
     public async Task<IActionResult> Get([FromQuery] int pageSize, [FromQuery] string startsWith)
     {
         var result = await _albumService.GetAlbumsByCriteriasAsync(new AlbumSearchParams(pageSize, startsWith));
@@ -28,6 +30,7 @@ public class AlbumController : ControllerBase
 
     [HttpGet]
     [Route("v1/byBand")]
+    [ProducesResponseType(typeof(AlbumViewModel), 200)]
     public async Task<IActionResult> GetByBand([FromQuery] int bandId)
     {
         var result = await _albumService.GetAlbumsByBandAsync(bandId);
