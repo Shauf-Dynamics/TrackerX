@@ -25,8 +25,8 @@ h3 {
 }
 
 select {
-    width: 150px;
-    height: 1.75rem;
+    width: 14rem;
+    height: 2.15rem;
     text-align: center;
     background-color: rgb(245, 245, 245);
 }
@@ -52,7 +52,7 @@ select {
         select {
             margin-left: 1rem;
             padding-bottom: 3px;
-            width: 150px;
+            width: 10rem;
             height: 1.75rem;
             text-align: center;
             background-color: rgb(245, 245, 245);
@@ -63,31 +63,46 @@ select {
 
 .common-fields-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     justify-content: center;
-    gap: 1vh;
-    margin-top: 0.33vh;
+    gap: 0.75vh;
     padding-bottom: 2vh;
     border-bottom: solid 1px rgb(207, 207, 207);
 
-    input[type=number] {
-        width: 5rem;
-        padding: 0.75rem 0.125rem;
-        line-height: 0.75;
-        border: 1px solid #c5c5c58a;
-        text-align: center;
+    div {
+        display: flex;
+        flex-flow: row;                                          
+
+        span {
+            width: 3.66rem;
+        } 
+        
+        input[type=number] {
+            width: 5rem;
+            padding: 0.75rem 0.125rem;
+            line-height: 0.75;
+            border: 1px solid #c5c5c58a;
+            text-align: center;
+        }
+    }
+
+    .tempo {
+        padding-top: 0.33vh;
+        span {
+            padding-top: 1vh;
+        }
     }
 
     .genres {
         span {
-            padding-top: 0.33vh;
+            padding-top: 0.75vh;
         }
 
         .subgenre {
             margin-left: 1.5rem;
 
             span {
-                padding-right: 1rem;
+                padding-right: 4.5rem;
             }
         }
     }
@@ -120,7 +135,7 @@ select {
 
         i {
             padding-top: 1.66vh;
-            margin-right: 0.15rem
+            margin-right: 0.35rem
         }
     }
 }

@@ -8,8 +8,7 @@ public class MusicMapper : Profile
 {
     public MusicMapper()
     {
-        CreateMap<CreateMusicModel, Song>()
-            .ForMember(dest => dest.SongName, opt => opt.MapFrom(src => src.Name));
+        CreateMap<CreateMusicModel, Song>();
 
         CreateMap<Song, MusicViewModel>()
             .ForMember(dest => dest.Genre, opt => opt.Ignore())
@@ -17,8 +16,7 @@ public class MusicMapper : Profile
 
         CreateMap<Song, SongSearchResult>()
             .ForMember(dest => dest.Band, opt => opt.MapFrom(src => src.Band.BandName))
-            .ForMember(dest => dest.Album, opt => opt.MapFrom(src => src.Album.AlbumName))
-            .ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.WritingYear));
+            .ForMember(dest => dest.Album, opt => opt.MapFrom(src => src.Album.AlbumName));
 
         CreateMap<Song, SongDetailsResult>()
             .ForMember(dest => dest.Band, opt => opt.MapFrom(src => src.Band.BandName))

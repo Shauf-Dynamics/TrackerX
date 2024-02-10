@@ -11,7 +11,7 @@
             <div class="select-type">
                 <span>Select type: </span>
                 <select name="musicType" id="musicType" (change)="onTypeChange($event)">
-                    <option value="Empty"></option>
+                    <option value=""></option>
                     <option value="Song">Song</option>
                     <option value="Custom Music">Custom Music</option>
                 </select>
@@ -21,11 +21,37 @@
             <h2>Step 2</h2>
             <h3>Setting up your music</h3>
             <ng-container *ngIf="currentMusicType === musicType.Song">
-                <tx-music-create-song-details [commonFieldsTemplate]="commonFieldsTemplate" />
+                <tx-music-create-song-details (isValidatedEmitter)="isSongDetailsValided($event)"/>
             </ng-container>
             <ng-container *ngIf="currentMusicType === musicType.Custom">
-                <tx-music-create-custom-music-details [commonFieldsTemplate]="commonFieldsTemplate" />
+                <tx-music-create-custom-music-details (isValidatedEmitter)="isSongDetailsValided($event)"/>
             </ng-container>
+            <div class="common-fields-wrapper">
+                <div class="genres">
+                    <span>Genre</span>
+                    <select name="genre_type" id="genre_type" (change)="onGenreChange($event)">
+                        <option value="empty"></option>
+                        <option *ngFor="let genre of mainGenres" [value]="genre.genreId">
+                            {{genre.genreName}}
+                        </option>
+                    </select>
+                    <div class="subgenre">
+                        <span *ngIf="subGenres != null" class="p-subgenre tx-lbl">Subgenre</span>
+                        <select *ngIf="subGenres != null" class="tx-select" name="genre_type" id="genre_type"
+                            (change)="onGenreChange($event)">
+                            <option value="empty"></option>
+                            <option *ngFor="let genre of subGenres" [value]="genre.genreId">
+                                {{genre.genreName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="tempo">
+                    <span>Tempo</span>
+                    <input type="number" pattern="[0-9.]+" class="text-box tx-input" value="120" 
+                        (input)="onTempoChanged($event)"/>
+                </div>
+            </div>
         </div>
         <div class="step-wrapper publish-container" *ngIf="currentMusicType === musicType.Song">
             <h2>
@@ -41,43 +67,15 @@
             </div>
             <div class="public-controll">
                 <input type="button" class="btn" value="I agree" (click)="onAgreeToPublishClicked($event.target)" />
-                <span *ngIf="!this.songModel?.isAgreedToPublish">You don't agree to publish this song</span>
-                <div *ngIf="this.songModel?.isAgreedToPublish">
+                <span *ngIf="!isAgreedToPublish()">You don't agree to publish this song</span>
+                <div *ngIf="isAgreedToPublish()">
                     <i class="fa-solid fa-check fa-lg"style="color: #0091ff;"></i>
                     <span>You have agreed to publish this song</span>
                 </div>                
             </div>
         </div>
         <div class="save-wrapper" *ngIf="currentMusicType !== null">
-            <input type="button" class="btn" value="Save" />
+            <input type="button" [attr.disabled]="!isDetailsValidated ? true: null" class="btn" value="Save" (click)="onSaveClick()"/>
         </div>
     </main>
 </tx-music-container>
-
-<ng-template #commonFieldsTemplate>
-    <div class="common-fields-wrapper">
-        <div class="genres">
-            <span>Genre</span>
-            <select name="genre_type" id="genre_type" (change)="onGenreChange($event)">
-                <option value="empty"></option>
-                <option *ngFor="let genre of mainGenres" [value]="genre.genreId">
-                    {{genre.genreName}}
-                </option>
-            </select>
-            <div class="subgenre">
-                <span *ngIf="subGenres != null" class="p-subgenre tx-lbl">Subgenre</span>
-                <select *ngIf="subGenres != null" class="tx-select" name="genre_type" id="genre_type"
-                    (change)="onGenreChange($event)">
-                    <option value="empty"></option>
-                    <option *ngFor="let genre of subGenres" [value]="genre.genreId">
-                        {{genre.genreName}}
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div>
-            <span>Tempo</span>
-            <input type="number" pattern="[0-9.]+" class="text-box tx-input" placeholder="120" />
-        </div>
-    </div>
-</ng-template>

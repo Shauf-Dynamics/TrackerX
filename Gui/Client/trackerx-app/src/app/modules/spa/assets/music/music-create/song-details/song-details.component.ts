@@ -1,4 +1,6 @@
-import { Component, Input, OnInit, Pipe, PipeTransform, TemplateRef } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output, Pipe, PipeTransform, TemplateRef } from "@angular/core";
+import { MusicCreateService } from "../music-create.service";
+import { AlbumSuggestionResult, BandSuggestionResult } from "../music-create.models";
 
 interface AutoCompleteCompleteEvent {
     originalEvent: Event;
@@ -10,21 +12,52 @@ interface AutoCompleteCompleteEvent {
     templateUrl: './song-details.component.html',
     styleUrls: ['./song-details.component.css']
 })
-export class SongDetailsComponent implements OnInit {
+export class SongDetailsComponent {
+    @Output() isValidatedEmitter = new EventEmitter<boolean>();
 
-    @Input() commonFieldsTemplate: TemplateRef<any>;
+    public songName: string;
 
-    items: any[] | undefined;
+    public selectedBand: BandSuggestionResult | null;
+    public selectedAlbum: AlbumSuggestionResult | null;
+    public bandSuggestions: any[];
+    public albumSuggestions: any[];
 
-    selectedItem: any;
+    constructor(private musicService: MusicCreateService) { }
 
-    suggestions: any[];
-
-    search(event: AutoCompleteCompleteEvent) {
-        this.suggestions = [...Array(10).keys()].map(item => event.query + '-' + item);
+    public onNameChanged(): void {
+        this.validateInputs();
     }
 
-    ngOnInit(): void {
-        
+    public searchBand(event: AutoCompleteCompleteEvent): void {
+        this.musicService.getBandsSuggestion(event.query)
+            .subscribe(result => {
+                this.bandSuggestions = result;
+            })
     }    
+
+    public onBandSelect(): void{
+        this.musicService.getAlbumsSuggestion(this.selectedBand!.bandId)
+            .subscribe(result => {
+                this.albumSuggestions = result;                
+                this.isValidatedEmitter.emit(false);
+            })
+    }
+
+    public onClearBandInput(): void {
+        this.selectedAlbum = null;
+    }
+
+    public onAlbumChange(): void {
+        if (this.selectedAlbum) {
+            this.validateInputs();
+        }        
+    }
+
+    private validateInputs(): void {
+        if(this.songName && this.selectedAlbum && this.selectedBand) {
+            this.isValidatedEmitter.emit(true); 
+        } else {
+            this.isValidatedEmitter.emit(false);
+        }        
+    }
 }

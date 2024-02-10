@@ -1,10 +1,15 @@
 ﻿using TrackerX.Core.Services.Albums.Models;
+using TrackerX.Service.Albums.Models;
 
 namespace TrackerX.Core.Services.Albums;
 
 public interface IAlbumService
 {
-    Task Create(CreateAlbumModel model);        
+    Task CreateAsync(CreateAlbumModel model);
 
-    Task<AlbumViewModel> GetAlbumById(int id);
+    Task<IEnumerable<AlbumViewModel>> GetAlbumsByCriteriasAsync(AlbumSearchParams searchParams);
+
+    Task<IEnumerable<AlbumViewModel>> GetAlbumsByBandAsync(int bandId);
+
+    Task<AlbumViewModel> GetAlbumByIdAsync(int id);
 }

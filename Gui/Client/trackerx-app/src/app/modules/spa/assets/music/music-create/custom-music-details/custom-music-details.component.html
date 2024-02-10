@@ -1,7 +1,12 @@
 <main>
     <div>
         <span>Description</span>
-        <input type="text" class="text-box tx-input" />
+        <input [(ngModel)]="description" type="text" class="text-box tx-input"
+            (input)="onDescriptionChanged()"/>
     </div>        
-    <ng-container [ngTemplateOutlet]="commonFieldsTemplate"></ng-container>
+    <div>
+        <span>Author</span>
+        <input [(ngModel)]="authorName" type="text" class="text-box tx-input" 
+            (input)="onAuthorChanged()"/>
+    </div>    
 </main>

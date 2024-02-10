@@ -7,8 +7,7 @@ using TrackerX.Services.Musics.Models;
 namespace TrackerX.Web.Api.Gateway;
 
 [ApiController]
-[Authorize(Policy = "admin")]
-[Route("api/[controller]")]
+[Route("api/song")]
 public class SongController : Controller
 {
     private readonly IMusicService _musicService;
@@ -21,12 +20,12 @@ public class SongController : Controller
     }
 
     [HttpPost]
-    [Route("v1/create")]
+    [Route("v1")]
     public async Task<IActionResult> Post([FromBody] CreateMusicModel model)
     {
         await _musicService.Create(model);
 
-        return Ok();
+        return Created();
     }
 
     [HttpPut]

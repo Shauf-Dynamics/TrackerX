@@ -35,5 +35,5 @@ public class MusicSearchController : Controller
         var result = await _musicSearchService.GetMusicById(musicId);
 
         return Ok(result);
-    }
+    }    
 }

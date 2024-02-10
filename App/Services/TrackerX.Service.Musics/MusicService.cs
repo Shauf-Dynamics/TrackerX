@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using TrackerX.Services.Musics.Models;
 using TrackerX.Domain.Repositories;
+using TrackerX.Domain.Entities;
 
 namespace TrackerX.Services.Music;
 
@@ -17,7 +18,7 @@ public class MusicService : IMusicService
 
     public async Task Create(CreateMusicModel model)
     {
-        var song = _mapper.Map<Domain.Entities.Song>(model);
+        var song = _mapper.Map<Song>(model);
 
         _songRepository.Create(song);
 

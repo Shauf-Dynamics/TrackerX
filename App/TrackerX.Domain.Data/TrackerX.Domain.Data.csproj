@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TrackerX.Domain\TrackerX.Domain.csproj" />
-    <ProjectReference Include="..\TrackerX.UserAccessor\TrackerX.UserAccessor.csproj" />
+    <ProjectReference Include="..\TrackerX.UserAccessor\TrackerX.Internal.UserAccessor.csproj" />
   </ItemGroup>
 
 </Project>

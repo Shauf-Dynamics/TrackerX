@@ -1,4 +1,5 @@
-﻿using TrackerX.Domain.Entities;
+﻿using AutoMapper;
+using TrackerX.Domain.Entities;
 using TrackerX.Domain.Entities.Repositories;
 using TrackerX.Services.Bands.Models;
 
@@ -6,24 +7,28 @@ namespace TrackerX.Services.Bands;
 
 public class BandService : IBandService
 {
-    private IBandRepository _bandRepository;
+    private readonly IBandRepository _bandRepository;
+    private readonly IMapper _mapper;
 
-    public BandService(IBandRepository bandRepository)
+    public BandService(IBandRepository bandRepository, IMapper mapper)
     {
         _bandRepository = bandRepository;
+        _mapper = mapper;
     }
 
-    public async Task<IEnumerable<BandsViewModel>> GetBandsByCriterias(BandsSearchParams criterias)
+    public async Task<IEnumerable<BandsViewModel>> GetBandsByCriterias(BandSearchParams criterias)
     {
         var result = await _bandRepository.GetBySearchingCriteriasAsync(criterias.PageSize, criterias.StartsWith);
 
-        return result.Select(x => new BandsViewModel() { BandName = x.BandName });
+        return _mapper.Map<IEnumerable<BandsViewModel>>(result);
     }
 
     public async Task CreateBand(CreateBandModel name)
     {
-        var band = new Band();
-        band.BandName = name.BandName;
+        var band = new Band()
+        {
+            BandName = name.BandName
+        };
 
         _bandRepository.Create(band);
 

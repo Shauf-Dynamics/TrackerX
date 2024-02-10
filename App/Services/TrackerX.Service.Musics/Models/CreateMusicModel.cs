@@ -1,16 +1,27 @@
-﻿namespace TrackerX.Services.Musics.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class CreateMusicModel
+namespace TrackerX.Services.Musics.Models;
+
+public record CreateMusicModel
 {
-    public string Name { get; set; }
+    [Required]
+    public required string SongName { get; set; }    
 
-    public int WritingYear { get; set; }
-
-    public int Tempo { get; set; }
-
-    public bool IsInstrumental { get; set; } = false;
-
+    [Required]
     public int GenreId { get; set; }
 
+    [Required]
     public int BandId { get; set; }
+
+    [Required]
+    public int AlbumId { get; set; }
+
+    [Required]
+    public int Tempo { get; set; }
+
+    [Required]
+    public bool IsInstrumental { get; set; } = false;
+
+    [Required]
+    public bool IsAgreedToPublish { get; set; }
 }

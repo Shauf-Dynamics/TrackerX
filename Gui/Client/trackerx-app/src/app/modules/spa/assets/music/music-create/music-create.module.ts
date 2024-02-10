@@ -18,9 +18,9 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     imports: [    
         CommonModule,
         FormsModule,
+        AutoCompleteModule,
         MusicContainerModule,
-        MusicCreateRoutingModule,
-        AutoCompleteModule
+        MusicCreateRoutingModule
     ],
     exports: [
         MusicCreateCommonComponent
