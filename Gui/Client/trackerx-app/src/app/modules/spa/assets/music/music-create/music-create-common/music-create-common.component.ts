@@ -58,6 +58,10 @@ export class MusicCreateCommonComponent implements OnInit {
         this.createModel!.tempo = Number(event.target.value);
     }
 
+    public onIsInstrumentalChanged(event: any): void {
+        this.createModel!.IsInstrumental = event.currentTarget.checked;
+    }
+
     public onAgreeToPublishClicked(element: any) {
         if (this.createModel && this.createModel instanceof SongCreateModel) {
             this.createModel.isAgreedToPublish = !this.createModel.isAgreedToPublish;        
@@ -66,19 +70,17 @@ export class MusicCreateCommonComponent implements OnInit {
     }
 
     public onGenreChange(input: any): void {
-        let value = input.target.value;        
+        let newGenreId = input.target.value;                
 
-        if (this.createModel) {
-            if (value) {         
-                let genreId = Number(value);
-                this.createModel.genreId = genreId;
+        if (newGenreId) {         
+            let genreId = Number(newGenreId);
+            this.createModel!.genreId = genreId;
 
-                if (this.allGenres.find(x => x.genreId == value)?.parentGenreId == null) {
-                    let subGenres = this.allGenres.filter(x => x.parentGenreId == genreId);            
-                    this.subGenres = subGenres.length > 0 ? subGenres : null;
-                }
-            }                    
-        }        
+            if (this.allGenres.find(x => x.genreId == newGenreId)?.parentGenreId == null) {
+                let subGenres = this.allGenres.filter(x => x.parentGenreId == genreId);            
+                this.subGenres = subGenres.length > 0 ? subGenres : null;
+            }
+        }                         
     }    
 
     public isAgreedToPublish(): boolean {
@@ -92,32 +94,6 @@ export class MusicCreateCommonComponent implements OnInit {
         this.isDetailsValidated = isValidated;
     }
 
-    public onSaveClick(): void {
-        if (this.createModel && this.createModel.genreId) {
-            if (this.createModel instanceof SongCreateModel) {
-                this.createModel.albumId = this.songDetailsComponent.selectedAlbum?.albumId!;
-                this.createModel.bandId = this.songDetailsComponent.selectedBand?.bandId!;
-                this.createModel.songName = this.songDetailsComponent.songName;       
-                
-                this.musicService
-                    .createSong(this.createModel)
-                    .subscribe({
-                        next: _ => {
-                           this.showSavedResultDialog(true);
-                        },                        
-                        error: _ => {
-                            this.showSavedResultDialog(false);
-                        },
-                        complete: () => {
-                            this.resetForm();
-                        }});                    
-            } else if (this.createModel instanceof CustomMusicCreateModel) {
-                this.createModel.author = this.customSongDetailsComponent.authorName;
-                this.createModel.description = this.customSongDetailsComponent.description;
-            }
-        }        
-    }    
-
     public showSavedResultDialog(isSaved: boolean): void {
         if (isSaved) {
             this.alertHeader = "Success";
@@ -129,6 +105,52 @@ export class MusicCreateCommonComponent implements OnInit {
 
         this.isSavedSuccessfully = isSaved;
         this.isAlertVisible = true;
+    }
+
+    public onSaveClick(): void {
+        if (this.createModel && this.createModel.genreId) {
+            if (this.createModel instanceof SongCreateModel) {
+                this.saveSong(this.createModel);
+            } else if (this.createModel instanceof CustomMusicCreateModel) {
+                this.saveCustomMusic(this.createModel);
+            }
+        }        
+    }    
+
+    private saveSong(createModel: SongCreateModel): void {
+        createModel.albumId = this.songDetailsComponent.selectedAlbum?.albumId!;
+        createModel.bandId = this.songDetailsComponent.selectedBand?.bandId!;
+        createModel.songName = this.songDetailsComponent.songName;       
+        
+        this.musicService
+            .createSong(createModel)
+            .subscribe({
+                next: _ => {
+                   this.showSavedResultDialog(true);
+                },                        
+                error: _ => {
+                    this.showSavedResultDialog(false);
+                },
+                complete: () => {
+                    this.resetForm();
+                }}); 
+    }
+
+    private saveCustomMusic(createModel: CustomMusicCreateModel) {
+        createModel.author = this.customSongDetailsComponent.authorName;
+        createModel.description = this.customSongDetailsComponent.description;
+        this.musicService
+            .createCustomMusic(createModel)
+                .subscribe({
+                    next: _ => {
+                    this.showSavedResultDialog(true);
+                    },                        
+                    error: _ => {
+                        this.showSavedResultDialog(false);
+                    },
+                    complete: () => {
+                        this.resetForm();
+                    }});   
     }
 
     private resetForm(): void {

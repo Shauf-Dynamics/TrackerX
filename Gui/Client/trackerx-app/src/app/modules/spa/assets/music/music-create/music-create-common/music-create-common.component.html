@@ -50,7 +50,12 @@
                     <span [ngClass]="{ 'span-custom': currentMusicType === musicType.Custom }">Tempo</span>
                     <input type="number" pattern="[0-9.]+" class="text-box tx-input" value="120" 
                         (input)="onTempoChanged($event)"/>
+                        <div class="instrumental">
+                            <label>Is Instrumental</label>
+                            <input type="checkbox" value="false" (change)="onIsInstrumentalChanged($event)" />
+                        </div>
                 </div>
+   
             </div>
         </div>
         <div class="step-wrapper publish-container" *ngIf="currentMusicType === musicType.Song">

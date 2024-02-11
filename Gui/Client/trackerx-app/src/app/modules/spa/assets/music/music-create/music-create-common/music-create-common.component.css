@@ -91,13 +91,27 @@ select {
             line-height: 0.75;
             border: 1px solid #c5c5c58a;
             text-align: center;
-        }
+        }        
     }
 
     .tempo {
-        padding-top: 0.33vh;
+        padding-top: 0.5vh;
         span {
             padding-top: 1vh;
+        }
+
+        .instrumental {
+            margin-left: 3rem;
+
+            label {
+                padding-top: 1vh;
+            }
+
+            input[type=checkbox] {
+                margin-left: 0.75rem;
+                margin-top: 0.5vh;
+                transform: scale(1.33);
+            }
         }
     }
 

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { AlbumSuggestionResult, BandSuggestionResult, GenreModel, SongCreateModel } from "./music-create.models";
+import { AlbumSuggestionResult, BandSuggestionResult, CustomMusicCreateModel, GenreModel, SongCreateModel } from "./music-create.models";
 import { environment } from "src/environments/environment";
 
 const DefaultSuggestionPageSize: number = 5;
@@ -31,9 +31,14 @@ export class MusicCreateService {
         return this.http.get<AlbumSuggestionResult[]>(
             environment.apiUrl + '/api/album/v1/byBand', { params: params });
     }
-
+    
     public createSong(model: SongCreateModel): Observable<any> {
         return this.http.post(
             environment.apiUrl + '/api/song/v1', model);
+    }
+
+    public createCustomMusic(model: CustomMusicCreateModel): Observable<any> {
+        return this.http.post(
+            environment.apiUrl + '/api/custom-music/v1', model);
     }
 }
