@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TrackerX.Infrastructure;
 using TrackerX.Service.Musics;
 using TrackerX.Service.Musics.Models;
@@ -9,6 +10,7 @@ namespace TrackerX.Web.Api.Gateway;
 
 [ApiController]
 [Route("api")]
+[Authorize]
 public class MusicController : Controller
 {
     private readonly ISongService _songService;
