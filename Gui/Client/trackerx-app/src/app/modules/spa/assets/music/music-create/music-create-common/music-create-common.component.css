@@ -8,7 +8,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: baseline;
-    min-height: 58vh;
+    min-height: 60.5vh;
     margin-bottom: 5%;
 }
 
@@ -37,6 +37,10 @@ select {
     padding-left: 1rem;
 }
 
+select:hover {
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+}
+
 .step-wrapper {
     display: flex;
     flex-direction: column;
@@ -62,6 +66,10 @@ select {
             text-align: center;
             background-color: rgb(245, 245, 245);
             border: solid 1px rgb(207, 207, 207);
+    }
+
+    .select-type:hover {
+        box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
     }
 }
 
@@ -171,4 +179,8 @@ select {
         width: 6rem;
         height: 3.5vh;
     }
+}
+
+input[type=text]:hover {
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
 }

@@ -48,9 +48,11 @@ export class MusicCreateCommonComponent implements OnInit {
         if (input.target.value === "Song") {
             this.currentMusicType = MusicType.Song;
             this.createModel = new SongCreateModel();
-        } else {
+        } else if (input.target.value === "Custom Music") {
             this.currentMusicType = MusicType.Custom;
             this.createModel = new CustomMusicCreateModel();
+        } else {
+            this.currentMusicType = null;
         }
     }
 

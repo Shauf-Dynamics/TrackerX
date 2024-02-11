@@ -23,12 +23,28 @@ main {
     }    
 
     div.album {
-        margin-top: 0.25vh;
+        margin-top: 0.1vh;
 
         select {
             width: 26.33rem;
             height: 2.15rem;
             padding-left: 1rem;
         }
+
+        select:disabled {
+            background-color: rgb(223, 223, 223)
+        }
+
+        select:hover:not([disabled]) {
+            box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+        }
     }        
+}
+
+input[type=text]:hover {
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+}
+
+.text-box:hover {
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
 }

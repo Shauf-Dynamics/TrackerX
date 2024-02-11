@@ -108,6 +108,11 @@ a {
     box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
 }
 
+.text-box:hover {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+}
+
 @keyframes autofill {
     100% {
         background: transparent;
