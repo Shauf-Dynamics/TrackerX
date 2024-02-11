@@ -4,18 +4,18 @@ using TrackerX.Domain.Entities;
 
 namespace TrackerX.Domain.Data.Configurations;
 
-internal class MusicConfiguration : BaseEntityTypeConfiguration<Music>
+internal class CustomMusicConfiguration : BaseEntityTypeConfiguration<CustomMusic>
 {
-    public override void Configure(EntityTypeBuilder<Music> builder)
+    public override void Configure(EntityTypeBuilder<CustomMusic> builder)
     {
         builder.ToTable("tbl_lt_music");
 
-        builder.HasKey(e => e.MusicId);
+        builder.HasKey(e => e.CustomMusicId);
 
-        builder.Property(e => e.MusicId)
-            .HasColumnName("song_id");
+        builder.Property(e => e.CustomMusicId)
+            .HasColumnName("music_id");
 
-        builder.Property(e => e.MusicDescription)
+        builder.Property(e => e.CustomMusicDescription)
             .HasColumnName("music_description");
 
         builder.Property(e => e.AuthorName)
@@ -28,8 +28,8 @@ internal class MusicConfiguration : BaseEntityTypeConfiguration<Music>
             .HasColumnName("own_ind");
 
         builder.Property(e => e.IsInstrumental)
-
             .HasColumnName("instrumental_ind");
+
         builder.Property(e => e.Tempo)
             .HasColumnName("tempo");
 

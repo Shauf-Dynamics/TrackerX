@@ -3,7 +3,13 @@
 namespace TrackerX.Services.Infrastructure;
 
 public class ServiceResult
-{        
+{
+    public static ServiceResult Success { get; } = new ServiceResult(StatusType.Success);
+
+    public static ServiceResult Invalid { get; } = new ServiceResult(StatusType.Invalid);
+
+    public static ServiceResult Failure { get; } = new ServiceResult(StatusType.Failure);
+    
     public StatusType Status { get; set; }
 
     public string ErrorMessage { get; set; } = string.Empty;

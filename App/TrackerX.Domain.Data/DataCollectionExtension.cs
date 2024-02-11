@@ -17,6 +17,7 @@ public static class DataCollectionExtension
         services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
         services.AddTransient<IBandRepository, BandRepository>();
         services.AddTransient<ISongRepository, SongRepository>();
+        services.AddTransient<ICustomMusicRepository, CustomMusicRepository>();
         services.AddTransient<IAlbumRepository, AlbumRepository>();
         services.AddTransient<ILessonRepository, LessonRepository>();
         services.AddTransient<IExerciseRepository, ExerciseRepository>();

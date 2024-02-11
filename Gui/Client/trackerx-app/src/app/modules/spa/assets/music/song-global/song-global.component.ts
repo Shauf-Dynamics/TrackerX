@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, debounceTime } from 'rxjs';
-import { SearchModel, MusicModel, MusicDetailsModel } from './music-global.models';
-import { MusicSearchService } from './music-global.service';
+import { SearchModel, MusicModel, MusicDetailsModel } from './song-global.models';
+import { SongSearchService } from './song-global.service';
 import { FormControl } from '@angular/forms';
 
 @Component({
-    selector: 'tx-music-global',
-    templateUrl: './music-global.component.html',
-    styleUrls: ['./music-global.component.css']
+    selector: 'tx-song-global',
+    templateUrl: './song-global.component.html',
+    styleUrls: ['./song-global.component.css']
 })
-export class MusicGlobalComponent implements OnInit {
+export class SongGlobalComponent implements OnInit {
 
     public selectedIndex: number;    
     public searchField = new FormControl();
@@ -22,7 +22,7 @@ export class MusicGlobalComponent implements OnInit {
         searchBy: 'name'
     }
     
-    constructor(private musicSearchService: MusicSearchService) { }
+    constructor(private musicSearchService: SongSearchService) { }
 
     public ngOnInit(): void {
         this.songs$ = this.musicSearchService.getMusicList(this.searchArgs);

@@ -1,10 +1,10 @@
 ﻿namespace TrackerX.Domain.Entities;
 
-public sealed class Music : BaseEntity
+public sealed class CustomMusic : BaseEntity
 {
-    public int MusicId { get; set; }
+    public int CustomMusicId { get; set; }
 
-    public string MusicDescription { get; set; }
+    public string CustomMusicDescription { get; set; }
 
     public string AuthorName { get; set; }
 

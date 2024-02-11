@@ -2,7 +2,7 @@
 
 namespace TrackerX.Services.Musics.Models;
 
-public record CreateMusicModel
+public record CreateSongModel
 {
     [Required]
     public required string SongName { get; set; }    

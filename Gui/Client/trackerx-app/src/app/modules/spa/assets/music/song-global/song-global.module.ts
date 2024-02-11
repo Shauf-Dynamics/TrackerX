@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { MusicContainerModule } from '../music-container/music-container.module';
 import { CommonModule } from '@angular/common';
-import { MusicGlobalComponent } from './music-global.component';
-import { MusicSearchService } from './music-global.service';
+import { SongGlobalComponent as SongGlobalComponent } from './song-global.component';
+import { SongSearchService } from './song-global.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MusicGlobalRoutingModule } from './music-global-routing.module';
+import { MusicGlobalRoutingModule } from './song-global-routing.module';
 
 @NgModule({
     declarations: [
-        MusicGlobalComponent
+        SongGlobalComponent
     ],
     imports: [    
         CommonModule,        
@@ -18,12 +18,12 @@ import { MusicGlobalRoutingModule } from './music-global-routing.module';
         MusicGlobalRoutingModule
     ],
     exports: [
-        MusicGlobalComponent
+        SongGlobalComponent
     ],
     providers: [
-        MusicSearchService
+        SongSearchService
     ]
 })
-export class MusicGlobalModule {
+export class SongGlobalModule {
     
  }

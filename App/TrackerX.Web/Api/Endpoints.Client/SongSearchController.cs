@@ -7,14 +7,14 @@ namespace TrackerX.Web.Api.Endpoints.Client;
 
 [ApiController]
 [Authorize]
-[Route("api/music/search")]
-public class MusicSearchController : Controller
+[Route("api/song/search")]
+public class SongSearchController : Controller
 {
-    private readonly IMusicSearchService _musicSearchService;
+    private readonly ISongSearchService _songSearchService;
 
-    public MusicSearchController(IMusicSearchService musicSearchService)
+    public SongSearchController(ISongSearchService songSearchService)
     {
-        _musicSearchService = musicSearchService;
+        _songSearchService = songSearchService;
     }
 
     [HttpGet]
@@ -22,7 +22,7 @@ public class MusicSearchController : Controller
     [ProducesResponseType(typeof(IEnumerable<SongSearchResult>), 200)]
     public async Task<IActionResult> Get([FromQuery]string? searchText, [FromQuery]string searchBy)
     {
-        var result = await _musicSearchService.GetMusicListBySearchCriterias(searchText, searchBy);
+        var result = await _songSearchService.SearchSongsAsync(searchText, searchBy);
 
         return Ok(result);
     }
@@ -30,9 +30,9 @@ public class MusicSearchController : Controller
     [HttpGet]
     [Route("v1/details")]
     [ProducesResponseType(typeof(SongDetailsResult), 200)]
-    public async Task<IActionResult> Get([FromQuery]int musicId)
+    public async Task<IActionResult> Get([FromQuery]int songId)
     {
-        var result = await _musicSearchService.GetMusicById(musicId);
+        var result = await _songSearchService.GetSongByIdAsync(songId);
 
         return Ok(result);
     }    

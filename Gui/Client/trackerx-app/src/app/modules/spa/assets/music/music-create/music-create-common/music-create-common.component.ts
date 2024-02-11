@@ -21,7 +21,7 @@ export class MusicCreateCommonComponent implements OnInit {
     public musicType = MusicType;
     public currentMusicType: MusicType | null = null;
 
-    public createModel?: MusicBase | null;    
+    public createModel?: MusicBase | null;
 
     private allGenres: GenreModel[];
     public mainGenres: GenreModel[];
@@ -36,10 +36,10 @@ export class MusicCreateCommonComponent implements OnInit {
 
     constructor(private musicService: MusicCreateService) { }
 
-    public ngOnInit(): void { 
+    public ngOnInit(): void {
         this.musicService.getMusicGenres()
             .subscribe(genres => {
-                this.allGenres = genres;                
+                this.allGenres = genres;
                 this.mainGenres = genres.filter(x => x.parentGenreId === null);
             })
     }
@@ -64,24 +64,24 @@ export class MusicCreateCommonComponent implements OnInit {
 
     public onAgreeToPublishClicked(element: any) {
         if (this.createModel && this.createModel instanceof SongCreateModel) {
-            this.createModel.isAgreedToPublish = !this.createModel.isAgreedToPublish;        
-            element.value = this.createModel.isAgreedToPublish ? "Revoke" : "I agree";          
+            this.createModel.isAgreedToPublish = !this.createModel.isAgreedToPublish;
+            element.value = this.createModel.isAgreedToPublish ? "Revoke" : "I agree";
         }
     }
 
     public onGenreChange(input: any): void {
-        let newGenreId = input.target.value;                
+        let newGenreId = input.target.value;
 
-        if (newGenreId) {         
+        if (newGenreId) {
             let genreId = Number(newGenreId);
             this.createModel!.genreId = genreId;
 
             if (this.allGenres.find(x => x.genreId == newGenreId)?.parentGenreId == null) {
-                let subGenres = this.allGenres.filter(x => x.parentGenreId == genreId);            
+                let subGenres = this.allGenres.filter(x => x.parentGenreId == genreId);
                 this.subGenres = subGenres.length > 0 ? subGenres : null;
             }
-        }                         
-    }    
+        }
+    }
 
     public isAgreedToPublish(): boolean {
         if (this.createModel && this.createModel instanceof SongCreateModel)
@@ -94,19 +94,6 @@ export class MusicCreateCommonComponent implements OnInit {
         this.isDetailsValidated = isValidated;
     }
 
-    public showSavedResultDialog(isSaved: boolean): void {
-        if (isSaved) {
-            this.alertHeader = "Success";
-            this.alertMessage = "Your song has been added to the library."
-        } else {
-            this.alertHeader = "Failed";
-            this.alertMessage = "Internal error. Please try later."
-        }
-
-        this.isSavedSuccessfully = isSaved;
-        this.isAlertVisible = true;
-    }
-
     public onSaveClick(): void {
         if (this.createModel && this.createModel.genreId) {
             if (this.createModel instanceof SongCreateModel) {
@@ -114,26 +101,48 @@ export class MusicCreateCommonComponent implements OnInit {
             } else if (this.createModel instanceof CustomMusicCreateModel) {
                 this.saveCustomMusic(this.createModel);
             }
-        }        
-    }    
+        }
+    }
+
+    private showSavedResultDialog(): void {
+        this.alertHeader = "Success";
+        this.alertMessage = "Your song has been added to the library."                            
+
+        this.isSavedSuccessfully = true;
+        this.isAlertVisible = true;
+    }
+
+    private showErrorResultDialog(status: number, message: string): void {
+        this.alertHeader = "Failed";
+
+        if (status >= 500 || status == 0) {
+            this.alertMessage = "Internal error. Please try later."            
+        } else {
+            this.alertMessage = message;
+        }
+        
+        this.isSavedSuccessfully = false;
+        this.isAlertVisible = true;
+    }
 
     private saveSong(createModel: SongCreateModel): void {
         createModel.albumId = this.songDetailsComponent.selectedAlbum?.albumId!;
         createModel.bandId = this.songDetailsComponent.selectedBand?.bandId!;
-        createModel.songName = this.songDetailsComponent.songName;       
-        
+        createModel.songName = this.songDetailsComponent.songName;
+
         this.musicService
             .createSong(createModel)
             .subscribe({
-                next: _ => {
-                   this.showSavedResultDialog(true);
-                },                        
-                error: _ => {
-                    this.showSavedResultDialog(false);
+                next: _ => {                    
+                    this.showSavedResultDialog();
+                },
+                error: error => {
+                    this.showErrorResultDialog(Number(error.status), error.error);
                 },
                 complete: () => {
                     this.resetForm();
-                }}); 
+                }
+            });
     }
 
     private saveCustomMusic(createModel: CustomMusicCreateModel) {
@@ -141,16 +150,17 @@ export class MusicCreateCommonComponent implements OnInit {
         createModel.description = this.customSongDetailsComponent.description;
         this.musicService
             .createCustomMusic(createModel)
-                .subscribe({
-                    next: _ => {
-                    this.showSavedResultDialog(true);
-                    },                        
-                    error: _ => {
-                        this.showSavedResultDialog(false);
-                    },
-                    complete: () => {
-                        this.resetForm();
-                    }});   
+            .subscribe({
+                next: _ => {
+                    this.showSavedResultDialog();
+                },
+                error: error => {
+                    this.showErrorResultDialog(Number(error.status), error.error);
+                },
+                complete: () => {
+                    this.resetForm();
+                }
+            });
     }
 
     private resetForm(): void {

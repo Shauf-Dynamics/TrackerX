@@ -12,7 +12,7 @@ export class MusicCreateService {
     
     public getMusicGenres(): Observable<GenreModel[]> {        
         return this.http.get<GenreModel[]>(            
-            environment.apiUrl + '/api/music/create/v1/genres-list');
+            environment.apiUrl + '/api/music-create/v1/genres-list');
     }
 
     public getBandsSuggestion(pattern: string): Observable<BandSuggestionResult[]> {

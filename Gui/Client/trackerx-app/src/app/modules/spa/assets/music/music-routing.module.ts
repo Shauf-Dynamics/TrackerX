@@ -5,7 +5,7 @@ import { AuthGuard } from 'src/app/providers/auth/auth.guard';
 const routes: Routes = [
     {
         path: 'global',
-        loadChildren: () => import('./music-global/music-global.module').then(m => m.MusicGlobalModule),   
+        loadChildren: () => import('./song-global/song-global.module').then(m => m.SongGlobalModule),   
 		canActivate: [ AuthGuard ]
     },
     {

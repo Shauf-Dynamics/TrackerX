@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MusicGlobalComponent } from './music-global.component';
+import { SongGlobalComponent } from './song-global.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: MusicGlobalComponent,   
+        component: SongGlobalComponent,   
     },
 ];
 

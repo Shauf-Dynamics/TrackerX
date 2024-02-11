@@ -1,11 +1,11 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { SearchModel, MusicModel, MusicDetailsModel } from "./music-global.models";
+import { SearchModel, MusicModel, MusicDetailsModel as SongDetailsModel } from "./song-global.models";
 import { environment } from "src/environments/environment";
 
 @Injectable()
-export class MusicSearchService {    
+export class SongSearchService {    
     constructor(private http: HttpClient) { }
 
     public getMusicList(search: SearchModel): Observable<MusicModel[]> {
@@ -14,14 +14,14 @@ export class MusicSearchService {
         params = params.append('searchBy', search.searchBy);
 
         return this.http.get<MusicModel[]>(
-            environment.apiUrl + '/api/music/search/v1', { params: params });
+            environment.apiUrl + '/api/song/search/v1', { params: params });
     }
 
-    public getMusicDetails(musicId: number): Observable<MusicDetailsModel> {
+    public getMusicDetails(songId: number): Observable<SongDetailsModel> {
         let params = new HttpParams();    
-        params = params.append('musicId', musicId);
+        params = params.append('songId', songId);
 
-        return this.http.get<MusicDetailsModel>(
-            environment.apiUrl + '/api/music/search/v1/details', { params: params });
+        return this.http.get<SongDetailsModel>(
+            environment.apiUrl + '/api/song/search/v1/details', { params: params });
     }
 }

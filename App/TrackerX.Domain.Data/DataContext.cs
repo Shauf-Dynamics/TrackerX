@@ -22,7 +22,7 @@ public class DataContext : DbContext
 
     public DbSet<Song> Songs { get; set; }
 
-    public DbSet<Music> Musics { get; set; }
+    public DbSet<CustomMusic> CustomMusics { get; set; }
 
     public DbSet<Genre> Genres { get; set; }
 
@@ -44,6 +44,7 @@ public class DataContext : DbContext
         builder.ApplyConfiguration(new ExerciseTypeConfiguration());
         builder.ApplyConfiguration(new BandConfiguration());
         builder.ApplyConfiguration(new SongConfiguration());          
+        builder.ApplyConfiguration(new CustomMusicConfiguration());
         builder.ApplyConfiguration(new GenreConfiguration());
         builder.ApplyConfiguration(new AlbumConfiguration());
         builder.ApplyConfiguration(new LessonConfiguration());
