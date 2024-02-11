@@ -15,7 +15,7 @@ export class SongGlobalComponent implements OnInit {
     public searchField = new FormControl();
     
     public songs$: Observable<MusicModel[]>;
-    public selected: MusicDetailsModel;
+    public selected: MusicDetailsModel | null = null;
 
     public searchArgs: SearchModel = {
         searchText: '',
@@ -43,17 +43,8 @@ export class SongGlobalComponent implements OnInit {
             });
     }
 
-    public onNameSearchClick(): void {
-        if (this.searchArgs.searchBy !== 'name') {
-            this.searchArgs.searchBy = 'name';
-            this.songs$ = this.musicSearchService.getMusicList(this.searchArgs);
-        }
-    }
-    
-    public onBandSearchClick(): void {
-        if (this.searchArgs.searchBy !== 'band') {
-            this.searchArgs.searchBy = 'band';
-            this.songs$ = this.musicSearchService.getMusicList(this.searchArgs);
-        }
+    public onSearchByChanged(input: any): void {
+        this.searchArgs.searchBy = input.target.value;
+        this.songs$ = this.musicSearchService.getMusicList(this.searchArgs);
     }
 }

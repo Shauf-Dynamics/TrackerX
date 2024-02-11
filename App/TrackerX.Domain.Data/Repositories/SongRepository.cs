@@ -25,7 +25,8 @@ public class SongRepository : RepositoryBase<Song>, ISongRepository
     public async Task<IEnumerable<Song>> GetBySearchCriteriasAsync(string text, string searchBy)
     {
         var songs = Context.Songs
-            .Include(x => x.Band);
+            .Include(x => x.Band)
+            .Include(x => x.Album);
 
         if (!string.IsNullOrWhiteSpace(text))
         {
@@ -52,6 +53,7 @@ public class SongRepository : RepositoryBase<Song>, ISongRepository
     {
         return await Context.Set<Song>()
             .Include(x => x.Band)
+            .Include(x => x.Album)
             .Include(x => x.Genre)
             .Include(x => x.Genre.ParentGenre)
             .FirstOrDefaultAsync(predicate);

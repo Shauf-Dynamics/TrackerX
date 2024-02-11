@@ -21,7 +21,8 @@ public class MusicMapper : Profile
 
         CreateMap<Song, SongSearchResult>()
             .ForMember(dest => dest.Band, opt => opt.MapFrom(src => src.Band.BandName))
-            .ForMember(dest => dest.Album, opt => opt.MapFrom(src => src.Album.AlbumName));
+            .ForMember(dest => dest.Album, opt => opt.MapFrom(src => src.Album.AlbumName))
+            .ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.Album.WritingYear));
 
         CreateMap<Song, SongDetailsResult>()
             .ForMember(dest => dest.Band, opt => opt.MapFrom(src => src.Band.BandName))

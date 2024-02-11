@@ -1,21 +1,13 @@
 <tx-music-container [selectedTabIndex]="2">
     <main>
         <div class="tx-sg-search">
-            <input type="text" class="text-box" placeholder="Search" 
-                (value)="searchArgs.searchText" [formControl]="searchField"/>
-            <span class="tx-sg-search-by">
-                <i>search by</i>
-                <input type="button" class="btn left" value="Name" (click)="onNameSearchClick()"
-                    [ngClass]="searchArgs.searchBy === 'name' ? 'btn-selected' : ''" />
-                <input type="button" class="btn right" value="Band" (click)="onBandSearchClick()"
-                    [ngClass]="searchArgs.searchBy === 'band' ? 'btn-selected' : ''" />
-            </span>
+            <input type="text" class="text-box" placeholder="Search" (value)="searchArgs.searchText"
+                [formControl]="searchField" />
             <span class="tx-sg-search-sort">
-                <span><i>sort by</i></span>
-                <select name="search_sort" id="search_sort">
-                    <option value="s_name">Name</option>
-                    <option value="s_band">Band</option>
-                    <option value="s_year">Year</option>
+                <span><i>search by</i></span>
+                <select name="search_sort" id="search_sort" (change)="onSearchByChanged($event)">
+                    <option value="name">Name</option>
+                    <option value="band">Band</option>
                 </select>
             </span>
         </div>
@@ -32,15 +24,29 @@
                 <tbody>
                     <tr *ngFor="let item of songs$ | async; let i = index" (click)="onRowClicked(i, item.songId)"
                         [ngClass]="selectedIndex == i ? 'row-clicked': ''">
-                        <td>{{ item.songName }}</td>
+                        <td>
+                            <span [ngClass]="{ 'selected-column': searchArgs.searchBy === 'name' }">
+                                {{ item.songName }}
+                            </span>
+                        </td>
                         <td>{{ item.album }}</td>
-                        <td>{{ item.band }}</td>
+                        <td>
+                            <span [ngClass]="{ 'selected-column': searchArgs.searchBy === 'band' }">
+                                {{ item.band }}
+                            </span>
+                        </td>
                         <td>{{ item.year }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="tx-sg-details" *ngIf="selected !== undefined">
+        <div class="tx-sg-details" *ngIf="selected == null">
+            <div class="image-frame">
+                <i class="fa-solid fa-binoculars fa-2xl"></i>
+                <p>Select any song to see details</p>
+            </div>
+        </div>
+        <div class="tx-sg-details" *ngIf="selected != null">
             <div class="image-frame">
                 <ng-container *ngIf="true">
                     <i class="fa-solid fa-guitar fa-2xl"></i>

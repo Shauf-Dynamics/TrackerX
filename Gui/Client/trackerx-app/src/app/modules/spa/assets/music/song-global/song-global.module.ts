@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SongGlobalComponent as SongGlobalComponent } from './song-global.component';
 import { SongSearchService } from './song-global.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MusicGlobalRoutingModule } from './song-global-routing.module';
+import { SongGlobalRoutingModule } from './song-global-routing.module';
 
 @NgModule({
     declarations: [
@@ -15,7 +15,7 @@ import { MusicGlobalRoutingModule } from './song-global-routing.module';
         FormsModule,
         ReactiveFormsModule,
         MusicContainerModule,
-        MusicGlobalRoutingModule
+        SongGlobalRoutingModule
     ],
     exports: [
         SongGlobalComponent

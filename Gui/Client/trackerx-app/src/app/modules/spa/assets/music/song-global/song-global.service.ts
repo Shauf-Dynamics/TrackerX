@@ -14,7 +14,7 @@ export class SongSearchService {
         params = params.append('searchBy', search.searchBy);
 
         return this.http.get<MusicModel[]>(
-            environment.apiUrl + '/api/song/search/v1', { params: params });
+            environment.apiUrl + '/api/v1/song/search', { params: params });
     }
 
     public getMusicDetails(songId: number): Observable<SongDetailsModel> {
@@ -22,6 +22,6 @@ export class SongSearchService {
         params = params.append('songId', songId);
 
         return this.http.get<SongDetailsModel>(
-            environment.apiUrl + '/api/song/search/v1/details', { params: params });
+            environment.apiUrl + '/api/v1/song/details', { params: params });
     }
 }
