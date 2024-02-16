@@ -20,7 +20,7 @@ export class MusicContainerComponent implements OnInit {
                 {
                     title: 'My Music',
                     description: 'Search for your personal music',
-                    link: '/'
+                    link: '/app/music/own'
                 },   
                 {
                     title: 'Global Songs',

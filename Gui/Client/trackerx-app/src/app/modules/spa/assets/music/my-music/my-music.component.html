@@ -1,0 +1,51 @@
+<tx-music-container [selectedTabIndex]="1">
+    <main>
+        <div class="search-container">            
+            <input class="text-box" type="text" placeholder="Search by Description"/>            
+            <div class="search-by">
+                <div>
+                    <label>Type</label>
+                    <select>
+                        <option>Both</option>
+                        <option>Song</option>
+                        <option>Custom</option>
+                    </select>
+                </div>            
+                <div>
+                    <label>Visibility</label>
+                    <select>
+                        <option>Both</option>
+                        <option>Public</option>
+                        <option>Private</option>
+                    </select>
+                </div>                
+            </div>            
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-description">Description</th>
+                        <th class="col-album">Album</th>
+                        <th class="col-author">Author</th>
+                        <th class="col-type">Type</th>
+                        <th class="col-publicity">Publicity</th>                    
+                        <th class="col-added-date">Added Date</th>
+                        <th class="col-actions">Actions</th>
+                    </tr>                    
+                </thead>
+                <tbody>
+                    <tr *ngFor="let music of myMusicViewModel$ | async; let i = index">
+                        <td class="col-description">{{ music.description }}</td>
+                        <td class="col-album">hgfhgf</td>
+                        <td class="col-author">hfghfg</td>
+                        <td class="col-type">{{ music.type }}</td>
+                        <td class="col-publicity">{{ music.visibility }}</td>
+                        <td class="col-added-date">{{ music.addedDate | date: 'shortDate'}}</td>
+                        <td class="col-actions">dsd</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>        
+    </main>
+</tx-music-container>

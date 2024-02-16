@@ -99,7 +99,7 @@ export class MusicCreateCommonComponent implements OnInit {
     public onSaveClick(): void {
         if (this.createModel && this.createModel.genreId) {
             if (this.createModel instanceof SongCreateModel) {
-                this.saveSong(this.createModel);
+                this.saveSong(this.createModel);``
             } else if (this.createModel instanceof CustomMusicCreateModel) {
                 this.saveCustomMusic(this.createModel);
             }

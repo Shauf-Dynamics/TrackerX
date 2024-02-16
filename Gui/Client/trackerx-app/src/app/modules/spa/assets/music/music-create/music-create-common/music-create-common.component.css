@@ -34,7 +34,7 @@ h3 {
 select {
     width: 10rem;
     height: 2.15rem;
-    padding-left: 1rem;
+    text-align: center;
 }
 
 select:hover {

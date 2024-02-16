@@ -99,6 +99,8 @@ a {
     color: #2e3135;
     border: 1px solid #f3f3f3;
     border-radius: 0.45rem;
+    border-color: rgba(202, 202, 202, 0.678);
+    box-shadow: 0 0 2px rgba(0,0,0,.19);  
     background-color: #f3f3f3;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }

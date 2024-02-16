@@ -37,7 +37,7 @@
                     </select>
                     <div class="subgenre">
                         <span *ngIf="subGenres != null" class="p-subgenre tx-lbl">Subgenre</span>
-                        <select *ngIf="subGenres != null" class="tx-select" name="genre_type" id="genre_type"
+                        <select *ngIf="subGenres != null" name="genre_type" id="genre_type"
                             (change)="onGenreChange($event)">
                             <option value="" [selected]="createModel?.genreId == null"></option>
                             <option *ngFor="let genre of subGenres" [value]="genre.genreId">

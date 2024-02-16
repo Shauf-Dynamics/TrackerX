@@ -14,7 +14,7 @@
     </div>           
     <div class="album">
         <span>Album</span>
-        <select [(ngModel)]="selectedAlbum" class="tx-select select" name="select-album" id="select-album" disabled
+        <select [(ngModel)]="selectedAlbum" class="select" name="select-album" id="select-album" disabled
             [attr.disabled]="!selectedBand? true : null" (change)="onAlbumChange()">
             <option *ngFor="let album of albumSuggestions" [ngValue]="album">
                 {{album.albumName}} ({{album.writingYear}})
