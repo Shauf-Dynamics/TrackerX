@@ -24,5 +24,6 @@ public static class DataCollectionExtension
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IInvitationRepository, InvitationRepository>();
         services.AddTransient<IGenreRepository, GenreRepository>();
+        services.AddTransient<IMusicProfileRepository, MusicProfileRepository>();
     }
 }
