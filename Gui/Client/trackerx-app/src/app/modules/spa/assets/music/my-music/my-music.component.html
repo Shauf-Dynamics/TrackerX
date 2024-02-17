@@ -31,17 +31,17 @@
                         <th class="col-type">Type</th>
                         <th class="col-publicity">Publicity</th>                    
                         <th class="col-added-date">Added Date</th>
-                        <th class="col-actions">Actions</th>
+                        <th class="col-actions"></th>
                     </tr>                    
                 </thead>
                 <tbody>
                     <tr *ngFor="let music of myMusicViewModel$ | async; let i = index">
                         <td class="col-description">{{ music.description }}</td>
-                        <td class="col-album">hgfhgf</td>
-                        <td class="col-author">hfghfg</td>
+                        <td class="col-album">{{ music.album }}</td>
+                        <td class="col-author">{{ music.author }}</td>
                         <td class="col-type">{{ music.type }}</td>
-                        <td class="col-publicity">{{ music.visibility }}</td>
-                        <td class="col-added-date">{{ music.addedDate | date: 'shortDate'}}</td>
+                        <td class="col-publicity">{{ music.isPublished }}</td>
+                        <td class="col-added-date">{{ music.assetAddedDate | date: 'shortDate'}}</td>
                         <td class="col-actions">dsd</td>
                     </tr>
                 </tbody>

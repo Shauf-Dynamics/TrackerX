@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TrackerX.Infrastructure;
 using TrackerX.Service.Musics;
 using TrackerX.Service.Musics.Models;
@@ -26,7 +27,8 @@ public class MusicController : Controller
     [Route("song/v1")]
     public async Task<IActionResult> PostSong([FromBody] CreateSongModel model)
     {
-        var result = await _songService.CreateAsync(model);
+        int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        var result = await _songService.CreateAsync(model, userId);
 
         if (result.Status == StatusType.Success)
             return Created();

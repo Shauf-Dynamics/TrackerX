@@ -2,15 +2,15 @@
 
 public sealed class MusicProfile : BaseEntity
 {
-    public required int MusicProfileId { get; set; }
+    public int MusicProfileId { get; set; }
 
-    public required int CreatorUserId { get; set; }
+    public int InitiatorUserId { get; set; }
 
-    public required User CreatorUser { get; set; }
+    public User? InitiatorUser { get; set; }
 
-    public required int AssetId { get; set; }
+    public int AssetId { get; set; }
 
-    public required string TypeName { get; set; }
+    public string? TypeName { get; set; }
 
-    public required bool IsPublished { get; set; }
+    public bool IsPublished { get; set; }
 }

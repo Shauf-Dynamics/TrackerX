@@ -7,7 +7,7 @@ public interface IRepository<T> where T : BaseEntity
     Task<T> GetByIdAsync(int id);
     Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
 
-    void Create(T entity);
+    T Create(T entity);
     void Update(T entity);
     void Remove(T entity);
 

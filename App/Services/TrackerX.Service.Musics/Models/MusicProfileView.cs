@@ -12,7 +12,7 @@ public record MusicProfileView
 
     public required string Type { get; set; }
 
-    public bool IsPublisher { get; set; }
+    public bool IsPublished { get; set; }
 
     public DateTime AssetAddedDate { get; set; }
 }

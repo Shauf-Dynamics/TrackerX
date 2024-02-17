@@ -13,9 +13,10 @@ public class RepositoryBase<T> : IRepository<T> where T : BaseEntity
         Context = context;
     }
 
-    public void Create(T entity)
+    public T Create(T entity)
     {
         Context.Set<T>().Add(entity);
+        return entity;
     }
 
     public void Update(T entity)

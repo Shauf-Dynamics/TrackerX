@@ -58,4 +58,13 @@ public class SongRepository : RepositoryBase<Song>, ISongRepository
             .Include(x => x.Genre.ParentGenre)
             .FirstOrDefaultAsync(predicate);
     }
+
+    public async Task<IEnumerable<Song>> SearchBySongNameAsync(string startsWith)
+    {
+        return await Context.Songs
+            .Where(x => x.SongName.StartsWith(startsWith))
+            .Include(x => x.Album)
+            .Include(x => x.Band)            
+            .ToListAsync();
+    }
 }

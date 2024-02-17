@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { MyMusicComponent } from "./my-music.component";
 import { MusicContainerModule } from "../music-container/music-container.module";
 import { MyMusicRoutingModule } from "./my-music-routing.module";
+import { MyMusicService } from "./my-music.service";
 
 @NgModule({
     declarations: [
@@ -19,7 +20,7 @@ import { MyMusicRoutingModule } from "./my-music-routing.module";
         
     ],
     providers: [
-        
+        MyMusicService
     ]
 })
 export class MyMusicModule {

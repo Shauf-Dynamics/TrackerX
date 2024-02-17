@@ -12,6 +12,9 @@ internal class MusicProfileConfiguration : BaseEntityTypeConfiguration<MusicProf
 
         builder.HasKey(e => e.MusicProfileId);
 
+        builder.Property(e => e.MusicProfileId)
+            .HasColumnName("music_profile_id");
+
         builder.Property(e => e.IsPublished)
           .HasColumnName("music_publicity_ind");
 
@@ -19,17 +22,14 @@ internal class MusicProfileConfiguration : BaseEntityTypeConfiguration<MusicProf
             .HasColumnName("music_asset_id");
 
         builder.Property(e => e.TypeName)
-            .HasColumnName("music_type_name")
-            .IsRequired(false);
+            .HasColumnName("music_type_name");
 
-        builder.Property(e => e.CreatorUserId)
-            .HasColumnName("music_added_by_id")
-            .IsRequired(false);        
+        builder.Property(e => e.InitiatorUserId)
+            .HasColumnName("music_added_by_id");
 
-        builder.HasOne(e => e.CreatorUser)
+        builder.HasOne(e => e.InitiatorUser)
             .WithMany()
-            .HasForeignKey(c => c.CreatorUserId)
-            .IsRequired(false);
+            .HasForeignKey(c => c.InitiatorUserId);            
 
         base.Configure(builder);
     }
