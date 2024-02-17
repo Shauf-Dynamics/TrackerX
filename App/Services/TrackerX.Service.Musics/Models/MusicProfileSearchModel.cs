@@ -7,7 +7,7 @@ public record MusicProfileSearchModel
     public string? DescriptionPattern { get; set; }
 
     [JsonConverter(typeof(JsonStringEnumConverter))]
-    public MusicProfileTypeEnum Type { get; set; } = MusicProfileTypeEnum.Both;
+    public MusicProfileTypeEnum Type { get; set; }
 
-    public bool? IsPublished { get; set; } = null;
+    public bool? IncludePublished { get; set; }
 }

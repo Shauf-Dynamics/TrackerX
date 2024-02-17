@@ -6,5 +6,5 @@ namespace TrackerX.Services.Musics;
 
 public interface ISongService
 {
-    Task<ServiceResult> CreateAsync(CreateSongModel model, int userId);
+    Task<ServiceResult> CreateAsync(CreateSongModel model, int userId, string userRole);
 }

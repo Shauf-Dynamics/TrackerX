@@ -17,12 +17,14 @@ export class SongGlobalComponent implements OnInit {
     public songs$: Observable<MusicModel[]>;
     public selected: MusicDetailsModel | null = null;
 
-    public searchArgs: SearchModel = {
-        searchText: '',
-        searchBy: 'name'
-    }
+    public searchArgs: SearchModel;
     
-    constructor(private musicSearchService: SongSearchService) { }
+    constructor(private musicSearchService: SongSearchService) { 
+        this.searchArgs = {
+            searchText: '',
+            searchBy: 'name'
+        }
+    }
 
     public ngOnInit(): void {
         this.songs$ = this.musicSearchService.getMusicList(this.searchArgs);

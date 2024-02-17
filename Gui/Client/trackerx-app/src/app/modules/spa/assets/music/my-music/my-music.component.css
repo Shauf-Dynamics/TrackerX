@@ -58,7 +58,7 @@ main {
         table-layout: fixed;
     }
 
-    table {        
+    table {
         border-collapse: collapse;
         border-radius: 20px 20px 0 0;
 
@@ -80,31 +80,44 @@ main {
         }
 
         .col-description {
-            width: 30%;
+            width: 25%;
             text-align: left;
+            font-weight: 500;
         }
 
         .col-album,
         .col-author {
+            width: 15%;
             text-align: left;
         }
 
         .col-type {
-            width: 10%;
-            text-align: center;
+            width: 7.5%;
+            text-align: center;            
+            
         }
 
         .col-publicity {
-            width: 10%;
-            text-align: center;
+            width: 7.5%;
+            text-align: left;
+
+            i {
+                padding-left: 1.75rem;
+            }
         }
 
         .col-added-date {
-            text-align: center;
+            width: 12.5%;
+            text-align: left;
+            padding-left: 3.33rem;
         }
 
         .col-actions {
-            text-align: center;
+            text-align: right;
+
+            i {
+                padding-right: 1rem;
+            }
         }
 
         thead th {
@@ -134,7 +147,47 @@ main {
 
         tr:hover {
             transition: 0.5s;
-            background-color: rgba(0, 118, 196, 0.144)
+            background-color: rgba(0, 118, 196, 0.144);
+
+            .i-public-active,
+            .i-edit {
+                color: #0082e6;
+            }
+
+            .i-remove {
+                color: rgba(255, 23, 23, 0.904);
+            }
         }
     }
+}
+
+.i-public-deactive {
+    color: #dfdfdfa1;
+}
+
+.i-public-active {
+    transition: 0.5s;
+    color: #c4c4c4b2;
+}
+
+.i-public-active:hover {
+    transform: scale(1.33);
+}
+
+.i-edit {
+    transition: 0.5s;
+    color: #c4c4c4b2;
+}
+
+.i-edit:hover {
+    transform: scale(1.33);
+}
+
+.i-remove {
+    transition: 0.5s;
+    color: #c4c4c4b2;
+}
+
+.i-remove:hover {
+    transform: scale(1.33);
 }

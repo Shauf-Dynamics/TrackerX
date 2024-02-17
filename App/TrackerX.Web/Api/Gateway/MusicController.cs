@@ -27,8 +27,9 @@ public class MusicController : Controller
     [Route("song/v1")]
     public async Task<IActionResult> PostSong([FromBody] CreateSongModel model)
     {
-        int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-        var result = await _songService.CreateAsync(model, userId);
+        var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        var userRoleName = User.FindFirstValue(ClaimTypes.Role)!;
+        var result = await _songService.CreateAsync(model, userId, userRoleName);
 
         if (result.Status == StatusType.Success)
             return Created();
@@ -42,7 +43,9 @@ public class MusicController : Controller
     [Route("custom-music/v1")]
     public async Task<IActionResult> PostCustomMusic([FromBody] CreateCustomMusicModel model)
     {
-        var result =  await _customMusicService.CreateAsync(model);
+        var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        var userRoleName = User.FindFirstValue(ClaimTypes.Role)!;
+        var result =  await _customMusicService.CreateAsync(model, userId, userRoleName);
 
         if (result.Status == StatusType.Success)
             return Created();

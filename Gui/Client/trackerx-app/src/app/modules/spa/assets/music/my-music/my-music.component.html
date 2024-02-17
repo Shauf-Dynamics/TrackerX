@@ -1,25 +1,26 @@
 <tx-music-container [selectedTabIndex]="1">
     <main>
-        <div class="search-container">            
-            <input class="text-box" type="text" placeholder="Search by Description"/>            
+        <div class="search-container">
+            <input class="text-box" type="text" placeholder="Search by Description"
+                (value)="searchArgs.descriptionPattern" [formControl]="searchField" />
             <div class="search-by">
                 <div>
                     <label>Type</label>
-                    <select>
-                        <option>Both</option>
-                        <option>Song</option>
-                        <option>Custom</option>
+                    <select (change)="onMusicTypeChange($event)">
+                        <option value="Both">Both</option>
+                        <option value="Song">Song</option>
+                        <option value="Custom">Custom</option>
                     </select>
-                </div>            
+                </div>
                 <div>
                     <label>Visibility</label>
-                    <select>
-                        <option>Both</option>
-                        <option>Public</option>
-                        <option>Private</option>
+                    <select (change)="onPublicityChange($event)">
+                        <option value="Both">Both</option>
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
                     </select>
-                </div>                
-            </div>            
+                </div>
+            </div>
         </div>
         <div class="table-container">
             <table>
@@ -29,23 +30,50 @@
                         <th class="col-album">Album</th>
                         <th class="col-author">Author</th>
                         <th class="col-type">Type</th>
-                        <th class="col-publicity">Publicity</th>                    
+                        <th class="col-publicity">Publicity</th>
                         <th class="col-added-date">Added Date</th>
                         <th class="col-actions"></th>
-                    </tr>                    
+                    </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let music of myMusicViewModel$ | async; let i = index">
                         <td class="col-description">{{ music.description }}</td>
-                        <td class="col-album">{{ music.album }}</td>
-                        <td class="col-author">{{ music.author }}</td>
+                        <td class="col-album">
+                            <ng-container *ngIf="music.album != null">
+                                {{ music.album }}
+                            </ng-container>
+                            <ng-container *ngIf="music.album == null">
+                            </ng-container>
+                        </td>
+                        <td class="col-author">
+                            <ng-container *ngIf="music.author != null">
+                                {{ music.author }}
+                            </ng-container>
+                            <ng-container *ngIf="music.author == null">
+                            </ng-container>
+                        </td>
                         <td class="col-type">{{ music.type }}</td>
-                        <td class="col-publicity">{{ music.isPublished }}</td>
-                        <td class="col-added-date">{{ music.assetAddedDate | date: 'shortDate'}}</td>
-                        <td class="col-actions">dsd</td>
+                        <td class="col-publicity">
+                            <ng-container *ngIf="music.type == 'Song'">
+                                <i *ngIf="music.isPublished" class="fa-solid fa-lock-open"
+                                    style="color: rgba(56, 146, 71, 0.87);"></i>
+                                <i *ngIf="!music.isPublished" class="fa-solid fa-lock" style="color: #b4b4b4cb;"></i>
+                            </ng-container>
+                        </td>
+                        <td class="col-added-date">{{ music.assetAddedDate | date : 'YYYY-dd-MM'}}</td>
+                        <td class="col-actions">
+                            <ng-container *ngIf="!music.isPublished">
+                                <i *ngIf="music.type == 'Song'"
+                                    class="fa-solid fa-square-arrow-up-right fa-lg i-public-active"></i>
+                                <i *ngIf="music.type == 'Custom' || music.isPublished"
+                                    class="fa-solid fa-square-arrow-up-right fa-lg i-public-deactive"></i>
+                                <i class="fa-regular fa-pen-to-square fa-lg i-edit"></i>
+                                <i class="fa-solid fa-trash fa-lg i-remove"></i>
+                            </ng-container>                            
+                        </td>
                     </tr>
                 </tbody>
             </table>
-        </div>        
+        </div>
     </main>
 </tx-music-container>

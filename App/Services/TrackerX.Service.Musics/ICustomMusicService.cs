@@ -5,5 +5,5 @@ namespace TrackerX.Service.Musics;
 
 public interface ICustomMusicService
 {
-    Task<ServiceResult> CreateAsync(CreateCustomMusicModel cusomMusic);
+    Task<ServiceResult> CreateAsync(CreateCustomMusicModel cusomMusic, int userId, string userRole);
 }

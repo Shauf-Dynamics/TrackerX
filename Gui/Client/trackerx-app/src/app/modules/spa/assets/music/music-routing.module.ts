@@ -20,7 +20,7 @@ const routes: Routes = [
 		canActivate: [ AuthGuard ]
     },
     {
-        path: '', redirectTo: 'global', pathMatch: 'full'
+        path: '', redirectTo: 'own', pathMatch: 'full'
     },
 ];
 

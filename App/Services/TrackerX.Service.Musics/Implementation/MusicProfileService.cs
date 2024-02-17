@@ -26,8 +26,8 @@ internal class MusicProfileService : IMusicProfileService
         IEnumerable<MusicProfileView> custom = Enumerable.Empty<MusicProfileView>();
 
         IEnumerable<MusicProfile> musicProfiles = await _musicProfileRepository.GetWhereAsync(x => x.InitiatorUserId == userId);
-        if (searchModel.IsPublished.HasValue)
-            musicProfiles = musicProfiles.Where(x => x.IsPublished == searchModel.IsPublished.Value);
+        if (searchModel.IncludePublished.HasValue)
+            musicProfiles = musicProfiles.Where(x => x.IsPublished == searchModel.IncludePublished.Value);
 
         if (searchModel.Type == MusicProfileTypeEnum.Both || searchModel.Type == MusicProfileTypeEnum.Song)
         {
@@ -67,6 +67,7 @@ internal class MusicProfileService : IMusicProfileService
                     });
         }
 
-        return Enumerable.Concat(songs, custom);
+        return Enumerable.Concat(songs, custom)
+            .OrderBy(x => x.AssetAddedDate);
     }
 }

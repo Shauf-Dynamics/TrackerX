@@ -5,13 +5,13 @@ using TrackerX.Domain.Entities;
 using TrackerX.Services.Musics;
 using TrackerX.Services.Infrastructure;
 using TrackerX.Infrastructure;
+using TrackerX.Service.Musics.Models;
 
 namespace TrackerX.Service.Musics.Implementation;
 
 public class SongService : ISongService
 {
     private readonly ISongRepository _songRepository;
-    private readonly IUserRepository _userRepository;
     private readonly IMusicProfileRepository _musicProfileRepository;
     private readonly IMapper _mapper;
 
@@ -23,7 +23,6 @@ public class SongService : ISongService
     {
         _songRepository = songRepository;
         _musicProfileRepository = musicProfileRepository;
-        _userRepository = userRepository;
         _mapper = mapper;
     }
 
@@ -37,31 +36,29 @@ public class SongService : ISongService
         await _songRepository.SaveChangesAsync();
     }
 
-    public async Task<ServiceResult> CreateAsync(CreateSongModel model, int userId)
+    public async Task<ServiceResult> CreateAsync(CreateSongModel model, int userId, string userRole)
     {
         if ((await _songRepository.FirstOrDefaultAsync(x => x.SongName == model.SongName)) != null)
             return new ServiceResult(StatusType.Invalid, "Song with this name already exists.");
 
-        User user = await _userRepository.FirstOrDefaultAsync(x => x.UserId == userId);
-
         var createdSong = _songRepository.Create(_mapper.Map<Song>(model));
         await _songRepository.SaveChangesAsync();
 
-        _musicProfileRepository.Create(GetProfile(createdSong, user));
+        _musicProfileRepository.Create(GetProfile(createdSong, userId, userRole));
         await _musicProfileRepository.SaveChangesAsync();
 
         return ServiceResult.Success;
     }
 
-    private MusicProfile GetProfile(Song song, User user)
+    private MusicProfile GetProfile(Song song, int userId, string userRole)
     {
         var profile = new MusicProfile()
         {
             AssetId = song.SongId,
-            InitiatorUserId = user.UserId,
+            InitiatorUserId = userId,
             CreatedDateTimeUtc = song.CreatedDateTimeUtc,
-            TypeName = "Song",
-            IsPublished = user.RoleType.RoleTypeCode == "SA" || user.RoleType.RoleTypeCode == "Ad"
+            TypeName = MusicProfileTypeEnum.Song.ToString(),
+            IsPublished = userRole == "Superadmin" || userRole == "Admin"
         };        
 
         return profile;
