@@ -8,17 +8,17 @@ namespace TrackerX.Service.Musics.Implementation;
 public class SongSearchService : ISongSearchService
 {
     private readonly IMapper _mapper;
-    private readonly ISongRepository _songRepository;
+    private readonly ISongRepository _songRepository;    
 
     public SongSearchService(ISongRepository songRepository, IMapper mapper)
     {
-        _songRepository = songRepository;
+        _songRepository = songRepository;        
         _mapper = mapper;
     }
 
     public async Task<IEnumerable<SongSearchResult>> SearchSongsAsync(string text, string searchBy)
     {
-        var source = await _songRepository.GetBySearchCriteriasAsync(text, searchBy);
+        var source = await _songRepository.SearchPublicAsync(text, searchBy);                
 
         return _mapper.Map<IEnumerable<SongSearchResult>>(source);
     }

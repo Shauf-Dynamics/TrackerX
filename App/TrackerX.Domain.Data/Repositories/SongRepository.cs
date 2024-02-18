@@ -22,22 +22,26 @@ public class SongRepository : RepositoryBase<Song>, ISongRepository
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<Song>> GetBySearchCriteriasAsync(string text, string searchBy)
+    public async Task<IEnumerable<Song>> SearchPublicAsync(string pattern, string searchBy)
     {
         var songs = Context.Songs
             .Include(x => x.Band)
-            .Include(x => x.Album);
+            .Include(x => x.Album)
+            .Join(Context.MusicProfiles.Where(p => p.IsPublished),
+                s => s.SongId,
+                p => p.AssetId,
+                (s, p) => s);
 
-        if (!string.IsNullOrWhiteSpace(text))
+        if (!string.IsNullOrWhiteSpace(pattern))
         {
-            Expression<Func<Song, bool>> predicate = (item) => true;
+            Expression<Func<Song, bool>>? predicate = default;
             if (string.IsNullOrWhiteSpace(searchBy) || searchBy == "name")
-                predicate = (item) => item.SongName.StartsWith(text);
+                predicate = (item) => item.SongName.StartsWith(pattern);
             else if (searchBy == "band")
-                predicate = (item) => item.Band.BandName.StartsWith(text);
+                predicate = (item) => item.Band.BandName.StartsWith(pattern);
 
             return await songs
-                .Where(predicate)
+                .Where(predicate!)
                 .ToListAsync(); 
         }
         else

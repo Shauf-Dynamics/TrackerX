@@ -40,6 +40,10 @@ public class DataContext : DbContext
 
     public DbSet<MusicProfile> MusicProfiles { get; set; }
 
+    public DbSet<ProposalStatus> ProposalStatuses{ get; set; }
+    
+    public DbSet<Proposal> Proposals { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfiguration(new ExerciseConfiguration());
@@ -55,6 +59,8 @@ public class DataContext : DbContext
         builder.ApplyConfiguration(new UserConfiguration());
         builder.ApplyConfiguration(new InvitationConfiguration());
         builder.ApplyConfiguration(new MusicProfileConfiguration());
+        builder.ApplyConfiguration(new ProposalStatusConfiguration());
+        builder.ApplyConfiguration(new ProposalConfiguration());        
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
