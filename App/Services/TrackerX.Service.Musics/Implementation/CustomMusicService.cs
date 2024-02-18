@@ -9,6 +9,8 @@ namespace TrackerX.Service.Musics.Implementation;
 
 public class CustomMusicService : ICustomMusicService
 {    
+    private const string ClientRoleName = "Client";
+
     private readonly ICustomMusicRepository _customMusicRepository;
     private readonly IMusicProfileRepository _musicProfileRepository;
     private readonly IMapper _mapper;
@@ -42,7 +44,7 @@ public class CustomMusicService : ICustomMusicService
             InitiatorUserId = userId,
             CreatedDateTimeUtc = customMusic.CreatedDateTimeUtc,
             TypeName = MusicProfileTypeEnum.Custom.ToString(),
-            IsPublished = userRole == "Superadmin" || userRole == "Admin"
+            IsPublished = userRole != ClientRoleName
         };
 
         return profile;

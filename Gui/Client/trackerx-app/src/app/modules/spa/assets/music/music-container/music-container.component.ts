@@ -29,13 +29,13 @@ export class MusicContainerComponent implements OnInit {
                 },   
                 {
                     title: 'Create',
-                    description: 'Add and even share you music',
+                    description: 'Add and share your music',
                     link: '/app/music/add'
                 },   
                 {
                     title: 'Proposals',
                     description: 'Track the status of shared songs',
-                    link: '/'
+                    link: '/app/music/proposals'
                 },   
             ]
         }

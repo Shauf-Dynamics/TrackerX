@@ -20,6 +20,11 @@ const routes: Routes = [
 		canActivate: [ AuthGuard ]
     },
     {
+        path: 'proposals',
+        loadChildren: () => import('./proposals/proposals.module').then(m => m.ProposalsModule),
+		canActivate: [ AuthGuard ]
+    },
+    {
         path: '', redirectTo: 'own', pathMatch: 'full'
     },
 ];
