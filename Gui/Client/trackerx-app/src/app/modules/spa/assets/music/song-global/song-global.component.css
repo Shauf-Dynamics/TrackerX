@@ -34,25 +34,21 @@ main {
         float: right;
 
         >span {
-            color: rgb(117, 117, 117);
+            color: rgb(104, 104, 104);
             font-weight: 400;
             margin-right: 10px;
+            font-weight: 500;
         }
 
-        >select {
-            padding: 0.3rem 1.125rem;
-            box-shadow: 0 0 2px rgba(0,0,0,.19);
-        }
-
-        >select:hover {
-            transition: 0.3s;            
-            box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+        >select {            
+            width: 7rem;
+            height: 3.25vh;
         }
     }
 }
 
 .tx-sg-table {
-    margin: 0.75rem 0 1.5rem 1.5rem;
+    margin: 0.9rem 0 1.5rem 1.5rem;
     width: 65%;
     height: 40rem;
     background-color: rgb(250, 250, 250);

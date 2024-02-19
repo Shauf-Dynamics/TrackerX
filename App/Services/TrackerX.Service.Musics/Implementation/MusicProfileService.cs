@@ -21,18 +21,34 @@ internal class MusicProfileService : IMusicProfileService
     }
 
     public async Task<IEnumerable<MusicProfileView>> GetUserOwnMusic(MusicProfileSearchModel searchModel, int userId)
-    {        
+    {
         IEnumerable<MusicProfileView> songs = Enumerable.Empty<MusicProfileView>();
         IEnumerable<MusicProfileView> custom = Enumerable.Empty<MusicProfileView>();
 
         IEnumerable<MusicProfile> musicProfiles = await _musicProfileRepository.GetWhereAsync(x => x.InitiatorUserId == userId);
         if (searchModel.IncludePublished.HasValue)
+        {
             musicProfiles = musicProfiles.Where(x => x.IsPublished == searchModel.IncludePublished.Value);
+        }
 
         if (searchModel.Type == MusicProfileTypeEnum.Both || searchModel.Type == MusicProfileTypeEnum.Song)
         {
-            songs = (await _songRepository
-                .SearchBySongNameAsync(searchModel.DescriptionPattern ?? ""))
+            songs = await GetSongProfiles(musicProfiles, searchModel.DescriptionPattern);
+        }
+
+        if (searchModel.Type == MusicProfileTypeEnum.Both || searchModel.Type == MusicProfileTypeEnum.Custom)
+        {
+            songs = await GetCustomMusicProfiles(musicProfiles, searchModel.DescriptionPattern);
+        }
+
+        return Enumerable.Concat(songs, custom)
+            .OrderBy(x => x.AssetAddedDate);
+    }
+
+    private async Task<IEnumerable<MusicProfileView>> GetSongProfiles(IEnumerable<MusicProfile> musicProfiles, string descriptionPattern)
+    {
+        return (await _songRepository
+                .SearchBySongNameAsync(descriptionPattern ?? ""))
                 .Join(musicProfiles,
                 s => s.SongId,
                 p => p.AssetId,
@@ -46,12 +62,12 @@ internal class MusicProfileService : IMusicProfileService
                     IsPublished = p.IsPublished,
                     Type = MusicProfileTypeEnum.Song.ToString()
                 });
-        }
+    }
 
-        if (searchModel.Type == MusicProfileTypeEnum.Both || searchModel.Type == MusicProfileTypeEnum.Custom)
-        {
-            custom = (await _customMusicRepository
-                .GetWhereAsync(x => x.CustomMusicDescription.StartsWith(searchModel.DescriptionPattern ?? "")))
+    private async Task<IEnumerable<MusicProfileView>> GetCustomMusicProfiles(IEnumerable<MusicProfile> musicProfiles, string descriptionPattern)
+    {
+        return (await _customMusicRepository
+                .GetWhereAsync(x => x.CustomMusicDescription.StartsWith(descriptionPattern ?? "")))
                 .Join(musicProfiles,
                     c => c.CustomMusicId,
                     p => p.AssetId,
@@ -65,9 +81,5 @@ internal class MusicProfileService : IMusicProfileService
                         IsPublished = p.IsPublished,
                         Type = MusicProfileTypeEnum.Custom.ToString()
                     });
-        }
-
-        return Enumerable.Concat(songs, custom)
-            .OrderBy(x => x.AssetAddedDate);
     }
 }

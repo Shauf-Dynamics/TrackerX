@@ -138,13 +138,15 @@ input:-webkit-autofill::first-line {
 select {
     line-height: 1;
     color: #313438;
-    border: solid 1px rgb(207, 207, 207);
+    border: solid 1px rgb(207, 207, 207);    
     border-radius: 0.32rem;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .19);
     background-color: rgb(245, 245, 245);
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     font-size: 16px;
     font-weight: 500;
+    text-align: center;
 }
 
 option {
@@ -156,5 +158,10 @@ option {
 
 select:focus {
     outline: none;
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+}
+
+select:hover {
+    transition: 0.3s;
     box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
 }

@@ -1,3 +1,50 @@
 <tx-music-container [selectedTabIndex]="4">
-    <h1>hello proposals</h1>
+    <main>
+        <div class="search-container">
+            <input type="text" class="text-box" placeholder="Search by Song" 
+                (value)="searchArgs.songPattern" [formControl]="searchField"/>
+            <div class="status-wrapper">
+                <label>Proposal Status</label>
+                <select (change)="onStatusChange($event)">
+                    <option value="All">All</option>
+                    <option value="Opened">Opened</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Pending">Pending</option>
+                </select>
+            </div>
+        </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-song">Song</th>
+                        <th class="col-band">Band</th>
+                        <th class="col-album">Album</th>
+                        <th class="col-status">Status</th>
+                        <th class="col-opened-date">Opened Date</th>
+                        <th class="col-updated-date">Updated Date</th>
+                        <th class="col-actions"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of proposals$ | async ; let i = index">
+                        <td class="col-song">{{ item.songName }}</td>
+                        <td class="col-band">{{ item.bandName }}</td>
+                        <td class="col-album">{{ item.albumName }}</td>
+                        <td class="col-status" [ngClass]="setStatusClass(item.status)">{{ item.status }}</td>
+                        <td class="col-opened-date">{{ item.openedDate | date : 'YYYY-dd-MM' }}</td>
+                        <td class="col-updated-date">{{ item.updatedDate | date : 'YYYY-dd-MM' }}</td>
+                        <td class="col-actions">
+                            <i *ngIf="item.status == 'Pending'"
+                                class="fa-solid fa-circle-exclamation i-message">
+                            </i>
+                            <i *ngIf="item.status == 'Opened' || item.status == 'Pending'"
+                                class="fa-solid fa-xmark fa-lg i-remove"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </tx-music-container>
