@@ -18,7 +18,7 @@ public class SongSearchService : ISongSearchService
 
     public async Task<IEnumerable<SongSearchResult>> SearchSongsAsync(string text, string searchBy)
     {
-        var source = await _songRepository.SearchPublicAsync(text, searchBy);                
+        var source = await _songRepository.SearchAsync(text, searchBy, true);                
 
         return _mapper.Map<IEnumerable<SongSearchResult>>(source);
     }

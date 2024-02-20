@@ -9,8 +9,7 @@
         <form class="form-container" [formGroup]="registrationForm" method="post" autocomplete="off" (ngSubmit)="signUp()">
             <div class="row">
                 <label for="name">Email</label>
-                <input class="text-box" name="email" formControlName="email" autocomplete="nope"
-                   />
+                <input type="email" class="text-box" name="email" formControlName="email" autocomplete="nope"/>
             </div>
             <div class="row">
                 <label for="name">Name</label>

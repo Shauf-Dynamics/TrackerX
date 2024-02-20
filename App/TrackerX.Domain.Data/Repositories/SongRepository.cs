@@ -22,15 +22,20 @@ public class SongRepository : RepositoryBase<Song>, ISongRepository
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<Song>> SearchPublicAsync(string pattern, string searchBy)
+    public async Task<IEnumerable<Song>> SearchAsync(string pattern, string searchBy = "name", bool searchPublic = true)
     {
         var songs = Context.Songs
             .Include(x => x.Band)
             .Include(x => x.Album)
-            .Join(Context.MusicProfiles.Where(p => p.IsPublished),
+            .AsQueryable();
+      
+        if (searchPublic)
+        {
+            songs = songs.Join(Context.MusicProfiles.Where(p => p.IsPublished),
                 s => s.SongId,
                 p => p.AssetId,
                 (s, p) => s);
+        }
 
         if (!string.IsNullOrWhiteSpace(pattern))
         {

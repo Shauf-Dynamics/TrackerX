@@ -38,7 +38,7 @@ internal class MusicProfileService : IMusicProfileService
 
         if (searchModel.Type == MusicProfileTypeEnum.Both || searchModel.Type == MusicProfileTypeEnum.Custom)
         {
-            songs = await GetCustomMusicProfiles(musicProfiles, searchModel.DescriptionPattern);
+            custom = await GetCustomMusicProfiles(musicProfiles, searchModel.DescriptionPattern);
         }
 
         return Enumerable.Concat(songs, custom)

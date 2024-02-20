@@ -8,7 +8,7 @@ internal class ProposalStatusConfiguration : BaseEntityTypeConfiguration<Proposa
 {
     public override void Configure(EntityTypeBuilder<ProposalStatus> builder)
     {
-        builder.ToTable("tbl_lt_proposal_status");
+        builder.ToTable("tbl_ad_proposal_status");
 
         builder.HasKey(e => e.ProposalStatusId);
 
@@ -16,7 +16,7 @@ internal class ProposalStatusConfiguration : BaseEntityTypeConfiguration<Proposa
             .HasColumnName("proposal_status_id");
 
         builder.Property(e => e.ProposalStatusCode)
-          .HasColumnName("proposal_status_code");
+            .HasColumnName("proposal_status_code");
 
         builder.Property(e => e.ProposalStatusName)
             .HasColumnName("proposal_status_name");

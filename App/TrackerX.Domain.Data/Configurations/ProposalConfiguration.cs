@@ -30,7 +30,8 @@ internal class ProposalConfiguration : BaseEntityTypeConfiguration<Proposal>
             .HasForeignKey(k => k.ProposalAssigneeId);
 
         builder.Property(e => e.ResponseMessage)
-            .HasColumnName("response_message");
+            .HasColumnName("response_message")
+            .IsRequired(false);
 
         builder.Property(e => e.AssetId)
             .HasColumnName("asset_id");

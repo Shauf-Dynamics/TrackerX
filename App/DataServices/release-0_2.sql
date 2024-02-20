@@ -53,9 +53,9 @@ BEGIN
     )
 END
 
-SET IDENTITY_INSERT tbl_lt_proposal_status ON
+SET IDENTITY_INSERT tbl_ad_proposal_status ON
 BEGIN TRY
-    INSERT INTO tbl_lt_proposal_status (
+    INSERT INTO tbl_ad_proposal_status (
         proposal_status_id,
         proposal_status_code,
         proposal_status_name)
@@ -66,6 +66,6 @@ BEGIN TRY
         (4, 'pend', 'Pending')
 END TRY
 BEGIN CATCH
-    print 'error on attempt to insert dublicates into tbl_lt_proposal_status'
+    print 'error on attempt to insert dublicates into tbl_ad_proposal_status'
 END CATCH
-SET IDENTITY_INSERT tbl_lt_proposal_status OFF    
+SET IDENTITY_INSERT tbl_ad_proposal_status OFF    

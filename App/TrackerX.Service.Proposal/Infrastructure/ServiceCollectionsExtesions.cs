@@ -6,6 +6,6 @@ public static class ServicesCollectionExtension
 {
     public static void AddProposalServices(this IServiceCollection services)
     {
-        services.AddScoped<IProposalService, ProposalService>();                
+        services.AddScoped<IProposalService, ProposalService>();
     }
 }

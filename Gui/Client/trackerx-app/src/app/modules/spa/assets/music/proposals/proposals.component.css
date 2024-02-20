@@ -78,6 +78,15 @@ main {
             background-color: rgba(170, 170, 170, 0.12)
         }
 
+        tr:hover {
+            transition: 0.5s;
+            background-color: rgba(0, 118, 196, 0.144);
+            
+            .i-remove {
+                color: rgba(255, 23, 23, 0.904);
+            }
+        }
+
         .col-song {
             width: 17.5%;
             text-align: left;
@@ -112,12 +121,12 @@ main {
             }
 
             i:hover {
-                transform: scale(1.33);            
+                transform: scale(1.33);                         
             }                            
 
             .i-remove {
-                color: rgba(255, 23, 23, 0.904);
                 transition: 0.5s;                
+                color: #c4c4c4b2;
             }
 
             .i-message {

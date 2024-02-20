@@ -29,6 +29,7 @@ main {
             width: 26.33rem;
             height: 2.15rem;
             padding-left: 1rem;
+            text-align: left;
         }
 
         select:disabled {

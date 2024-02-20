@@ -27,12 +27,12 @@ export class ProposalsComponent implements OnInit {
         this.proposals$ = this.proposalsService.getProposals(this.searchArgs);
 
         this.searchField.valueChanges
-        .pipe(debounceTime(300))
-        .subscribe(input => {
-            this.searchArgs.songPattern = input;
-            this.proposals$ = this.proposalsService.getProposals(this.searchArgs);
+            .pipe(debounceTime(300))
+            .subscribe(input => {
+                this.searchArgs.songPattern = input;
+                this.proposals$ = this.proposalsService.getProposals(this.searchArgs);
 
-        });
+            });
     }
 
     public onStatusChange(input: any): void {
