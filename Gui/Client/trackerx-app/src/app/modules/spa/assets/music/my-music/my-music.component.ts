@@ -19,8 +19,8 @@ export class MyMusicComponent implements OnInit {
     constructor(private myMusicService: MyMusicService) {
         this.searchArgs = {
             descriptionPattern: "",
-            type: "Both",
-            includePublished: null
+            type: "All",
+            publicity: "All"
         };
     }
 
@@ -41,18 +41,7 @@ export class MyMusicComponent implements OnInit {
     }
 
     public onPublicityChange(input: any): void {
-        let publicity: boolean | null;
-
-        const eventValue = input.target.value;
-        if (eventValue == 'Both') {
-            publicity = null;
-        } else if (eventValue == 'Public') {
-            publicity = true;
-        } else if (eventValue == 'Private') {
-            publicity = false;
-        }
-
-        this.searchArgs.includePublished = publicity!;
+        this.searchArgs.publicity = input.target.value;
         this.myMusicViewModel$ = this.myMusicService.getMyMusic(this.searchArgs);
     }
 }

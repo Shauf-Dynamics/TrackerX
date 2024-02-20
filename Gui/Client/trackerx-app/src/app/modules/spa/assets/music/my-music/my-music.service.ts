@@ -12,7 +12,7 @@ export class MyMusicService {
         let params = new HttpParams()
             .set('DescriptionPattern', searchArgs.descriptionPattern)
             .set('Type', searchArgs.type)
-            .set('includePublished', searchArgs.includePublished != null ? searchArgs.includePublished : "");    
+            .set('Publicity', searchArgs.publicity);    
 
         return this.http.get<MyMusicViewModel[]>(            
             environment.apiUrl + '/api/v1/music-profile/search', { params: params });

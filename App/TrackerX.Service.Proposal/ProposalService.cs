@@ -26,14 +26,14 @@ public sealed class ProposalService : IProposalService
                 s => s.SongId,
                 (pr, s) => new ProposalView()
                 {
-                    ProposalId = pr.ProposalId
+                    ProposalId = pr.ProposalId,
                     AlbumName = s.Album.AlbumName,
                     BandName = s.Band.BandName,
                     SongName = s.SongName,
                     Status = pr.ProposalStatus.ProposalStatusName,
                     Message = pr.ResponseMessage,
                     OpenedDate = pr.CreatedDateTimeUtc!.Value,
-                    UpdatedDate = pr.ModifiedDateTimeUtc!.Value,
+                    UpdatedDate = pr.ModifiedDateTimeUtc!.Value
                 });
     }
 
@@ -52,5 +52,15 @@ public sealed class ProposalService : IProposalService
         _proposalRepository.Create(proposal);
 
         await _proposalRepository.SaveChangesAsync();
+    }
+
+    public Task AcceptProposal(int proposalId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task RecallProposal(int proposalId, int userId)
+    {
+        throw new NotImplementedException();
     }
 }

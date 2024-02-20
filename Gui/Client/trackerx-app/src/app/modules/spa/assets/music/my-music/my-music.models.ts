@@ -11,5 +11,5 @@ export class MyMusicViewModel {
 export class MyMusicSearchArguments {
     public descriptionPattern: string;
     public type: string;
-    public includePublished?: boolean | null;
+    public publicity: string;
 }

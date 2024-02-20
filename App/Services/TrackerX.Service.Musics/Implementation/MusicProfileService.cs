@@ -24,19 +24,19 @@ internal class MusicProfileService : IMusicProfileService
     {
         IEnumerable<MusicProfileView> songs = Enumerable.Empty<MusicProfileView>();
         IEnumerable<MusicProfileView> custom = Enumerable.Empty<MusicProfileView>();
-
         IEnumerable<MusicProfile> musicProfiles = await _musicProfileRepository.GetWhereAsync(x => x.InitiatorUserId == userId);
-        if (searchModel.IncludePublished.HasValue)
+
+        if (searchModel.Publicity != MusicProfilePublicityEnum.All)
         {
-            musicProfiles = musicProfiles.Where(x => x.IsPublished == searchModel.IncludePublished.Value);
+            musicProfiles = musicProfiles.Where(x => x.IsPublished == (searchModel.Publicity == MusicProfilePublicityEnum.Public));
         }
 
-        if (searchModel.Type == MusicProfileTypeEnum.Both || searchModel.Type == MusicProfileTypeEnum.Song)
+        if (searchModel.Type == MusicProfileTypeEnum.All || searchModel.Type == MusicProfileTypeEnum.Song)
         {
             songs = await GetSongProfiles(musicProfiles, searchModel.DescriptionPattern);
         }
 
-        if (searchModel.Type == MusicProfileTypeEnum.Both || searchModel.Type == MusicProfileTypeEnum.Custom)
+        if (searchModel.Type == MusicProfileTypeEnum.All || searchModel.Type == MusicProfileTypeEnum.Custom)
         {
             custom = await GetCustomMusicProfiles(musicProfiles, searchModel.DescriptionPattern);
         }

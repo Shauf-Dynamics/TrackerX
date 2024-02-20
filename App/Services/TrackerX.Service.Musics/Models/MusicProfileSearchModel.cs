@@ -9,5 +9,20 @@ public record MusicProfileSearchModel
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public MusicProfileTypeEnum Type { get; set; }
 
-    public bool? IncludePublished { get; set; }
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public MusicProfilePublicityEnum Publicity { get; set; }
+}
+
+public enum MusicProfileTypeEnum
+{
+    All,
+    Song,
+    Custom
+}
+
+public enum MusicProfilePublicityEnum
+{
+    All,
+    Public,
+    Private
 }
