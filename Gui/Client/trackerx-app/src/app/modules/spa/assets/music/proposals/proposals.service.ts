@@ -16,4 +16,9 @@ export class ProposalsService {
         return this.http.get<ProposalView[]>(            
             environment.apiUrl + '/api/v1/proposal/search', { params: params });
     }
+
+    public revokeProposal(proposalId: number): Observable<any> {
+        return this.http.put(
+            environment.apiUrl + '/api/v1/proposal/' + proposalId + '/revoke', null);
+    }
 }

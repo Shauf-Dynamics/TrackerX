@@ -1,4 +1,6 @@
 <tx-music-container [selectedTabIndex]="4">
+    <p-toast></p-toast>
+    <p-confirmDialog></p-confirmDialog>
     <main>
         <div class="search-container">
             <input type="text" class="text-box" placeholder="Search by Song" 
@@ -40,7 +42,7 @@
                                 class="fa-solid fa-circle-exclamation i-message">
                             </i>
                             <i *ngIf="item.status == 'Opened' || item.status == 'Pending'"
-                                class="fa-solid fa-xmark fa-lg i-remove"></i>
+                                class="fa-solid fa-xmark fa-lg i-remove" (click)="onRemoveClick($event, item.proposalId)"></i>
                         </td>
                     </tr>
                 </tbody>

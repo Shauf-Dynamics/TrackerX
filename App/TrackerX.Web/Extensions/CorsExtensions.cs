@@ -12,6 +12,7 @@ public static class CorsCollectionExtension
                 {
                     policy.WithOrigins(configuration.GetValue<string>("AppConfig:ClientUrl"))
                         .AllowAnyHeader()
+                        .AllowAnyMethod()
                         .AllowCredentials();
                 });
         });

@@ -68,7 +68,8 @@ public class DataContext : DbContext
         var currentUserId = _applicationUserAccessor.GetUserId();
         var today = DateTime.UtcNow;
 
-        foreach (var entry in ChangeTracker.Entries().Where(e => e.State == EntityState.Added ||
+        foreach (var entry in ChangeTracker.Entries().Where(e => 
+            e.State == EntityState.Added ||
             e.State == EntityState.Modified ||
             e.State == EntityState.Deleted))
         {
@@ -78,13 +79,7 @@ public class DataContext : DbContext
             {
                 entry.Property("CreatedDateTimeUtc").CurrentValue = today;
                 entry.Property("CreatedByUserId").CurrentValue = currentUserId;
-            }
-
-            if (entry.State == EntityState.Deleted)
-            {
-                entry.State = EntityState.Modified;
-                entry.Property("IsDeleted").CurrentValue = true;
-            }
+            }                       
         }
 
         return base.SaveChangesAsync(cancellationToken);

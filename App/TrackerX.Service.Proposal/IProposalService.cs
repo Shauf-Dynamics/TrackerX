@@ -4,11 +4,11 @@ namespace TrackerX.Service.Proposals;
 
 public interface IProposalService
 {
-    Task OpenProposalAsync(OpenProposalModel model);
+    Task OpenProposalAsync(OpenProposalModel modeln);
 
-    Task AcceptProposal(int proposalId);
+    Task AcceptProposalAsync(int proposalId);
 
-    Task RecallProposal(int proposalId, int userId);
+    Task RevokeProposalAsync(int proposalId, int userId);
 
-    Task<IEnumerable<ProposalView>> GetUserProposals(ProposalSearchArgs searchArgs, int userId);
+    Task<IEnumerable<ProposalView>> GetUserProposalsAsync(ProposalSearchArgs searchArgs, int userId);
 }

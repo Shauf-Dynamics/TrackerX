@@ -5,6 +5,9 @@ import { PoposalsRoutingModule } from "./proposals-routing";
 import { ProposalsComponent } from "./proposals.component";
 import { ProposalsService } from "./proposals.service";
 import { MusicContainerModule } from "../music-container/music-container.module";
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService, MessageService } from "primeng/api";
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
     declarations: [
@@ -15,13 +18,17 @@ import { MusicContainerModule } from "../music-container/music-container.module"
         FormsModule,
         ReactiveFormsModule,
         PoposalsRoutingModule,
-        MusicContainerModule
+        MusicContainerModule,
+        ConfirmDialogModule,
+        ToastModule
     ],
     exports: [
         
     ],
     providers: [
-        ProposalsService
+        ProposalsService,
+        ConfirmationService,
+        MessageService
     ]
 })
 export class ProposalsModule {

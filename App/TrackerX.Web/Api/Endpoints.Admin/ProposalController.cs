@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using TrackerX.Service.Musics.Models;
 using TrackerX.Service.Proposals;
 
 namespace TrackerX.Web.Api.Endpoints.Admin;
@@ -22,7 +20,7 @@ public class ProposalController : Controller
     [Route("accept")]    
     public async Task<IActionResult> Get([FromBody] int proposalId)
     {        
-        await _proposalService.AcceptProposal(proposalId);
+        await _proposalService.AcceptProposalAsync(proposalId);
 
         return Ok();
     }
