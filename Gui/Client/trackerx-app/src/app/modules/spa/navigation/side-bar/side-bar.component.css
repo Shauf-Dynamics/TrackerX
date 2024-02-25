@@ -1,6 +1,8 @@
 main {
+    --nav-width: 13.66rem;
+
     height: 100%;
-    width: 220px;
+    width: var(--nav-width);
     position: fixed;
     z-index: 1;
     top: 0;
@@ -18,7 +20,7 @@ footer {
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 220px;
+    width: var(--nav-width);
     height: 60px; 
 }
 
