@@ -50,7 +50,7 @@ export class MyMusicComponent implements OnInit {
     }
 
     public onOpenProposalClick(event: Event, songId: number): void {
-        this.callConfiramtionPopup(
+        this.callConfirmationPopup(
             event, 
             'Are you sure that you want to open proposal for this song?',
             () => {
@@ -68,7 +68,7 @@ export class MyMusicComponent implements OnInit {
             this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Music was removed.' })
         };
 
-        this.callConfiramtionPopup(
+        this.callConfirmationPopup(
             event, 
             'Are you sure that you want to remove this music?',
             () => {
@@ -85,7 +85,7 @@ export class MyMusicComponent implements OnInit {
         )
     }
 
-    private callConfiramtionPopup(event: Event, message: string, callback: () => any): void {
+    private callConfirmationPopup(event: Event, message: string, callback: () => any): void {
         this.confirmationService.confirm({
             target: event.target as EventTarget,
             message: message,            
