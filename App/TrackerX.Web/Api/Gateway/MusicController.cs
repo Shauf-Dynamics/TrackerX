@@ -24,7 +24,7 @@ public class MusicController : Controller
     }
 
     [HttpPost]
-    [Route("song/v1")]
+    [Route("v1/song")]
     public async Task<IActionResult> PostSong([FromBody] CreateSongModel model)
     {
         var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
@@ -40,7 +40,7 @@ public class MusicController : Controller
     }
 
     [HttpPost]
-    [Route("custom-music/v1")]
+    [Route("v1/custom-music")]
     public async Task<IActionResult> PostCustomMusic([FromBody] CreateCustomMusicModel model)
     {
         var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
@@ -53,5 +53,12 @@ public class MusicController : Controller
             return BadRequest(result.ErrorMessage);
         else
             return StatusCode(500);
+    }
+
+    [HttpDelete]
+    [Route("v1/song")]
+    public async Task<IActionResult> DeleteAsync(int songId)
+    {
+        return Ok();
     }
 }

@@ -55,6 +55,7 @@ internal class MusicProfileService : IMusicProfileService
                 (s, p) => new MusicProfileView()
                 {
                     MusicProfileId = p.MusicProfileId,
+                    MusicId = s.SongId,
                     Description = $"{s.Band.BandName} -  {s.SongName}",
                     Album = s.Album.AlbumName,
                     Author = null,
@@ -74,6 +75,7 @@ internal class MusicProfileService : IMusicProfileService
                     (c, p) => new MusicProfileView()
                     {
                         MusicProfileId = p.MusicProfileId,
+                        MusicId = c.CustomMusicId,
                         Description = c.CustomMusicDescription,
                         Album = null,
                         Author = c.AuthorName,

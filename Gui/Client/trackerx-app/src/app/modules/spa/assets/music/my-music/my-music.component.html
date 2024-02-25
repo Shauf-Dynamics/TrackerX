@@ -1,4 +1,6 @@
 <tx-music-container [selectedTabIndex]="1">
+    <p-toast></p-toast>
+    <p-confirmDialog></p-confirmDialog>
     <main>
         <div class="search-container">
             <input type="text" class="text-box" placeholder="Search by Description"
@@ -64,11 +66,13 @@
                         <td class="col-actions">
                             <ng-container *ngIf="!music.isPublished">
                                 <i *ngIf="music.type == 'Song'"
-                                    class="fa-solid fa-square-arrow-up-right fa-lg i-public-active"></i>
+                                    class="fa-solid fa-share fa-lg i-public-active"
+                                    (click)="onOpenProposalClick($event, music.musicId)"></i>
                                 <i *ngIf="music.type == 'Custom' || music.isPublished"
                                     class="fa-solid fa-square-arrow-up-right fa-lg i-public-deactive"></i>
                                 <i class="fa-regular fa-pen-to-square fa-lg i-edit"></i>
-                                <i class="fa-solid fa-trash fa-lg i-remove"></i>
+                                <i class="fa-solid fa-xmark fa-lg i-remove"
+                                    (click)="onMusicRemoveClick($event, music.musicId, music.type)"></i>
                             </ng-container>                            
                         </td>
                     </tr>

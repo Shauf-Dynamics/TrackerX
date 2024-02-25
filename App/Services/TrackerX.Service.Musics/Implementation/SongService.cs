@@ -66,6 +66,11 @@ public class SongService : ISongService
         return ServiceResult.Success;
     }
 
+    public Task<ServiceResult> DeleteAsunc(int songIg, int userId, string userRole)
+    {
+        throw new NotImplementedException();
+    }
+
     private async Task OpenProfile(Song song, int userId, string userRole)
     {
         var profile = new MusicProfile()

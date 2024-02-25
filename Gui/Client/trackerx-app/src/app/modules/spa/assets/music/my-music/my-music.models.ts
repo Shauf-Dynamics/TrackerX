@@ -1,5 +1,6 @@
 export class MyMusicViewModel {
     public musicProfileId!: number;
+    public musicId: number;
     public description!: string;
     public album?: string | null;    
     public author?: string | null;    

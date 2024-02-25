@@ -2,7 +2,9 @@
 
 public record MusicProfileView
 {
-    public int MusicProfileId { get; set; }
+    public required int MusicProfileId { get; set; }
+
+    public required int MusicId { get; set; }
 
     public required string Description { get; set; }
 

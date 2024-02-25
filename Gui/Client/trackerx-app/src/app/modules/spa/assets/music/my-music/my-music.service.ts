@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpParams, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -16,5 +16,31 @@ export class MyMusicService {
 
         return this.http.get<MyMusicViewModel[]>(            
             environment.apiUrl + '/api/v1/music-profile/search', { params: params });
+    }
+
+    public openProposal(assetTypeId: number): Observable<any> {
+        return this.http.post(
+            environment.apiUrl + '/api/v1/proposal/open',
+            {
+                assetId: assetTypeId,
+                assetType: "Song"
+            }
+        )
+    }
+
+    public removeSong(songId: number): Observable<any> {
+        let params = new HttpParams()
+            .set('songId', songId)
+
+        return this.http.delete(
+            environment.apiUrl + '/api/v1/song', { params: params });
+    }
+
+    public removeCustomMusic(customMusicId: number): Observable<any> {
+        let params = new HttpParams()
+            .set('customMusicId', customMusicId)
+
+        return this.http.delete(
+            environment.apiUrl + '/api/v1/custom-music', { params: params });
     }
 }

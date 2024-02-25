@@ -5,6 +5,9 @@ import { MyMusicComponent } from "./my-music.component";
 import { MusicContainerModule } from "../music-container/music-container.module";
 import { MyMusicRoutingModule } from "./my-music-routing.module";
 import { MyMusicService } from "./my-music.service";
+import { ConfirmationService, MessageService } from "primeng/api";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
     declarations: [
@@ -15,13 +18,17 @@ import { MyMusicService } from "./my-music.service";
         FormsModule,
         ReactiveFormsModule,
         MyMusicRoutingModule,
-        MusicContainerModule
+        MusicContainerModule,
+        ConfirmDialogModule,
+        ToastModule
     ],
     exports: [
         
     ],
     providers: [
-        MyMusicService
+        MyMusicService,        
+        ConfirmationService,
+        MessageService
     ]
 })
 export class MyMusicModule {

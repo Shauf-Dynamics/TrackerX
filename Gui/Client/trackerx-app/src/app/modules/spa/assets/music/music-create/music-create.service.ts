@@ -34,11 +34,11 @@ export class MusicCreateService {
     
     public createSong(model: SongCreateModel): Observable<any> {
         return this.http.post(
-            environment.apiUrl + '/api/song/v1', model);
+            environment.apiUrl + '/api/v1/song', model);
     }
 
     public createCustomMusic(model: CustomMusicCreateModel): Observable<any> {
         return this.http.post(
-            environment.apiUrl + '/api/custom-music/v1', model);
+            environment.apiUrl + '/api/v1/custom-music', model);
     }
 }
