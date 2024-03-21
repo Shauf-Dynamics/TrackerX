@@ -7,5 +7,7 @@ public interface ISongRepository : IRepository<Song>
 {
     Task<IEnumerable<Song>> GetByBandIdAsync(int bandId);
 
-    Task<IEnumerable<Song>> GetBySearchCriteriasAsync(string text, string searchBy);
+    Task<IEnumerable<Song>> SearchAsync(string pattern, string searchBy = "name", bool searchPublic = true);
+
+    Task<IEnumerable<Song>> SearchBySongNameAsync(string startsWith);
 }

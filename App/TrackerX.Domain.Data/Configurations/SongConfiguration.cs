@@ -18,9 +18,6 @@ internal class SongConfiguration : BaseEntityTypeConfiguration<Song>
         builder.Property(e => e.SongName)
             .HasColumnName("song_name");
 
-        builder.Property(e => e.WritingYear)
-            .HasColumnName("year_of_creation");
-
         builder.Property(e => e.IsInstrumental)
             .HasColumnName("instrumental_ind");
 

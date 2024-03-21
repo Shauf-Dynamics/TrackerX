@@ -1,0 +1,51 @@
+main {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    gap: 0.75vh;
+    margin-top: 1vh;
+
+    div {
+        display: flex;
+        flex-flow: row;                                
+
+        span {
+            padding-top: 0.75vh;
+            width: 3.66rem;
+        }
+
+        input[type=text] {
+            width: 24rem;
+            padding: 0.75rem 1.125rem;
+            line-height: 0.75;
+            border: 1px solid #c5c5c58a;
+        }     
+    }    
+
+    div.album {
+        margin-top: 0.1vh;
+
+        select {
+            width: 26.33rem;
+            height: 2.15rem;
+            padding-left: 1rem;
+            text-align: left;
+        }
+
+        select:disabled {
+            background-color: rgb(223, 223, 223)
+        }
+
+        select:hover:not([disabled]) {
+            box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+        }
+    }        
+}
+
+input[type=text]:hover {
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+}
+
+.text-box:hover {
+    box-shadow: 0 0 0 3px rgba(123, 154, 219, 0.5);
+}

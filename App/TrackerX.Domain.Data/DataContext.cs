@@ -22,7 +22,7 @@ public class DataContext : DbContext
 
     public DbSet<Song> Songs { get; set; }
 
-    public DbSet<Music> Musics { get; set; }
+    public DbSet<CustomMusic> CustomMusics { get; set; }
 
     public DbSet<Genre> Genres { get; set; }
 
@@ -38,12 +38,19 @@ public class DataContext : DbContext
 
     public DbSet<Invitation> Invitations { get; set; }
 
+    public DbSet<MusicProfile> MusicProfiles { get; set; }
+
+    public DbSet<Proposal> Proposals { get; set; }
+
+    public DbSet<ProposalStatus> ProposalStatuses{ get; set; }    
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfiguration(new ExerciseConfiguration());
         builder.ApplyConfiguration(new ExerciseTypeConfiguration());
         builder.ApplyConfiguration(new BandConfiguration());
         builder.ApplyConfiguration(new SongConfiguration());          
+        builder.ApplyConfiguration(new CustomMusicConfiguration());
         builder.ApplyConfiguration(new GenreConfiguration());
         builder.ApplyConfiguration(new AlbumConfiguration());
         builder.ApplyConfiguration(new LessonConfiguration());
@@ -51,6 +58,9 @@ public class DataContext : DbContext
         builder.ApplyConfiguration(new RoleTypeConfiguration());
         builder.ApplyConfiguration(new UserConfiguration());
         builder.ApplyConfiguration(new InvitationConfiguration());
+        builder.ApplyConfiguration(new MusicProfileConfiguration());
+        builder.ApplyConfiguration(new ProposalConfiguration());
+        builder.ApplyConfiguration(new ProposalStatusConfiguration());
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -58,7 +68,8 @@ public class DataContext : DbContext
         var currentUserId = _applicationUserAccessor.GetUserId();
         var today = DateTime.UtcNow;
 
-        foreach (var entry in ChangeTracker.Entries().Where(e => e.State == EntityState.Added ||
+        foreach (var entry in ChangeTracker.Entries().Where(e => 
+            e.State == EntityState.Added ||
             e.State == EntityState.Modified ||
             e.State == EntityState.Deleted))
         {
@@ -68,13 +79,7 @@ public class DataContext : DbContext
             {
                 entry.Property("CreatedDateTimeUtc").CurrentValue = today;
                 entry.Property("CreatedByUserId").CurrentValue = currentUserId;
-            }
-
-            if (entry.State == EntityState.Deleted)
-            {
-                entry.State = EntityState.Modified;
-                entry.Property("IsDeleted").CurrentValue = true;
-            }
+            }                       
         }
 
         return base.SaveChangesAsync(cancellationToken);

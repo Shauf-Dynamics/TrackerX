@@ -1,0 +1,97 @@
+<tx-music-container [selectedTabIndex]="musicCreateTabId">
+    <main>
+        <div class="step-wrapper container-step-1">
+            <h2>Step 1</h2>
+            <h3>Create your custom music or add already known songs</h3>
+            <section>
+                <p>There are two types of music assets supported by <b>TrackerX</b> application:</p>
+                <p><i>Songs</i> are well-known and recognizable pieces created by ever existed bands. </p>
+                <p><i>Custom music</i> is your own pieces of musics, songs, exercises or whatever you play.</p>
+            </section>
+            <div>
+                <span>Select type: </span>
+                <select name="musicType" class="select-type" id="musicType" (change)="onTypeChange($event)">
+                    <option value="" [selected]="currentMusicType == null"></option>
+                    <option value="Song" >Song</option>
+                    <option value="Custom Music">Custom Music</option>
+                </select>
+            </div>
+        </div>
+        <div class="step-wrapper" *ngIf="currentMusicType != null">
+            <h2>Step 2</h2>
+            <h3>Setting up your music</h3>
+            <ng-container *ngIf="currentMusicType === musicType.Song">
+                <tx-music-create-song-details (isValidatedEmitter)="isSongDetailsValided($event)"/>
+            </ng-container>
+            <ng-container *ngIf="currentMusicType === musicType.Custom">
+                <tx-music-create-custom-music-details (isValidatedEmitter)="isSongDetailsValided($event)"/>
+            </ng-container>
+            <div class="common-fields-wrapper">
+                <div class="genres">
+                    <span [ngClass]="{ 'span-custom': currentMusicType === musicType.Custom }">Genre</span>
+                    <select name="genre_type" id="genre_type" (change)="onGenreChange($event)">
+                        <option value="" [selected]="createModel?.genreId == null"></option>
+                        <option *ngFor="let genre of mainGenres" [value]="genre.genreId">
+                            {{genre.genreName}}
+                        </option>
+                    </select>
+                    <div class="subgenre">
+                        <span *ngIf="subGenres != null" class="p-subgenre tx-lbl">Subgenre</span>
+                        <select *ngIf="subGenres != null" name="genre_type" id="genre_type"
+                            (change)="onGenreChange($event)">
+                            <option value="" [selected]="createModel?.genreId == null"></option>
+                            <option *ngFor="let genre of subGenres" [value]="genre.genreId">
+                                {{genre.genreName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="tempo">
+                    <span [ngClass]="{ 'span-custom': currentMusicType === musicType.Custom }">Tempo</span>
+                    <input type="number" pattern="[0-9.]+" class="text-box tx-input" value="120" 
+                        (input)="onTempoChanged($event)"/>
+                        <div class="instrumental">
+                            <label>Is Instrumental</label>
+                            <input type="checkbox" value="false" (change)="onIsInstrumentalChanged($event)" />
+                        </div>
+                </div>
+   
+            </div>
+        </div>
+        <div class="step-wrapper publish-container" *ngIf="currentMusicType === musicType.Song">
+            <h2>
+                Step 3
+            </h2>
+            <h3>
+                Publish this song (optional)
+            </h3>
+            <div class="agreement-wrapper">
+                <p>Would you like to publish your song? Everyone will be able to see and use it.</p>
+                <p>You won't be able to edit it, though you would make a contribution to the application community!</p>
+                <p>The song won't be published immediately. Firstly it will be reviewed by the administration.</p>
+            </div>
+            <div class="public-controll">
+                <input type="button" class="btn" value="I agree" (click)="onAgreeToPublishClicked($event.target)" />
+                <span *ngIf="!isAgreedToPublish()">You don't agree to publish this song</span>
+                <div *ngIf="isAgreedToPublish()">
+                    <i class="fa-solid fa-check fa-lg"style="color: #0091ff;"></i>
+                    <span>You have agreed to publish this song</span>
+                </div>                
+            </div>
+        </div>
+        <div class="save-wrapper" *ngIf="currentMusicType !== null">
+            <input type="button" [attr.disabled]="!(isDetailsValidated && createModel?.genreId != null) ? true: null" 
+                class="btn btn-submit" value="Save" (click)="onSaveClick()"/>
+        </div>        
+    </main>
+        <p-dialog [(visible)]="isAlertVisible" [position]="'topright'" [style]="{ width: '20vw' }" [draggable]="false">
+            <ng-template pTemplate="header">
+               <p [ngClass]="[isSavedSuccessfully ? 'alert-success' : 'alert-failed']">
+                    {{alertHeader}}
+               </p> 
+            </ng-template>
+            <p>
+                {{alertMessage}}
+            </p>
+        </p-dialog>   
+</tx-music-container>

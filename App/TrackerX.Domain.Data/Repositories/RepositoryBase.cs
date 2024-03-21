@@ -13,9 +13,10 @@ public class RepositoryBase<T> : IRepository<T> where T : BaseEntity
         Context = context;
     }
 
-    public void Create(T entity)
+    public T Create(T entity)
     {
         Context.Set<T>().Add(entity);
+        return entity;
     }
 
     public void Update(T entity)
@@ -23,9 +24,17 @@ public class RepositoryBase<T> : IRepository<T> where T : BaseEntity
         Context.Entry<T>(entity).State = EntityState.Modified;
     }
 
-    public void Remove(T entity)
+    public void Remove(T entity, bool isSoftDelete = false)
     {
-        Context.Set<T>().Remove(entity);
+        if (isSoftDelete)
+        {
+            Context.Entry<T>(entity).State = EntityState.Modified;
+            Context.Entry(entity).Property("IsDeleted").CurrentValue = true;
+        }
+        else
+        {
+            Context.Set<T>().Remove(entity);
+        }        
     }
 
     public async virtual Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate)

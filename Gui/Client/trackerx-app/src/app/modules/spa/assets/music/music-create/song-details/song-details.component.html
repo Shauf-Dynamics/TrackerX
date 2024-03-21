@@ -1,0 +1,24 @@
+<main>
+    <div>
+        <span>Name</span>
+        <input [(ngModel)]="songName" type="text" class="text-box" (input)="onNameChanged()"/>
+    </div>        
+    <div>
+        <span>Band</span>        
+        <p-autoComplete [(ngModel)]="selectedBand" inputStyleClass="text-box" field="bandName"  [suggestions]="bandSuggestions"
+             (completeMethod)="searchBand($event)" (onSelect)="onBandSelect()" (onClear)="onClearBandInput()">
+            <ng-template let-band pTemplate="bandSuggestions">
+                <span >{{band.bandName}}</span>
+            </ng-template>
+        </p-autoComplete>
+    </div>           
+    <div class="album">
+        <span>Album</span>
+        <select [(ngModel)]="selectedAlbum" class="select" name="select-album" id="select-album" disabled
+            [attr.disabled]="!selectedBand? true : null" (change)="onAlbumChange()">
+            <option *ngFor="let album of albumSuggestions" [ngValue]="album">
+                {{album.albumName}} ({{album.writingYear}})
+            </option>
+         </select>
+    </div>   
+</main>  

@@ -21,6 +21,4 @@ public sealed class Song : BaseEntity
     public int Tempo { get; set; }
 
     public bool IsInstrumental { get; set; }
-
-    public int WritingYear { get; set; }
 }

@@ -1,0 +1,83 @@
+<tx-music-container [selectedTabIndex]="1">
+    <p-toast></p-toast>
+    <p-confirmDialog></p-confirmDialog>
+    <main>
+        <div class="search-container">
+            <input type="text" class="text-box" placeholder="Search by Description"
+                (value)="searchArgs.descriptionPattern" [formControl]="searchField" />
+            <div class="search-by">
+                <div>
+                    <label>Type</label>
+                    <select (change)="onMusicTypeChange($event)">
+                        <option value="All">All</option>
+                        <option value="Song">Song</option>
+                        <option value="Custom">Custom</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Publicity</label>
+                    <select (change)="onPublicityChange($event)">
+                        <option value="All">All</option>
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-description">Description</th>
+                        <th class="col-album">Album</th>
+                        <th class="col-author">Author</th>
+                        <th class="col-type">Type</th>
+                        <th class="col-publicity">Publicity</th>
+                        <th class="col-added-date">Added Date</th>
+                        <th class="col-actions"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let music of myMusicViewModel$ | async; let i = index">
+                        <td class="col-description">{{ music.description }}</td>
+                        <td class="col-album">
+                            <ng-container *ngIf="music.album != null">
+                                {{ music.album }}
+                            </ng-container>
+                            <ng-container *ngIf="music.album == null">
+                            </ng-container>
+                        </td>
+                        <td class="col-author">
+                            <ng-container *ngIf="music.author != null">
+                                {{ music.author }}
+                            </ng-container>
+                            <ng-container *ngIf="music.author == null">
+                            </ng-container>
+                        </td>
+                        <td class="col-type">{{ music.type }}</td>
+                        <td class="col-publicity">
+                            <ng-container *ngIf="music.type == 'Song'">
+                                <i *ngIf="music.isPublished" class="fa-solid fa-lock-open"
+                                    style="color: rgba(56, 146, 71, 0.87);"></i>
+                                <i *ngIf="!music.isPublished" class="fa-solid fa-lock" style="color: #b4b4b4cb;"></i>
+                            </ng-container>
+                        </td>
+                        <td class="col-added-date">{{ music.assetAddedDate | date : 'YYYY-dd-MM'}}</td>
+                        <td class="col-actions">
+                            <ng-container *ngIf="!music.isPublished">
+                                <i *ngIf="music.type == 'Song'"
+                                    class="fa-solid fa-share fa-lg i-public-active"
+                                    (click)="onOpenProposalClick($event, music.musicId)"></i>
+                                <i *ngIf="music.type == 'Custom' || music.isPublished"
+                                    class="fa-solid fa-square-arrow-up-right fa-lg i-public-deactive"></i>
+                                <i class="fa-regular fa-pen-to-square fa-lg i-edit"></i>
+                                <i class="fa-solid fa-xmark fa-lg i-remove"
+                                    (click)="onMusicRemoveClick($event, music.musicId, music.type)"></i>
+                            </ng-container>                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</tx-music-container>

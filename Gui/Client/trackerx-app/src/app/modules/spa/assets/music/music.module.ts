@@ -1,39 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AssetsContainerComponent } from '../assets-container/assets-container.component';
-import { MusicContainerComponent } from './music-container/music-container.component';
-import { MusicGlobalComponent } from './music-global/music-global.component';
 import { MusicRoutingModule } from './music-routing.module';
-import { MusicSearchService } from './music-global/music-global.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MusicCreateComponent } from './music-create/music-create.component';
-import { MusicCreateService } from './music-create/music-create.service';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { Select2Module } from 'ng-select2-component';
+import { SongSearchService } from './song-global/song-global.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SongGlobalModule } from './song-global/song-global.module';
+import { MusicCreateModule } from './music-create/music-create.module';
 
 @NgModule({
     declarations: [
-        AssetsContainerComponent,     
-        MusicContainerComponent,
-        MusicGlobalComponent,
-        MusicCreateComponent
+        
     ],
     imports: [    
-        CommonModule,  
-        FormsModule,
+        CommonModule,      
         ReactiveFormsModule,
         MusicRoutingModule,
-        SharedModule,
-        Select2Module
+        MusicCreateModule,
+        SongGlobalModule
     ],
     exports: [
-        MusicContainerComponent,
-        MusicGlobalComponent,
-        MusicCreateComponent
+
     ],
     providers: [
-        MusicSearchService,
-        MusicCreateService
+        SongSearchService
     ]
 })
 export class MusicModule {

@@ -1,0 +1,68 @@
+<tx-music-container [selectedTabIndex]="2">
+    <main>
+        <div class="tx-sg-search">
+            <input type="text" class="text-box" placeholder="Search" (value)="searchArgs.searchText"
+                [formControl]="searchField" />
+            <span class="tx-sg-search-sort">
+                <span>Search by</span>
+                <select name="search_sort" id="search_sort" (change)="onSearchByChanged($event)">
+                    <option value="name">Name</option>
+                    <option value="band">Band</option>
+                </select>
+            </span>
+        </div>
+        <div class="tx-sg-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Album</th>
+                        <th>Band</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of songs$ | async; let i = index" (click)="onRowClicked(i, item.songId)"
+                        [ngClass]="selectedIndex == i ? 'row-clicked': ''">
+                        <td>
+                            <span [ngClass]="{ 'selected-column': searchArgs.searchBy === 'name' }">
+                                {{ item.songName }}
+                            </span>
+                        </td>
+                        <td>{{ item.album }}</td>
+                        <td>
+                            <span [ngClass]="{ 'selected-column': searchArgs.searchBy === 'band' }">
+                                {{ item.band }}
+                            </span>
+                        </td>
+                        <td>{{ item.year }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tx-sg-details" *ngIf="selected == null">
+            <div class="image-frame">
+                <i class="fa-solid fa-binoculars fa-2xl" style="color: #96969642;"></i>                
+                <p>Select any song to see details</p>
+            </div>
+        </div>
+        <div class="tx-sg-details" *ngIf="selected != null">
+            <div class="image-frame">
+                <ng-container *ngIf="true">
+                    <i class="fa-solid fa-guitar fa-2xl" style="color: #96969642;"></i>
+                    <p>No image available</p>
+                </ng-container>
+                <ng-container *ngIf="false">
+                    <!-- TODO -->
+                </ng-container>
+            </div>
+            <div class="description">
+                <h4>{{ selected.band }} - {{ selected.name }}</h4>
+                <p>Album: {{ selected.album }}</p>
+                <p>Genre(s): {{ selected.genre }}, {{ selected.subgenre }}</p>
+                <p>Tempo: {{ selected.tempo }} </p>
+                <span class="label">Instrumental</span>
+            </div>
+        </div>
+    </main>
+</tx-music-container>

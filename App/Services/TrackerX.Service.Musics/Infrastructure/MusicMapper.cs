@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TrackerX.Domain.Entities;
+using TrackerX.Service.Musics.Models;
 using TrackerX.Services.Musics.Models;
 
 namespace TrackerX.Service.Musics.Infrastructure;
@@ -8,17 +9,20 @@ public class MusicMapper : Profile
 {
     public MusicMapper()
     {
-        CreateMap<CreateMusicModel, Song>()
-            .ForMember(dest => dest.SongName, opt => opt.MapFrom(src => src.Name));
+        CreateMap<CreateSongModel, Song>();
 
-        CreateMap<Song, MusicViewModel>()
+        CreateMap<CreateCustomMusicModel, CustomMusic>()
+            .ForMember(dest => dest.CustomMusicDescription, opt => opt.MapFrom(src => src.Description))
+            .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author));
+
+        CreateMap<Song, SongViewModel>()
             .ForMember(dest => dest.Genre, opt => opt.Ignore())
             .ForMember(dest => dest.BandName, opt => opt.MapFrom(src => src.Band.BandName));
 
         CreateMap<Song, SongSearchResult>()
             .ForMember(dest => dest.Band, opt => opt.MapFrom(src => src.Band.BandName))
             .ForMember(dest => dest.Album, opt => opt.MapFrom(src => src.Album.AlbumName))
-            .ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.WritingYear));
+            .ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.Album.WritingYear));
 
         CreateMap<Song, SongDetailsResult>()
             .ForMember(dest => dest.Band, opt => opt.MapFrom(src => src.Band.BandName))

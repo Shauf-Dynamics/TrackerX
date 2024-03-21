@@ -39,11 +39,8 @@
     <ProjectReference Include="..\Services\TrackerX.Service.Lessons\TrackerX.Service.Lessons.csproj" />
     <ProjectReference Include="..\Services\TrackerX.Service.Musics\TrackerX.Service.Musics.csproj" />
     <ProjectReference Include="..\TrackerX.Domain.Data\TrackerX.Domain.Data.csproj" />
-    <ProjectReference Include="..\TrackerX.UserAccessor\TrackerX.UserAccessor.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Api\Endpoints.Admin\" />
+    <ProjectReference Include="..\TrackerX.Service.Proposal\TrackerX.Service.Proposals.csproj" />
+    <ProjectReference Include="..\TrackerX.UserAccessor\TrackerX.Internal.UserAccessor.csproj" />
   </ItemGroup>
 
   <ItemGroup>

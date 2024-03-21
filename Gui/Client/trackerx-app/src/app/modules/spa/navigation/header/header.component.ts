@@ -13,8 +13,8 @@ export class HeaderComponent implements OnInit {
     public currentUserName: string;
 
     constructor(
-        private authService: AuthService,
         private router: Router,
+        private authService: AuthService,
         private userStorage: AuthSessionStorage) { }
 
     ngOnInit(): void {        

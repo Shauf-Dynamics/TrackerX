@@ -1,0 +1,12 @@
+<main>
+    <div>
+        <span>Description</span>
+        <input [(ngModel)]="description" type="text" class="text-box tx-input"
+            (input)="onDescriptionChanged()"/>
+    </div>        
+    <div>
+        <span>Author</span>
+        <input [(ngModel)]="authorName" type="text" class="text-box tx-input" 
+            (input)="onAuthorChanged()"/>
+    </div>    
+</main>

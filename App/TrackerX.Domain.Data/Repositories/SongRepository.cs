@@ -22,21 +22,31 @@ public class SongRepository : RepositoryBase<Song>, ISongRepository
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<Song>> GetBySearchCriteriasAsync(string text, string searchBy)
+    public async Task<IEnumerable<Song>> SearchAsync(string pattern, string searchBy = "name", bool searchPublic = true)
     {
         var songs = Context.Songs
-            .Include(x => x.Band);
-
-        if (!string.IsNullOrWhiteSpace(text))
+            .Include(x => x.Band)
+            .Include(x => x.Album)
+            .AsQueryable();
+      
+        if (searchPublic)
         {
-            Expression<Func<Song, bool>> predicate = (item) => true;
+            songs = songs.Join(Context.MusicProfiles.Where(p => p.IsPublished),
+                s => s.SongId,
+                p => p.AssetId,
+                (s, p) => s);
+        }
+
+        if (!string.IsNullOrWhiteSpace(pattern))
+        {
+            Expression<Func<Song, bool>>? predicate = default;
             if (string.IsNullOrWhiteSpace(searchBy) || searchBy == "name")
-                predicate = (item) => item.SongName.StartsWith(text);
+                predicate = (item) => item.SongName.StartsWith(pattern);
             else if (searchBy == "band")
-                predicate = (item) => item.Band.BandName.StartsWith(text);
+                predicate = (item) => item.Band.BandName.StartsWith(pattern);
 
             return await songs
-                .Where(predicate)
+                .Where(predicate!)
                 .ToListAsync(); 
         }
         else
@@ -52,8 +62,18 @@ public class SongRepository : RepositoryBase<Song>, ISongRepository
     {
         return await Context.Set<Song>()
             .Include(x => x.Band)
+            .Include(x => x.Album)
             .Include(x => x.Genre)
             .Include(x => x.Genre.ParentGenre)
             .FirstOrDefaultAsync(predicate);
+    }
+
+    public async Task<IEnumerable<Song>> SearchBySongNameAsync(string startsWith)
+    {
+        return await Context.Songs
+            .Where(x => x.SongName.StartsWith(startsWith))
+            .Include(x => x.Album)
+            .Include(x => x.Band)            
+            .ToListAsync();
     }
 }

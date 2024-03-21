@@ -14,7 +14,7 @@ namespace TrackerX.Tests.Unit
         private Mock<IBandRepository> _bandRepositoryMock;
 
         [SetUp]
-        public void Init()
+        public void Init() 
         {
             _bandRepositoryMock = new Mock<IBandRepository>();
             _bandRepositoryMock.Setup(x => x.SaveChangesAsync());
@@ -24,7 +24,7 @@ namespace TrackerX.Tests.Unit
         public async Task Should_CreateBand_AssingPassedValues()
         {
             _bandRepositoryMock.Setup(x => x.Create(It.IsAny<Band>()));            
-            _sut = new BandService(_bandRepositoryMock.Object);
+            _sut = new BandService(_bandRepositoryMock.Object, null);
 
             var createBandModel = new CreateBandModel() { BandName = "cool name" };
             await _sut.CreateBand(createBandModel);
@@ -41,8 +41,8 @@ namespace TrackerX.Tests.Unit
             int id = 1;
             
             _bandRepositoryMock.Setup(x => x.GetByIdAsync(It.IsAny<int>()))
-                .Returns(Task.FromResult(new Band()));
-            _sut = new BandService(_bandRepositoryMock.Object);
+                .Returns(Task.FromResult(new Band() { BandName = "default name" }));
+            _sut = new BandService(_bandRepositoryMock.Object, null);
             
             await _sut.RenameBand(id, "new cool name");
 
@@ -64,9 +64,9 @@ namespace TrackerX.Tests.Unit
                 It.IsAny<int>(),
                 It.IsAny<string>()))
                 .Returns(Task.FromResult(bands));
-            _sut = new BandService(_bandRepositoryMock.Object);
+            _sut = new BandService(_bandRepositoryMock.Object, null);
 
-            var result = await _sut.GetBandsByCriterias(new BandsSearchParams(99, string.Empty));
+            var result = await _sut.GetBandsByCriterias(new BandSearchParams(99, string.Empty));
 
             Assert.That(result.Count(), Is.EqualTo(bands.Count()));
             _bandRepositoryMock.Verify(x => x.GetBySearchingCriteriasAsync(

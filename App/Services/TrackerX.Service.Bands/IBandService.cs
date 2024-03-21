@@ -8,5 +8,5 @@ public interface IBandService
 
     Task RenameBand(int bandId, string newName);
 
-    Task<IEnumerable<BandsViewModel>> GetBandsByCriterias(BandsSearchParams criterias);
+    Task<IEnumerable<BandsViewModel>> GetBandsByCriterias(BandSearchParams criterias);
 }

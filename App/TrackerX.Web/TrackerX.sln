@@ -33,7 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Service.Musics", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Service.Accounts", "..\Services\TrackerX.Service.Accounts\TrackerX.Service.Accounts.csproj", "{A6FFCCAA-CF73-43CF-A335-BE4678E22469}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerX.UserAccessor", "..\TrackerX.UserAccessor\TrackerX.UserAccessor.csproj", "{B76C0C0C-4AF0-425C-ACB9-6BC23C8C03DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackerX.Internal.UserAccessor", "..\TrackerX.UserAccessor\TrackerX.Internal.UserAccessor.csproj", "{B76C0C0C-4AF0-425C-ACB9-6BC23C8C03DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerX.Service.Proposals", "..\TrackerX.Service.Proposal\TrackerX.Service.Proposals.csproj", "{51F4AF8C-8F4B-4083-AC40-66F25D0B38FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +99,10 @@ Global
 		{B76C0C0C-4AF0-425C-ACB9-6BC23C8C03DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B76C0C0C-4AF0-425C-ACB9-6BC23C8C03DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B76C0C0C-4AF0-425C-ACB9-6BC23C8C03DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51F4AF8C-8F4B-4083-AC40-66F25D0B38FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51F4AF8C-8F4B-4083-AC40-66F25D0B38FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51F4AF8C-8F4B-4083-AC40-66F25D0B38FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51F4AF8C-8F4B-4083-AC40-66F25D0B38FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,6 +116,7 @@ Global
 		{C2F572B4-1248-4BEE-83AC-B20BB32ED10E} = {0839082D-F72E-4AD9-9E9D-F76C98DE4DEC}
 		{DCA2981B-7698-44C7-A7F9-9F1B3AAAE7A9} = {0839082D-F72E-4AD9-9E9D-F76C98DE4DEC}
 		{A6FFCCAA-CF73-43CF-A335-BE4678E22469} = {0839082D-F72E-4AD9-9E9D-F76C98DE4DEC}
+		{51F4AF8C-8F4B-4083-AC40-66F25D0B38FC} = {0839082D-F72E-4AD9-9E9D-F76C98DE4DEC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57A12A5A-06F3-4C77-B68F-2818C21D7352}

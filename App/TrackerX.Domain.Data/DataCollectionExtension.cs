@@ -17,11 +17,14 @@ public static class DataCollectionExtension
         services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
         services.AddTransient<IBandRepository, BandRepository>();
         services.AddTransient<ISongRepository, SongRepository>();
+        services.AddTransient<ICustomMusicRepository, CustomMusicRepository>();
         services.AddTransient<IAlbumRepository, AlbumRepository>();
         services.AddTransient<ILessonRepository, LessonRepository>();
         services.AddTransient<IExerciseRepository, ExerciseRepository>();
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IInvitationRepository, InvitationRepository>();
         services.AddTransient<IGenreRepository, GenreRepository>();
+        services.AddTransient<IMusicProfileRepository, MusicProfileRepository>();
+        services.AddTransient<IProposalRepository, ProposalRepository>();
     }
 }
