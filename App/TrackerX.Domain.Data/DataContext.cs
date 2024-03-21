@@ -73,7 +73,7 @@ public class DataContext : DbContext
             e.State == EntityState.Modified ||
             e.State == EntityState.Deleted))
         {
-            entry.Property("ModifiedDateTimeUtc").CurrentValue = today;
+            entry.Property("ModifiedDateTimeUtc").CurrentValue = today; 
             entry.Property("ModifiedByUserId").CurrentValue = currentUserId;
             if (entry.State == EntityState.Added)
             {

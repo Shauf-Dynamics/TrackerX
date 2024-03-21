@@ -14,7 +14,7 @@ namespace TrackerX.Tests.Unit
         private Mock<IBandRepository> _bandRepositoryMock;
 
         [SetUp]
-        public void Init()
+        public void Init() 
         {
             _bandRepositoryMock = new Mock<IBandRepository>();
             _bandRepositoryMock.Setup(x => x.SaveChangesAsync());
